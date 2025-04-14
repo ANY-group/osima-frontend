@@ -18,6 +18,10 @@ body {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary-muted: #F0F5F4;
+  --color-text-accent: #0D1F42;
+  --color-text-secondary: #767676;
+  --color-accent: #C2E5E1;
+  --color-secondary: #8A8F99;
   --color-divider: #F0F0F0;
 }
 
@@ -30,6 +34,10 @@ body {
   .no-scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+  }
+
+  .layout-container {
+    @apply max-w-7xl xl:mx-auto w-full px-5;
   }
 
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from 'next/font/google'
 import "./globals.css";
+import Footer from "./components/footer";
 
 const roboto = Roboto({ subsets: ["latin", "cyrillic"] });
 
@@ -20,7 +21,7 @@ export default function RootLayout({
         <div className={'flex-grow'}>
           {children}
         </div>
-        {/* Footer */}
+        <Footer />
       </body>
     </html>
   );
