@@ -7,15 +7,9 @@ export default function HomePage() {
       <div className="layout-container">
         <HomeBanners />
       </div>
-      <div className="layout-container">
-        <ProductsCarousel title="Акции" />
-      </div>
-      <div className="layout-container">
-        <ProductsCarousel title="Бестселлеры" />
-      </div>
-      <div className="layout-container">
-        <ProductsCarousel title="Новинки" />
-      </div>
+      <ProductsCarousel title="Акции" />
+      <ProductsCarousel title="Бестселлеры" />
+      <ProductsCarousel title="Новинки" />
     </main>
   );
 }

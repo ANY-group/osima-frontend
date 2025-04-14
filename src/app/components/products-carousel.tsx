@@ -1,26 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import StarIcon from "./ui/icons/star-icon";
+import ArrowLeft from "./ui/icons/arrow-left";
 
 export default function ProductsCarousel({ title }: {
   title: String,
 }) {
   return (
     <div className="pt-8 md:py-10">
-      <div className="flex items-center justify-between mb-6">
+      <div className="layout-container flex items-center justify-between mb-6">
         <h3 className="text-3xl font-semibold">
           {title}
         </h3>
-        <div className="flex">
+        <div className="flex items-center gap-6">
           <Link href="#">
             Смотреть все
           </Link>
-          <div>
-
+          <div className="hidden md:flex items-center gap-4">
+            <ScrollController />
+            <ScrollController rotate={true} />
           </div>
         </div>
       </div>
-      <div className="flex gap-5 overflow-x-auto mr-[calc(-20px-max(0px,100vw-1280px)/2)] 2xl:mr-auto no-scrollbar scroll-smooth">
+      <div className="flex gap-5 scrollable-layout-container no-scrollbar px-5">
         <Product />
         <Product />
         <Product />
@@ -88,6 +90,16 @@ const Product = () => {
           <span className="text-sm">16</span>
         </div>
       </div>
+    </div>
+  );
+}
+
+const ScrollController = ({ rotate = false }: {
+  rotate?: boolean,
+}) => {
+  return (
+    <div className={`flex items-center justify-center w-8 h-8 border rounded-full ${rotate && 'rotate-180'}`}>
+      <ArrowLeft />
     </div>
   );
 }
