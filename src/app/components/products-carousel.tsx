@@ -9,7 +9,7 @@ export default function ProductsCarousel({ title }: {
   return (
     <div className="pt-8 md:py-10">
       <div className="layout-container flex items-center justify-between mb-6">
-        <h3 className="text-3xl font-semibold">
+        <h3 className="text-2xl md:text-3xl font-semibold">
           {title}
         </h3>
         <div className="flex items-center gap-6">
