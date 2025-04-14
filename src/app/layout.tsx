@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className="scroll-smooth">
+    <html lang="ru" className="scroll-smooth md:bg-foreground">
       <body className={`flex flex-col min-h-svh antialiased ${roboto.className}`}>
         <div className={'flex-grow'}>
           {children}

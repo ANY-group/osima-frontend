@@ -6,7 +6,7 @@ export default function ProductsCarousel({ title }: {
   title: String,
 }) {
   return (
-    <div className="py-10">
+    <div className="pt-8 md:py-10">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-3xl font-semibold">
           {title}
@@ -40,8 +40,8 @@ export default function ProductsCarousel({ title }: {
 
 const Product = () => {
   return (
-    <div className="min-w-[230px]">
-      <div className="relative w-full h-[306px] bg-primary-muted">
+    <div className="min-w-40 md:min-w-58">
+      <div className="relative w-full h-49 md:h-76 bg-primary-muted">
         <Image
           src="/images/tmp/product.png"
           alt="Product"
