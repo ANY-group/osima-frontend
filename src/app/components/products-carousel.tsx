@@ -22,7 +22,7 @@ export default function ProductsCarousel({ title }: {
           </div>
         </div>
       </div>
-      <div className="flex gap-5 scrollable-layout-container no-scrollbar px-5">
+      <div className="flex gap-2 md:gap-5 px-4 md:px-5 scrollable-layout-container no-scrollbar">
         <Product />
         <Product />
         <Product />

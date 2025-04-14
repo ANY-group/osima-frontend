@@ -33,11 +33,11 @@ body {
   }
 
   .layout-container {
-    @apply max-w-7xl xl:mx-auto w-full px-5;
+    @apply max-w-7xl xl:mx-auto w-full px-4 md:px-5;
   }
 
   .scrollable-layout-container {
-    @apply pl-[calc(20px+max(0px,100vw-1280px)/2)] w-full overflow-x-auto scroll-smooth; /* 2xl:px-5 2xl:max-w-7xl 2xl:mx-auto  */
+    @apply w-full pl-[calc(16px+max(0px,100vw-1280px)/2)] md:pl-[calc(20px+max(0px,100vw-1280px)/2)] overflow-x-auto scroll-smooth; /* 2xl:px-5 2xl:max-w-7xl 2xl:mx-auto  */
   }
 
 }
