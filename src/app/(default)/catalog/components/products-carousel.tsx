@@ -43,7 +43,9 @@ export default function ProductsCarousel({ title }: {
 
 const Product = () => {
   return (
-    <div className="min-w-40 md:min-w-58">
+    <Link
+      href="/catalog/uhod-za-licom/tonizaciya/tonik-skin-balancing-pore-reducing-toner-paulas-choice" className="min-w-40 md:min-w-58"
+    >
       <div className="relative w-full h-49 md:h-76 bg-primary-muted">
         <Image
           src="/images/tmp/product.png"
@@ -69,7 +71,7 @@ const Product = () => {
         </div>
         <StarRating />
       </div>
-    </div>
+    </Link>
   );
 }
 
