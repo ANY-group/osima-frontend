@@ -43,7 +43,7 @@ const TopHeader = () => {
 
 const MidHeader = () => {
   return (
-    <div className="flex items-center px-5 md:px-8 py-4 md:py-5 bg-background rounded-t-2xl">
+    <div className="flex items-center px-4 md:px-8 py-4 md:py-5 bg-background rounded-t-2xl">
       <div className="flex items-center gap-3 w-full">
         <div className="flex items-center gap-2">
           <BurgetIcon />
@@ -55,13 +55,13 @@ const MidHeader = () => {
         <LogoIcon />
       </div>
       <div className="flex items-center justify-end gap-2 w-full">
-        <Link href="#" aria-label="Корзина" className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10 rounded-lg bg-primary-muted">
+        <Link href="#" aria-label="Корзина" className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted">
           <ShoppingCartIcon />
         </Link>
-        <Link href="#" aria-label="Профиль" className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10 rounded-lg bg-primary-muted">
+        <Link href="#" aria-label="Профиль" className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted">
           <UserCircleIcon />
         </Link>
-        <Link href="#" aria-label="Избранные" className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10 rounded-lg bg-primary-muted">
+        <Link href="#" aria-label="Избранные" className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted">
           <HeartOutlinedIcon />
         </Link>
       </div>
