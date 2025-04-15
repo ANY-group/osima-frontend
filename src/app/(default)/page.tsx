@@ -1,6 +1,7 @@
 import ProductsCarousel from "../components/products-carousel";
 import HomeBanners from "./home/components/home-banners";
 import HomeBlogPosts from "./home/components/home-blog-posts";
+import HomePartners from "./home/components/home-partners";
 import HomeSocials from "./home/components/home-socials";
 
 export default function HomePage() {
@@ -23,6 +24,9 @@ export default function HomePage() {
       </section>
       <section>
         <HomeSocials />
+      </section>
+      <section className="layout-container">
+        <HomePartners />
       </section>
     </main>
   );
