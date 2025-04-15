@@ -9,15 +9,21 @@ import PaymentMethodsIcon from "./ui/icons/payment-methods-icon";
 
 export default function Footer() {
   return (
-    <footer className="layout-container flex flex-col divide-y divide-divider border-t border-divider">
-      <TopFooter />
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-10 justify-between py-10">
-        <LogoColumn />
-        <ContactsColumn />
-        <CatalogNavigationColumn />
-        <InfoNavigationColumn />
+    <footer className="flex flex-col">
+      <div className="border-y border-divider">
+        <div className="layout-container ">
+          <TopFooter />
+        </div>
       </div>
-      <BottomFooter />
+      <div className="layout-container">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 justify-between py-10">
+          <LogoColumn />
+          <ContactsColumn />
+          <CatalogNavigationColumn />
+          <InfoNavigationColumn />
+        </div>
+        <BottomFooter />
+      </div>
     </footer>
   );
 }
@@ -45,6 +51,7 @@ const TopFooter = () => {
       icon: <UserLikeIcon />,
     },
   ];
+
   return (
     <div className="flex flex-col md:flex-row md:items-center justify-between gap-7 py-8">
       <h6 className="text-xl font-semibold leading-6">
@@ -169,10 +176,8 @@ const BottomFooter = () => {
   const year = new Date().getFullYear()
 
   return (
-    <div className="py-5">
-      <p className="text-xs text-text-accent">
-        2024 © vegas.uz интернет-магазин
-      </p>
-    </div>
+    <p className="py-5 text-xs text-text-accent">
+      2024 © vegas.uz интернет-магазин
+    </p>
   );
 }

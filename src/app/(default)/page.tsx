@@ -21,7 +21,9 @@ export default function HomePage() {
         <ProductsCarousel title="Новинки" />
       </section>
       <section className="bg-primary-muted">
-        <HomeBlogPosts />
+        <div className="layout-container">
+          <HomeBlogPosts />
+        </div>
       </section>
       <section>
         <HomeSocials />
