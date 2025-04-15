@@ -1,6 +1,7 @@
 import ProductsCarousel from "../components/products-carousel";
 import HomeBanners from "./home/components/home-banners";
 import HomeBlogPosts from "./home/components/home-blog-posts";
+import HomeSocials from "./home/components/home-socials";
 
 export default function HomePage() {
   return (
@@ -19,6 +20,9 @@ export default function HomePage() {
       </section>
       <section className="bg-primary-muted">
         <HomeBlogPosts />
+      </section>
+      <section>
+        <HomeSocials />
       </section>
     </main>
   );
