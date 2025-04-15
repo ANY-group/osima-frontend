@@ -44,4 +44,28 @@ body {
     @apply w-full pl-[calc(16px+max(0px,100vw-1280px)/2)] md:pl-[calc(20px+max(0px,100vw-1280px)/2)] overflow-x-auto scroll-smooth; /* 2xl:px-5 2xl:max-w-7xl 2xl:mx-auto  */
   }
 
+  .raw-content {
+    @apply text-foreground;
+  }
+  
+  .raw-content h2 {
+    @apply text-2xl font-bold mt-4;
+  }
+  
+  .raw-content ul {
+    @apply list-disc list-inside my-1;
+  }
+
+  .raw-content h3 {
+    @apply text-xl font-semibold mt-4;
+  }
+
+  .raw-content p {
+    @apply py-1;
+  }
+
+  .raw-content figcaption {
+    @apply hidden;
+  }
+
 }

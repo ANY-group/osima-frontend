@@ -69,7 +69,7 @@ const ProductBrand = () => {
 
 const ProductRightBlock = () => {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-10 overflow-auto">
       <ProductMainInfo />
       <ProductDescription />
     </div>
@@ -135,7 +135,42 @@ const ProductMainInfo = () => {
 const ProductDescription = () => {
   return (
     <div>
-
+      <div className="overflow-x-auto no-scrollbar flex items-center gap-2 border-b border-divider">
+        <TabButton isActive={true}>
+          Описание
+        </TabButton>
+        <TabButton>
+          Характеристики
+        </TabButton>
+        <TabButton>
+          Оплата и доставка
+        </TabButton>
+      </div>
+      <div className="raw-content pt-5 text-sm line-clamp-5">
+        Глубокоувлажняющий тоник с экстрактом зеленого чая моментально
+        успокоит и восстановит оптимальный рН баланс кожи.
+        Антиоксиданты защищают кожу от воздействия свободных
+        радикалов. Тоник подготовит кожу к дальнейшим уходовым ритуалам.
+        Средство подходит для всех типов кожи.
+      </div>
+      <button type="button" className="mt-2 text-sm font-semibold text-on-primary-muted">
+        Читать дальше
+        {/* Свернуть */}
+      </button>
     </div>
+  );
+}
+
+const TabButton = ({ children, isActive = false }: {
+  children: React.ReactNode,
+  isActive?: boolean,
+}) => {
+  return (
+    <button
+      type="button"
+      className={`inline-block px-2 pb-2 border-on-primary-muted whitespace-nowrap text-sm font-medium ${isActive ? 'border-b-3' : 'mb-0.75'}`}
+    >
+      {children}
+    </button>
   );
 }
