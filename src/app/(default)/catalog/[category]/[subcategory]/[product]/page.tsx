@@ -29,6 +29,9 @@ export default function ProductPage() {
         <ProductInfo />
       </section>
       <section>
+        {/* TODO: Reviews */}
+      </section>
+      <section>
         <ProductsCarousel title="Рекомендуем также" />
       </section>
     </main>

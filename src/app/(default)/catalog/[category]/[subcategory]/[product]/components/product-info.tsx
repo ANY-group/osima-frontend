@@ -19,7 +19,9 @@ const ProductLeftBlock = () => {
   return (
     <div className="flex flex-col gap-4 sm:gap-3 sm:py-5">
       <ProductImages />
-      <ProductBrand />
+      <div className="sm:ml-16 md:ml-27">
+        <ProductBrand />
+      </div>
     </div>
   );
 }
