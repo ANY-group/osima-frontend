@@ -1,15 +1,25 @@
 import ProductsCarousel from "../components/products-carousel";
 import HomeBanners from "./home/components/home-banners";
+import HomeBlogPosts from "./home/components/home-blog-posts";
 
 export default function HomePage() {
   return (
     <main>
-      <div className="layout-container">
+      <section className="layout-container">
         <HomeBanners />
-      </div>
-      <ProductsCarousel title="Акции" />
-      <ProductsCarousel title="Бестселлеры" />
-      <ProductsCarousel title="Новинки" />
+      </section>
+      <section>
+        <ProductsCarousel title="Акции" />
+      </section>
+      <section>
+        <ProductsCarousel title="Бестселлеры" />
+      </section>
+      <section>
+        <ProductsCarousel title="Новинки" />
+      </section>
+      <section className="bg-primary-muted">
+        <HomeBlogPosts />
+      </section>
     </main>
   );
 }
