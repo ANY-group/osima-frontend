@@ -1,0 +1,141 @@
+import ProductPrice from "@/app/(default)/catalog/components/product-price";
+import StarRating from "@/app/(default)/catalog/components/star-rating";
+import CheckIcon from "@/app/components/ui/icons/check-icon";
+import HeartOutlinedIcon from "@/app/components/ui/icons/heart-outlined-icon";
+import ShoppingBagIcon from "@/app/components/ui/icons/shopping-bag-icon";
+import Image from "next/image";
+import Link from "next/link";
+
+export default function ProductInfo() {
+  return (
+    <div className="grid sm:grid-cols-2 sm:gap-6">
+      <ProductLeftBlock />
+      <ProductRightBlock />
+    </div>
+  );
+}
+
+const ProductLeftBlock = () => {
+  return (
+    <div className="flex flex-col gap-4 sm:gap-3 sm:py-5">
+      <ProductImages />
+      <ProductBrand />
+    </div>
+  );
+}
+
+const ProductImages = () => {
+  return (
+    <div className="flex flex-col-reverse sm:flex-row gap-2 md:gap-13">
+      <div className="flex flex-col gap-1">
+        <Image
+          src="/images/tmp/product.png"
+          alt="Product"
+          width={56}
+          height={56}
+          className="aspect-square object-contain border border-success rounded-lg"
+        />
+      </div>
+      <div className="flex-grow">
+        <div className="relative max-w-2/3 sm:max-w-125 mx-auto aspect-square">
+          <Image
+            src="/images/tmp/product.png"
+            alt="Product"
+            fill
+            className="object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const ProductBrand = () => {
+  return (
+    <div className="flex flex-col items-center gap-1">
+      <Link href="#" className="text-sm text-text-accent">
+        Все товары бренда <span className="text-success">KLAIRS</span>
+      </Link>
+      <Image
+        src="/images/tmp/klairs.png"
+        alt="Klairs"
+        width={110}
+        height={110}
+        className="object-contain"
+      />
+    </div>
+  );
+}
+
+const ProductRightBlock = () => {
+  return (
+    <div className="flex flex-col gap-10">
+      <ProductMainInfo />
+      <ProductDescription />
+    </div>
+  );
+}
+
+const ProductMainInfo = () => {
+  return (
+    <div className="flex flex-col gap-5">
+
+      <div className="flex flex-col gap-2 pt-4">
+        <p className="text-sm font-semibold">
+          Увлажняющий крем для лица
+        </p>
+        <h1 className="text-3xl">
+          AESTURA Atobarrier365 hydro soothing cream
+        </h1>
+      </div>
+
+      <div className="flex gap-7">
+        <StarRating />
+        <div className="flex items-center gap-1 text-sm text-accent-green">
+          <CheckIcon /> Есть в наличии
+        </div>
+      </div>
+
+      <div className="text-3xl pt-1">
+        <ProductPrice />
+      </div>
+
+      <div className="max-w-3xs px-6 py-4 bg-secondary-muted rounded-lg text-xs">
+        <p>
+          Вам начислится 990 бонусов
+          (10%) при покупке с регистрации
+        </p>
+        <Link href="#" className="text-on-primary-muted">
+          Подробнее о бонусах
+        </Link>
+      </div>
+
+      <div className="flex gap-2 h-10">
+        <button className="flex-grow flex items-center justify-center gap-2 h-full max-w-3xs rounded-lg bg-success text-sm  text-white">
+          <ShoppingBagIcon />
+          Добавить в корзину
+        </button>
+        <button className="flex items-center justify-center h-full aspect-square rounded-lg bg-secondary-muted" aria-label="Добавить в избранные">
+          <HeartOutlinedIcon />
+        </button>
+      </div>
+
+      <div className="text-sm text-text-secondary">
+        <p className="mb-1.5">
+          Бесплатная доставка от 20 000 тг.
+        </p>
+        <Link href="#">
+          Подробнее про условия доставки
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+const ProductDescription = () => {
+  return (
+    <div>
+
+    </div>
+  );
+}

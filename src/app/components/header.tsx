@@ -51,9 +51,9 @@ const MidHeader = () => {
         </div>
         <SearchInput />
       </div>
-      <div className="inline-flex w-20 md:w-28">
+      <Link href="/" className="inline-flex w-20 md:w-28">
         <LogoIcon />
-      </div>
+      </Link>
       <div className="flex items-center justify-end gap-2 w-full">
         <Link href="#" aria-label="Корзина" className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted">
           <ShoppingCartIcon />

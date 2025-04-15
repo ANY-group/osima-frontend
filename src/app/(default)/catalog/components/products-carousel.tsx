@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import StarIcon from "./ui/icons/star-icon";
-import ArrowLeft from "./ui/icons/arrow-left";
+import ArrowLeftIcon from "../../../components/ui/icons/arrow-left-icon";
+import StarRating from "./star-rating";
+import ProductPrice from "./product-price";
 
 export default function ProductsCarousel({ title }: {
   title: String,
@@ -63,32 +64,10 @@ const Product = () => {
             350 Б
           </div>
         </div>
-        <div className="flex items-center gap-2 text-sm font-semibold tracking-tight">
-          <span>16 515 C</span>
-          <span className="text-text-secondary">
-            16 515<span className="line-through"> C</span>
-          </span>
+        <div className="text-sm">
+          <ProductPrice />
         </div>
-        <div className="flex items-center gap-2">
-          <div className="flex gap-0.5">
-            <span>
-              <StarIcon />
-            </span>
-            <span>
-              <StarIcon />
-            </span>
-            <span>
-              <StarIcon />
-            </span>
-            <span>
-              <StarIcon />
-            </span>
-            <span className="text-text-secondary">
-              <StarIcon />
-            </span>
-          </div>
-          <span className="text-sm">16</span>
-        </div>
+        <StarRating />
       </div>
     </div>
   );
@@ -99,7 +78,7 @@ const ScrollController = ({ rotate = false }: {
 }) => {
   return (
     <div className={`flex items-center justify-center w-8 h-8 border rounded-full ${rotate && 'rotate-180'}`}>
-      <ArrowLeft />
+      <ArrowLeftIcon />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import ProductsCarousel from "../components/products-carousel";
+import ProductsCarousel from "./catalog/components/products-carousel";
 import HomeAddresses from "./home/components/home-addresses";
 import HomeBanners from "./home/components/home-banners";
 import HomeBlogPosts from "./home/components/home-blog-posts";
