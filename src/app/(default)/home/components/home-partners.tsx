@@ -38,7 +38,7 @@ const Partner = () => {
         src="/images/tmp/davines-bg.png"
         alt="Davines"
         fill
-        className="object-cover rounded-xl brightness-60"
+        className="object-cover rounded-xl brightness-50"
       />
       <div className="absolute bottom-0 left-0 right-0">
         <div className="flex flex-col p-5 sm:p-8 gap-8 divide-white">
@@ -49,11 +49,11 @@ const Partner = () => {
             height={80}
           />
           <hr />
-          <p className="text-background font-semibold">
+          <p className="text-white font-semibold">
             Итальянская профессиональная косметика для волос DAVINES. Лидер по производству премиальных эко-продуктов для окрашивания, лечебного ухода за волосами
           </p>
           <div>
-            <Link href="#" className="px-6 py-2 bg-background rounded-full font-semibold whitespace-nowrap">
+            <Link href="#" className="px-6 py-2 bg-background rounded-full font-semibold">
               Связаться с менеджером
             </Link>
           </div>

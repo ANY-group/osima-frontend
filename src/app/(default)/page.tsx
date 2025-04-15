@@ -1,4 +1,5 @@
 import ProductsCarousel from "../components/products-carousel";
+import HomeAddresses from "./home/components/home-addresses";
 import HomeBanners from "./home/components/home-banners";
 import HomeBlogPosts from "./home/components/home-blog-posts";
 import HomePartners from "./home/components/home-partners";
@@ -27,6 +28,9 @@ export default function HomePage() {
       </section>
       <section className="layout-container">
         <HomePartners />
+      </section>
+      <section>
+        <HomeAddresses />
       </section>
     </main>
   );
