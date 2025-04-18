@@ -3,7 +3,7 @@ import ArrowLeftIcon from "../../../components/ui/icons/arrow-left-icon";
 import ProductCard from "./product-card";
 
 export default function ProductsCarousel({ title }: {
-  title: String,
+  title: string,
 }) {
   return (
     <div className="pt-8 md:py-10">

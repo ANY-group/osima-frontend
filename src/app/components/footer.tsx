@@ -68,7 +68,7 @@ const ContactsColumn = () => {
 }
 
 const NavigationColumnWrapper = ({ title, children }: {
-  title: String,
+  title: string,
   children: React.ReactNode,
 }) => {
   return (
@@ -124,7 +124,7 @@ const BottomFooter = () => {
 
   return (
     <p className="py-5 text-xs text-text-accent">
-      2024 © vegas.uz интернет-магазин
+      {year} © vegas.uz интернет-магазин
     </p>
   );
 }

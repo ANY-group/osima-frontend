@@ -59,7 +59,7 @@ const LargeBlogPost = () => {
 }
 
 const BlogPost = ({ title }: {
-  title?: String,
+  title?: string,
 }) => {
   return (
     <div className="flex flex-col items-center gap-3 h-full p-3 bg-white">
