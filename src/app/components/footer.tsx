@@ -1,8 +1,4 @@
 import Link from "next/link";
-import ChatIcon from "./ui/icons/chat-icon";
-import DeliveryCarIcon from "./ui/icons/delivery-car-icon";
-import CircleQuestionIcon from "./ui/icons/circle-question-icon";
-import UserLikeIcon from "./ui/icons/user-like-icon";
 import LogoIcon from "./ui/icons/logo-icon";
 import InstagramRoundedIcon from "./ui/icons/instagram-rounded-icon";
 import PaymentMethodsIcon from "./ui/icons/payment-methods-icon";
@@ -10,11 +6,6 @@ import PaymentMethodsIcon from "./ui/icons/payment-methods-icon";
 export default function Footer() {
   return (
     <footer className="flex flex-col">
-      <div className="border-y border-divider">
-        <div className="layout-container ">
-          <TopFooter />
-        </div>
-      </div>
       <div className="layout-container">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 justify-between py-10">
           <LogoColumn />
@@ -25,50 +16,6 @@ export default function Footer() {
         <BottomFooter />
       </div>
     </footer>
-  );
-}
-
-const TopFooter = () => {
-  const items = [
-    {
-      title: "Доставка и оплата",
-      href: "#",
-      icon: <ChatIcon />,
-    },
-    {
-      title: "Доставка и оплата",
-      href: "#",
-      icon: <DeliveryCarIcon />,
-    },
-    {
-      title: "Покупателям",
-      href: "#",
-      icon: <CircleQuestionIcon />,
-    },
-    {
-      title: "Покупателям",
-      href: "#",
-      icon: <UserLikeIcon />,
-    },
-  ];
-
-  return (
-    <div className="flex flex-col md:flex-row md:items-center justify-between gap-7 py-8">
-      <h6 className="text-xl font-semibold leading-6">
-        Покупателю
-      </h6>
-      <div className="flex flex-col md:flex-row md:items-center justify-end gap-7 md:gap-10 lg:gap-16">
-        {items.map((item, index) => (
-          <Link
-            key={index}
-            href={item.href}
-            className="flex items-center gap-2"
-          >
-            {item.icon} {item.title}
-          </Link>
-        ))}
-      </div>
-    </div>
   );
 }
 

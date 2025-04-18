@@ -1,3 +1,4 @@
+import InfoLinks from "../components/info-links";
 import ProductsCarousel from "./catalog/components/products-carousel";
 import HomeAddresses from "./home/components/home-addresses";
 import HomeBanners from "./home/components/home-banners";
@@ -33,6 +34,11 @@ export default function HomePage() {
       </section>
       <section>
         <HomeAddresses />
+      </section>
+      <section className="border-y border-divider">
+        <div className="layout-container py-8">
+          <InfoLinks />
+        </div>
       </section>
     </main>
   );
