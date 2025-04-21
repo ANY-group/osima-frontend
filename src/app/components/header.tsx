@@ -7,7 +7,7 @@ import ShoppingCartIcon from "./ui/icons/shopping-cart-icon";
 import UserCircleIcon from "./ui/icons/user-circle-icon";
 import HeartOutlinedIcon from "./ui/icons/heart-outlined-icon";
 import SearchIcon from "./ui/icons/search-icon";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion"
 import MobileCategoriesSidebar from "./mobile-categories-sidebar";
 import DesktopCategoriesDropdown from "./desktop-categories-dropdown";
@@ -81,10 +81,12 @@ const MidHeader = () => {
         </div>
       </div>
 
-      <MobileCategoriesSidebar
-        isOpen={isSidebarOpen}
-        close={() => setSidebarOpen(false)}
-      />
+      <Suspense>
+        <MobileCategoriesSidebar
+          isOpen={isSidebarOpen}
+          close={() => setSidebarOpen(false)}
+        />
+      </Suspense>
     </>
   );
 }
@@ -106,10 +108,12 @@ const BotHeader = () => {
           </div>
         ))}
       </nav>
-      <DesktopCategoriesDropdown
-        openCategory={openCategory}
-        close={() => setOpenCategory(null)}
-      />
+      <Suspense>
+        <DesktopCategoriesDropdown
+          openCategory={openCategory}
+          close={() => setOpenCategory(null)}
+        />
+      </Suspense>
     </div>
   );
 }
