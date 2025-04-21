@@ -14,11 +14,13 @@ import DesktopCategoriesDropdown from "./desktop-categories-dropdown";
 
 export default function Header() {
   return (
-    <header className="sticky md:relative top-0 w-full z-20">
-      <TopHeader />
-      <MidHeader />
-      <BotHeader />
-    </header>
+    <div className="relative h-18 md:h-auto">
+      <header className="fixed md:relative top-0 left-0 right-0 w-full z-20">
+        <TopHeader />
+        <MidHeader />
+        <BotHeader />
+      </header>
+    </div>
   );
 }
 
@@ -52,7 +54,7 @@ const MidHeader = () => {
 
   return (
     <>
-      <div className="relative flex items-center px-4 md:px-8 md:py-5 bg-background md:rounded-t-2xl z-20">
+      <div className="relative flex items-center px-4 md:px-8 py-1 md:py-5 bg-background md:rounded-t-2xl z-20">
         <div className="flex items-center gap-3 w-full">
           <button onClick={() => setSidebarOpen(!isSidebarOpen)} className="flex md:hidden items-center gap-2">
             <BurgetIcon />
@@ -63,7 +65,7 @@ const MidHeader = () => {
           </Link>
           <SearchInput />
         </div>
-        <Link href="/" className="inline-flex w-20 md:w-28">
+        <Link href="/" className="inline-flex w-20 md:w-28" onClick={() => setSidebarOpen(false)}>
           <LogoIcon />
         </Link>
         <div className="flex items-center justify-end gap-2 w-full">

@@ -22,10 +22,13 @@ button {
   --color-text-accent: #0D1F42;
   --color-text-secondary: #767676;
   --color-accent: #C2E5E1;
+  --color-accent-light: #CCFFF3;
   --color-accent-green: #34C759;
   --color-secondary: #8A8F99;
   --color-secondary-muted: #F7F9FA;
+  --color-disabled: #B3B3B3;
   --color-divider: #F0F0F0;
+  --color-divider-alt: #EBEDF0;
   --color-success: #55D5B6;
 }
 

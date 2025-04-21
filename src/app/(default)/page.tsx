@@ -35,10 +35,8 @@ export default function HomePage() {
       <section>
         <HomeAddresses />
       </section>
-      <section className="border-y border-divider">
-        <div className="layout-container py-8">
-          <InfoLinks />
-        </div>
+      <section className="layout-container py-8">
+        <InfoLinks />
       </section>
     </main>
   );
