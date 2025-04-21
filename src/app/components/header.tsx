@@ -90,25 +90,31 @@ const MidHeader = () => {
 }
 
 const BotHeader = () => {
-  const [openCategory, setOpenCategory] = useState<number | null>(null);
-
   const categories = ['Уход за лицом', 'Уход за телом', 'Уход за волосами', 'Макияж'];
+
+  const [openCategory, setOpenCategory] = useState<number | null>(null);
+  const close = () => setOpenCategory(null);
+
 
   return (
     <div
       className="relative hidden md:block z-10"
-      onMouseLeave={() => setOpenCategory(null)}
+      onMouseLeave={close}
     >
       <nav className="relative flex items-center justify-center gap-8 border-b bg-background border-divider z-20">
         {categories.map((category, index) => (
           <div key={index} onMouseOver={() => setOpenCategory(index)} >
-            <CategoryLink category={category} isActive={openCategory === index} />
+            <CategoryLink
+              category={category}
+              isActive={openCategory === index}
+              close={close}
+            />
           </div>
         ))}
       </nav>
       <DesktopCategoriesDropdown
         openCategory={openCategory}
-        close={() => setOpenCategory(null)}
+        close={close}
       />
     </div>
   );
@@ -124,14 +130,16 @@ const SearchInput = () => {
   );
 }
 
-const CategoryLink = ({ category, isActive = false }: {
+const CategoryLink = ({ category, close, isActive = false }: {
   category: string,
+  close: () => void,
   isActive?: boolean,
 }) => {
   return (
     <Link
       href="/catalog/cateegory"
       className="inline-block relative py-6"
+      onClick={close}
     >
       {category}
       <AnimatePresence>

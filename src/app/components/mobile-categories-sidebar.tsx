@@ -64,7 +64,6 @@ export default function MobileCategoriesSidebar({ isOpen, close }: {
                           </Link>
                         ))}
                       </div>
-
                     </div>
                   </div>
                 </Collapse>
