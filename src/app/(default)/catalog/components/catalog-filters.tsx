@@ -4,8 +4,6 @@ import ArrowLeftAltIcon from "@/app/components/ui/icons/arrow-left-alt-icon";
 import RotateLeftIcon from "@/app/components/ui/icons/rotate-left-icon";
 
 export default function CatalogFilters() {
-  const filters = [...Array(4)];
-
   return (
     <>
       <DesktopFilters />
