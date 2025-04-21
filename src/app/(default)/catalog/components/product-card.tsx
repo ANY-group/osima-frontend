@@ -6,7 +6,7 @@ import StarRating from "./star-rating";
 export default function ProductCard() {
   return (
     <Link
-      href="/catalog/uhod-za-licom/tonizaciya/tonik-skin-balancing-pore-reducing-toner-paulas-choice" className="sm:min-w-40 lg:min-w-58"
+      href="/catalog/uhod-za-licom/tonizaciya/tonik-skin-balancing-pore-reducing-toner-paulas-choice" className="min-w-40 lg:min-w-58"
     >
       <div className="relative w-full aspect-[169/189] md:aspect-[230/306] bg-primary-muted">
         <Image
