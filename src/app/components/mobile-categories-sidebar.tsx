@@ -33,7 +33,7 @@ export default function MobileCategoriesSidebar({ isOpen, close }: {
             initial={{ x: "-100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
-            transition={{ ease: "easeInOut", duration: 0.1 }}
+            transition={{ ease: "easeInOut", duration: 0.2 }}
           >
             {categories.map((category, index) => (
               <div key={index}>
