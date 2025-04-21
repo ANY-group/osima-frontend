@@ -6,7 +6,7 @@ export default function ProductsCarousel({ title }: {
   title: string,
 }) {
   return (
-    <div className="pt-8 md:py-10">
+    <div className="py-5 md:py-10">
       <div className="layout-container flex items-center justify-between mb-3 md:mb-6">
         <h3 className="text-2xl md:text-3xl font-semibold">
           {title}
