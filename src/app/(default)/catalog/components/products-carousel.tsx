@@ -14,7 +14,7 @@ export default function ProductsCarousel({ title }: {
           {title}
         </h3>
         <div className="flex items-center gap-6">
-          <Link href="/catalog" className="text-sm md:text-base">
+          <Link href="/catalog">
             Смотреть все
           </Link>
           <div className="hidden md:flex items-center gap-4">
