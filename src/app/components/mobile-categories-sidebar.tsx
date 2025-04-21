@@ -5,15 +5,14 @@ import Collapse from "./ui/collapse";
 import Link from "next/link";
 import ArrowDownBoldIcon from "./ui/icons/arrow-down-bold-icon";
 import InfoLinks from "./info-links";
-import { useOnRouteChange } from "../hooks/route_change";
 
 export default function MobileCategoriesSidebar({ isOpen, close }: {
   isOpen: boolean,
   close: () => void,
 }) {
-  useOnRouteChange(close);
 
   const categories = [...Array(4)];
+  const subcategories = [...Array(16)];
 
   const [openCategory, setOpenCategory] = useState<number | null>(null);
 
@@ -54,7 +53,18 @@ export default function MobileCategoriesSidebar({ isOpen, close }: {
                       <h4 className="mb-5 font-bold uppercase">
                         Категории
                       </h4>
-                      <SubcategoriesMenu />
+                      <div className="grid grid-cols-2 gap-5 text-sm">
+                        {subcategories.map((subcategory, index) => (
+                          <Link
+                            key={index}
+                            href="/catalog/category/subcategory"
+                            onClick={close}
+                          >
+                            Праймер для лица
+                          </Link>
+                        ))}
+                      </div>
+
                     </div>
                   </div>
                 </Collapse>
@@ -67,22 +77,5 @@ export default function MobileCategoriesSidebar({ isOpen, close }: {
         </Swipeable>
       )}
     </AnimatePresence>
-  );
-}
-
-const SubcategoriesMenu = () => {
-  const subcategories = [...Array(16)];
-  return (
-    <div className="grid grid-cols-2 gap-5 text-sm">
-      {subcategories.map((subcategory, index) => (
-        <Link
-          key={index}
-          href="/catalog/category/subcategory"
-          className=""
-        >
-          Праймер для лица
-        </Link>
-      ))}
-    </div>
   );
 }
