@@ -1,9 +1,13 @@
 import { AnimatePresence, motion } from "framer-motion"
 import Link from "next/link";
+import { useOnRouteChange } from "../hooks/route_change";
 
-export default function DesktopCategoriesDropdown({ openCategory }: {
+export default function DesktopCategoriesDropdown({ openCategory, close }: {
   openCategory: number | null,
+  close: () => void,
 }) {
+
+  useOnRouteChange(close);
 
   const subcategories = [...Array(20)];
   const chunkSize = 8;
@@ -15,7 +19,6 @@ export default function DesktopCategoriesDropdown({ openCategory }: {
 
   return (
     <div className="relative">
-
       <AnimatePresence>
         {(openCategory != null) && (
           <motion.div
@@ -34,7 +37,7 @@ export default function DesktopCategoriesDropdown({ openCategory }: {
                 {chunks.map((subcategories, chunkIndex) => (
                   <div key={chunkIndex} className="flex flex-col gap-6">
                     {subcategories.map((subcategory, index) => (
-                      <Link href="#" key={index}>
+                      <Link href="/catalog/category/subcategory" key={index}>
                         Кремы для кожи вокруг глаз
                       </Link>
                     ))}

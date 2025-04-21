@@ -5,6 +5,8 @@ import ProductCard from "./product-card";
 export default function ProductsCarousel({ title }: {
   title: string,
 }) {
+  const products = [...Array(20)];
+
   return (
     <div className="py-5 md:py-10">
       <div className="layout-container flex items-center justify-between mb-3 md:mb-6">
@@ -12,7 +14,7 @@ export default function ProductsCarousel({ title }: {
           {title}
         </h3>
         <div className="flex items-center gap-6">
-          <Link href="#">
+          <Link href="/catalog" className="text-sm md:text-base">
             Смотреть все
           </Link>
           <div className="hidden md:flex items-center gap-4">
@@ -22,18 +24,9 @@ export default function ProductsCarousel({ title }: {
         </div>
       </div>
       <div className="flex gap-2 md:gap-5 px-4 md:px-5 scrollable-layout-container no-scrollbar">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {products.map((product, index) => (
+          <ProductCard key={index} />
+        ))}
       </div>
     </div>
   );

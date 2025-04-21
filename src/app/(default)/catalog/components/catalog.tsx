@@ -10,7 +10,7 @@ export default function Catalog({ brand = false }: {
 }) {
   return (
     <main>
-      <section className="sticky md:static top-18 bg-background border-divider z-10">
+      <section className="sticky md:static top-18 bg-background border-b border-divider z-10">
         <div className="layout-container">
           <CatalogHeader />
         </div>

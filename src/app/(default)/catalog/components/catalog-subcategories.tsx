@@ -32,7 +32,7 @@ const SubcategoryItem = ({ isActive }: {
 }) => {
   return (
     <Link
-      href="#"
+      href="/catalog/category/subcategory"
       className={`px-6 py-3 ${isActive ? 'bg-accent-light' : 'bg-secondary-muted hover:bg-accent-light transition-colors'} rounded-lg whitespace-nowrap text-xs`}
     >
       Средства для демакияжа

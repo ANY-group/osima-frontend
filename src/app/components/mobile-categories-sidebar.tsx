@@ -5,11 +5,14 @@ import Collapse from "./ui/collapse";
 import Link from "next/link";
 import ArrowDownBoldIcon from "./ui/icons/arrow-down-bold-icon";
 import InfoLinks from "./info-links";
+import { useOnRouteChange } from "../hooks/route_change";
 
 export default function MobileCategoriesSidebar({ isOpen, close }: {
   isOpen: boolean,
   close: () => void,
 }) {
+  useOnRouteChange(close);
+
   const categories = [...Array(4)];
 
   const [openCategory, setOpenCategory] = useState<number | null>(null);
@@ -74,7 +77,7 @@ const SubcategoriesMenu = () => {
       {subcategories.map((subcategory, index) => (
         <Link
           key={index}
-          href="#"
+          href="/catalog/category/subcategory"
           className=""
         >
           Праймер для лица

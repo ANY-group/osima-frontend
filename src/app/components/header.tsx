@@ -106,7 +106,10 @@ const BotHeader = () => {
           </div>
         ))}
       </nav>
-      <DesktopCategoriesDropdown openCategory={openCategory} />
+      <DesktopCategoriesDropdown
+        openCategory={openCategory}
+        close={() => setOpenCategory(null)}
+      />
     </div>
   );
 }
@@ -127,7 +130,7 @@ const CategoryLink = ({ category, isActive = false }: {
 }) => {
   return (
     <Link
-      href="#"
+      href="/catalog/cateegory"
       className="inline-block relative py-6"
     >
       {category}
