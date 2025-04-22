@@ -69,6 +69,15 @@ export default function MobileCategoriesSidebar({ isOpen, close }: {
                 </Collapse>
               </div>
             ))}
+            <div className="px-6 py-2.5">
+              <Link
+                href="/brands"
+                className="text-2xl"
+                onClick={close}
+              >
+                Бренды
+              </Link>
+            </div>
             <div className="px-6 pt-12 pb-16">
               <InfoLinks />
             </div>

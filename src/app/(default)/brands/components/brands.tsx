@@ -9,7 +9,7 @@ export default function Brands() {
     <div>
       {filters.map((filter, index) => (
         <div key={index} className="mt-6 md:mt-8">
-          <h2 className="text-xl font-bold uppercase py-3" id={`brands-group-${index}`}>
+          <h2 id={`group-${index}`} className="text-xl font-bold uppercase py-3 scroll-mt-40">
             {filter}
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 md:gap-6 gap-y-10 py-6 md:py-8 border-t border-divider">

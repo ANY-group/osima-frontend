@@ -11,8 +11,7 @@ export default function BrandsSearchFilter() {
         {filters.map((filter, index) => (
           <Link
             key={index}
-            href={`#brands-group-${index}`}
-            onClick={() => { }}
+            href={`#group-${index}`}
             className="whitespace-nowrap uppercase"
           >
             {filter}

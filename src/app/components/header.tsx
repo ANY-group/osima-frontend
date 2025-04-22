@@ -106,11 +106,17 @@ const BotHeader = () => {
           <div key={index} onMouseOver={() => setOpenCategory(index)} >
             <CategoryLink
               category={category}
+              href="/catalog/cateegory"
               isActive={openCategory === index}
               close={close}
             />
           </div>
         ))}
+        <CategoryLink
+          category='Бренды'
+          href="/brands"
+          close={close}
+        />
       </nav>
       <DesktopCategoriesDropdown
         openCategory={openCategory}
@@ -130,14 +136,15 @@ const SearchInput = () => {
   );
 }
 
-const CategoryLink = ({ category, close, isActive = false }: {
+const CategoryLink = ({ category, href, close, isActive = false }: {
   category: string,
-  close: () => void,
+  href: string,
+  close?: () => void,
   isActive?: boolean,
 }) => {
   return (
     <Link
-      href="/catalog/cateegory"
+      href={href}
       className="inline-block relative py-6"
       onClick={close}
     >
