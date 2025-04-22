@@ -42,7 +42,7 @@ const Brand = () => {
 
       </div>
       <p className="mt-3 text-center text-sm font-bold">
-        A'PIEU
+        A&apos;PIEU
       </p>
     </Link>
   );
