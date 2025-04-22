@@ -12,7 +12,9 @@ export default function Catalog({ brand = false }: {
     <main>
       <section className="sticky md:static top-18 bg-background border-b border-divider z-10">
         <div className="layout-container">
-          <CatalogHeader />
+          <CatalogHeader title="Уход за лицом">
+            <span className="hidden md:inline">товаров 12</span>
+          </CatalogHeader>
         </div>
       </section>
       {brand && (

@@ -1,6 +1,9 @@
 import ArrowLeftAltIcon from "@/app/components/ui/icons/arrow-left-alt-icon";
 
-export default function CatalogHeader() {
+export default function CatalogHeader({ title, children }: {
+  title: string,
+  children?: React.ReactNode,
+}) {
   return (
     <div className="flex items-center justify-center pb-3 md:py-4">
       <div className="flex items-center justify-start gap-px md:gap-1 w-full text-xs font-bold uppercase">
@@ -8,10 +11,10 @@ export default function CatalogHeader() {
         Назад
       </div>
       <h1 className="text-xl font-medium whitespace-nowrap">
-        Уход за лицом
+        {title}
       </h1>
       <div className="text-right w-full font-medium">
-        <span className="hidden md:inline">товаров 12</span>
+        {children}
       </div>
     </div>
   );
