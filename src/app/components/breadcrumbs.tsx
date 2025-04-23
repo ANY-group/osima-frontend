@@ -13,19 +13,27 @@ export default function Breadcrumbs({ items }: { items: Array<LinkEntity> }) {
         <ArrowLeftAltIcon />
         Назад
       </div>
-      <div className="flex items-center">
-        {items.map((item, index) => (
-          <div key={index} className="flex items-center">
-            <div className={`${!index && 'hidden'} w-4 h-px mx-2 bg-[#EBEDF0]`}></div>
-            <Link
-              href={item.href || '#'}
-              className={`whitespace-nowrap ${item.href == null && 'text-text-accent'}`}
-            >
-              {item.label}
-            </Link>
-          </div>
-        ))}
+      <div className="overflow-hidden">
+        <BreadcrumbLinks items={items} />
       </div>
+    </div>
+  );
+}
+
+export function BreadcrumbLinks({ items }: { items: Array<LinkEntity> }) {
+  return (
+    <div className="flex items-center">
+      {items.map((item, index) => (
+        <div key={index} className="flex items-center">
+          <div className={`${!index && 'hidden'} w-4 h-px mx-2 bg-[#EBEDF0]`}></div>
+          <Link
+            href={item.href || '#'}
+            className={`whitespace-nowrap ${item.href == null && 'text-text-accent'}`}
+          >
+            {item.label}
+          </Link>
+        </div>
+      ))}
     </div>
   );
 }

@@ -48,6 +48,10 @@ button {
     @apply max-w-7xl xl:mx-auto w-full px-4 md:px-5;
   }
 
+  .layout-container-sm {
+    @apply max-w-4xl md:mx-auto w-full px-2 md:px-5;
+  }
+
   .scrollable-layout-container {
     @apply w-full pl-[calc(16px+max(0px,100vw-1280px)/2)] md:pl-[calc(20px+max(0px,100vw-1280px)/2)] overflow-x-auto scroll-smooth; /* 2xl:px-5 2xl:max-w-7xl 2xl:mx-auto  */
   }
@@ -56,20 +60,32 @@ button {
     @apply text-foreground;
   }
   
-  .raw-content h2 {
-    @apply text-2xl font-bold mt-4;
+  .raw-content h1 {
+    @apply text-4xl my-4;
   }
   
+  .raw-content h2 {
+    @apply text-3xl my-4;
+  }
+
+  .raw-content h3 {
+    @apply text-2xl my-4;
+  }
+
+  .raw-content h4 {
+    @apply text-xl my-4;
+  }
+
+  .raw-content h5 {
+    @apply text-lg my-4;
+  }
+
   .raw-content ul {
     @apply list-disc list-inside my-1;
   }
 
-  .raw-content h3 {
-    @apply text-xl font-semibold mt-4;
-  }
-
   .raw-content p {
-    @apply py-1;
+    @apply my-1;
   }
 
   .raw-content figcaption {
