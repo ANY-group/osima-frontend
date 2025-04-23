@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ArrowLeftAltIcon from "./icons/arrow-left-alt-icon";
+import ArrowLeftAltIcon from "./ui/icons/arrow-left-alt-icon";
 
 export type LinkEntity = {
   label: string,

@@ -1,9 +1,9 @@
-import HomeBlogPosts from "../../home/components/home-blog-posts";
 import BrandDescription from "./brand-description";
 import CatalogFilters from "./catalog-filters";
-import CatalogHeader from "./catalog-header";
+import Subheader from "../../../components/subheader";
 import CatalogProductsGrid from "./catalog-products-grid";
 import CatalogSubcategories from "./catalog-subcategories";
+import HomePosts from "../../home/components/home-posts";
 
 export default function Catalog({ brand = false }: {
   brand?: boolean,
@@ -12,9 +12,9 @@ export default function Catalog({ brand = false }: {
     <main>
       <section className="sticky md:static top-18 bg-background border-b border-divider z-10">
         <div className="layout-container">
-          <CatalogHeader title="Уход за лицом">
+          <Subheader title="Уход за лицом">
             <span className="hidden md:inline">товаров 12</span>
-          </CatalogHeader>
+          </Subheader>
         </div>
       </section>
       {brand && (
@@ -32,7 +32,7 @@ export default function Catalog({ brand = false }: {
         <CatalogProductsGrid />
       </section>
       <section className="layout-container">
-        <HomeBlogPosts />
+        <HomePosts />
       </section>
     </main>
   );

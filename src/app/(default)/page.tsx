@@ -2,9 +2,9 @@ import InfoLinks from "../components/info-links";
 import ProductsCarousel from "./catalog/components/products-carousel";
 import HomeAddresses from "./home/components/home-addresses";
 import HomeBanners from "./home/components/home-banners";
-import HomeBlogPosts from "./home/components/home-blog-posts";
 import HomePartners from "./home/components/home-partners";
 import HomeSocials from "./home/components/home-socials";
+import HomePosts from "./home/components/home-posts";
 
 export default function HomePage() {
   return (
@@ -23,7 +23,7 @@ export default function HomePage() {
       </section>
       <section className="bg-primary-muted">
         <div className="layout-container">
-          <HomeBlogPosts />
+          <HomePosts />
         </div>
       </section>
       <section>

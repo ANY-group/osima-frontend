@@ -1,4 +1,4 @@
-import Breadcrumbs from "@/app/components/ui/breadcrumbs";
+import Breadcrumbs from "@/app/components/breadcrumbs";
 import ProductInfo from "./components/product-info";
 import ProductsCarousel from "../../../components/products-carousel";
 

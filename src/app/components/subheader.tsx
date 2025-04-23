@@ -1,6 +1,6 @@
 import ArrowLeftAltIcon from "@/app/components/ui/icons/arrow-left-alt-icon";
 
-export default function CatalogHeader({ title, children }: {
+export default function Subheader({ title, children }: {
   title: string,
   children?: React.ReactNode,
 }) {
