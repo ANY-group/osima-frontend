@@ -1,6 +1,7 @@
 import Subheader from "@/app/components/subheader";
 import BlogSocials from "./components/blog-socials";
 import Image from "next/image";
+import HomePosts from "../../home/components/home-posts";
 
 export default function PostPage() {
   return (
@@ -22,6 +23,11 @@ export default function PostPage() {
       </section>
       <section className="layout-container-sm">
         <Post />
+      </section>
+      <section className="bg-primary-muted">
+        <div className="layout-container">
+          <HomePosts />
+        </div>
       </section>
     </main>
   );

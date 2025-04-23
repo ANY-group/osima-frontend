@@ -31,8 +31,10 @@ export default function Catalog({ brand = false }: {
       <section className="layout-container">
         <CatalogProductsGrid />
       </section>
-      <section className="layout-container">
-        <HomePosts />
+      <section className="bg-primary-muted">
+        <div className="layout-container">
+          <HomePosts />
+        </div>
       </section>
     </main>
   );

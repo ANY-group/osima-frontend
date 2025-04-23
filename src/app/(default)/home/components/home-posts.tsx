@@ -1,5 +1,4 @@
 import Link from "next/link";
-import LargePost from "../../blog/components/large-post";
 import PostCard from "../../blog/components/post-card";
 
 export default function HomePosts() {
