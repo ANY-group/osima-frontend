@@ -11,14 +11,6 @@ export default function CheckoutCart() {
   );
 }
 
-const CartItems = () => {
-  return (
-    <div>
-
-    </div>
-  );
-}
-
 const CartEmpty = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-4 w-full min-h-42">

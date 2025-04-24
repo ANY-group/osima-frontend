@@ -36,7 +36,7 @@ const Contacts = () => {
 }
 
 const Block = ({ title, icon, children }: {
-  title: String,
+  title: string,
   icon: React.ReactNode,
   children: React.ReactNode,
 }) => {
