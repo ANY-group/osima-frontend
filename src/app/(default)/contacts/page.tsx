@@ -9,7 +9,7 @@ export default function ContactsPage() {
         <Subheader title="Контакты" />
       </section>
       <section className="layout-container">
-        <div className="grid md:grid-cols-2 gap-16 mt-5">
+        <div className="grid md:grid-cols-2 gap-16 my-5">
           <Contacts />
           <div className="w-full aspect-square bg-divider"></div>
         </div>
