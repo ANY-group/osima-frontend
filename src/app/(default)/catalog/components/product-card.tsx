@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ProductPrice from "./product-price";
 import StarRating from "./star-rating";
+import ProductCashback from "./product-cashback";
 
 export default function ProductCard() {
   return (
@@ -24,9 +25,7 @@ export default function ProductCard() {
           Brazilian Crush Cheirosa 40 Perfume Mist
         </div>
         <div>
-          <div className="inline-block px-1.5 py-0.5 bg-accent rounded text-sm font-semibold">
-            350 Б
-          </div>
+          <ProductCashback />
         </div>
         <div className="text-sm">
           <ProductPrice />

@@ -11,6 +11,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion"
 import MobileCategoriesSidebar from "./mobile-categories-sidebar";
 import DesktopCategoriesDropdown from "./desktop-categories-dropdown";
+import DesktopCartPopover from "./desktop-cart-popover";
 
 export default function Header() {
   return (
@@ -51,6 +52,10 @@ const TopHeader = () => {
 
 const MidHeader = () => {
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const [isCartOpen, setCartOpen] = useState<boolean>(false);
+  const closeCart = () => {
+    setCartOpen(false);
+  };
 
   return (
     <>
@@ -68,8 +73,16 @@ const MidHeader = () => {
         <Link href="/" className="inline-flex w-20 md:w-28" onClick={() => setSidebarOpen(false)}>
           <LogoIcon />
         </Link>
-        <div className="flex items-center justify-end gap-2 w-full">
-          <Link href="/checkout" aria-label="Корзина" className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted">
+        <div
+          className="flex items-center justify-end gap-2 w-full"
+          onMouseLeave={closeCart}
+        >
+          <Link
+            href="/checkout"
+            aria-label="Корзина"
+            onMouseOver={() => setCartOpen(true)}
+            className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted"
+          >
             <ShoppingCartIcon />
           </Link>
           <Link href="#" aria-label="Профиль" className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted">
@@ -78,6 +91,10 @@ const MidHeader = () => {
           <Link href="/catalog/favorites" aria-label="Избранные" className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted">
             <HeartOutlinedIcon />
           </Link>
+          <DesktopCartPopover
+            isOpen={isCartOpen}
+            close={closeCart}
+          />
         </div>
       </div>
 
