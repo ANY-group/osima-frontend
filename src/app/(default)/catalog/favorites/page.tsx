@@ -1,5 +1,6 @@
 import Subheader from "@/app/components/subheader";
 import CatalogProductsGrid from "../components/catalog-products-grid";
+import SubscribeForm from "@/app/components/subscribe-form";
 
 export default function FavoritePage() {
   return (
@@ -13,6 +14,9 @@ export default function FavoritePage() {
       </section>
       <section className="layout-container md:mt-8">
         <CatalogProductsGrid />
+      </section>
+      <section>
+        <SubscribeForm />
       </section>
     </main>
   );

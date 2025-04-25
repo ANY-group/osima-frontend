@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Roboto } from 'next/font/google'
+import { Roboto_Flex } from 'next/font/google'
 import "./globals.css";
 import Footer from "./components/footer";
 
-const roboto = Roboto({ subsets: ["latin", "cyrillic"] });
+const roboto = Roboto_Flex({
+  subsets: ["latin", "cyrillic"],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "Vegas",

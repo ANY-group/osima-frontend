@@ -2,6 +2,7 @@ import Subheader from "@/app/components/subheader";
 import BlogSocials from "./components/blog-socials";
 import Image from "next/image";
 import HomePosts from "../../home/components/home-posts";
+import SubscribeForm from "@/app/components/subscribe-form";
 
 export default function PostPage() {
   return (
@@ -28,6 +29,9 @@ export default function PostPage() {
         <div className="layout-container">
           <HomePosts />
         </div>
+      </section>
+      <section>
+        <SubscribeForm />
       </section>
     </main>
   );

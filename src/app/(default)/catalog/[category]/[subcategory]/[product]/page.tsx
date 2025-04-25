@@ -1,6 +1,7 @@
 import Breadcrumbs from "@/app/components/breadcrumbs";
 import ProductInfo from "./components/product-info";
 import ProductsCarousel from "../../../components/products-carousel";
+import SubscribeForm from "@/app/components/subscribe-form";
 
 export default function ProductPage() {
   return (
@@ -33,6 +34,9 @@ export default function ProductPage() {
       </section>
       <section>
         <ProductsCarousel title="Рекомендуем также" />
+      </section>
+      <section>
+        <SubscribeForm />
       </section>
     </main>
   );

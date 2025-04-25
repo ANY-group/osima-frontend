@@ -1,6 +1,7 @@
 import Subheader from "@/app/components/subheader";
 import PostsGrid from "./components/posts-grid";
 import LargePost from "./components/large-post";
+import SubscribeForm from "@/app/components/subscribe-form";
 
 export default function BlogPage() {
   return (
@@ -15,6 +16,9 @@ export default function BlogPage() {
         <div className="layout-container pt-8 md:pt-12 pb-16 md:pb-24">
           <PostsGrid />
         </div>
+      </section>
+      <section>
+        <SubscribeForm />
       </section>
     </main>
   );

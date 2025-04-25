@@ -4,6 +4,7 @@ import Subheader from "../../../components/subheader";
 import CatalogProductsGrid from "./catalog-products-grid";
 import CatalogSubcategories from "./catalog-subcategories";
 import HomePosts from "../../home/components/home-posts";
+import SubscribeForm from "@/app/components/subscribe-form";
 
 export default function Catalog({ brand = false }: {
   brand?: boolean,
@@ -35,6 +36,9 @@ export default function Catalog({ brand = false }: {
         <div className="layout-container">
           <HomePosts />
         </div>
+      </section>
+      <section>
+        <SubscribeForm />
       </section>
     </main>
   );
