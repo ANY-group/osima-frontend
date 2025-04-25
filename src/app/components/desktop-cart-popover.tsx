@@ -4,16 +4,16 @@ import ProductPrice from "../(default)/catalog/components/product-price";
 import ProductCashback from "../(default)/catalog/components/product-cashback";
 import MinusIcon from "./ui/icons/minus-icon";
 import PlusIcon from "./ui/icons/plus-icon";
-import TimesIcon from "./ui/icons/times-icon";
 import TimesAltIcon from "./ui/icons/times-alt-icon";
 import Link from "next/link";
 import CartInfoTable from "../(default)/checkout/components/cart-info-table";
-import CartEmpty from "../(default)/checkout/components/cart-empty";
 
 export default function DesktopCartPopover({ isOpen, close }: {
   isOpen: boolean,
   close: () => void,
 }) {
+  const items = [...Array(4)];
+
   return (
     <div className="max-md:hidden relative">
       <AnimatePresence>
@@ -28,7 +28,28 @@ export default function DesktopCartPopover({ isOpen, close }: {
           >
             <div className="relative w-125 rounded-xl bg-white drop-shadow-2xl border border-divider/50">
               <Triangle />
-              <Cart />
+              <div className="flex flex-col divide-y divide-divider max-h-125">
+                <div className="flex-grow overflow-auto">
+                  {items.map((item, index) => (
+                    <CartItem
+                      key={index}
+                      close={close}
+                    />
+                  ))}
+                </div>
+                <div className="p-5">
+                  <div className="mb-4">
+                    <CartInfoTable />
+                  </div>
+                  <Link
+                    href="/checkout"
+                    className="block p-3 w-full rounded-xl bg-success text-success-foreground text-center text-xs font-bold uppercase"
+                  >
+                    Оформить заказ
+                  </Link>
+                </div>
+              </div>
+
             </div>
           </motion.div>
         )}
@@ -37,33 +58,13 @@ export default function DesktopCartPopover({ isOpen, close }: {
   );
 }
 
-const Cart = () => {
-  const items = [...Array(4)];
+const CartItem = ({
+  close,
+}: {
+  close: () => void,
+}) => {
   return (
-    <div className="flex flex-col divide-y divide-divider max-h-125">
-      <div className="flex-grow overflow-auto">
-        {items.map((item, index) => (
-          <CartItem key={index} />
-        ))}
-      </div>
-      <div className="p-4">
-        <div className="mb-4">
-          <CartInfoTable />
-        </div>
-        <Link
-          href="/checkout"
-          className="block p-3 w-full rounded-xl bg-success text-success-foreground text-center text-xs font-bold uppercase"
-        >
-          Оформить заказ
-        </Link>
-      </div>
-    </div>
-  );
-}
-
-const CartItem = () => {
-  return (
-    <div className="group flex gap-3 m-8 ml-2">
+    <div className="group flex gap-3 m-6 ml-2">
       <Image
         src="/images/tmp/product.png"
         alt="Product"
