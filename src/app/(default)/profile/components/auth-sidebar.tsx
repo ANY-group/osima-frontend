@@ -21,7 +21,7 @@ export default function AuthSidebar({ isOpen, close }: {
               className="relative flex flex-col sm:justify-center float-right sm:max-w-sm h-full p-12 bg-background"
             >
               <button
-                className="absolute top-5 right-5"
+                className="absolute top-5 right-5 p-2 rounded-full"
                 aria-label="Закрыть окно авторизации"
                 onClick={close}
               >
