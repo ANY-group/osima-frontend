@@ -1,8 +1,8 @@
 import SearchLgIcon from "@/app/components/ui/icons/search-lg-icon";
-import Subheader from "../../components/subheader";
 import TimesIcon from "@/app/components/ui/icons/times-icon";
 import BrandsSearchFilter from "./components/brands-search-filter";
 import Brands from "./components/brands";
+import Subheader from "@/app/components/subheader";
 
 export default function BrandsPage() {
   return (

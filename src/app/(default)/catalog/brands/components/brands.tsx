@@ -28,7 +28,7 @@ export default function Brands() {
 const Brand = () => {
   return (
     <Link
-      href="/brands/brand"
+      href="/catalog/brands/brand"
       className=""
     >
       <div className="flex items-center justify-center min-h-30 rounded-xl bg-secondary-muted">

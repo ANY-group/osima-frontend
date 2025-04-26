@@ -55,10 +55,10 @@ const ProductImages = () => {
 const ProductBrand = () => {
   return (
     <div className="flex flex-col items-center gap-1">
-      <Link href="/brands/klairs" className="text-sm text-text-accent">
+      <Link href="/catalog/brands/klairs" className="text-sm text-text-accent">
         Все товары бренда <span className="text-success">KLAIRS</span>
       </Link>
-      <Link href="/brands/klairs">
+      <Link href="/catalog/brands/klairs">
         <Image
           src="/images/tmp/klairs.png"
           alt="Klairs"

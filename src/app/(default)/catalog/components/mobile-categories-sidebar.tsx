@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion"
-import Swipeable from "./ui/swipeable";
+import Swipeable from "../../../components/ui/swipeable";
 import { useEffect, useState } from "react";
-import Collapse from "./ui/collapse";
+import Collapse from "../../../components/ui/collapse";
 import Link from "next/link";
-import ArrowDownBoldIcon from "./ui/icons/arrow-down-bold-icon";
-import InfoLinks from "./info-links";
+import ArrowDownBoldIcon from "../../../components/ui/icons/arrow-down-bold-icon";
+import InfoLinks from "../../../components/info-links";
 
 export default function MobileCategoriesSidebar({ isOpen, close }: {
   isOpen: boolean,
@@ -71,7 +71,7 @@ export default function MobileCategoriesSidebar({ isOpen, close }: {
             ))}
             <div className="px-6 py-2.5">
               <Link
-                href="/brands"
+                href="/catalog/brands"
                 className="text-2xl"
                 onClick={close}
               >

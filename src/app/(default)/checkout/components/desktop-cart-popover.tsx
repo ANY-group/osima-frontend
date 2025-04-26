@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion"
 import Link from "next/link";
-import CartInfoTable from "../(default)/checkout/components/cart-info-table";
-import CartItem from "../(default)/checkout/components/cart-item";
-import CartEmpty from "../(default)/checkout/components/cart-empty";
+import CartInfoTable from "./cart-info-table";
+import CartItem from "./cart-item";
+import CartEmpty from "./cart-empty";
 
 export default function DesktopCartPopover({ isOpen }: {
   isOpen: boolean,

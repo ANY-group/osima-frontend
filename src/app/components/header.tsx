@@ -9,10 +9,11 @@ import HeartOutlinedIcon from "./ui/icons/heart-outlined-icon";
 import SearchIcon from "./ui/icons/search-icon";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion"
-import MobileCategoriesSidebar from "./mobile-categories-sidebar";
-import DesktopCategoriesDropdown from "./desktop-categories-dropdown";
-import DesktopCartPopover from "./desktop-cart-popover";
+import MobileCategoriesSidebar from "../(default)/catalog/components/mobile-categories-sidebar";
+import DesktopCategoriesDropdown from "../(default)/catalog/components/desktop-categories-dropdown";
+import DesktopCartPopover from "../(default)/checkout/components/desktop-cart-popover";
 import { useOnRouteChange } from "../hooks/route_change";
+import SearchModalPage from "../(default)/catalog/components/search-modal-page";
 
 export default function Header() {
   return (
@@ -141,7 +142,7 @@ const BotHeader = () => {
         ))}
         <CategoryLink
           category='Бренды'
-          href="/brands"
+          href="/catalog/brands"
           close={close}
         />
       </nav>
@@ -154,19 +155,35 @@ const BotHeader = () => {
 }
 
 const SearchInput = () => {
+  const [isSearchOpen, setSearchOpen] = useState<boolean>(false);
+
+  const closeSearch = () => {
+    setSearchOpen(false);
+  };
+
   return (
-    <form action="/catalog" className="relative flex items-center rounded-full bg-primary-muted">
-      <input
-        type="text"
-        name="q"
-        placeholder="Хочу купить"
-        className="max-lg:hidden px-5 py-2 outline-0 placeholder-placeholder placeholder:font-normal"
-        required
+    <>
+      <form
+        action="/catalog"
+        className="flex items-center rounded-full bg-primary-muted"
+        onClick={() => setSearchOpen(true)}
+      >
+        <input
+          type="text"
+          name="q"
+          placeholder="Хочу купить"
+          className="max-lg:hidden px-5 py-2 outline-0 placeholder-placeholder placeholder:font-normal"
+          required
+        />
+        <div className="flex items-center justify-center w-10 h-10 z-1 cursor-pointer">
+          <SearchIcon />
+        </div>
+      </form>
+      <SearchModalPage
+        isOpen={isSearchOpen}
+        close={closeSearch}
       />
-      <div className="flex items-center justify-center w-10 h-10 z-1">
-        <SearchIcon />
-      </div>
-    </form>
+    </>
   );
 }
 

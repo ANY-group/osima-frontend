@@ -1,4 +1,4 @@
-import Catalog from "../../catalog/components/catalog";
+import Catalog from "../../components/catalog";
 
 export default function BrandProductsPage() {
   return (
