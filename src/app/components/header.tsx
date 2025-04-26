@@ -7,13 +7,14 @@ import ShoppingCartIcon from "./ui/icons/shopping-cart-icon";
 import UserCircleIcon from "./ui/icons/user-circle-icon";
 import HeartOutlinedIcon from "./ui/icons/heart-outlined-icon";
 import SearchIcon from "./ui/icons/search-icon";
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion"
 import MobileCategoriesSidebar from "../(default)/catalog/components/mobile-categories-sidebar";
 import DesktopCategoriesDropdown from "../(default)/catalog/components/desktop-categories-dropdown";
 import DesktopCartPopover from "../(default)/checkout/components/desktop-cart-popover";
 import { useOnRouteChange } from "../hooks/route_change";
 import SearchModalPage from "../(default)/catalog/components/search-modal-page";
+import AuthSidebar from "../(default)/profile/components/auth-sidebar";
 
 export default function Header() {
   return (
@@ -53,27 +54,41 @@ const TopHeader = () => {
 }
 
 const MidHeader = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
-  const [isCartOpen, setCartOpen] = useState<boolean>(false);
-
-  const closeSidebar = () => {
-    setSidebarOpen(false);
-  };
-
-  const closeCart = () => {
-    setCartOpen(false);
-  };
+  const [isCategoriesSidebarOpen, setCategoriesSidebarOpen] = useState<boolean>(false);
+  const [isCartPopoverOpen, setCartPopoverOpen] = useState<boolean>(false);
+  const [isAuthSidebarOpen, setAuthSidebarOpen] = useState<boolean>(false);
 
   useOnRouteChange(() => {
     closeCart();
     closeSidebar();
   });
 
+  const closeSidebar = () => {
+    setCategoriesSidebarOpen(false);
+  };
+
+  const closeCart = () => {
+    setCartPopoverOpen(false);
+  };
+
+  const closeAuthSidebar = () => {
+    setAuthSidebarOpen(false);
+  };
+
+  const onUserIconClick: MouseEventHandler = (e) => {
+    e.preventDefault();
+
+    setAuthSidebarOpen(true);
+  }
+
   return (
     <>
       <div className="relative flex items-center px-4 md:px-8 py-1 md:py-5 bg-background md:rounded-t-2xl z-20">
         <div className="flex items-center gap-3 w-full">
-          <button onClick={() => setSidebarOpen(!isSidebarOpen)} className="flex md:hidden items-center gap-2">
+          <button
+            onClick={() => setCategoriesSidebarOpen(!isCategoriesSidebarOpen)}
+            className="flex md:hidden items-center gap-2"
+          >
             <BurgetIcon />
           </button>
           <Link href="/catalog" className="hidden md:flex items-center gap-2">
@@ -82,7 +97,11 @@ const MidHeader = () => {
           </Link>
           <SearchInput />
         </div>
-        <Link href="/" className="inline-flex w-20 md:w-28" onClick={closeSidebar}>
+        <Link
+          href="/"
+          className="inline-flex w-20 md:w-28"
+          onClick={closeSidebar}
+        >
           <LogoIcon />
         </Link>
         <div
@@ -92,26 +111,40 @@ const MidHeader = () => {
           <Link
             href="/checkout"
             aria-label="Корзина"
-            onMouseOver={() => setCartOpen(true)}
+            onMouseOver={() => setCartPopoverOpen(true)}
             className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted"
           >
             <ShoppingCartIcon />
           </Link>
-          <Link href="#" aria-label="Профиль" className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted">
+          <Link
+            href="/profile"
+            aria-label="Профиль"
+            onClick={onUserIconClick}
+            className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted"
+          >
             <UserCircleIcon />
           </Link>
-          <Link href="/catalog/favorites" aria-label="Избранные" className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted">
+          <Link
+            href="/catalog/favorites"
+            aria-label="Избранные"
+            className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted"
+          >
             <HeartOutlinedIcon />
           </Link>
           <DesktopCartPopover
-            isOpen={isCartOpen}
+            isOpen={isCartPopoverOpen}
           />
         </div>
       </div>
 
       <MobileCategoriesSidebar
-        isOpen={isSidebarOpen}
+        isOpen={isCategoriesSidebarOpen}
         close={closeSidebar}
+      />
+
+      <AuthSidebar
+        isOpen={isAuthSidebarOpen}
+        close={closeAuthSidebar}
       />
     </>
   );
