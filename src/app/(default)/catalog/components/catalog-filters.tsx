@@ -44,7 +44,7 @@ const DesktopFilters = () => {
           </button>
         </div>
       </div>
-      <div className="hidden sm:flex items-center justify-between py-4 text-sm">
+      <div className="hidden sm:flex items-center justify-between my-4 text-sm">
         <p className="flex-grow">
           Показано <strong>12</strong> товара из 12
         </p>

@@ -7,7 +7,7 @@ export default function CatalogSubcategories() {
   const subcategories = [...Array(20)];
 
   return (
-    <div className="flex items-center justify-between gap-4 py-2 md:py-6">
+    <div className="flex items-center justify-between gap-4 my-2 md:my-6">
       <ArrowWrapper onClick={() => { }} label="пролистать нелево">
         <div className="rotate-90">
           <ArrowDownBoldIcon />

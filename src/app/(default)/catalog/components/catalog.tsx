@@ -6,7 +6,8 @@ import CatalogSubcategories from "./catalog-subcategories";
 import HomePosts from "../../home/components/home-posts";
 import SubscribeForm from "@/app/components/subscribe-form";
 
-export default function Catalog({ brand = false }: {
+export default function Catalog({ q, brand = false }: {
+  q?: string,
   brand?: boolean,
 }) {
   return (
@@ -29,6 +30,13 @@ export default function Catalog({ brand = false }: {
       <section className="layout-container">
         <CatalogFilters />
       </section>
+      {q && (
+        <section className="layout-container">
+          <p className="text-center text-2xl font-bold my-8">
+            По запросу «{q}» найдено 27 товаров
+          </p>
+        </section>
+      )}
       <section className="layout-container">
         <CatalogProductsGrid />
       </section>
