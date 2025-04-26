@@ -8,7 +8,7 @@ import ProductPrice from "../../catalog/components/product-price";
 
 export default function CartItem() {
   return (
-    <div className="group flex gap-3 m-6 ml-2">
+    <div className="group flex gap-3 my-6 md:m-6 md:ml-2">
       <Image
         src="/images/tmp/product.png"
         alt="Product"
@@ -16,9 +16,9 @@ export default function CartItem() {
         height={100}
         className="object-contain w-25 h-25 aspect-square"
       />
-      <div>
-        <div className="flex items-start justify-between gap-3">
-          <Link href="/catalog/category/subcategory/product">
+      <div className="flex-grow">
+        <div className="relative flex max-lg:flex-col items-start justify-between gap-3">
+          <Link href="/catalog/category/subcategory/product" className="max-lg:mr-6">
             <p className="text-sm font-semibold">
               Увлажняющий крем для лица
             </p>
@@ -26,7 +26,7 @@ export default function CartItem() {
               AESTURA Atobarrier365 hydro soothing cream
             </p>
           </Link>
-          <div className="flex items-center gap-2.5 opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="flex items-center gap-2.5 lg:opacity-0 group-hover:opacity-100 transition-opacity">
             <button
               className="flex items-center justify-center h-8 w-8 rounded-lg bg-secondary-muted"
               aria-label="Уменьшить количество товара в корзине"
@@ -42,10 +42,13 @@ export default function CartItem() {
             >
               <PlusIcon />
             </button>
-            <button aria-label="Удалить товар из корзины">
+            <button className="max-lg:hidden" aria-label="Удалить товар из корзины">
               <TimesAltIcon />
             </button>
           </div>
+          <button className="absolute top-0 right-0 lg:hidden" aria-label="Удалить товар из корзины">
+            <TimesAltIcon />
+          </button>
         </div>
         <div className="flex justify-between mt-3">
           <ProductCashback />

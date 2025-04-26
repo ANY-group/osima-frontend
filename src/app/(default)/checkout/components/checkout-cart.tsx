@@ -4,7 +4,7 @@ import CartItem from "./cart-item";
 
 export default function CheckoutCart() {
   return (
-    <div className="px-6 py-4 rounded-xl bg-secondary-muted">
+    <div className="md:p-3 lg:px-6 lg:py-4 md:rounded-xl md:bg-secondary-muted">
       <div className="mb-6 rounded-lg bg-white">
         <Cart />
       </div>
