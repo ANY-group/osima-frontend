@@ -155,11 +155,18 @@ const BotHeader = () => {
 
 const SearchInput = () => {
   return (
-    <div>
-      <div className="flex items-center justify-center w-10 h-10 bg-primary-muted rounded-full">
+    <form action="/catalog" className="relative flex items-center rounded-full bg-primary-muted">
+      <input
+        type="text"
+        name="q"
+        placeholder="Хочу купить"
+        className="max-lg:hidden px-5 py-2 outline-0 placeholder-placeholder placeholder:font-normal"
+        required
+      />
+      <div className="flex items-center justify-center w-10 h-10 z-1">
         <SearchIcon />
       </div>
-    </div>
+    </form>
   );
 }
 

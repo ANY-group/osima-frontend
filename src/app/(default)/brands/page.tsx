@@ -24,19 +24,23 @@ export default function BrandsPage() {
 
 const SearchInput = () => {
   return (
-    <div className="relative hidden md:flex items-center justify-end">
-      <div className="z-1">
+    <form className="relative hidden md:flex items-center justify-end">
+      <div className="z-1 translate-x-8">
         <SearchLgIcon />
       </div>
       <input
-        type="search"
+        type="text"
         name="q"
         placeholder="Поиск по брендам"
-        className="px-14 py-1.5 bg-secondary-muted placeholder-placeholder placeholder:font-normal -mx-8"
+        className="px-14 py-1.5 outline-0 bg-secondary-muted placeholder-placeholder placeholder:font-normal"
+        required
       />
-      <button className="z-1">
+      <button
+        type="button"
+        className="z-1 -translate-x-4 -ml-4"
+      >
         <TimesIcon />
       </button>
-    </div>
+    </form>
   );
 }
