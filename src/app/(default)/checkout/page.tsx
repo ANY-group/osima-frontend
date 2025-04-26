@@ -10,7 +10,7 @@ export default function CheckoutPage() {
       </section>
       <section className="layout-container my-3 lg:my-15">
         <div className="grid md:grid-cols-2 gap-9 md:gap-4 lg:gap-26">
-          <div className="md:order-2 md:sticky top-5 self-start">
+          <div className="md:order-2 md:sticky top-5 self-start md:mb-30">
             <CheckoutCart />
           </div>
           <div>

@@ -8,7 +8,7 @@ export default function CheckoutCart() {
       <div className="mb-6 rounded-lg bg-white">
         <Cart />
       </div>
-      <div className="text-secondary">
+      <div className={`${false && 'text-secondary'}`}>
         <CartInfoTable />
       </div>
     </div>
@@ -16,7 +16,7 @@ export default function CheckoutCart() {
 }
 
 const Cart = () => {
-  const items = [...Array(4)];
+  const items = [...Array(2)];
 
   if (items.length == 0) {
     return <CartEmpty />
