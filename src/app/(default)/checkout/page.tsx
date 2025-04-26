@@ -8,8 +8,8 @@ export default function CheckoutPage() {
       <section className="layout-container">
         <Subheader title="Корзина" />
       </section>
-      <section className="layout-container my-3 md:my-15">
-        <div className="grid md:grid-cols-2 gap-9 md:gap-26">
+      <section className="layout-container my-3 lg:my-15">
+        <div className="grid md:grid-cols-2 gap-9 md:gap-4 lg:gap-26">
           <div className="md:order-2 md:sticky top-5 self-start">
             <CheckoutCart />
           </div>

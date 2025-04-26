@@ -12,6 +12,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import MobileCategoriesSidebar from "./mobile-categories-sidebar";
 import DesktopCategoriesDropdown from "./desktop-categories-dropdown";
 import DesktopCartPopover from "./desktop-cart-popover";
+import { useOnRouteChange } from "../hooks/route_change";
 
 export default function Header() {
   return (
@@ -53,9 +54,19 @@ const TopHeader = () => {
 const MidHeader = () => {
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [isCartOpen, setCartOpen] = useState<boolean>(false);
+
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+  };
+
   const closeCart = () => {
     setCartOpen(false);
   };
+
+  useOnRouteChange(() => {
+    closeCart();
+    closeSidebar();
+  });
 
   return (
     <>
@@ -70,7 +81,7 @@ const MidHeader = () => {
           </Link>
           <SearchInput />
         </div>
-        <Link href="/" className="inline-flex w-20 md:w-28" onClick={() => setSidebarOpen(false)}>
+        <Link href="/" className="inline-flex w-20 md:w-28" onClick={closeSidebar}>
           <LogoIcon />
         </Link>
         <div
@@ -93,14 +104,13 @@ const MidHeader = () => {
           </Link>
           <DesktopCartPopover
             isOpen={isCartOpen}
-            close={closeCart}
           />
         </div>
       </div>
 
       <MobileCategoriesSidebar
         isOpen={isSidebarOpen}
-        close={() => setSidebarOpen(false)}
+        close={closeSidebar}
       />
     </>
   );

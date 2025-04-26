@@ -1,9 +1,8 @@
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from "react";
 
-export const useOnRouteChange = (handler: (url: string) => void) => {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
+export const useOnRouteChange = (handler: () => void) => {
+  const pathname = usePathname();
   const isInitialMount = useRef(true);
 
   useEffect(() => {
@@ -12,8 +11,7 @@ export const useOnRouteChange = (handler: (url: string) => void) => {
         isInitialMount.current = false;
       }, 10)
     } else {
-      const url = `${pathname}?${searchParams}`;
-      handler(url);
+      handler();
     }
-  }, [pathname, searchParams]);
+  }, [pathname]);
 }
