@@ -33,7 +33,7 @@ export default function HomePartners() {
 
 const Partner = () => {
   return (
-    <div className="relative min-h-140 sm:min-h-150 lg:min-h-213">
+    <div className="relative min-h-130 sm:min-h-150 lg:min-h-213">
       <Image
         src="/images/tmp/davines-bg.png"
         alt="Davines"
@@ -43,7 +43,7 @@ const Partner = () => {
       <div className="absolute bottom-0 left-0 right-0">
         <div className="flex flex-col p-5 sm:p-8 gap-8 divide-white">
           <Image
-            src="/images/tmp/davines-white.png"
+            src="/images/tmp/the-act-white.png"
             alt="Davines"
             width={292}
             height={80}

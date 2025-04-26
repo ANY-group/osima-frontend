@@ -21,7 +21,7 @@ export default function ProductCard() {
         <div className="text-sm font-semibold">
           Парфюмерная вода
         </div>
-        <div className="text-lg leading-6">
+        <div className="md:text-lg leading-6">
           Brazilian Crush Cheirosa 40 Perfume Mist
         </div>
         <div>

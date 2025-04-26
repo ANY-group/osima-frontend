@@ -10,11 +10,11 @@ export default function ProductsCarousel({ title }: {
   return (
     <div className="py-5 md:py-10">
       <div className="layout-container flex items-center justify-between mb-3 md:mb-6">
-        <h3 className="text-2xl md:text-3xl font-semibold">
+        <h3 className="text-xl md:text-3xl font-semibold">
           {title}
         </h3>
         <div className="flex items-center gap-6">
-          <Link href="/catalog">
+          <Link href="/catalog" className="text-sm">
             Смотреть все
           </Link>
           <div className="hidden md:flex items-center gap-4">

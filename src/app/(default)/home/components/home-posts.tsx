@@ -5,8 +5,8 @@ export default function HomePosts() {
   return (
     <div className="flex flex-col gap-8 py-10">
       <div className="flex items-center justify-between">
-        <h3 className="text-3xl font-semibold">Блог</h3>
-        <Link href="/blog" className="px-6 py-2 bg-accent rounded-full font-semibold">
+        <h3 className="text-2xl md:text-3xl font-semibold">Блог</h3>
+        <Link href="/blog" className="px-6 py-2 bg-accent rounded-full max-md:text-sm font-semibold">
           Смотреть все
         </Link>
       </div>

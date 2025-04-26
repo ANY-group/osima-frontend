@@ -88,7 +88,7 @@ const ProductMainInfo = () => {
         <p className="text-sm font-semibold">
           Увлажняющий крем для лица
         </p>
-        <h1 className="text-3xl">
+        <h1 className="text-2xl md:text-3xl">
           AESTURA Atobarrier365 hydro soothing cream
         </h1>
       </div>
@@ -100,7 +100,7 @@ const ProductMainInfo = () => {
         </div>
       </div>
 
-      <div className="text-3xl pt-1">
+      <div className="text-2xl pt-1">
         <ProductPrice />
       </div>
 
