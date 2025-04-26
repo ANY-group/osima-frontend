@@ -25,7 +25,7 @@ export default function SearchModalPage({
             >
               <form
                 className="layout-container flex items-center gap-2 my-3"
-                action="/catalog"
+                action="/catalog/search"
               >
                 <div className="flex-grow flex items-center">
                   <div className="z-1 translate-x-8">

@@ -164,7 +164,7 @@ const SearchInput = () => {
   return (
     <>
       <form
-        action="/catalog"
+        action="/catalog/search"
         className="flex items-center rounded-full bg-primary-muted"
         onClick={() => setSearchOpen(true)}
       >
