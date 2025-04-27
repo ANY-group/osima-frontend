@@ -165,7 +165,7 @@ const BotHeader = () => {
       className="relative hidden md:block"
       onMouseLeave={close}
     >
-      <nav className="relative flex items-center justify-center gap-8 border-b bg-background border-divider">
+      <nav className="relative flex items-center justify-center gap-8 py-6 border-b bg-background border-divider">
         {categories.map((category, index) => (
           <div key={index} onMouseOver={() => setOpenCategory(index)} >
             <CategoryLink
@@ -232,8 +232,12 @@ const CategoryLink = ({ category, href, close, isActive = false }: {
   return (
     <Link
       href={href}
-      className="inline-block relative py-6"
-      onClick={close}
+      className="inline-block relative"
+      onClick={() => {
+        setTimeout(() => {
+          close?.call(null);
+        }, 10);
+      }}
     >
       {category}
       <AnimatePresence>
