@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto_Flex } from 'next/font/google'
 import "./globals.css";
-import Footer from "./components/footer";
 
 const roboto = Roboto_Flex({
   subsets: ["latin", "cyrillic"],
@@ -20,11 +19,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className="md:bg-foreground scroll-smooth">
-      <body className={`flex flex-col min-h-svh antialiased ${roboto.className}`}>
-        <div className={'flex-grow'}>
-          {children}
-        </div>
-        <Footer />
+      <body className={`antialiased ${roboto.className}`}>
+        {children}
       </body>
     </html>
   );

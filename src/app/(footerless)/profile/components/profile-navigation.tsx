@@ -11,7 +11,7 @@ import { MouseEventHandler } from "react";
 
 export default function ProfileNavigation() {
   return (
-    <nav className="min-w-2xs max-md:w-full">
+    <nav className="max-md:py-4 min-w-2xs max-md:w-full max-md:h-full">
       <NavList>
         <NavListItem href="#">
           <div className="flex items-center justify-center w-14 h-14 rounded-full bg-accent">

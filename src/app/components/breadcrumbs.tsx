@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ArrowLeftAltIcon from "./ui/icons/arrow-left-alt-icon";
+import BackButton from "./ui/back-button";
 
 export type LinkEntity = {
   label: string,
@@ -9,10 +10,10 @@ export type LinkEntity = {
 export default function Breadcrumbs({ items }: { items: Array<LinkEntity> }) {
   return (
     <div className="hidden md:flex items-center gap-10 py-5 text-secondary text-sm overflow-auto no-scrollbar">
-      <div className="flex items-center text-xs font-semibold uppercase text-text-accent">
+      <BackButton className="flex items-center text-xs font-semibold uppercase text-text-accent">
         <ArrowLeftAltIcon />
         Назад
-      </div>
+      </BackButton>
       <div className="overflow-hidden">
         <BreadcrumbLinks items={items} />
       </div>

@@ -1,4 +1,4 @@
-import ProfileNavigation from "./components/profile-navigation";
+import ProfileNavigation from "../../(footerless)/profile/components/profile-navigation";
 
 export default function ProfileLayout({ children }: {
   children: React.ReactNode,

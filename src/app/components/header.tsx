@@ -14,7 +14,7 @@ import DesktopCategoriesDropdown from "../(default)/catalog/components/desktop-c
 import DesktopCartPopover from "../(default)/checkout/components/desktop-cart-popover";
 import { useOnRouteChange } from "../hooks/route_change";
 import SearchSidebar from "../(default)/catalog/components/search-sidebar";
-import AuthSidebar from "../(default)/profile/components/auth-sidebar";
+import AuthSidebar from "../(footerless)/profile/components/auth-sidebar";
 
 export default function Header() {
   return (

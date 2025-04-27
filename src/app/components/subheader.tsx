@@ -1,5 +1,6 @@
 import ArrowLeftAltIcon from "@/app/components/ui/icons/arrow-left-alt-icon";
 import { BreadcrumbLinks, LinkEntity } from "./breadcrumbs";
+import BackButton from "./ui/back-button";
 
 export default function Subheader({ title, children, breadcrumbs = [] }: {
   title: string,
@@ -9,10 +10,10 @@ export default function Subheader({ title, children, breadcrumbs = [] }: {
   return (
     <div className="flex items-center justify-center pb-3 md:py-4">
       <div className="flex items-center justify-start gap-10 w-full">
-        <div className="flex items-center justify-start gap-px md:gap-1 text-xs font-bold uppercase">
+        <BackButton className="flex items-center justify-start gap-px md:gap-1 text-xs font-bold uppercase">
           <ArrowLeftAltIcon />
           Назад
-        </div>
+        </BackButton>
         <div className="hidden xl:block overflow-hidden max-w-sm [&_*]:text-secondary">
           <BreadcrumbLinks items={breadcrumbs} />
         </div>

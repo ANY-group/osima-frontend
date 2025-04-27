@@ -1,5 +1,3 @@
-'use client';
-
 export default function SubscribeForm() {
   return (
     <div className="grid md:grid-cols-2 gap-8 p-8 lg:my-14 mx-auto w-full lg:max-w-4xl lg:rounded-xl bg-secondary-muted">
