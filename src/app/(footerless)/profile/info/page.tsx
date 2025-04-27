@@ -11,7 +11,7 @@ export default function ProfileInfoPage() {
       <section className="md:hidden py-3">
         <Subheader title="Личные данные" />
       </section>
-      <section className="px-4 py-10 mb-20 rounded-lg bg-background">
+      <section className="px-4 py-10 mb-4 rounded-lg bg-background">
         <h2 className="flex items-center gap-4 text-xl font-bold">
           <ShieldCheckIcon />
           Учетная запись
@@ -29,7 +29,7 @@ export default function ProfileInfoPage() {
           autoComplete="email"
           label="Почта"
           value={null}
-          placeholder="mail@example.com"
+          placeholder="Введите вашу почту"
         />
 
         <hr className="border-divider my-6" />
@@ -44,7 +44,7 @@ export default function ProfileInfoPage() {
           autoComplete="given-name"
           label="Фамилия Имя"
           value={null}
-          placeholder="Имя"
+          placeholder="Введите ваше имя"
         />
         <InlineForm
           type="text"

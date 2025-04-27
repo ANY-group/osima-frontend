@@ -80,7 +80,7 @@ const NavListItem = ({
     <li className={className}>
       <Link
         href={href}
-        className={`flex items-center gap-4 p-4 text-xs font-bold rounded-lg ${pathname == href && 'bg-success text-success-foreground'}`}
+        className={`flex items-center gap-4 p-4 text-sm font-semibold rounded-lg ${pathname == href && 'bg-success text-success-foreground'}`}
         onClick={onClick}
       >
         {children}
