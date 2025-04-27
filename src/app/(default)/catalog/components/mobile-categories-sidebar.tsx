@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import Swipeable from "../../../components/ui/swipeable";
 import { useEffect, useState } from "react";
 import Collapse from "../../../components/ui/collapse";
-import Link from "next/link";
+import Link from "@/app/components/ui/link";
 import ArrowDownBoldIcon from "../../../components/ui/icons/arrow-down-bold-icon";
 import InfoLinks from "../../../components/info-links";
 

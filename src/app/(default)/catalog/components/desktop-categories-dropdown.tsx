@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion"
-import Link from "next/link";
+import Link from "@/app/components/ui/link";
 
 export default function DesktopCategoriesDropdown({ openCategory, close }: {
   openCategory: number | null,
@@ -36,7 +36,7 @@ export default function DesktopCategoriesDropdown({ openCategory, close }: {
                     {subcategories.map((subcategory, index) => (
                       <Link
                         key={index}
-                        href="/catalog/category/subcategory"
+                        href={`/catalog/category${index}/subcategory`}
                         onClick={close}
                       >
                         Кремы для кожи вокруг глаз

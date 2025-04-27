@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/app/components/ui/link";
 import ArrowLeftAltIcon from "./ui/icons/arrow-left-alt-icon";
 import BackButton from "./ui/back-button";
 

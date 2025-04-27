@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/app/components/ui/link";
 import ChatIcon from "./ui/icons/chat-icon";
 import CircleQuestionIcon from "./ui/icons/circle-question-icon";
 import DeliveryCarIcon from "./ui/icons/delivery-car-icon";

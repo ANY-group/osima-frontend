@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/app/components/ui/link";
 import PostCard from "../../blog/components/post-card";
 
 export default function HomePosts() {

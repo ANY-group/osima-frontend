@@ -1,7 +1,7 @@
 'use client';
 
 import ArrowDownBoldIcon from "@/app/components/ui/icons/arrow-down-bold-icon";
-import Link from "next/link";
+import Link from "@/app/components/ui/link";
 
 export default function CatalogSubcategories() {
   const subcategories = [...Array(20)];

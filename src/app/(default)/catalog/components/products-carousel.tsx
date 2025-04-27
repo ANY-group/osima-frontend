@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/app/components/ui/link";
 import ArrowLeftIcon from "../../../components/ui/icons/arrow-left-icon";
 import ProductCard from "./product-card";
 

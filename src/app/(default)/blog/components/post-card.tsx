@@ -1,6 +1,6 @@
 import Image from "next/image";
 import PostTag from "./post-tag";
-import Link from "next/link";
+import Link from "@/app/components/ui/link";
 
 export default function PostCard({ title }: {
   title?: string,

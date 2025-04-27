@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion"
-import Link from "next/link";
+import Link from "@/app/components/ui/link";
 import CartInfoTable from "./cart-info-table";
 import CartItem from "./cart-item";
 import CartEmpty from "./cart-empty";

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/app/components/ui/link";
 import ProductPrice from "./product-price";
 import StarRating from "./star-rating";
 import ProductCashback from "./product-cashback";

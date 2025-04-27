@@ -4,7 +4,7 @@ import CheckIcon from "@/app/components/ui/icons/check-icon";
 import HeartOutlinedIcon from "@/app/components/ui/icons/heart-outlined-icon";
 import ShoppingBagIcon from "@/app/components/ui/icons/shopping-bag-icon";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/app/components/ui/link";
 
 export default function ProductInfo() {
   return (

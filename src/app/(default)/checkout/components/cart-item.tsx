@@ -2,7 +2,7 @@ import MinusIcon from "@/app/components/ui/icons/minus-icon";
 import PlusIcon from "@/app/components/ui/icons/plus-icon";
 import TimesAltIcon from "@/app/components/ui/icons/times-alt-icon";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/app/components/ui/link";
 import ProductCashback from "../../catalog/components/product-cashback";
 import ProductPrice from "../../catalog/components/product-price";
 

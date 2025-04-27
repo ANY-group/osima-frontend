@@ -1,6 +1,6 @@
 'use client';
 
-import Link from "next/link";
+import Link from "@/app/components/ui/link";
 import LogoIcon from "./ui/icons/logo-icon";
 import BurgetIcon from "./ui/icons/burger-icon";
 import ShoppingCartIcon from "./ui/icons/shopping-cart-icon";
@@ -15,6 +15,7 @@ import DesktopCartPopover from "../(default)/checkout/components/desktop-cart-po
 import { useOnRouteChange } from "../hooks/route_change";
 import SearchSidebar from "../(default)/catalog/components/search-sidebar";
 import AuthSidebar from "../(footerless)/profile/components/auth-sidebar";
+import LoadingIndicator from "./ui/loading-indicator";
 
 export default function Header() {
   return (
@@ -30,7 +31,7 @@ export default function Header() {
 
 const TopHeader = () => {
   return (
-    <div className="relative hidden md:block pb-5 -mb-5 bg-foreground text-background text-sm z-20">
+    <div className="relative hidden md:block pb-5 -mb-5 bg-foreground text-background text-sm">
       <div className="flex justify-between items-center px-10 py-3">
         <div className="flex gap-6">
           <Link href="#">
@@ -161,15 +162,15 @@ const BotHeader = () => {
 
   return (
     <div
-      className="relative hidden md:block z-10"
+      className="relative hidden md:block"
       onMouseLeave={close}
     >
-      <nav className="relative flex items-center justify-center gap-8 border-b bg-background border-divider z-20">
+      <nav className="relative flex items-center justify-center gap-8 border-b bg-background border-divider">
         {categories.map((category, index) => (
           <div key={index} onMouseOver={() => setOpenCategory(index)} >
             <CategoryLink
               category={category}
-              href="/catalog/cateegory"
+              href={`/catalog/category-${index}`}
               isActive={openCategory === index}
               close={close}
             />
@@ -246,6 +247,7 @@ const CategoryLink = ({ category, href, close, isActive = false }: {
           ></motion.span>
         )}
       </AnimatePresence>
+      <LoadingIndicator />
     </Link>
   );
 }

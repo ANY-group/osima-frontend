@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/app/components/ui/link";
 import LogoIcon from "./ui/icons/logo-icon";
 import InstagramRoundedIcon from "./ui/icons/instagram-rounded-icon";
 import PaymentMethodsIcon from "./ui/icons/payment-methods-icon";

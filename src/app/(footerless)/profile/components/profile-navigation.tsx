@@ -5,7 +5,7 @@ import ClockIcon from "@/app/components/ui/icons/clock-icon";
 import GiftIcon from "@/app/components/ui/icons/gift-icon";
 import LogoutIcon from "@/app/components/ui/icons/logout-icon";
 import UserIcon from "@/app/components/ui/icons/user-icon";
-import Link from "next/link";
+import Link from "@/app/components/ui/link";
 import { usePathname } from "next/navigation";
 import { MouseEventHandler } from "react";
 
