@@ -13,7 +13,7 @@ import MobileCategoriesSidebar from "../(default)/catalog/components/mobile-cate
 import DesktopCategoriesDropdown from "../(default)/catalog/components/desktop-categories-dropdown";
 import DesktopCartPopover from "../(default)/checkout/components/desktop-cart-popover";
 import { useOnRouteChange } from "../hooks/route_change";
-import SearchModalPage from "../(default)/catalog/components/search-modal-page";
+import SearchSidebar from "../(default)/catalog/components/search-sidebar";
 import AuthSidebar from "../(default)/profile/components/auth-sidebar";
 
 export default function Header() {
@@ -212,7 +212,7 @@ const SearchInput = () => {
           <SearchIcon />
         </div>
       </form>
-      <SearchModalPage
+      <SearchSidebar
         isOpen={isSearchOpen}
         close={closeSearch}
       />
