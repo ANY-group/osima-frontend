@@ -23,10 +23,10 @@ export default function SearchSidebar({
                 animate={{ x: 0 }}
                 exit={{ x: "-100%" }}
                 transition={{ ease: "easeInOut", duration: 0.2 }}
-                className="relative layout-container h-full bg-background"
+                className="relative layout-container h-full bg-background overflow-y-auto"
               >
                 <form
-                  className="sticky top-0 flex items-center gap-2 py-3"
+                  className="sticky top-0 flex items-center gap-2 py-3 bg-background"
                   action="/catalog/search"
                 >
                   <div className="flex-grow flex items-center">
