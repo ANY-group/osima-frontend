@@ -30,9 +30,9 @@ export default function InfoLinks() {
 
   return (
     <div className="flex flex-col md:flex-row md:items-center justify-between gap-7">
-      <h6 className="text-xl font-semibold leading-6">
+      <h5 className="text-xl font-semibold leading-6">
         Покупателю
-      </h6>
+      </h5>
       <div className="flex flex-col md:flex-row md:items-center justify-end gap-7 md:gap-10 lg:gap-16">
         {items.map((item, index) => (
           <Link

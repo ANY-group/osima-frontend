@@ -88,6 +88,7 @@ const MidHeader = () => {
           <button
             onClick={() => setCategoriesSidebarOpen(!isCategoriesSidebarOpen)}
             className="flex md:hidden items-center gap-2"
+            aria-label="Каталог"
           >
             <BurgetIcon />
           </button>
@@ -101,6 +102,7 @@ const MidHeader = () => {
           href="/"
           className="inline-flex w-20 md:w-28"
           onClick={closeSidebar}
+          aria-label="Главная страница"
         >
           <LogoIcon />
         </Link>
