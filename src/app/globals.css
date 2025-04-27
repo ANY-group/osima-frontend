@@ -32,6 +32,7 @@ button {
   --color-divider-alt: #EBEDF0;
   --color-success: #55D5B6;
   --color-success-foreground: #FFFFFF;
+  --color-danger: #f56a5b;
   --color-placeholder: #757575;
 }
 

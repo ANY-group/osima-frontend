@@ -14,7 +14,7 @@ export default function CheckoutUserInfo() {
       />
       <input
         type="text"
-        name="firstname"
+        name="name"
         autoComplete="given-name"
         placeholder="ФИО *"
         className="w-full p-1 pb-3 mt-9 border-b border-divider-alt outline-0"
