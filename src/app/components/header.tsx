@@ -15,6 +15,7 @@ import DesktopCartPopover from "../(default)/checkout/components/desktop-cart-po
 import { useOnRouteChange } from "../hooks/route_change";
 import SearchSidebar from "../(default)/catalog/components/search-sidebar";
 import AuthSidebar from "../(footerless)/profile/components/auth-sidebar";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   return (
@@ -54,6 +55,8 @@ const TopHeader = () => {
 }
 
 const MidHeader = () => {
+  const pathname = usePathname();
+
   const [isCategoriesSidebarOpen, setCategoriesSidebarOpen] = useState<boolean>(false);
   const [isCartPopoverOpen, setCartPopoverOpen] = useState<boolean>(false);
   const [isAuthSidebarOpen, setAuthSidebarOpen] = useState<boolean>(false);
@@ -134,7 +137,7 @@ const MidHeader = () => {
             <HeartOutlinedIcon />
           </Link>
           <DesktopCartPopover
-            isOpen={isCartPopoverOpen}
+            isOpen={isCartPopoverOpen && pathname != '/checkout'}
           />
         </div>
       </div>
