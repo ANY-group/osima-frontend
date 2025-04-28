@@ -59,6 +59,30 @@ button {
     @apply w-full pl-[calc(16px+max(0px,100vw-1280px)/2)] md:pl-[calc(20px+max(0px,100vw-1280px)/2)] overflow-x-auto scroll-smooth; /* 2xl:px-5 2xl:max-w-7xl 2xl:mx-auto  */
   }
 
+  .loader {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-background);
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease-in-out;
+  }
+  
+  .loader.visible {
+    opacity: 1!important;
+  }
+  
+  .loader.visible .logo-animation {
+    animation: loaderColorChange 1.5s ease-in-out infinite alternate;
+  }
+  
   .raw-content {
     @apply text-foreground;
   }
@@ -95,4 +119,14 @@ button {
     @apply hidden;
   }
 
+}
+
+/* Определяем анимацию изменения цвета */
+@keyframes loaderColorChange {
+  0% {
+    color: var(--color-foreground);
+  }
+  100% {
+    color: var(--color-success);
+  }
 }

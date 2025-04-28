@@ -15,7 +15,6 @@ import DesktopCartPopover from "../(default)/checkout/components/desktop-cart-po
 import { useOnRouteChange } from "../hooks/route_change";
 import SearchSidebar from "../(default)/catalog/components/search-sidebar";
 import AuthSidebar from "../(footerless)/profile/components/auth-sidebar";
-import LoadingIndicator from "./ui/loading-indicator";
 
 export default function Header() {
   return (
@@ -251,7 +250,6 @@ const CategoryLink = ({ category, href, close, isActive = false }: {
           ></motion.span>
         )}
       </AnimatePresence>
-      <LoadingIndicator />
     </Link>
   );
 }
