@@ -76,7 +76,7 @@ button {
   }
   
   .loader.visible {
-    transition: opacity .1s ease-in-out;
+    transition: opacity .07s ease-in-out;
     opacity: 1!important;
   }
   
