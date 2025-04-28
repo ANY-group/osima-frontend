@@ -18,7 +18,7 @@ export default function AuthSidebar({ isOpen, close }: {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ ease: "easeInOut", duration: 0.2 }}
-              className="relative flex flex-col sm:justify-center float-right sm:max-w-sm h-full p-12 bg-background"
+              className="relative float-right sm:max-w-md md:max-w-xl lg:max-w-2xl h-full bg-background"
             >
               <button
                 className="absolute top-5 right-5 p-2 rounded-full"
@@ -28,10 +28,12 @@ export default function AuthSidebar({ isOpen, close }: {
                 <TimesIcon />
               </button>
 
-              <p className="text-2xl font-bold my-4">
-                Войдите или зарегистрируйтесь, чтобы продолжить
-              </p>
-              <AuthForm />
+              <div className="max-sm:p-12 sm:max-w-7/10 mx-auto">
+                <p className="text-2xl font-bold my-4 sm:mt-40">
+                  Войдите или зарегистрируйтесь, чтобы продолжить
+                </p>
+                <AuthForm />
+              </div>
             </motion.div>
           </Swipeable>
         </OverlayWrapper>
