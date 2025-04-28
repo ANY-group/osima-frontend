@@ -6,15 +6,22 @@ import { useEffect } from "react";
 export default function LoaderController() {
   const { pending } = useLinkStatus();
 
+  const open = () => {
+    document.getElementById('loader')?.classList.remove('hidden');
+    document.getElementById('loader')?.classList.add('visible');
+  };
+
+  const close = () => {
+    document.getElementById('loader')?.classList.remove('visible');
+    document.getElementById('loader')?.classList.add('hidden');
+  };
+
   useEffect(() => {
     if (pending) {
-      document.getElementById('loader')?.classList.remove('hidden');
-      document.getElementById('loader')?.classList.add('visible');
+      open();
+      setTimeout(close, 1000);
     } else {
-      setTimeout(() => {
-        document.getElementById('loader')?.classList.remove('visible');
-        document.getElementById('loader')?.classList.add('hidden');
-      }, 300);
+      setTimeout(close, 400);
     }
   }, [pending]);
 
