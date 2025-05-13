@@ -2,6 +2,8 @@ import Link from "@/app/components/ui/link";
 import LogoIcon from "./ui/icons/logo-icon";
 import InstagramRoundedIcon from "./ui/icons/instagram-rounded-icon";
 import PaymentMethodsIcon from "./ui/icons/payment-methods-icon";
+import fetchCategories from "@/lib/catalog/usecases/fetch-categories";
+import { chunk } from "@/lib/utils/helpers";
 
 export default function Footer() {
   return (
@@ -81,32 +83,36 @@ const NavigationColumnWrapper = ({ title, children }: {
   );
 }
 
-const CatalogNavigationColumn = () => {
+const CatalogNavigationColumn = async () => {
+  const categories = await fetchCategories();
+  const chunks = chunk(categories, 5);
+
   return (
     <NavigationColumnWrapper title="Каталог">
       <nav className="flex gap-10">
-        <CategoriesList />
-        <CategoriesList />
+        {chunks.map((categories, index) => (
+          <CategoriesList key={index} links={categories.map((category) => (
+            {
+              name: category.name,
+              url: `/catalog/${category.slug}`,
+            }))} />
+        ))}
       </nav>
     </NavigationColumnWrapper>
   );
 }
 
-const CategoriesList = () => {
+const CategoriesList = ({ links }: { links: Array<LinkItem> }) => {
+
   return (
     <ul className="text-sm text-secondary">
-      <li className="mb-2">
-        <Link href="#">Макияж</Link>
-      </li>
-      <li className="mb-2">
-        <Link href="#">Уход за лицом</Link>
-      </li>
-      <li className="mb-2">
-        <Link href="#">Для дома</Link>
-      </li>
-      <li className="mb-2">
-        <Link href="#">Уход за волосами</Link>
-      </li>
+      {links.map((link, index) => (
+        <li key={index} className="mb-2">
+          <Link href={link.url}>
+            {link.name}
+          </Link>
+        </li>
+      ))}
     </ul>
   );
 }
@@ -114,7 +120,16 @@ const CategoriesList = () => {
 const InfoNavigationColumn = () => {
   return (
     <NavigationColumnWrapper title="Помощь покупателю">
-      <CategoriesList />
+      <CategoriesList links={[
+        {
+          name: 'Контакты',
+          url: '/contacts',
+        },
+        {
+          name: 'Как оформить заказ',
+          url: '/how-to-order',
+        },
+      ]} />
     </NavigationColumnWrapper>
   );
 }
@@ -128,3 +143,8 @@ const BottomFooter = () => {
     </p>
   );
 }
+
+type LinkItem = {
+  name: string,
+  url: string,
+};

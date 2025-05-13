@@ -1,4 +1,4 @@
-export type CategoryEntity = {
+export type BrandEntity = {
   name: string,
   slug: string,
 }

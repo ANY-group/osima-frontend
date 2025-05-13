@@ -19,7 +19,7 @@ export default function LoaderController() {
   useEffect(() => {
     if (pending) {
       open();
-      setTimeout(close, 1000);
+      setTimeout(close, 2000);
     } else {
       setTimeout(close, 400);
     }

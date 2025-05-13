@@ -4,13 +4,12 @@ import { useState } from "react";
 import DesktopCategoriesDropdown from "../(default)/catalog/components/desktop-categories-dropdown";
 import Link from "./ui/link";
 import { AnimatePresence, motion } from "motion/react";
-import { CategoryEntity } from "@/lib/category/types/category";
+import { CategoryEntity } from "@/lib/catalog/types/category";
 
 export default function BotHeader({ categories }: { categories: Array<CategoryEntity> }) {
 
-  const [openCategory, setOpenCategory] = useState<number | null>(null);
+  const [openCategory, setOpenCategory] = useState<CategoryEntity | null>(null);
   const close = () => setOpenCategory(null);
-
 
   return (
     <div
@@ -19,11 +18,11 @@ export default function BotHeader({ categories }: { categories: Array<CategoryEn
     >
       <nav className="relative flex items-center justify-center gap-8 py-6 border-b bg-background border-divider">
         {categories.map((category, index) => (
-          <div key={index} onMouseOver={() => setOpenCategory(index)} >
+          <div key={index} onMouseOver={() => setOpenCategory(category)} >
             <CategoryLink
               name={category.name}
               url={`/catalog/${category.slug}`}
-              isActive={openCategory === index}
+              isActive={openCategory?.slug === category.slug}
               close={close}
             />
           </div>

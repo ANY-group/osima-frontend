@@ -5,28 +5,43 @@ import CatalogProductsGrid from "./catalog-products-grid";
 import CatalogSubcategories from "./catalog-subcategories";
 import HomePosts from "../../home/components/home-posts";
 import SubscribeForm from "@/app/components/subscribe-form";
+import { CategoryEntity } from "@/lib/catalog/types/category";
+import { SubcategoryEntity } from "@/lib/catalog/types/subcategory";
+import fetchCategories from "@/lib/catalog/usecases/fetch-categories";
+import { BrandEntity } from "@/lib/catalog/types/brand";
 
-export default function Catalog({ q, brand = false }: {
+export default async function Catalog({
+  category,
+  subcategory,
+  brand,
+  q,
+}: {
+  category?: CategoryEntity,
+  subcategory?: SubcategoryEntity,
+  brand?: BrandEntity,
   q?: string,
-  brand?: boolean,
 }) {
+
+  const categories = category ? category.subcategories : await fetchCategories();
+
   return (
     <main>
       <section className="sticky md:static top-18 bg-background border-b border-divider z-10">
         <div className="layout-container">
-          <Subheader title="Уход за лицом">
+          <Subheader title={subcategory?.name || category?.name || 'Каталог'}>
             <span className="hidden md:inline">товаров 12</span>
           </Subheader>
         </div>
       </section>
-      {brand && (
+      {brand ? (
         <section className="layout-container">
           <BrandDescription />
         </section>
+      ) : (
+        <section className="layout-container max-md:px-0!">
+          <CatalogSubcategories categories={categories} slugPrefix={category?.slug} />
+        </section>
       )}
-      <section className="layout-container max-md:px-0!">
-        <CatalogSubcategories />
-      </section>
       <section className="layout-container">
         <CatalogFilters />
       </section>

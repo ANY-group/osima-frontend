@@ -7,7 +7,7 @@ import Subheader from "@/app/components/subheader";
 export default function BrandsPage() {
   return (
     <main>
-      <section className="sticky top-18 md:top-0 bg-background">
+      <section className="sticky top-18 md:top-0 bg-background z-10">
         <div className="layout-container">
           <Subheader title="Бренды">
             <SearchInput />

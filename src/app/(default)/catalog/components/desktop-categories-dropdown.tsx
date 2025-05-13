@@ -1,18 +1,15 @@
 import { AnimatePresence, motion } from "framer-motion"
 import Link from "@/app/components/ui/link";
+import { CategoryEntity } from "@/lib/catalog/types/category";
+import { chunk } from "@/lib/utils/helpers";
 
 export default function DesktopCategoriesDropdown({ openCategory, close }: {
-  openCategory: number | null,
+  openCategory: CategoryEntity | null,
   close: () => void,
 }) {
 
-  const subcategories = [...Array(20)];
-  const chunkSize = 8;
-  const chunks = [];
-  for (let i = 0; i < subcategories.length; i += chunkSize) {
-    const chunk = subcategories.slice(i, i + chunkSize);
-    chunks.push(chunk);
-  }
+  const subcategories = openCategory?.categories ?? [];
+  const chunks = chunk(subcategories, 8);
 
   return (
     <div className="relative">
@@ -36,10 +33,10 @@ export default function DesktopCategoriesDropdown({ openCategory, close }: {
                     {subcategories.map((subcategory, index) => (
                       <Link
                         key={index}
-                        href={`/catalog/category${index}/subcategory`}
+                        href={`/catalog/${openCategory.slug}/${subcategory.slug}`}
                         onClick={close}
                       >
-                        Кремы для кожи вокруг глаз
+                        {subcategory.name}
                       </Link>
                     ))}
                   </div>

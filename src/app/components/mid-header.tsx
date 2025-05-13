@@ -14,8 +14,11 @@ import MobileCategoriesSidebar from "../(default)/catalog/components/mobile-cate
 import AuthSidebar from "../(footerless)/profile/components/auth-sidebar";
 import SearchIcon from "./ui/icons/search-icon";
 import SearchSidebar from "../(default)/catalog/components/search-sidebar";
+import { CategoryEntity } from "@/lib/catalog/types/category";
 
-export default function MidHeader() {
+export default function MidHeader({ categories }: {
+  categories: Array<CategoryEntity>,
+}) {
   const pathname = usePathname();
 
   const [isCategoriesSidebarOpen, setCategoriesSidebarOpen] = useState<boolean>(false);
@@ -104,6 +107,7 @@ export default function MidHeader() {
       </div>
 
       <MobileCategoriesSidebar
+        categories={categories}
         isOpen={isCategoriesSidebarOpen}
         close={closeSidebar}
       />

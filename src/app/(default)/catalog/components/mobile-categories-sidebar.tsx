@@ -5,18 +5,17 @@ import Collapse from "../../../components/ui/collapse";
 import Link from "@/app/components/ui/link";
 import ArrowDownBoldIcon from "../../../components/ui/icons/arrow-down-bold-icon";
 import InfoLinks from "../../../components/info-links";
+import { CategoryEntity } from "@/lib/catalog/types/category";
 
-export default function MobileCategoriesSidebar({ isOpen, close }: {
+export default function MobileCategoriesSidebar({ categories, isOpen, close }: {
+  categories: Array<CategoryEntity>,
   isOpen: boolean,
   close: () => void,
 }) {
 
-  const categories = [...Array(4)];
-  const subcategories = [...Array(16)];
+  const [openCategory, setOpenCategory] = useState<CategoryEntity | null>(null);
 
-  const [openCategory, setOpenCategory] = useState<number | null>(null);
-
-  const isCategoryOpen = (index: number) => openCategory === index;
+  const isCategoryOpen = (category: CategoryEntity) => openCategory?.slug === category.slug;
 
   useEffect(() => {
     setOpenCategory(null);
@@ -38,29 +37,29 @@ export default function MobileCategoriesSidebar({ isOpen, close }: {
               <div key={index}>
                 <div className="px-6">
                   <button
-                    onClick={() => setOpenCategory(isCategoryOpen(index) ? null : index)}
-                    className={`flex items-center justify-between w-full py-2.5 border-transparent transition-colors text-2xl ${isCategoryOpen(index) && 'border-b-2  border-on-primary-muted!'}`}
+                    onClick={() => setOpenCategory(isCategoryOpen(category) ? null : category)}
+                    className={`flex items-center justify-between w-full py-2.5 border-transparent transition-colors text-2xl ${isCategoryOpen(category) && 'border-b-2  border-on-primary-muted!'}`}
                   >
-                    Уход за лицом
-                    <div className={`transition-transform ${isCategoryOpen(index) && 'rotate-180'}`}>
+                    {category.name}
+                    <div className={`transition-transform ${isCategoryOpen(category) && 'rotate-180'}`}>
                       <ArrowDownBoldIcon />
                     </div>
                   </button>
                 </div>
-                <Collapse open={isCategoryOpen(index)}>
+                <Collapse open={isCategoryOpen(category)}>
                   <div className="pb-2">
                     <div className="px-6 py-8 border-b border-divider">
                       <h4 className="mb-5 font-bold uppercase">
                         Категории
                       </h4>
                       <div className="grid grid-cols-2 gap-5 text-sm">
-                        {subcategories.map((subcategory, index) => (
+                        {(category?.categories ?? []).map((subcategory, index) => (
                           <Link
                             key={index}
-                            href="/catalog/category/subcategory"
+                            href={`/catalog/${openCategory?.slug}/${subcategory.slug}`}
                             onClick={close}
                           >
-                            Праймер для лица
+                            {subcategory.name}
                           </Link>
                         ))}
                       </div>

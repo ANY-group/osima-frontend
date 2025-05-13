@@ -3,7 +3,18 @@ const baseUrl: string = process.env.NEXT_PUBLIC_BACKEND_HOST ?? 'https://admin.v
 type Api = {
   accessToken: string | null;
   setAccessToken: (accessToken: string) => void;
-  request: (path: string, method?: string) => Promise<Response>;
+  request: (
+    path: string,
+    method?: string,
+    headers?: HeadersInit,
+    revalidate?: number,
+  ) => Promise<Response>;
+  authRequest: (
+    path: string,
+    method?: string,
+    headers?: HeadersInit,
+    revalidate?: number,
+  ) => Promise<Response>;
 };
 
 const api: Api = {
@@ -13,14 +24,32 @@ const api: Api = {
     this.accessToken = accessToken;
   },
 
-  request(path, method = 'GET') {
-    return fetch(`${baseUrl}/${path}`, {
-      method: method,
-      headers: {
-        "Content-Type": "application/json",
+  authRequest(path, method, headers = {}, revalidate = 0) {
+    return this.request(
+      path,
+      method = 'GET',
+      headers = {
+        ...headers,
         ...(this.accessToken ? {
           "Authorization": `Bearer ${this.accessToken}`
         } : {}),
+      },
+      revalidate,
+    );
+  },
+
+  request(
+    path,
+    method = 'GET',
+    headers = {},
+    revalidate = 3,
+  ) {
+    return fetch(`${baseUrl}/${path}`, {
+      next: { revalidate },
+      method: method,
+      headers: {
+        ...headers,
+        "Content-Type": "application/json",
       },
     });
   },

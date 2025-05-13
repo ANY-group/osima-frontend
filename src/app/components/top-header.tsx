@@ -1,6 +1,6 @@
 import Link from "./ui/link";
 
-export default function () {
+export default function TopHeader() {
   return (
     <div className="relative hidden md:block pb-5 -mb-5 bg-foreground text-background text-sm">
       <div className="flex justify-between items-center px-10 py-3">
