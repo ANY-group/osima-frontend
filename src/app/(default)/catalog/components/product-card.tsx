@@ -3,32 +3,38 @@ import Link from "@/app/components/ui/link";
 import ProductPrice from "./product-price";
 import StarRating from "./star-rating";
 import ProductCashback from "./product-cashback";
+import { ProductEntity } from "@/lib/catalog/types/product";
 
-export default function ProductCard() {
+export default function ProductCard({ product }: {
+  product: ProductEntity,
+}) {
   return (
     <Link
-      href="/catalog/uhod-za-licom/tonizaciya/tonik-skin-balancing-pore-reducing-toner-paulas-choice" className="min-w-40 lg:min-w-58"
+      href={`/catalog/${product.subcategory.category?.slug || ''}/${product.subcategory.slug}/${product.slug}`}
+      className="min-w-40 lg:min-w-58"
     >
       <div className="relative w-full aspect-[169/189] md:aspect-[230/306] bg-primary-muted">
-        <Image
-          src="/images/tmp/product.png"
-          alt="Product"
-          fill
-          className="object-contain mix-blend-multiply"
-        />
+        {product.image && (
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-contain mix-blend-multiply"
+          />
+        )}
       </div>
       <div className="flex flex-col gap-2 py-3">
         <div className="text-sm font-semibold">
-          Парфюмерная вода
+          {product.subcategory.name}
         </div>
         <div className="md:text-lg leading-6">
-          Brazilian Crush Cheirosa 40 Perfume Mist
+          {product.name}
         </div>
         <div>
           <ProductCashback />
         </div>
         <div className="text-sm">
-          <ProductPrice />
+          <ProductPrice price={product.price} oldPrice={1500} />
         </div>
         <StarRating />
       </div>

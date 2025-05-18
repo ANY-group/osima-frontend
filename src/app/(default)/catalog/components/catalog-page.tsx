@@ -10,13 +10,14 @@ export default async function CatalogPage({ params }: {
 }) {
   const { categorySlug, subcategorySlug, brandSlug } = (await params);
 
-  const { category, subcategory, brand } = await fetchCatalog(categorySlug, subcategorySlug, brandSlug);
+  const { category, subcategory, brand, products } = await fetchCatalog(categorySlug, subcategorySlug, brandSlug);
 
   return (
     <Catalog
       category={category}
       subcategory={subcategory}
       brand={brand}
+      products={products}
     />
   );
 }

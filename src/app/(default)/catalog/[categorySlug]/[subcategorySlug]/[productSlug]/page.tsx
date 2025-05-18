@@ -2,32 +2,45 @@ import Breadcrumbs from "@/app/components/breadcrumbs";
 import ProductInfo from "./components/product-info";
 import ProductsCarousel from "../../../components/products-carousel";
 import SubscribeForm from "@/app/components/subscribe-form";
+import fetchProduct from "@/lib/catalog/usecases/fetch-product";
 
-export default function ProductPage() {
+export default async function ProductPage({ params }: {
+  params: Promise<{
+    categorySlug: string,
+    subcategorySlug: string,
+    productSlug: string,
+  }>,
+}) {
+  const { categorySlug, subcategorySlug, productSlug } = (await params);
+
+  const product = await fetchProduct(productSlug, subcategorySlug, categorySlug);
+
+  console.log(product);
+
   return (
     <main>
       <section className="layout-container">
         <Breadcrumbs items={[
           {
             label: 'Каталог',
-            href: '#',
+            href: '/catalog',
           },
           {
-            label: 'Уход за лицом',
-            href: '#',
+            label: product.subcategory.category?.name || '',
+            href: `/catalog/${product.subcategory.category?.slug}`,
           },
           {
-            label: 'Тонизирование',
-            href: '#',
+            label: product.subcategory.name,
+            href: `/catalog/${product.subcategory.category?.slug}/${product.subcategory.slug}`,
           },
           {
-            label: 'Тоник skin balancing pore reducing toner(Paulas Choice)',
+            label: product.name,
             href: null,
           },
         ]} />
       </section>
       <section className="layout-container">
-        <ProductInfo />
+        <ProductInfo product={product} />
       </section>
       <section>
         {/* TODO: Reviews */}

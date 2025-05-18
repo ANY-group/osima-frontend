@@ -11,3 +11,7 @@ export const chunk = <T>(items: Array<T>, chunkSize: number): Array<Array<T>> =>
 
   return chunks;
 };
+
+export const formatNumber = (num: number) => {
+  return num.toLocaleString().replace(',', ' ');
+}

@@ -5,91 +5,120 @@ import HeartOutlinedIcon from "@/app/components/ui/icons/heart-outlined-icon";
 import ShoppingBagIcon from "@/app/components/ui/icons/shopping-bag-icon";
 import Image from "next/image";
 import Link from "@/app/components/ui/link";
+import { ProductEntity } from "@/lib/catalog/types/product";
+import { BrandEntity } from "@/lib/catalog/types/brand";
 
-export default function ProductInfo() {
+export default function ProductInfo({ product }: {
+  product: ProductEntity,
+}) {
   return (
     <div className="grid sm:grid-cols-2 sm:gap-6">
-      <ProductLeftBlock />
-      <ProductRightBlock />
+      <ProductLeftBlock product={product} />
+      <ProductRightBlock product={product} />
     </div>
   );
 }
 
-const ProductLeftBlock = () => {
+const ProductLeftBlock = ({ product }: {
+  product: ProductEntity,
+}) => {
   return (
     <div className="flex flex-col gap-4 sm:gap-3 sm:py-5">
-      <ProductImages />
-      <div className="sm:ml-16 md:ml-27">
-        <ProductBrand />
-      </div>
+      <ProductImages product={product} />
+      {product.brand && (
+        <div className="sm:ml-16 md:ml-27">
+          <ProductBrand brand={product.brand} />
+        </div>
+      )}
     </div>
   );
 }
 
-const ProductImages = () => {
+const ProductImages = ({ product }: {
+  product: ProductEntity,
+}) => {
+
   return (
     <div className="flex flex-col-reverse sm:flex-row gap-2 md:gap-13">
-      <div className="flex flex-col gap-1">
-        <Image
-          src="/images/tmp/product.png"
-          alt="Product"
-          width={56}
-          height={56}
-          className="aspect-square object-contain border border-success rounded-lg"
-        />
-      </div>
-      <div className="flex-grow">
-        <div className="relative max-w-2/3 sm:max-w-125 mx-auto aspect-square">
+      <div className="flex flex-col gap-1 min-w-15">
+        {product.images.map((image, index) => (
           <Image
-            src="/images/tmp/product.png"
-            alt="Product"
-            fill
-            className="object-cover"
+            key={index}
+            src={image}
+            alt={product.name}
+            width={60}
+            height={60}
+            className={`aspect-square object-contain border p-1 rounded-lg ${true && 'border-success'}`}
           />
-        </div>
+        ))}
+      </div>
+      <div className="flex flex-grow gap-4 max-sm:p-4 max-sm:-mx-4 overflow-x-auto no-scrollbar">
+        {product.images.map((image, index) => (
+          <div key={index} className="w-full shrink-0">
+            <Image
+              src={image}
+              alt={product.name}
+              width={500}
+              height={500}
+              className="mx-auto sm:max-w-125 w-full object-cover aspect-square"
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
-const ProductBrand = () => {
+const ProductBrand = ({ brand }: {
+  brand: BrandEntity,
+}) => {
   return (
     <div className="flex flex-col items-center gap-1">
       <Link href="/catalog/brands/klairs" className="text-sm text-text-accent">
-        Все товары бренда <span className="text-success">KLAIRS</span>
+        Все товары бренда <span className="text-success uppercase">{brand.name}</span>
       </Link>
       <Link href="/catalog/brands/klairs">
-        <Image
-          src="/images/tmp/klairs.png"
-          alt="Klairs"
-          width={110}
-          height={110}
-          className="object-contain"
-        />
+        {brand.image ? (
+          <Image
+            src={brand.image}
+            alt={brand.name}
+            width={110}
+            height={110}
+            className="object-contain"
+          />
+        ) : (
+          <p className="text-2xl mt-2">
+            {brand.name}
+          </p>
+        )}
       </Link>
     </div>
   );
 }
 
-const ProductRightBlock = () => {
+const ProductRightBlock = ({ product }: {
+  product: ProductEntity,
+}) => {
   return (
     <div className="flex flex-col gap-10 overflow-auto">
-      <ProductMainInfo />
+      <ProductMainInfo product={product} />
       <ProductDescription />
     </div>
   );
 }
 
-const ProductMainInfo = () => {
+const ProductMainInfo = ({ product }: {
+  product: ProductEntity,
+}) => {
   return (
     <div className="flex flex-col gap-5">
 
       <div className="flex flex-col gap-2 pt-4">
         <p className="text-sm font-semibold">
-          Увлажняющий крем для лица
+          {product.subcategory.name}
         </p>
         <h1 className="text-2xl md:text-3xl">
-          AESTURA Atobarrier365 hydro soothing cream
+          {product.name}
         </h1>
       </div>
 
@@ -101,7 +130,7 @@ const ProductMainInfo = () => {
       </div>
 
       <div className="text-2xl pt-1">
-        <ProductPrice />
+        <ProductPrice price={product.price} />
       </div>
 
       <div className="max-w-3xs px-6 py-4 bg-secondary-muted rounded-lg text-xs">

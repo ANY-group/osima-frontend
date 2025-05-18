@@ -1,12 +1,18 @@
-export default function ProductPrice({ alt = false, }: {
+import { formatNumber } from "@/lib/utils/helpers";
+
+export default function ProductPrice({ price, oldPrice = null, alt = false, }: {
+  price: number,
+  oldPrice?: number | null,
   alt?: boolean,
 }) {
   return (
     <div className="flex items-center gap-2 font-semibold tracking-tight whitespace-nowrap">
-      <span>16 515 C</span>
-      <span className={`${alt ? 'text-text-secondary-alt text-sm' : 'text-text-secondary'}`}>
-        16 520<span className="line-through"> C</span>
-      </span>
+      <span>{formatNumber(price)} C</span>
+      {oldPrice && (
+        <span className={`${alt ? 'text-text-secondary-alt text-sm' : 'text-text-secondary'}`}>
+          {formatNumber(oldPrice)}<span className="line-through"> C</span>
+        </span>
+      )}
     </div>
   );
 }

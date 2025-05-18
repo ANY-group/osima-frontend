@@ -61,7 +61,7 @@ export default function CartItem() {
         </div>
         <div className="flex justify-between mt-3">
           <ProductCashback />
-          <ProductPrice alt />
+          <ProductPrice price={1000} alt />
         </div>
       </div>
     </div>
