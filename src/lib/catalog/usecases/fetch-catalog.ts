@@ -10,6 +10,7 @@ export default async function fetchCatalog(
   categorySlug?: string,
   subcategorySlug?: string,
   brandSlug?: string,
+  filters?: { [key: string]: string | number | Array<string | number> },
 ): Promise<{
   category?: CategoryEntity,
   subcategory?: SubcategoryEntity,
@@ -21,6 +22,7 @@ export default async function fetchCatalog(
     category: categorySlug || '',
     subcategory: subcategorySlug || '',
     brand: brandSlug || '',
+    ...filters,
   }).toString());
 
   if (!res.ok) {

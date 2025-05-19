@@ -102,7 +102,7 @@ const ProductRightBlock = ({ product }: {
   return (
     <div className="flex flex-col gap-10 overflow-auto">
       <ProductMainInfo product={product} />
-      <ProductDescription />
+      <ProductDescription product={product} />
     </div>
   );
 }
@@ -165,7 +165,9 @@ const ProductMainInfo = ({ product }: {
   );
 }
 
-const ProductDescription = () => {
+const ProductDescription = ({ product }: {
+  product: ProductEntity,
+}) => {
   return (
     <div>
       <div className="overflow-x-auto no-scrollbar flex items-center gap-2 border-b border-divider">
@@ -179,13 +181,12 @@ const ProductDescription = () => {
           Оплата и доставка
         </TabButton>
       </div>
-      <div className="raw-content pt-5 text-sm line-clamp-5">
-        Глубокоувлажняющий тоник с экстрактом зеленого чая моментально
-        успокоит и восстановит оптимальный рН баланс кожи.
-        Антиоксиданты защищают кожу от воздействия свободных
-        радикалов. Тоник подготовит кожу к дальнейшим уходовым ритуалам.
-        Средство подходит для всех типов кожи.
-      </div>
+      {product.description && (
+        <div
+          className="raw-content pt-5 text-sm line-clamp-5"
+          dangerouslySetInnerHTML={{ __html: product.description }}
+        ></div>
+      )}
       <button type="button" className="mt-2 text-sm font-semibold text-on-primary-muted">
         Читать дальше
         {/* Свернуть */}

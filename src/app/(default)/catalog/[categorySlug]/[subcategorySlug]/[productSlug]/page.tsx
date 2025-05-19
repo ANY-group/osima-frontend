@@ -3,6 +3,7 @@ import ProductInfo from "./components/product-info";
 import ProductsCarousel from "../../../components/products-carousel";
 import SubscribeForm from "@/app/components/subscribe-form";
 import fetchProduct from "@/lib/catalog/usecases/fetch-product";
+import fetchRecommendations from "@/lib/catalog/usecases/fetch-recommendations";
 
 export default async function ProductPage({ params }: {
   params: Promise<{
@@ -13,9 +14,10 @@ export default async function ProductPage({ params }: {
 }) {
   const { categorySlug, subcategorySlug, productSlug } = (await params);
 
-  const product = await fetchProduct(productSlug, subcategorySlug, categorySlug);
-
-  console.log(product);
+  const [product, recommendations] = await Promise.all([
+    fetchProduct(productSlug, subcategorySlug, categorySlug),
+    fetchRecommendations(productSlug, subcategorySlug, categorySlug),
+  ]);
 
   return (
     <main>
@@ -46,7 +48,7 @@ export default async function ProductPage({ params }: {
         {/* TODO: Reviews */}
       </section>
       <section>
-        <ProductsCarousel title="Рекомендуем также" />
+        <ProductsCarousel title="Рекомендуем также" products={recommendations} />
       </section>
       <section>
         <SubscribeForm />

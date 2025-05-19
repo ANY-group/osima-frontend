@@ -33,7 +33,7 @@ export default async function Catalog({
       <section className="sticky md:static top-18 bg-background border-b border-divider z-10">
         <div className="layout-container">
           <Subheader title={subcategory?.name || category?.name || 'Каталог'}>
-            <span className="hidden md:inline">товаров 12</span>
+            <span className="hidden md:inline">товаров {products.data.length}</span>
           </Subheader>
         </div>
       </section>
