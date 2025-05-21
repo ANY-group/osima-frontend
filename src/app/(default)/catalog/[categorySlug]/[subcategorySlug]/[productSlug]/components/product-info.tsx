@@ -77,7 +77,7 @@ const ProductBrand = ({ brand }: {
       <Link href={`/catalog/brands/${brand.slug}`} className="text-sm text-text-accent">
         Все товары бренда <span className="text-success font-semibold uppercase">{brand.name}</span>
       </Link>
-      <Link href="/catalog/brands/klairs">
+      <Link href={`/catalog/brands/${brand.slug}`}>
         {brand.image ? (
           <Image
             src={brand.image}
