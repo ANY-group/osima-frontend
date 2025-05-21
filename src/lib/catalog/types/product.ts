@@ -8,6 +8,7 @@ export type ProductEntity = {
   name: string,
   price: number,
   quantity: number,
+  inStock: boolean,
   description: string | null,
   image: string | null,
   images: Array<string>,

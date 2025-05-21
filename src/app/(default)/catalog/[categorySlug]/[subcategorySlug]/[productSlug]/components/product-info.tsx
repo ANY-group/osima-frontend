@@ -74,8 +74,8 @@ const ProductBrand = ({ brand }: {
 }) => {
   return (
     <div className="flex flex-col items-center gap-1">
-      <Link href="/catalog/brands/klairs" className="text-sm text-text-accent">
-        Все товары бренда <span className="text-success uppercase">{brand.name}</span>
+      <Link href={`/catalog/brands/${brand.slug}`} className="text-sm text-text-accent">
+        Все товары бренда <span className="text-success font-semibold uppercase">{brand.name}</span>
       </Link>
       <Link href="/catalog/brands/klairs">
         {brand.image ? (

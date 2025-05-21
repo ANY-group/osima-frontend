@@ -15,6 +15,7 @@ export default async function fetchRecommendations(
     subcategory: subcategorySlug || '',
     product: productSlug || '',
     brand: brandSlug || '',
+    randomKey: Math.floor(Math.random()*1000).toString(),
   }).toString());
 
   if (!res.ok) {
