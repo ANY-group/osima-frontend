@@ -1,5 +1,5 @@
 import Subheader from "@/app/components/subheader";
-import CatalogProductsGrid from "../components/catalog-products-grid";
+// import CatalogProductsGrid from "../components/catalog-products-grid";
 import SubscribeForm from "@/app/components/subscribe-form";
 
 export default function FavoritePage() {
@@ -13,7 +13,7 @@ export default function FavoritePage() {
         </div>
       </section>
       <section className="layout-container md:mt-8">
-        <CatalogProductsGrid />
+        {/* <CatalogProductsGrid /> */}
       </section>
       <section>
         <SubscribeForm />

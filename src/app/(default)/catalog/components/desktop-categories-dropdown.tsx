@@ -8,7 +8,7 @@ export default function DesktopCategoriesDropdown({ openCategory, close }: {
   close: () => void,
 }) {
 
-  const subcategories = openCategory?.categories ?? [];
+  const subcategories = openCategory?.subcategories ?? [];
   const chunks = chunk(subcategories, 8);
 
   return (
