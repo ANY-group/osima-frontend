@@ -11,7 +11,7 @@ export default function ProductCard({ product }: {
   return (
     <Link
       href={`/catalog/${product.subcategory.category?.slug || ''}/${product.subcategory.slug}/${product.slug}`}
-      className="min-w-40 lg:min-w-58"
+      className="min-w-40 lg:min-w-58 flex flex-col"
     >
       <div className="relative w-full aspect-[169/189] md:aspect-[230/306] bg-primary-muted">
         {product.image && (
@@ -19,24 +19,28 @@ export default function ProductCard({ product }: {
             src={product.image}
             alt={product.name}
             fill
-            className="object-contain mix-blend-multiply"
+            className="object-cover mix-blend-multiply"
           />
         )}
       </div>
-      <div className="flex flex-col gap-2 py-3">
-        <div className="text-sm font-semibold">
-          {product.subcategory.name}
+      <div className="flex-grow flex flex-col justify-between gap-2 py-3">
+        <div className="flex flex-col gap-2">
+          <div className="text-sm font-semibold">
+            {product.subcategory.name}
+          </div>
+          <div className="md:text-lg leading-6">
+            {product.name}
+          </div>
         </div>
-        <div className="md:text-lg leading-6">
-          {product.name}
+        <div className="flex flex-col gap-2">
+          <div>
+            <ProductCashback />
+          </div>
+          <div className="text-sm">
+            <ProductPrice price={product.price} oldPrice={1500} />
+          </div>
+          <StarRating />
         </div>
-        <div>
-          <ProductCashback />
-        </div>
-        <div className="text-sm">
-          <ProductPrice price={product.price} oldPrice={1500} />
-        </div>
-        <StarRating />
       </div>
     </Link>
   );

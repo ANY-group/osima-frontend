@@ -133,7 +133,7 @@ const ProductMainInfo = ({ product }: {
         <ProductPrice price={product.price} />
       </div>
 
-      <div className="max-w-3xs px-6 py-4 bg-secondary-muted rounded-lg text-xs">
+      <div className="sm:max-w-3xs px-6 py-4 bg-secondary-muted rounded-lg text-xs">
         <p>
           Вам начислится 990 бонусов
           (10%) при покупке с регистрации
@@ -144,7 +144,7 @@ const ProductMainInfo = ({ product }: {
       </div>
 
       <div className="flex gap-2 h-10">
-        <button className="flex-grow flex items-center justify-center gap-2 h-full max-w-3xs rounded-lg bg-success text-sm  text-white">
+        <button className="flex-grow flex items-center justify-center gap-2 h-full sm:max-w-3xs rounded-lg bg-success text-sm  text-white">
           <ShoppingBagIcon />
           Добавить в корзину
         </button>
@@ -157,7 +157,7 @@ const ProductMainInfo = ({ product }: {
         <p className="mb-1.5">
           Бесплатная доставка от 20 000 тг.
         </p>
-        <Link href="#">
+        <Link href="#" className="text-on-primary-muted">
           Подробнее про условия доставки
         </Link>
       </div>
