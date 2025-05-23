@@ -11,9 +11,9 @@ export default function ProductCard({ product }: {
   return (
     <Link
       href={`/catalog/${product.subcategory.category?.slug || ''}/${product.subcategory.slug}/${product.slug}`}
-      className="min-w-40 lg:min-w-58 flex flex-col"
+      className="min-w-40 lg:w-58 flex flex-col w-full"
     >
-      <div className="relative w-full aspect-[169/189] md:aspect-[230/306] bg-primary-muted">
+      <div className="relative aspect-[169/189] md:aspect-[230/306] bg-primary-muted">
         {product.image && (
           <Image
             src={product.image}
