@@ -36,7 +36,7 @@ const Comment = () => {
       <textarea
         name="comment"
         placeholder="Введите здесь комментарий..."
-        className="w-full p-1 pb-3 border-b border-divider-alt outline-0"
+        className="w-full p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
       />
     </div>
   );

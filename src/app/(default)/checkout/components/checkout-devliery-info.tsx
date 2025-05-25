@@ -108,7 +108,7 @@ const DeliveryAddress = () => {
         name="address"
         autoComplete="address-line1"
         placeholder="Адрес *"
-        className="w-full p-1 pb-3 my-9 border-b border-divider-alt outline-0"
+        className="w-full p-1 pb-3 my-9 border-b border-divider-alt focus:border-success transition-colors outline-0"
         required
       />
       <div className="flex gap-5">
@@ -117,14 +117,14 @@ const DeliveryAddress = () => {
           name="address_line_2"
           autoComplete="address-line2"
           placeholder="Квартира / офис"
-          className="p-1 pb-3 border-b border-divider-alt outline-0"
+          className="p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
         />
         <input
           type="text"
           name="postal_code"
           autoComplete="postal-code	"
           placeholder="Индекс"
-          className="p-1 pb-3 border-b border-divider-alt outline-0"
+          className="p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
         />
       </div>
     </>

@@ -9,7 +9,7 @@ export default function CheckoutUserInfo() {
         name="phone"
         autoComplete="tel"
         placeholder="Номер телефона *"
-        className="w-full p-1 pb-3 border-b border-divider-alt outline-0"
+        className="w-full p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
         required
       />
       <input
@@ -17,7 +17,7 @@ export default function CheckoutUserInfo() {
         name="name"
         autoComplete="given-name"
         placeholder="ФИО *"
-        className="w-full p-1 pb-3 mt-9 border-b border-divider-alt outline-0"
+        className="w-full p-1 pb-3 mt-9 border-b border-divider-alt focus:border-success transition-colors outline-0"
         required
       />
       <input
@@ -25,7 +25,7 @@ export default function CheckoutUserInfo() {
         name="email"
         autoComplete="email"
         placeholder="E-mail *"
-        className="w-full p-1 pb-3 mt-9 border-b border-divider-alt outline-0"
+        className="w-full p-1 pb-3 mt-9 border-b border-divider-alt focus:border-success transition-colors outline-0"
       />
     </div>
   );

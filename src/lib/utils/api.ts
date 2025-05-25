@@ -6,12 +6,14 @@ type Api = {
   request: (
     path: string,
     method?: string,
+    body?: any,
     headers?: HeadersInit,
     revalidate?: number,
   ) => Promise<Response>;
   authRequest: (
     path: string,
     method?: string,
+    body?: any,
     headers?: HeadersInit,
     revalidate?: number,
   ) => Promise<Response>;
@@ -24,10 +26,11 @@ const api: Api = {
     this.accessToken = accessToken;
   },
 
-  authRequest(path, method, headers = {}, revalidate = 0) {
+  authRequest(path, method, body: {}, headers = {}, revalidate = 0) {
     return this.request(
       path,
       method = 'GET',
+      body,
       headers = {
         ...headers,
         ...(this.accessToken ? {
@@ -41,16 +44,21 @@ const api: Api = {
   request(
     path,
     method = 'GET',
+    body = {},
     headers = {},
     revalidate = 3,
   ) {
-    return fetch(`${baseUrl}/${path}`, {
+    const url = path.indexOf("http") == 0 ? path : `${baseUrl}/${path}`;
+
+    return fetch(url, {
       next: { revalidate },
       method: method,
       headers: {
         ...headers,
+        "Accept": "application/json",
         "Content-Type": "application/json",
       },
+      body: method == 'POST' ? JSON.stringify(body) : null,
     });
   },
 };
