@@ -11,7 +11,7 @@ export default function ProductCard({ product }: {
   return (
     <Link
       href={`/catalog/${product.subcategory.category?.slug || ''}/${product.subcategory.slug}/${product.slug}`}
-      className="min-w-40 lg:w-58 flex flex-col w-full"
+      className="min-w-40 lg:w-58 flex flex-col w-full lg:shrink-0"
     >
       <div className="relative aspect-[169/189] md:aspect-[230/306] bg-primary-muted">
         {product.image && (
@@ -37,7 +37,7 @@ export default function ProductCard({ product }: {
             <ProductCashback />
           </div>
           <div className="text-sm">
-            <ProductPrice price={product.price} oldPrice={1500} />
+            <ProductPrice price={product.price} oldPrice={product.oldPrice} />
           </div>
           <StarRating />
         </div>

@@ -11,6 +11,7 @@ export default function BrandsSearchFilter() {
             key={index}
             href={`#group-${index}`}
             className="whitespace-nowrap uppercase"
+            transition={false}
           >
             {filter}
           </Link>

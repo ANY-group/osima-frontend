@@ -7,6 +7,7 @@ export type ProductEntity = {
   slug: string,
   name: string,
   price: number,
+  oldPrice: number,
   quantity: number,
   inStock: boolean,
   description: string | null,
