@@ -2,7 +2,6 @@ import TimesIcon from "@/app/components/ui/icons/times-icon";
 import OverlayWrapper from "@/app/components/ui/overlay-wrapper";
 import Swipeable from "@/app/components/ui/swipeable";
 import { AnimatePresence, motion } from "motion/react";
-import AuthForm from "./auth-form";
 import AuthController from "./auth-controller";
 
 export default function AuthSidebar({ isOpen, close }: {

@@ -5,7 +5,7 @@ import AuthForm from "./auth-form";
 import AuthVerificationCodeForm from "./auth-verification-code-form";
 import authenticateByCode from "@/lib/auth/usecases/authenticate-by-code";
 import getVerificationCode from "@/lib/auth/usecases/get-verification-code";
-import { ValidationError } from "next/dist/compiled/amphtml-validator";
+import Cookies from 'js-cookie';
 
 enum AuthStep {
   signin,
@@ -15,6 +15,7 @@ enum AuthStep {
 export default function AuthController({ close }: {
   close: () => void,
 }) {
+
   const [step, setStep] = useState<AuthStep>(AuthStep.signin);
   const [phone, setPhone] = useState<string>('');
 
@@ -32,14 +33,15 @@ export default function AuthController({ close }: {
   };
 
   const sendAuthenticateRequest = async (code: string) => {
-    const errors = await authenticateByCode(phone, code);
+    const tokenOrErrors = await authenticateByCode(phone, code);
 
-    if (!errors) {
+    if (typeof tokenOrErrors === 'string') {
+      Cookies.set('access_token', tokenOrErrors, { expires: 365 });
       close();
       return;
     }
 
-    return errors;
+    return tokenOrErrors;
   };
 
   return (

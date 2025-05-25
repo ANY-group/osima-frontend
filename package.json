@@ -9,9 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/js-cookie": "^3.0.6",
     "autoprefixer": "^10.4.21",
+    "js-cookie": "^3.0.5",
     "motion": "^12.7.4",
     "next": "15.3.0",
+    "next-client-cookies": "^2.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

@@ -1,62 +1,48 @@
+import { getClientAccessToken } from "./get-client-access-token";
+import { getServerAccessToken } from "./get-server-access-token";
+
 const baseUrl: string = process.env.NEXT_PUBLIC_BACKEND_HOST ?? 'https://admin.vegas.anygroup.kz/api';
 
 type Api = {
-  accessToken: string | null;
-  setAccessToken: (accessToken: string) => void;
   request: (
     path: string,
     method?: string,
-    body?: any,
-    headers?: HeadersInit,
-    revalidate?: number,
-  ) => Promise<Response>;
-  authRequest: (
-    path: string,
-    method?: string,
-    body?: any,
+    body?: object,
     headers?: HeadersInit,
     revalidate?: number,
   ) => Promise<Response>;
 };
 
+async function getAccessToken(isServer: boolean): Promise<string | null> {
+  if (isServer) {
+    return getServerAccessToken();
+  } else {
+    return getClientAccessToken();
+  }
+}
+
 const api: Api = {
-  accessToken: null,
-
-  setAccessToken(accessToken: string) {
-    this.accessToken = accessToken;
-  },
-
-  authRequest(path, method, body: {}, headers = {}, revalidate = 0) {
-    return this.request(
-      path,
-      method = 'GET',
-      body,
-      headers = {
-        ...headers,
-        ...(this.accessToken ? {
-          "Authorization": `Bearer ${this.accessToken}`
-        } : {}),
-      },
-      revalidate,
-    );
-  },
-
-  request(
+  async request(
     path,
     method = 'GET',
     body = {},
     headers = {},
-    revalidate = 3,
+    revalidate = 10,
   ) {
-    const url = path.indexOf("http") == 0 ? path : `${baseUrl}/${path}`;
+    const url = (path.indexOf('/') == 0 || path.indexOf("http") == 0) ? path : `${baseUrl}/${path}`;
+
+    const accessToken = await getAccessToken(typeof window === 'undefined');
 
     return fetch(url, {
       next: { revalidate },
       method: method,
       headers: {
-        ...headers,
         "Accept": "application/json",
         "Content-Type": "application/json",
+        ...(accessToken ? {
+          "Authorization": `Bearer ${accessToken}`
+        } : {}),
+        ...headers,
       },
       body: method == 'POST' ? JSON.stringify(body) : null,
     });

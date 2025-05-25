@@ -8,6 +8,7 @@ export default async function getVerificationCode(phone: string): Promise<Valida
     try {
       return await res.json()
     } catch (e) {
+      console.error(e);
       return null;
     }
   }

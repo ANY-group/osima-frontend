@@ -70,6 +70,7 @@ export default function AuthVerificationCodeForm({
       <button
         type="button"
         className="p-3 w-full rounded-xl bg-divider text-text-accent text-center text-xs font-semibold uppercase"
+        onClick={resend}
       >
         Получить код повторно
       </button>

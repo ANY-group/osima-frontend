@@ -8,6 +8,7 @@ export default async function authenticateByCode(phone: string, code: string): P
     try {
       return await res.json();
     } catch (e) {
+      console.error(e);
       return null;
     }
   }
