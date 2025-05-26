@@ -53,7 +53,7 @@ const Cart = () => {
         ))}
       </div>
       <div className="p-5">
-          <CartInfoTable />
+        <CartInfoTable />
         <Link
           href="/checkout"
           className="block p-3 mt-4 w-full rounded-xl bg-success text-success-foreground text-center text-xs font-bold uppercase"
