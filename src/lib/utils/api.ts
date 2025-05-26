@@ -31,6 +31,8 @@ const api: Api = {
   ) {
     const url = (path.indexOf('/') == 0 || path.indexOf("http") == 0) ? path : `${baseUrl}/${path}`;
 
+    console.log("Sending request to: " + url);
+
     const accessToken = await getAccessToken(typeof window === 'undefined');
 
     return fetch(url, {

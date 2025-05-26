@@ -6,7 +6,6 @@ import AuthVerificationCodeForm from "./auth-verification-code-form";
 import authenticateByCode from "@/lib/auth/usecases/authenticate-by-code";
 import getVerificationCode from "@/lib/auth/usecases/get-verification-code";
 import { AuthContext } from "./auth-context";
-import { useRouter } from "next/navigation";
 
 enum AuthStep {
   signin,
@@ -16,7 +15,6 @@ enum AuthStep {
 export default function AuthController({ close }: {
   close: () => void,
 }) {
-  const router = useRouter();
   const { login } = useContext(AuthContext);
 
   const [step, setStep] = useState<AuthStep>(AuthStep.signin);

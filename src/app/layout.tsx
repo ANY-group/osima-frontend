@@ -4,6 +4,7 @@ import "./globals.css";
 import Loader from "./components/ui/loader";
 import AuthProvider from "./(footerless)/profile/components/auth-provider";
 import fetchUser from "@/lib/auth/usecases/fetch-user";
+import CartProvider from "./(default)/checkout/components/cart-provider";
 
 const roboto = Roboto_Flex({
   subsets: ["latin", "cyrillic"],
@@ -26,7 +27,9 @@ export default async function RootLayout({
     <html lang="ru" className="md:bg-foreground scroll-smooth">
       <body className={`antialiased ${roboto.className}`}>
         <AuthProvider initialUser={user}>
-          {children}
+          <CartProvider>
+            {children}
+          </CartProvider>
         </AuthProvider>
         <Loader />
       </body>
