@@ -35,22 +35,24 @@ export default function CartItem() {
               AESTURA Atobarrier365 hydro soothing cream
             </p>
           </Link>
-          <div className="flex items-center gap-2.5 lg:opacity-0 group-hover:opacity-100 transition-opacity">
-            <button
-              className="flex items-center justify-center h-8 w-8 rounded-lg bg-secondary-muted"
-              aria-label="Уменьшить количество товара в корзине"
-            >
-              <MinusIcon />
-            </button>
-            <span className="font-semibold">
-              1
-            </span>
-            <button
-              className="flex items-center justify-center h-8 w-8 rounded-lg bg-secondary-muted"
-              aria-label="Увеличить количество товара в корзине"
-            >
-              <PlusIcon />
-            </button>
+          <div className="flex items-center gap-2.5 lg:opacity-0 h-8 group-hover:opacity-100 transition-opacity">
+            <div className="flex items-center gap-2.5 h-full">
+              <button
+                className="flex items-center justify-center aspect-square h-full rounded-lg bg-secondary-muted hover:bg-success hover:text-background transition-colors"
+                aria-label="Уменьшить количество товара в корзине"
+              >
+                <MinusIcon />
+              </button>
+              <span className="font-semibold">
+                1
+              </span>
+              <button
+                className="flex items-center justify-center aspect-square h-full rounded-lg bg-secondary-muted hover:bg-success hover:text-background transition-colors"
+                aria-label="Увеличить количество товара в корзине"
+              >
+                <PlusIcon />
+              </button>
+            </div>
             <button className="max-lg:hidden" aria-label="Удалить товар из корзины">
               <TimesAltIcon />
             </button>

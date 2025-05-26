@@ -55,7 +55,7 @@ export default function CartProvider({ children }: {
       newCart.items.push({
         id: product.id,
         product: product,
-        quantity: quantity,
+        quantity: Math.min(product.quantity, quantity),
       });
     } else {
       newCart.items[index].quantity = quantity;

@@ -7,6 +7,9 @@ import Image from "next/image";
 import Link from "@/app/components/ui/link";
 import { ProductEntity } from "@/lib/catalog/types/product";
 import { BrandEntity } from "@/lib/catalog/types/brand";
+import { useContext } from "react";
+import ProductAddToCartButton from "./product-add-to-cart-button";
+import ProductAddToFavoritesButton from "./product-add-to-favorites-button";
 
 export default function ProductInfo({ product }: {
   product: ProductEntity,
@@ -144,13 +147,8 @@ const ProductMainInfo = ({ product }: {
       </div>
 
       <div className="flex gap-2 h-10">
-        <button className="flex-grow flex items-center justify-center gap-2 h-full sm:max-w-3xs rounded-lg bg-success text-sm  text-white">
-          <ShoppingBagIcon />
-          Добавить в корзину
-        </button>
-        <button className="flex items-center justify-center h-full aspect-square rounded-lg bg-secondary-muted" aria-label="Добавить в избранные">
-          <HeartOutlinedIcon />
-        </button>
+        <ProductAddToCartButton product={product} />
+        <ProductAddToFavoritesButton product={product} />
       </div>
 
       <div className="text-sm text-text-secondary">

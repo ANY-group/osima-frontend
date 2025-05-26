@@ -8,7 +8,7 @@ export default async function fetchProduct(
   categorySlug: string,
 ): Promise<ProductEntity> {
 
-  const res = await api.request('catalog/products?' + new URLSearchParams({
+  const res = await api.request('catalog/product?' + new URLSearchParams({
     category: categorySlug || '',
     subcategory: subcategorySlug || '',
     product: productSlug || '',
