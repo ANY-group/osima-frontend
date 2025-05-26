@@ -3,9 +3,13 @@
 import Subheader from "@/app/components/subheader";
 import ShieldCheckIcon from "@/app/components/ui/icons/shield-check-icon";
 import UserCircleAltIcon from "@/app/components/ui/icons/user-circle-alt-icon";
-import { FormEventHandler, HTMLInputAutoCompleteAttribute, HTMLInputTypeAttribute, useEffect, useRef, useState } from "react";
+import { FormEventHandler, HTMLInputAutoCompleteAttribute, HTMLInputTypeAttribute, useContext, useEffect, useRef, useState } from "react";
+import { AuthContext } from "../components/auth-context";
+import { maskString } from "@/lib/utils/helpers";
 
 export default function ProfileInfoPage() {
+  const { user } = useContext(AuthContext);
+
   return (
     <main className="w-full">
       <section className="md:hidden py-3">
@@ -20,7 +24,7 @@ export default function ProfileInfoPage() {
           type="text"
           name="tel"
           label="Телефон"
-          value="87753028045"
+          value={maskString(user!.phone)}
           readonly
         />
         <InlineForm
@@ -28,7 +32,7 @@ export default function ProfileInfoPage() {
           name="email"
           autoComplete="email"
           label="Почта"
-          value={null}
+          value={user!.email}
           placeholder="Введите вашу почту"
         />
 
@@ -43,14 +47,14 @@ export default function ProfileInfoPage() {
           name="name"
           autoComplete="given-name"
           label="Фамилия Имя"
-          value={null}
+          value={user!.name}
           placeholder="Введите ваше имя"
         />
         <InlineForm
           type="text"
           name="birth_date"
           label="Дата рождения"
-          value={null}
+          value={user!.birthDate}
           placeholder="дд.мм.гггг"
         />
 

@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import AuthForm from "./auth-form";
 import AuthVerificationCodeForm from "./auth-verification-code-form";
 import authenticateByCode from "@/lib/auth/usecases/authenticate-by-code";
 import getVerificationCode from "@/lib/auth/usecases/get-verification-code";
-import Cookies from 'js-cookie';
+import { AuthContext } from "./auth-context";
+import { useRouter } from "next/navigation";
 
 enum AuthStep {
   signin,
@@ -15,6 +16,8 @@ enum AuthStep {
 export default function AuthController({ close }: {
   close: () => void,
 }) {
+  const router = useRouter();
+  const { login } = useContext(AuthContext);
 
   const [step, setStep] = useState<AuthStep>(AuthStep.signin);
   const [phone, setPhone] = useState<string>('');
@@ -36,8 +39,9 @@ export default function AuthController({ close }: {
     const tokenOrErrors = await authenticateByCode(phone, code);
 
     if (typeof tokenOrErrors === 'string') {
-      Cookies.set('access_token', tokenOrErrors, { expires: 365 });
+      await login(tokenOrErrors);
       close();
+      router.push('/profile');
       return;
     }
 

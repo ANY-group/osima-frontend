@@ -6,10 +6,21 @@ import GiftIcon from "@/app/components/ui/icons/gift-icon";
 import LogoutIcon from "@/app/components/ui/icons/logout-icon";
 import UserIcon from "@/app/components/ui/icons/user-icon";
 import Link from "@/app/components/ui/link";
-import { usePathname } from "next/navigation";
-import { MouseEventHandler } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { MouseEventHandler, useContext } from "react";
+import { AuthContext } from "./auth-context";
+import { maskString } from "@/lib/utils/helpers";
 
 export default function ProfileNavigation() {
+  const router = useRouter();
+
+  const { user, logout } = useContext(AuthContext);
+
+  const logoutFn = () => {
+    logout();
+    router.replace('/');
+  }
+
   return (
     <nav className="max-md:py-4 min-w-2xs max-md:w-full max-md:h-full">
       <NavList>
@@ -18,8 +29,7 @@ export default function ProfileNavigation() {
             <CameraIcon />
           </div>
           <p>
-            Здравствуйте,<br />
-            Nurdaulet
+            Здравствуйте{user && (<>,<br />{user.name || maskString(user.phone)}</>)}
           </p>
         </NavListItem>
       </NavList>
@@ -44,7 +54,7 @@ export default function ProfileNavigation() {
         </NavListItem>
       </NavList>
       <NavList>
-        <NavListItem href="#" className="text-danger">
+        <NavListItem href="#" className="text-danger" onClick={logoutFn}>
           <LogoutIcon />
           Выйти
         </NavListItem>

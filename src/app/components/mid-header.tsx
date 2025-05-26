@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useOnRouteChange } from "../hooks/route_change";
 import BurgetIcon from "./ui/icons/burger-icon";
 import Link from "./ui/link";
@@ -15,11 +15,13 @@ import AuthSidebar from "../(footerless)/profile/components/auth-sidebar";
 import SearchIcon from "./ui/icons/search-icon";
 import SearchSidebar from "../(default)/catalog/components/search-sidebar";
 import { CategoryEntity } from "@/lib/catalog/types/category";
+import { AuthContext } from "../(footerless)/profile/components/auth-context";
 
 export default function MidHeader({ categories }: {
   categories: Array<CategoryEntity>,
 }) {
   const pathname = usePathname();
+  const { user } = useContext(AuthContext);
 
   const [isCategoriesSidebarOpen, setCategoriesSidebarOpen] = useState<boolean>(false);
   const [isCartPopoverOpen, setCartPopoverOpen] = useState<boolean>(false);
@@ -86,9 +88,9 @@ export default function MidHeader({ categories }: {
             <ShoppingCartIcon />
           </Link>
           <Link
-            href="/profile"
-            aria-label="Профиль"
-            onClick={onUserIconClick}
+            href={user ? "/profile" : "#"}
+            aria-label={user ? "Профиль" : "Авторизоваться"}
+            onClick={user ? undefined : onUserIconClick}
             className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted"
           >
             <UserCircleIcon />

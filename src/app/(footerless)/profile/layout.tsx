@@ -1,11 +1,19 @@
+import fetchUser from "@/lib/auth/usecases/fetch-user";
 import Header from "../../components/header";
 import ProfileNavigation from "./components/profile-navigation";
+import { redirect } from "next/navigation";
 
-export default function DefaultLayout({
+export default async function DefaultLayout({
   children,
 }: {
   children: React.ReactNode,
 }) {
+  const user = await fetchUser();
+
+  if (!user) {
+    redirect('/');
+  }
+
   return (
     <div className="min-h-svh flex flex-col">
       <Header />
