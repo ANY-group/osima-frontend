@@ -12,5 +12,5 @@ type AuthState = {
 export const AuthContext = createContext<AuthState>({
   user: null,
   logout: async () => { },
-  login: async (token) => { },
+  login: async () => { },
 });
