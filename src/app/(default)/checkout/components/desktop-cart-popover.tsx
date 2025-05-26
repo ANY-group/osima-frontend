@@ -53,12 +53,10 @@ const Cart = () => {
         ))}
       </div>
       <div className="p-5">
-        <div className="mb-4">
           <CartInfoTable />
-        </div>
         <Link
           href="/checkout"
-          className="block p-3 w-full rounded-xl bg-success text-success-foreground text-center text-xs font-bold uppercase"
+          className="block p-3 mt-4 w-full rounded-xl bg-success text-success-foreground text-center text-xs font-bold uppercase"
         >
           Оформить заказ
         </Link>

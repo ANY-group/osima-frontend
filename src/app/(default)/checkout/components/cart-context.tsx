@@ -8,6 +8,9 @@ type CartState = {
   cart: CartEntity,
   setItemQuantity: (product: ProductEntity, quantity: number) => void,
   getItemQuantity: (product: ProductEntity) => number,
+  getTotal: () => number,
+  getItemsTotal: () => number,
+  getDeliveryCost: () => number,
 };
 
 export const CartContext = createContext<CartState>({
@@ -16,4 +19,7 @@ export const CartContext = createContext<CartState>({
   },
   setItemQuantity: () => { },
   getItemQuantity: () => 0,
+  getTotal: () => 0,
+  getItemsTotal: () => 0,
+  getDeliveryCost: () => 0,
 });

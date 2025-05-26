@@ -72,7 +72,11 @@ export default function CartProvider({ children }: {
     return index == -1 ? 0 : cart.items[index].quantity;
   };
 
-  const value = { cart, setItemQuantity, getItemQuantity };
+  const getItemsTotal = () => cart.items.reduce((acc, item) => item.product.price * item.quantity, 0);
+  const getDeliveryCost = () => 0;
+  const getTotal = () => getDeliveryCost() + getItemsTotal();
+
+  const value = { cart, setItemQuantity, getItemQuantity, getTotal, getItemsTotal, getDeliveryCost };
 
   return (
     <CartContext.Provider value={value}>

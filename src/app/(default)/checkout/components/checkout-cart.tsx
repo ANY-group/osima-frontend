@@ -12,9 +12,7 @@ export default function CheckoutCart() {
       <div className="mb-6 rounded-lg bg-white">
         <Cart />
       </div>
-      <div className={`${false && 'text-secondary'}`}>
-        <CartInfoTable />
-      </div>
+      <CartInfoTable />
     </div>
   );
 }
