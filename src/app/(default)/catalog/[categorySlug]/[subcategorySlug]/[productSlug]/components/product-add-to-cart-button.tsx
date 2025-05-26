@@ -2,7 +2,6 @@
 
 import { CartContext } from "@/app/(default)/checkout/components/cart-context";
 import CartItemQuantityController from "@/app/(default)/checkout/components/cart-item-quantity-controller";
-import PlusIcon from "@/app/components/ui/icons/plus-icon";
 import ShoppingBagIcon from "@/app/components/ui/icons/shopping-bag-icon";
 import { ProductEntity } from "@/lib/catalog/types/product";
 import { useContext, useEffect } from "react";

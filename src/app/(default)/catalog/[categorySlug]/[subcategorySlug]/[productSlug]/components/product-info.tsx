@@ -1,13 +1,10 @@
 import ProductPrice from "@/app/(default)/catalog/components/product-price";
 import StarRating from "@/app/(default)/catalog/components/star-rating";
 import CheckIcon from "@/app/components/ui/icons/check-icon";
-import HeartOutlinedIcon from "@/app/components/ui/icons/heart-outlined-icon";
-import ShoppingBagIcon from "@/app/components/ui/icons/shopping-bag-icon";
 import Image from "next/image";
 import Link from "@/app/components/ui/link";
 import { ProductEntity } from "@/lib/catalog/types/product";
 import { BrandEntity } from "@/lib/catalog/types/brand";
-import { useContext } from "react";
 import ProductAddToCartButton from "./product-add-to-cart-button";
 import ProductAddToFavoritesButton from "./product-add-to-favorites-button";
 
