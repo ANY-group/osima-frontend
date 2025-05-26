@@ -11,7 +11,7 @@ export type ProductEntity = {
   quantity: number,
   inStock: boolean,
   description: string | null,
-  image: string | null,
+  image: string,
   images: Array<string>,
   subcategory: SubcategoryEntity,
   brand: BrandEntity | null,

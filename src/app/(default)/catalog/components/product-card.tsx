@@ -16,14 +16,12 @@ export default function ProductCard({ product }: {
         className="flex-grow flex flex-col w-full"
       >
         <div className="relative aspect-[169/189] md:aspect-[230/306] bg-primary-muted">
-          {product.image && (
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              className="object-cover mix-blend-multiply"
-            />
-          )}
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover mix-blend-multiply"
+          />
         </div>
         <div className="flex-grow flex flex-col justify-between gap-2 py-3">
           <div className="flex flex-col gap-2">

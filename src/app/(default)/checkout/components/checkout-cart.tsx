@@ -1,6 +1,10 @@
+'use client';
+
 import CartInfoTable from "./cart-info-table";
 import CartEmpty from "./cart-empty";
 import CartItem from "./cart-item";
+import { useContext } from "react";
+import { CartContext } from "./cart-context";
 
 export default function CheckoutCart() {
   return (
@@ -16,17 +20,18 @@ export default function CheckoutCart() {
 }
 
 const Cart = () => {
-  const items = [...Array(2)];
+  const { cart } = useContext(CartContext);
 
-  if (items.length == 0) {
+  if (cart.items.length == 0) {
     return <CartEmpty />
   }
 
   return (
     <div className="overflow-y-auto">
-      {items.map((item, index) => (
+      {cart.items.map((item, index) => (
         <CartItem
           key={index}
+          item={item}
         />
       ))}
     </div>

@@ -1,8 +1,12 @@
+'use client';
+
 import { AnimatePresence, motion } from "framer-motion"
 import Link from "@/app/components/ui/link";
 import CartInfoTable from "./cart-info-table";
 import CartItem from "./cart-item";
 import CartEmpty from "./cart-empty";
+import { useContext } from "react";
+import { CartContext } from "./cart-context";
 
 export default function DesktopCartPopover({ isOpen }: {
   isOpen: boolean,
@@ -32,18 +36,19 @@ export default function DesktopCartPopover({ isOpen }: {
 }
 
 const Cart = () => {
-  const items = [...Array(4)];
+  const { cart } = useContext(CartContext);
 
-  if (items.length == 0) {
+  if (cart.items.length == 0) {
     return <CartEmpty />
   }
 
   return (
     <div className="flex flex-col divide-y divide-divider max-h-125">
       <div className="overflow-y-auto">
-        {items.map((item, index) => (
+        {cart.items.map((item, index) => (
           <CartItem
             key={index}
+            item={item}
           />
         ))}
       </div>
