@@ -42,7 +42,7 @@ export default function AuthVerificationCodeForm({
 
   return (
     <form onSubmit={onSubmit}>
-      <p className="text-sm sm:min-w-125">
+      <p className="text-sm">
         Мы отправили код подтверждения на номер
       </p>
       <p className="font-semibold">

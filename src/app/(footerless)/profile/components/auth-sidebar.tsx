@@ -19,7 +19,7 @@ export default function AuthSidebar({ isOpen, close }: {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ ease: "easeInOut", duration: 0.2 }}
-              className="relative float-right sm:max-w-md md:max-w-xl lg:max-w-2xl h-full bg-background"
+              className="relative float-right sm:max-w-md md:max-w-xl lg:max-w-2xl h-full bg-background w-full"
             >
               <button
                 className="absolute top-5 right-5 p-2 rounded-full"
