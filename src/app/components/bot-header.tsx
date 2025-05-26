@@ -16,7 +16,7 @@ export default function BotHeader({ categories }: { categories: Array<CategoryEn
       className="relative max-md:hidden"
       onMouseLeave={close}
     >
-      <nav className="relative flex items-center justify-center gap-8 py-6 border-b bg-background border-divider">
+      <nav className="relative flex flex-wrap items-center justify-center gap-8 py-6 border-b bg-background border-divider">
         {categories.map((category, index) => (
           <div key={index} onMouseOver={() => setOpenCategory(category)}>
             <CategoryLink
