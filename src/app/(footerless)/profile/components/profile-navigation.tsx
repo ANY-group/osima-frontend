@@ -6,20 +6,18 @@ import GiftIcon from "@/app/components/ui/icons/gift-icon";
 import LogoutIcon from "@/app/components/ui/icons/logout-icon";
 import UserIcon from "@/app/components/ui/icons/user-icon";
 import Link from "@/app/components/ui/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { MouseEventHandler, useContext } from "react";
 import { AuthContext } from "./auth-context";
 import { maskString } from "@/lib/utils/helpers";
 
 export default function ProfileNavigation() {
-  const router = useRouter();
 
   const { user, logout } = useContext(AuthContext);
 
-  const logoutFn = () => {
+  const logoutFn: MouseEventHandler = () => {
     logout();
-    router.replace('/');
-  }
+  };
 
   return (
     <nav className="max-md:py-4 min-w-2xs max-md:w-full max-md:h-full">
@@ -54,7 +52,7 @@ export default function ProfileNavigation() {
         </NavListItem>
       </NavList>
       <NavList>
-        <NavListItem href="#" className="text-danger" onClick={logoutFn}>
+        <NavListItem href="/" className="text-danger" onClick={logoutFn}>
           <LogoutIcon />
           Выйти
         </NavListItem>

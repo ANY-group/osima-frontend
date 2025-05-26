@@ -10,6 +10,10 @@ import { maskString } from "@/lib/utils/helpers";
 export default function ProfileInfoPage() {
   const { user } = useContext(AuthContext);
 
+  if (!user) {
+    return;
+  }
+
   return (
     <main className="w-full">
       <section className="md:hidden py-3">
@@ -24,7 +28,7 @@ export default function ProfileInfoPage() {
           type="text"
           name="tel"
           label="Телефон"
-          value={maskString(user!.phone)}
+          value={maskString(user.phone)}
           readonly
         />
         <InlineForm
@@ -32,7 +36,7 @@ export default function ProfileInfoPage() {
           name="email"
           autoComplete="email"
           label="Почта"
-          value={user!.email}
+          value={user.email}
           placeholder="Введите вашу почту"
         />
 
@@ -47,14 +51,14 @@ export default function ProfileInfoPage() {
           name="name"
           autoComplete="given-name"
           label="Фамилия Имя"
-          value={user!.name}
+          value={user.name}
           placeholder="Введите ваше имя"
         />
         <InlineForm
           type="text"
           name="birth_date"
           label="Дата рождения"
-          value={user!.birthDate}
+          value={user.birthDate}
           placeholder="дд.мм.гггг"
         />
 
