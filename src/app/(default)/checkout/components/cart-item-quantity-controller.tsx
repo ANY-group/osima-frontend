@@ -15,24 +15,40 @@ export default function CartItemQuantityController({ product }: {
 
   return (
     <div className="flex items-center gap-2.5 h-full">
-      <button
-        className="flex items-center justify-center aspect-square h-full rounded-lg bg-secondary-muted hover:bg-success hover:text-background transition-colors"
-        aria-label="Уменьшить количество товара в корзине"
+      <ControllerButton
+        label="Уменьшить количество товара в корзине"
         onClick={() => setItemQuantity(product, cnt - 1)}
       >
         <MinusIcon />
-      </button>
+      </ControllerButton>
       <span className="font-semibold">
         {cnt}
       </span>
-      <button
-        className="flex items-center justify-center aspect-square h-full rounded-lg bg-secondary-muted hover:bg-success hover:text-background transition-colors"
-        aria-label="Увеличить количество товара в корзине"
+      <ControllerButton
+        label="Увеличить количество товара в корзине"
         onClick={() => setItemQuantity(product, cnt + 1)}
         disabled={cnt >= product.quantity}
       >
         <PlusIcon />
-      </button>
+      </ControllerButton>
     </div>
+  );
+}
+
+const ControllerButton = ({ onClick, label, disabled = false, children }: {
+  onClick: () => void,
+  label: string,
+  disabled?: boolean,
+  children: React.ReactNode,
+}) => {
+  return (
+    <button
+      className="flex items-center justify-center aspect-square h-full rounded-lg bg-secondary-muted hover:bg-success hover:text-background transition-colors disabled:bg-disabled/20"
+      aria-label={label}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {children}
+    </button>
   );
 }

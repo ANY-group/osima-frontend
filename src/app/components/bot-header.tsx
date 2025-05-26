@@ -13,12 +13,12 @@ export default function BotHeader({ categories }: { categories: Array<CategoryEn
 
   return (
     <div
-      className="relative hidden md:block"
+      className="relative max-md:hidden"
       onMouseLeave={close}
     >
       <nav className="relative flex items-center justify-center gap-8 py-6 border-b bg-background border-divider">
         {categories.map((category, index) => (
-          <div key={index} onMouseOver={() => setOpenCategory(category)} >
+          <div key={index} onMouseOver={() => setOpenCategory(category)}>
             <CategoryLink
               name={category.name}
               url={`/catalog/${category.slug}`}
@@ -51,7 +51,7 @@ const CategoryLink = ({ name, url, close, isActive = false }: {
   return (
     <Link
       href={url}
-      className="inline-block relative"
+      className="inline-block relative whitespace-nowrap"
       onClick={() => {
         setTimeout(() => {
           close?.call(null);

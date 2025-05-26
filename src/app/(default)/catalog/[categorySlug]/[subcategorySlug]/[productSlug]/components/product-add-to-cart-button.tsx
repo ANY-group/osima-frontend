@@ -22,9 +22,10 @@ export default function ProductAddToCartButton({ product }: {
       <button
         className="flex-grow flex items-center justify-center gap-2 h-full sm:max-w-3xs rounded-lg bg-success text-sm  text-white"
         onClick={() => setItemQuantity(product, 1)}
+        disabled={product.quantity < 1}
       >
         <ShoppingBagIcon />
-        Добавить в корзину
+        {product.quantity > 0 ? 'Добавить в корзину' : 'Нет в наличии'}
       </button>
     );
   }

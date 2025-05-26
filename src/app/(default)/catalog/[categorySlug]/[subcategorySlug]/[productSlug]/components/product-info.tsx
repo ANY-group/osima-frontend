@@ -7,6 +7,7 @@ import { ProductEntity } from "@/lib/catalog/types/product";
 import { BrandEntity } from "@/lib/catalog/types/brand";
 import ProductAddToCartButton from "./product-add-to-cart-button";
 import ProductAddToFavoritesButton from "./product-add-to-favorites-button";
+import TimesIcon from "@/app/components/ui/icons/times-icon";
 
 export default function ProductInfo({ product }: {
   product: ProductEntity,
@@ -124,8 +125,18 @@ const ProductMainInfo = ({ product }: {
 
       <div className="flex gap-7">
         <StarRating />
-        <div className="flex items-center gap-1 text-sm text-accent-green">
-          <CheckIcon /> Есть в наличии
+        <div className="flex items-center gap-1 text-sm">
+          {
+            (product.quantity > 0) ? (
+              <span className="contents text-accent-green">
+                <CheckIcon /> Есть в наличии
+              </span>
+            ) : (
+              <span className="contents text-danger">
+                <TimesIcon /> Нет в наличии
+              </span>
+            )
+          }
         </div>
       </div>
 
@@ -143,7 +154,7 @@ const ProductMainInfo = ({ product }: {
         </Link>
       </div>
 
-      <div className="flex gap-2 h-10">
+      <div className="flex justify-between gap-2 h-10">
         <ProductAddToCartButton product={product} />
         <ProductAddToFavoritesButton product={product} />
       </div>
