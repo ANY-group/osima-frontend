@@ -154,7 +154,7 @@ const ProductMainInfo = ({ product }: {
         </Link>
       </div>
 
-      <div className="flex justify-between gap-2 h-10">
+      <div className="flex max-sm:justify-between gap-2 h-10">
         <ProductAddToCartButton product={product} />
         <ProductAddToFavoritesButton product={product} />
       </div>
