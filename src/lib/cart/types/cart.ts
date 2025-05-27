@@ -6,6 +6,7 @@ export type CartEntity = {
   name?: string,
   email?: string,
   deliveryMethod?: string,
+  paymentMethod?: string,
   cityId?: number,
   addressLine1?: string,
   addressLine2?: string,

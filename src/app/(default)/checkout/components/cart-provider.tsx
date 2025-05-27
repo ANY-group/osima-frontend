@@ -7,12 +7,15 @@ import { ProductEntity } from "@/lib/catalog/types/product";
 import fetchCart from "@/lib/cart/usecases/fetchCart";
 import { LocalCartItemEntity } from "@/lib/cart/types/local-cart-item";
 import { DeliveryMethodEntity } from "@/lib/cart/types/delivery-method";
-import fetchDeliveryMethods from "@/lib/cart/usecases/fetchDeliveryMethods";
+import fetchDeliveryMethods from "@/lib/cart/usecases/fetch-delivery-methods";
+import fetchPaymentMethods from "@/lib/cart/usecases/fetch-payment-methods";
+import { PaymentMethodEntity } from "@/lib/cart/types/payment-method";
 
 export default function CartProvider({ children }: {
   children: React.ReactNode,
 }) {
   const [deliveryMethods, setDeliveryMethods] = useState<Array<DeliveryMethodEntity>>([]);
+  const [paymentMethods, setPaymentMethods] = useState<Array<PaymentMethodEntity>>([]);
 
   const [cart, setCart] = useState<CartEntity>({
     items: [],
@@ -31,6 +34,7 @@ export default function CartProvider({ children }: {
     });
 
     updateDeliveryMethods();
+    updatePaymentMethods();
   }, []);
 
   // Store cart in localStorage
@@ -49,6 +53,12 @@ export default function CartProvider({ children }: {
   const updateDeliveryMethods = () => {
     fetchDeliveryMethods().then((deliveryMethods) => {
       setDeliveryMethods(deliveryMethods);
+    });
+  };
+
+  const updatePaymentMethods = () => {
+    fetchPaymentMethods().then((paymentMethods) => {
+      setPaymentMethods(paymentMethods);
     });
   };
 
@@ -94,9 +104,13 @@ export default function CartProvider({ children }: {
   const value = {
     cart,
     deliveryMethods,
+    paymentMethods,
+    // Cart info
     setCartInfo,
+    // Cart item
     setItemQuantity,
     getItemQuantity,
+    // Helper getters
     getTotal,
     getItemsTotal,
     getDeliveryCost,
