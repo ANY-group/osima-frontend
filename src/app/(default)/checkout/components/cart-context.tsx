@@ -1,11 +1,13 @@
 'use client';
 
 import { CartEntity } from "@/lib/cart/types/cart";
+import { DeliveryMethodEntity } from "@/lib/cart/types/delivery-method";
 import { ProductEntity } from "@/lib/catalog/types/product";
 import { createContext } from "react";
 
 type CartState = {
   cart: CartEntity,
+  deliveryMethods: Array<DeliveryMethodEntity>,
   setCartInfo: (key: string, value: string) => void,
   setItemQuantity: (product: ProductEntity, quantity: number) => void,
   getItemQuantity: (product: ProductEntity) => number,
@@ -18,6 +20,7 @@ export const CartContext = createContext<CartState>({
   cart: {
     items: [],
   },
+  deliveryMethods: [],
   setCartInfo: () => { },
   setItemQuantity: () => { },
   getItemQuantity: () => 0,

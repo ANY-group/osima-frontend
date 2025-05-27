@@ -6,10 +6,13 @@ import { CartEntity } from "@/lib/cart/types/cart";
 import { ProductEntity } from "@/lib/catalog/types/product";
 import fetchCart from "@/lib/cart/usecases/fetchCart";
 import { LocalCartItemEntity } from "@/lib/cart/types/local-cart-item";
+import { DeliveryMethodEntity } from "@/lib/cart/types/delivery-method";
+import fetchDeliveryMethods from "@/lib/cart/usecases/fetchDeliveryMethods";
 
 export default function CartProvider({ children }: {
   children: React.ReactNode,
 }) {
+  const [deliveryMethods, setDeliveryMethods] = useState<Array<DeliveryMethodEntity>>([]);
 
   const [cart, setCart] = useState<CartEntity>({
     items: [],
@@ -17,18 +20,17 @@ export default function CartProvider({ children }: {
 
   // Read cart from localStorage
   useEffect(() => {
-    try {
-      const rawCart = JSON.parse(localStorage.getItem('cart') || '{}');
-      const localCartItems: Array<LocalCartItemEntity> = rawCart.items;
-      fetchCart(localCartItems).then((items) => {
-        setCart({
-          ...rawCart,
-          items: items,
-        });
+    const rawCart = JSON.parse(localStorage.getItem('cart') || '{}');
+    const localCartItems: Array<LocalCartItemEntity> = rawCart.items;
+
+    fetchCart(localCartItems).then((items) => {
+      setCart({
+        ...rawCart,
+        items: items,
       });
-    } catch (e) {
-      console.error(e);
-    }
+    });
+
+    updateDeliveryMethods();
   }, []);
 
   // Store cart in localStorage
@@ -40,7 +42,15 @@ export default function CartProvider({ children }: {
         quantity: item.quantity,
       })),
     }));
+
+    // updateDeliveryMethods();
   }, [cart]);
+
+  const updateDeliveryMethods = () => {
+    fetchDeliveryMethods().then((deliveryMethods) => {
+      setDeliveryMethods(deliveryMethods);
+    });
+  };
 
   const findItemIndex = (product: ProductEntity): number => {
     return cart.items.findIndex((item) => item.id == product.id);
@@ -76,11 +86,21 @@ export default function CartProvider({ children }: {
     const newCart = { ...cart, [key]: value };
     setCart(newCart);
   };
+
   const getItemsTotal = () => cart.items.reduce((acc, item) => item.product.price * item.quantity, 0);
   const getDeliveryCost = () => 0;
   const getTotal = () => getDeliveryCost() + getItemsTotal();
 
-  const value = { cart, setCartInfo, setItemQuantity, getItemQuantity, getTotal, getItemsTotal, getDeliveryCost };
+  const value = {
+    cart,
+    deliveryMethods,
+    setCartInfo,
+    setItemQuantity,
+    getItemQuantity,
+    getTotal,
+    getItemsTotal,
+    getDeliveryCost,
+  };
 
   return (
     <CartContext.Provider value={value}>

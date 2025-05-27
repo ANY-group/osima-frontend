@@ -5,4 +5,9 @@ export type CartEntity = {
   phone?: string,
   name?: string,
   email?: string,
+  deliveryMethod?: string,
+  cityId?: number,
+  addressLine1?: string,
+  addressLine2?: string,
+  postalCode?: string,
 };
