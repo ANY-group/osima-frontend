@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useContext, useState } from "react";
 import { useOnRouteChange } from "../hooks/route_change";
-import BurgetIcon from "./ui/icons/burger-icon";
+import BurgerIcon from "./ui/icons/burger-icon";
 import Link from "./ui/link";
 import LogoIcon from "./ui/icons/logo-icon";
 import ShoppingCartIcon from "./ui/icons/shopping-cart-icon";
@@ -59,10 +59,10 @@ export default function MidHeader({ categories }: {
             className="flex md:hidden items-center gap-2"
             aria-label="Каталог"
           >
-            <BurgetIcon />
+            <BurgerIcon />
           </button>
           <Link href="/catalog" className="hidden md:flex items-center gap-2">
-            <BurgetIcon />
+            <BurgerIcon />
             Каталог
           </Link>
           <SearchInput />
