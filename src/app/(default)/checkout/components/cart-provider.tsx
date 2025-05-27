@@ -21,7 +21,6 @@ export default function CartProvider({ children }: {
       const rawCart = JSON.parse(localStorage.getItem('cart') || '{}');
       const localCartItems: Array<LocalCartItemEntity> = rawCart.items;
       fetchCart(localCartItems).then((items) => {
-        console.log(items);
         setCart({
           ...rawCart,
           items: items,

@@ -4,8 +4,6 @@ import { UserEntity } from "../types/user";
 export default async function fetchUser(): Promise<UserEntity | null> {
   const res = await api.request('profile');
 
-  console.log(res);
-
   if (!res.ok) {
     return null;
   }

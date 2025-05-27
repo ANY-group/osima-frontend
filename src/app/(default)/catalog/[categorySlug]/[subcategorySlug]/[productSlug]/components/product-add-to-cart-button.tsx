@@ -13,10 +13,6 @@ export default function ProductAddToCartButton({ product }: {
 
   const cnt = getItemQuantity(product);
 
-  useEffect(() => {
-    console.log("Item quantity: " + cnt);
-  }, [cnt]);
-
   if (cnt == 0) {
     return (
       <button
