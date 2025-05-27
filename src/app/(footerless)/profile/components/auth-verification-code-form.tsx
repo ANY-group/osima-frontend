@@ -1,27 +1,27 @@
-import { ValidationError } from "next/dist/compiled/amphtml-validator";
+import ValidationError from "@/lib/exceptions/validation-error";
 import { ChangeEventHandler, FormEventHandler, useState } from "react";
 
 export default function AuthVerificationCodeForm({
   phone,
+  error,
   authenticate,
   resend,
   back,
 }: {
   phone: string,
-  authenticate: (code: string) => Promise<null | ValidationError>,
-  resend: () => Promise<null | ValidationError>,
+  error: ValidationError | null,
+  authenticate: (code: string) => Promise<void>,
+  resend: () => Promise<void>,
   back: () => void,
 }) {
   const [isLoading, setLoading] = useState<boolean>(false);
-  const [errors, setErrors] = useState<ValidationError | null>(null);
 
   const submitForm = async (form: HTMLFormElement) => {
     const formData = new FormData(form);
     const code = formData.get('code')?.toString() || '';
 
     setLoading(true);
-    setErrors(null);
-    setErrors(await authenticate(code));
+    await authenticate(code);
     setLoading(false);
   };
 
@@ -64,7 +64,7 @@ export default function AuthVerificationCodeForm({
           disabled={isLoading}
         />
         <p className="my-1 text-sm text-danger">
-          {errors?.errors?.code}
+          {error?.errors?.code}
         </p>
       </div>
       <button

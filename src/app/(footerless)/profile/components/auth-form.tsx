@@ -1,15 +1,15 @@
 'use client';
 
+import ValidationError from "@/lib/exceptions/validation-error";
 import { maskString } from "@/lib/utils/helpers";
-import { ValidationError } from "next/dist/compiled/amphtml-validator";
 import { ChangeEventHandler, FormEventHandler, useState } from "react";
 
-export default function AuthForm({ phone, getVerificationCode }: {
+export default function AuthForm({ phone, error, getVerificationCode }: {
   phone: string,
-  getVerificationCode: (phone: string) => Promise<null | ValidationError>,
+  error: ValidationError | null,
+  getVerificationCode: (phone: string) => Promise<void>,
 }) {
   const [isLoading, setLoading] = useState<boolean>(false);
-  const [errors, setErrors] = useState<ValidationError>(null);
   const [value, setValue] = useState<string>(phone);
 
   const onInput: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -22,9 +22,8 @@ export default function AuthForm({ phone, getVerificationCode }: {
     const formData = new FormData(e.target as HTMLFormElement);
     const phone = formData.get('phone')?.toString() || '';
 
-    setErrors(null);
     setLoading(true);
-    setErrors(await getVerificationCode(phone));
+    await getVerificationCode(phone);
     setLoading(false);
   };
 
@@ -44,7 +43,7 @@ export default function AuthForm({ phone, getVerificationCode }: {
           disabled={isLoading}
         />
         <p className="my-1 text-sm text-danger">
-          {errors?.errors?.phone}
+          {error?.errors?.phone}
         </p>
       </div>
       <button

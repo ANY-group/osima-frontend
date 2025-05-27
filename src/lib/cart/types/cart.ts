@@ -7,7 +7,7 @@ export type CartEntity = {
   email?: string,
   deliveryMethod?: string,
   paymentMethod?: string,
-  cityId?: number,
+  city?: string,
   addressLine1?: string,
   addressLine2?: string,
   postalCode?: string,

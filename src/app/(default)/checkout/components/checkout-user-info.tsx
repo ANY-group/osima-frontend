@@ -6,23 +6,24 @@ import { ChangeEventHandler, useContext, useEffect, useState } from "react";
 import { CartContext } from "./controllers/cart-context";
 import authenticateByCode from "@/lib/auth/usecases/authenticate-by-code";
 import getVerificationCode from "@/lib/auth/usecases/get-verification-code";
-import { ValidationError } from "@/lib/catalog/types/validation-error";
+import ValidationError from "@/lib/exceptions/validation-error";
 
 export default function CheckoutUserInfo() {
   const { user, login } = useContext(AuthContext);
-  const { cart, setCartInfo } = useContext(CartContext);
-  const [errors, setErrors] = useState<ValidationError | null>(null);
+  const { cart, setCartInfo, error, setError } = useContext(CartContext);
 
   const [isCodeSent, setCodeSent] = useState<boolean>(false);
 
   const requestVerificationCode = async (phone?: string) => {
-    setErrors(null);
-    const errors = await getVerificationCode(phone || cart.phone!);
+    setError(null);
 
-    if (errors == null) {
+    try {
+      await getVerificationCode(phone || cart.phone!)
       setCodeSent(true);
-    } else {
-      setErrors(errors);
+    } catch (e) {
+      if (e instanceof ValidationError) {
+        setError(e);
+      }
     }
   };
 
@@ -31,16 +32,16 @@ export default function CheckoutUserInfo() {
       return;
     }
 
-    setErrors(null);
-    const tokenOrErrors = await authenticateByCode(cart.phone!, code);
-
-    if (typeof tokenOrErrors === 'string') {
-      await login(tokenOrErrors);
+    setError(null);
+    try {
+      const token = await authenticateByCode(cart.phone!, code);
+      await login(token);
       setCodeSent(false);
-      return;
+    } catch (e) {
+      if (e instanceof ValidationError) {
+        setError(e);
+      }
     }
-
-    setErrors(tokenOrErrors);
   };
 
   return (
@@ -69,15 +70,15 @@ export default function CheckoutUserInfo() {
           Получить новый код можно через 00:58
         </p>
       )}
-      {errors?.errors.phone && (
+      {error?.errors.phone && (
         <p className="text-danger text-xs sm:text-sm my-1">
-          {errors?.errors.phone}
+          {error?.errors.phone}
         </p>
       )}
       {!user && isCodeSent && (
         <>
           <input
-            type="text"
+            type="tel"
             name="code"
             placeholder="Введите код *"
             className="w-full p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
@@ -86,9 +87,9 @@ export default function CheckoutUserInfo() {
             onChange={(e) => authenticate(e.target.value)}
             onSubmit={(e) => e.preventDefault()}
           />
-          {errors?.errors.code && (
+          {error?.errors.code && (
             <p className="text-danger text-xs sm:text-sm my-1">
-              {errors?.errors.code}
+              {error?.errors.code}
             </p>
           )}
         </>
@@ -101,6 +102,7 @@ export default function CheckoutUserInfo() {
         className="w-full p-1 pb-3 mt-9 border-b border-divider-alt focus:border-success transition-colors outline-0"
         onChange={(e) => setCartInfo('name', e.target.value)}
         value={cart.name || ''}
+        maxLength={100}
         required
       />
       <input
@@ -111,6 +113,7 @@ export default function CheckoutUserInfo() {
         className="w-full p-1 pb-3 mt-9 border-b border-divider-alt focus:border-success transition-colors outline-0"
         onChange={(e) => setCartInfo('email', e.target.value)}
         value={cart.email || ''}
+        maxLength={100}
       />
     </div>
   );
@@ -121,7 +124,7 @@ const PhoneInput = ({ phone, onChange, onSubmit }: {
   onChange: (value: string) => void,
   onSubmit: (phone: string) => void,
 }) => {
-  const [value, setValue] = useState<string>(phone);
+  const [value, setValue] = useState<string>(maskString(phone));
 
   useEffect(() => {
     setValue(maskString(phone));
@@ -149,6 +152,7 @@ const PhoneInput = ({ phone, onChange, onSubmit }: {
       className="w-full p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
       value={value}
       onInput={onInput}
+      maxLength={30}
       required
     />
   );

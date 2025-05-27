@@ -1,3 +1,4 @@
+import ValidationError from "../exceptions/validation-error";
 import { getClientAccessToken } from "./get-client-access-token";
 import { getServerAccessToken } from "./get-server-access-token";
 
@@ -35,7 +36,7 @@ const api: Api = {
 
     const accessToken = await getAccessToken(typeof window === 'undefined');
 
-    return fetch(url, {
+    const res = await fetch(url, {
       next: { revalidate },
       method: method,
       headers: {
@@ -48,6 +49,13 @@ const api: Api = {
       },
       body: method == 'POST' ? JSON.stringify(body) : null,
     });
+
+    if (res.status >= 400 && res.status < 500) {
+      const { message, errors } = await res.json();
+      throw new ValidationError(message, errors);
+    }
+
+    return res;
   },
 };
 

@@ -6,6 +6,7 @@ import AuthVerificationCodeForm from "./auth-verification-code-form";
 import authenticateByCode from "@/lib/auth/usecases/authenticate-by-code";
 import getVerificationCode from "@/lib/auth/usecases/get-verification-code";
 import { AuthContext } from "./auth-context";
+import ValidationError from "@/lib/exceptions/validation-error";
 
 enum AuthStep {
   signin,
@@ -19,30 +20,31 @@ export default function AuthController({ close }: {
 
   const [step, setStep] = useState<AuthStep>(AuthStep.signin);
   const [phone, setPhone] = useState<string>('');
+  const [error, setError] = useState<ValidationError | null>(null);
 
   const sendGetVerificationCodeRequest = async (phone: string) => {
-    const errors = await getVerificationCode(phone);
+    try {
+      await getVerificationCode(phone);
 
-    setPhone(phone);
-
-    if (!errors) {
+      setPhone(phone);
       setStep(AuthStep.verification);
-      return;
+    } catch (e) {
+      if (e instanceof ValidationError) {
+        setError(e);
+      }
     }
-
-    return errors;
   };
 
   const sendAuthenticateRequest = async (code: string) => {
-    const tokenOrErrors = await authenticateByCode(phone, code);
-
-    if (typeof tokenOrErrors === 'string') {
-      await login(tokenOrErrors);
+    try {
+      const token = await authenticateByCode(phone, code);
+      await login(token);
       close();
-      return;
+    } catch (e) {
+      if (e instanceof ValidationError) {
+        setError(e);
+      }
     }
-
-    return tokenOrErrors;
   };
 
   return (
@@ -55,12 +57,14 @@ export default function AuthController({ close }: {
       {step == AuthStep.signin && (
         <AuthForm
           phone={phone}
+          error={error}
           getVerificationCode={sendGetVerificationCodeRequest}
         />
       )}
       {step == AuthStep.verification && (
         <AuthVerificationCodeForm
           phone={phone}
+          error={error}
           authenticate={sendAuthenticateRequest}
           resend={() => sendGetVerificationCodeRequest(phone)}
           back={() => setStep(AuthStep.signin)}

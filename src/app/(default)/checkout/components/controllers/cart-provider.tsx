@@ -10,13 +10,14 @@ import { DeliveryMethodEntity } from "@/lib/cart/types/delivery-method";
 import fetchDeliveryMethods from "@/lib/cart/usecases/fetch-delivery-methods";
 import fetchPaymentMethods from "@/lib/cart/usecases/fetch-payment-methods";
 import { PaymentMethodEntity } from "@/lib/cart/types/payment-method";
+import ValidationError from "@/lib/exceptions/validation-error";
 
 export default function CartProvider({ children }: {
   children: React.ReactNode,
 }) {
   const [deliveryMethods, setDeliveryMethods] = useState<Array<DeliveryMethodEntity>>([]);
   const [paymentMethods, setPaymentMethods] = useState<Array<PaymentMethodEntity>>([]);
-
+  const [error, setError] = useState<ValidationError | null>(null);
   const [cart, setCart] = useState<CartEntity>({
     items: [],
   });
@@ -105,6 +106,9 @@ export default function CartProvider({ children }: {
     cart,
     deliveryMethods,
     paymentMethods,
+    // Error
+    error,
+    setError,
     // Cart info
     setCartInfo,
     // Cart item

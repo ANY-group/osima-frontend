@@ -29,6 +29,11 @@ const DeliveryMethods = () => {
           />
         ))}
       </div>
+      {/* {errors?.errors?.deliveryMethod && (
+        <p className="text-xs sm:text-sm text-danger my-1">
+          {errors?.errors?.deliveryMethod}
+        </p>
+      )} */}
     </div>
   );
 }
@@ -76,7 +81,7 @@ const DeliveryAddress = () => {
       <h5 className="my-4 text-lg font-bold">
         Адрес доставки
       </h5>
-      <select
+      {/* <select
         name="city"
         className="w-full p-3 rounded-lg border border-divider-alt"
         value={cart.cityId || ''}
@@ -89,7 +94,23 @@ const DeliveryAddress = () => {
         <option value="astana">
           Астана
         </option>
-      </select>
+      </select> */}
+      <input
+        type="text"
+        name="city"
+        autoComplete="address-level2"
+        placeholder="Город *"
+        className="w-full p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
+        value={cart.city || ''}
+        onChange={(e) => setCartInfo('city', e.target.value)}
+        required
+      />
+      {/* {errors?.errors?.city && (
+        <p className="text-xs sm:text-sm text-danger my-1">
+          {errors?.errors?.city}
+        </p>
+      )} */}
+
       <input
         type="text"
         name="address"
