@@ -16,6 +16,7 @@ import SearchIcon from "./ui/icons/search-icon";
 import SearchSidebar from "../(default)/catalog/components/search-sidebar";
 import { CategoryEntity } from "@/lib/catalog/types/category";
 import { AuthContext } from "../(footerless)/profile/components/auth-context";
+import CartItemsQuantityBadge from "../(default)/checkout/components/cart-items-quantity-badge";
 
 export default function MidHeader({ categories }: {
   categories: Array<CategoryEntity>,
@@ -83,9 +84,10 @@ export default function MidHeader({ categories }: {
             href="/checkout"
             aria-label="Корзина"
             onMouseOver={() => setCartPopoverOpen(true)}
-            className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted"
+            className="relative flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted"
           >
             <ShoppingCartIcon />
+            <CartItemsQuantityBadge />
           </Link>
           <Link
             href={user ? "/profile" : "#"}

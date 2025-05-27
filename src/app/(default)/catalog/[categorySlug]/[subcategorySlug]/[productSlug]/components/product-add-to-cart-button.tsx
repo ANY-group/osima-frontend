@@ -20,7 +20,7 @@ export default function ProductAddToCartButton({ product }: {
   if (cnt == 0) {
     return (
       <button
-        className="flex-grow flex items-center justify-center gap-2 h-full sm:max-w-3xs rounded-lg bg-success text-sm  text-white"
+        className="flex-grow flex items-center justify-center gap-2 h-full sm:max-w-3xs rounded-lg bg-success disabled:bg-disabled text-sm  text-white"
         onClick={() => setItemQuantity(product, 1)}
         disabled={product.quantity < 1}
       >
