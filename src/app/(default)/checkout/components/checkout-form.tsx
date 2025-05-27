@@ -17,6 +17,8 @@ export default function CheckoutForm() {
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
 
+    // TODO: add captcha
+
     setError(null);
     setLoading(true);
     try {
@@ -24,19 +26,22 @@ export default function CheckoutForm() {
       console.log(order);
     } catch (e) {
       if (e instanceof ValidationError) {
+        if (e?.errors.items) {
+          alert(e?.errors.items);
+        }
         setError(e);
       }
     }
-    setLoading(true);
+    setLoading(false);
   };
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="max-w-md">
+      <div className="sm:max-w-md">
         <CheckoutUserInfo />
       </div>
       <CheckoutDeliveryInfo />
-      <div className="max-w-md">
+      <div className="sm:max-w-md">
         <CheckoutPaymentInfo />
         <CheckoutAdditionalInfo />
         <div className="my-7 md:my-9">

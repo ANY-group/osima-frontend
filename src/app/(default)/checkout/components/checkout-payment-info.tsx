@@ -5,9 +5,10 @@ import CashIcon from "@/app/components/ui/icons/cash-icon";
 import { useContext } from "react";
 import { CartContext } from "./controllers/cart-context";
 import { PaymentMethodEntity } from "@/lib/cart/types/payment-method";
+import ErrorText from "@/app/components/ui/error-text";
 
 export default function CheckoutPaymentInfo() {
-  const { paymentMethods } = useContext(CartContext);
+  const { paymentMethods, error } = useContext(CartContext);
 
   return (
     <div className="my-6 md:my-14">
@@ -22,6 +23,7 @@ export default function CheckoutPaymentInfo() {
           />
         ))}
       </div>
+      <ErrorText error={error?.errors.paymentMethod} />
     </div>
   );
 }

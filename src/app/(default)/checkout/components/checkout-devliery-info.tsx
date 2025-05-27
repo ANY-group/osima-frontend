@@ -3,6 +3,7 @@
 import { useContext } from "react";
 import { CartContext } from "./controllers/cart-context";
 import { DeliveryMethodEntity } from "@/lib/cart/types/delivery-method";
+import ErrorText from "@/app/components/ui/error-text";
 
 export default function CheckoutDeliveryInfo() {
   return (
@@ -14,7 +15,7 @@ export default function CheckoutDeliveryInfo() {
 }
 
 const DeliveryMethods = () => {
-  const { deliveryMethods } = useContext(CartContext);
+  const { deliveryMethods, error } = useContext(CartContext);
 
   return (
     <div className="my-6 md:my-14">
@@ -29,11 +30,7 @@ const DeliveryMethods = () => {
           />
         ))}
       </div>
-      {/* {errors?.errors?.deliveryMethod && (
-        <p className="text-xs sm:text-sm text-danger my-1">
-          {errors?.errors?.deliveryMethod}
-        </p>
-      )} */}
+      <ErrorText error={error?.errors.deliveryMethod} />
     </div>
   );
 }
@@ -74,7 +71,7 @@ const DeliveryMethod = ({
 }
 
 const DeliveryAddress = () => {
-  const { cart, setCartInfo } = useContext(CartContext);
+  const { cart, setCartInfo, error } = useContext(CartContext);
 
   return (
     <>
@@ -94,52 +91,59 @@ const DeliveryAddress = () => {
         <option value="astana">
           Астана
         </option>
-      </select> */}
+      </select>
+      <ErrorText error={error?.errors['address.cityId']} /> */}
+
       <input
         type="text"
         name="city"
         autoComplete="address-level2"
         placeholder="Город *"
-        className="w-full p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
+        className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success transition-colors outline-0"
         value={cart.city || ''}
         onChange={(e) => setCartInfo('city', e.target.value)}
         required
       />
-      {/* {errors?.errors?.city && (
-        <p className="text-xs sm:text-sm text-danger my-1">
-          {errors?.errors?.city}
-        </p>
-      )} */}
+      <ErrorText error={error?.errors['address.city']} />
 
       <input
         type="text"
         name="address"
         autoComplete="address-line1"
         placeholder="Адрес *"
-        className="w-full p-1 pb-3 my-9 border-b border-divider-alt focus:border-success transition-colors outline-0"
+        className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success transition-colors outline-0"
         value={cart.addressLine1 || ''}
         onChange={(e) => setCartInfo('addressLine1', e.target.value)}
         required
       />
-      <div className="flex flex-wrap gap-5">
-        <input
-          type="text"
-          name="address_line_2"
-          autoComplete="address-line2"
-          placeholder="Квартира / офис"
-          className="p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
-          value={cart.addressLine2 || ''}
-          onChange={(e) => setCartInfo('addressLine2', e.target.value)}
-        />
-        <input
-          type="text"
-          name="postal_code"
-          autoComplete="postal-code"
-          placeholder="Индекс"
-          className="p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
-          value={cart.postalCode || ''}
-          onChange={(e) => setCartInfo('postalCode', e.target.value)}
-        />
+      <ErrorText error={error?.errors['address.addressLine1']} />
+
+      <div className="flex flex-wrap gap-x-5">
+        <div className="mt-4">
+          <input
+            type="text"
+            name="address_line_2"
+            autoComplete="address-line2"
+            placeholder="Квартира / офис"
+            className="p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
+            value={cart.addressLine2 || ''}
+            onChange={(e) => setCartInfo('addressLine2', e.target.value)}
+          />
+          <ErrorText error={error?.errors['address.addressLine2']} />
+        </div>
+
+        <div className="mt-4">
+          <input
+            type="text"
+            name="postal_code"
+            autoComplete="postal-code"
+            placeholder="Индекс"
+            className="p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
+            value={cart.postalCode || ''}
+            onChange={(e) => setCartInfo('postalCode', e.target.value)}
+          />
+          <ErrorText error={error?.errors['address.postalCode']} />
+        </div>
       </div>
     </>
   );

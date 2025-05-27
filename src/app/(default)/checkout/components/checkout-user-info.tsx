@@ -7,6 +7,7 @@ import { CartContext } from "./controllers/cart-context";
 import authenticateByCode from "@/lib/auth/usecases/authenticate-by-code";
 import getVerificationCode from "@/lib/auth/usecases/get-verification-code";
 import ValidationError from "@/lib/exceptions/validation-error";
+import ErrorText from "@/app/components/ui/error-text";
 
 export default function CheckoutUserInfo() {
   const { user, login } = useContext(AuthContext);
@@ -65,18 +66,12 @@ export default function CheckoutUserInfo() {
           </button>
         )}
       </div>
-      {isCodeSent && (
-        <p className="text-right text-xs sm:text-sm text-secondary my-1">
-          Получить новый код можно через 00:58
-        </p>
-      )}
-      {error?.errors.phone && (
-        <p className="text-danger text-xs sm:text-sm my-1">
-          {error?.errors.phone}
-        </p>
-      )}
+      <ErrorText error={error?.errors.phone || error?.errors['user.phone']} />
       {!user && isCodeSent && (
         <>
+          <p className="text-right text-xs sm:text-sm text-secondary my-1">
+            Получить новый код можно через 00:58
+          </p>
           <input
             type="tel"
             name="code"
@@ -87,11 +82,7 @@ export default function CheckoutUserInfo() {
             onChange={(e) => authenticate(e.target.value)}
             onSubmit={(e) => e.preventDefault()}
           />
-          {error?.errors.code && (
-            <p className="text-danger text-xs sm:text-sm my-1">
-              {error?.errors.code}
-            </p>
-          )}
+          <ErrorText error={error?.errors.code} />
         </>
       )}
       <input
@@ -99,22 +90,25 @@ export default function CheckoutUserInfo() {
         name="name"
         autoComplete="given-name"
         placeholder="ФИО *"
-        className="w-full p-1 pb-3 mt-9 border-b border-divider-alt focus:border-success transition-colors outline-0"
+        className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success transition-colors outline-0"
         onChange={(e) => setCartInfo('name', e.target.value)}
         value={cart.name || ''}
         maxLength={100}
         required
       />
+      <ErrorText error={error?.errors['user.name']} />
+
       <input
         type="email"
         name="email"
         autoComplete="email"
         placeholder="E-mail *"
-        className="w-full p-1 pb-3 mt-9 border-b border-divider-alt focus:border-success transition-colors outline-0"
+        className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success transition-colors outline-0"
         onChange={(e) => setCartInfo('email', e.target.value)}
         value={cart.email || ''}
         maxLength={100}
       />
+      <ErrorText error={error?.errors['user.email']} />
     </div>
   );
 }
