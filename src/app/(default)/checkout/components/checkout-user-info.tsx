@@ -81,6 +81,7 @@ export default function CheckoutUserInfo() {
             autoFocus
             onChange={(e) => authenticate(e.target.value)}
             onSubmit={(e) => e.preventDefault()}
+            maxLength={10}
           />
           <ErrorText error={error?.errors.code} />
         </>

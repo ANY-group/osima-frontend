@@ -102,6 +102,7 @@ const DeliveryAddress = () => {
         className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success transition-colors outline-0"
         value={cart.city || ''}
         onChange={(e) => setCartInfo('city', e.target.value)}
+        maxLength={255}
         required
       />
       <ErrorText error={error?.errors['address.city']} />
@@ -114,6 +115,7 @@ const DeliveryAddress = () => {
         className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success transition-colors outline-0"
         value={cart.addressLine1 || ''}
         onChange={(e) => setCartInfo('addressLine1', e.target.value)}
+        maxLength={255}
         required
       />
       <ErrorText error={error?.errors['address.addressLine1']} />
@@ -128,6 +130,7 @@ const DeliveryAddress = () => {
             className="p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
             value={cart.addressLine2 || ''}
             onChange={(e) => setCartInfo('addressLine2', e.target.value)}
+            maxLength={255}
           />
           <ErrorText error={error?.errors['address.addressLine2']} />
         </div>
@@ -141,6 +144,7 @@ const DeliveryAddress = () => {
             className="p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
             value={cart.postalCode || ''}
             onChange={(e) => setCartInfo('postalCode', e.target.value)}
+            maxLength={255}
           />
           <ErrorText error={error?.errors['address.postalCode']} />
         </div>

@@ -1,3 +1,4 @@
+import ErrorText from "@/app/components/ui/error-text";
 import ValidationError from "@/lib/exceptions/validation-error";
 import { ChangeEventHandler, FormEventHandler, useState } from "react";
 
@@ -62,10 +63,9 @@ export default function AuthVerificationCodeForm({
           autoFocus
           required
           disabled={isLoading}
+          maxLength={10}
         />
-        <p className="my-1 text-sm text-danger">
-          {error?.errors?.code}
-        </p>
+        <ErrorText error={error?.errors?.code} />
       </div>
       <button
         type="button"

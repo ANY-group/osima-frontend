@@ -1,5 +1,6 @@
 'use client';
 
+import ErrorText from "@/app/components/ui/error-text";
 import ValidationError from "@/lib/exceptions/validation-error";
 import { maskString } from "@/lib/utils/helpers";
 import { ChangeEventHandler, FormEventHandler, useState } from "react";
@@ -41,10 +42,9 @@ export default function AuthForm({ phone, error, getVerificationCode }: {
           autoFocus
           required
           disabled={isLoading}
+          maxLength={30}
         />
-        <p className="my-1 text-sm text-danger">
-          {error?.errors?.phone}
-        </p>
+        <ErrorText error={error?.errors?.phone} />
       </div>
       <button
         type="submit"

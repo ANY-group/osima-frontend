@@ -54,6 +54,7 @@ const Comment = () => {
         className="w-full p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
         value={cart.comment || ''}
         onChange={(e) => setCartInfo('comment', e.target.value)}
+        maxLength={255}
       />
       <ErrorText error={error?.errors.comment} />
     </div>
