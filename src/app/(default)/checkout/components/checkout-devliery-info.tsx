@@ -111,7 +111,7 @@ const DeliveryAddress = () => {
         className="w-full p-1 pb-3 my-9 border-b border-divider-alt focus:border-success transition-colors outline-0"
         required
       />
-      <div className="flex gap-5">
+      <div className="flex flex-wrap gap-5">
         <input
           type="text"
           name="address_line_2"

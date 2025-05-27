@@ -39,8 +39,6 @@ export default function AuthController({ close }: {
     if (typeof tokenOrErrors === 'string') {
       await login(tokenOrErrors);
       close();
-      // TODO: mb redirect?
-      // router.push('/profile');
       return;
     }
 

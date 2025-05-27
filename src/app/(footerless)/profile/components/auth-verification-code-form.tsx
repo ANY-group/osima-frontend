@@ -19,8 +19,8 @@ export default function AuthVerificationCodeForm({
     const formData = new FormData(form);
     const code = formData.get('code')?.toString() || '';
 
-    setErrors(null);
     setLoading(true);
+    setErrors(null);
     setErrors(await authenticate(code));
     setLoading(false);
   };

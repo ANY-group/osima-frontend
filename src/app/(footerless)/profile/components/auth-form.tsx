@@ -1,6 +1,6 @@
 'use client';
 
-import { isValidMask, maskString } from "@/lib/utils/helpers";
+import { maskString } from "@/lib/utils/helpers";
 import { ValidationError } from "next/dist/compiled/amphtml-validator";
 import { ChangeEventHandler, FormEventHandler, useState } from "react";
 
@@ -13,20 +13,16 @@ export default function AuthForm({ phone, getVerificationCode }: {
   const [value, setValue] = useState<string>(phone);
 
   const onInput: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const masked = maskString(e.target.value);
-    setValue(masked);
+    setValue(maskString(e.target.value));
   };
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
+
     const formData = new FormData(e.target as HTMLFormElement);
     const phone = formData.get('phone')?.toString() || '';
 
-    if (!isValidMask(phone)) {
-      // TODO: throw validation error
-      return;
-    }
-
+    setErrors(null);
     setLoading(true);
     setErrors(await getVerificationCode(phone));
     setLoading(false);

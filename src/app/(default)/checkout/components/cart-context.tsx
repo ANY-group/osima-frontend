@@ -6,6 +6,7 @@ import { createContext } from "react";
 
 type CartState = {
   cart: CartEntity,
+  setCartInfo: (key: string, value: string) => void,
   setItemQuantity: (product: ProductEntity, quantity: number) => void,
   getItemQuantity: (product: ProductEntity) => number,
   getTotal: () => number,
@@ -17,6 +18,7 @@ export const CartContext = createContext<CartState>({
   cart: {
     items: [],
   },
+  setCartInfo: () => { },
   setItemQuantity: () => { },
   getItemQuantity: () => 0,
   getTotal: () => 0,
