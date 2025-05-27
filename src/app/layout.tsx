@@ -4,7 +4,7 @@ import "./globals.css";
 import Loader from "./components/ui/loader";
 import AuthProvider from "./(footerless)/profile/components/auth-provider";
 import fetchUser from "@/lib/auth/usecases/fetch-user";
-import CartProvider from "./(default)/checkout/components/cart-provider";
+import CartProvider from "./(default)/checkout/components/controllers/cart-provider";
 
 const roboto = Roboto_Flex({
   subsets: ["latin", "cyrillic"],

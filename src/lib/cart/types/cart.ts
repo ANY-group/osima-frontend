@@ -11,4 +11,6 @@ export type CartEntity = {
   addressLine1?: string,
   addressLine2?: string,
   postalCode?: string,
+  useCertificate?: boolean,
+  comment?: string,
 };

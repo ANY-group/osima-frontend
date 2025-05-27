@@ -3,7 +3,7 @@
 import { AuthContext } from "@/app/(footerless)/profile/components/auth-context";
 import { isValidMask, maskString } from "@/lib/utils/helpers";
 import { ChangeEventHandler, useContext, useEffect, useState } from "react";
-import { CartContext } from "./cart-context";
+import { CartContext } from "./controllers/cart-context";
 import authenticateByCode from "@/lib/auth/usecases/authenticate-by-code";
 import getVerificationCode from "@/lib/auth/usecases/get-verification-code";
 import { ValidationError } from "@/lib/catalog/types/validation-error";

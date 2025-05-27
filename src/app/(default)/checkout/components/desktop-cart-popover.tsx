@@ -6,7 +6,7 @@ import CartInfoTable from "./cart-info-table";
 import CartItem from "./cart-item";
 import CartEmpty from "./cart-empty";
 import { useContext } from "react";
-import { CartContext } from "./cart-context";
+import { CartContext } from "./controllers/cart-context";
 
 export default function DesktopCartPopover({ isOpen }: {
   isOpen: boolean,

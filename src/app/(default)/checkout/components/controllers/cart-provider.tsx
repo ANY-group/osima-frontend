@@ -91,7 +91,7 @@ export default function CartProvider({ children }: {
     return index == -1 ? 0 : cart.items[index].quantity;
   };
 
-  const setCartInfo = (key: string, value: string) => {
+  const setCartInfo = (key: string, value: string | boolean | number | null | undefined) => {
     console.log(key, value);
     const newCart = { ...cart, [key]: value };
     setCart(newCart);

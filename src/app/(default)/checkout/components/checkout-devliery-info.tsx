@@ -1,7 +1,7 @@
 'use client';
 
 import { useContext } from "react";
-import { CartContext } from "./cart-context";
+import { CartContext } from "./controllers/cart-context";
 import { DeliveryMethodEntity } from "@/lib/cart/types/delivery-method";
 
 export default function CheckoutDeliveryInfo() {

@@ -7,7 +7,7 @@ import HeartIcon from "@/app/components/ui/icons/heart-icon";
 import { CartItemEntity } from "@/lib/cart/types/cart-item";
 import CartItemQuantityController from "./cart-item-quantity-controller";
 import { useContext } from "react";
-import { CartContext } from "./cart-context";
+import { CartContext } from "./controllers/cart-context";
 
 export default function CartItem({
   item,

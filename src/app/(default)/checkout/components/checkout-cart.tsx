@@ -4,7 +4,7 @@ import CartInfoTable from "./cart-info-table";
 import CartEmpty from "./cart-empty";
 import CartItem from "./cart-item";
 import { useContext } from "react";
-import { CartContext } from "./cart-context";
+import { CartContext } from "./controllers/cart-context";
 
 export default function CheckoutCart() {
   return (

@@ -3,7 +3,7 @@
 import CardIcon from "@/app/components/ui/icons/card-icon";
 import CashIcon from "@/app/components/ui/icons/cash-icon";
 import { useContext } from "react";
-import { CartContext } from "./cart-context";
+import { CartContext } from "./controllers/cart-context";
 import { PaymentMethodEntity } from "@/lib/cart/types/payment-method";
 
 export default function CheckoutPaymentInfo() {

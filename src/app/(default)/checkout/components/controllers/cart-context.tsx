@@ -10,7 +10,7 @@ type CartState = {
   cart: CartEntity,
   deliveryMethods: Array<DeliveryMethodEntity>,
   paymentMethods: Array<PaymentMethodEntity>,
-  setCartInfo: (key: string, value: string) => void,
+  setCartInfo: (key: string, value: string | boolean | number | null | undefined) => void,
   setItemQuantity: (product: ProductEntity, quantity: number) => void,
   getItemQuantity: (product: ProductEntity) => number,
   getTotal: () => number,

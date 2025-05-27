@@ -2,7 +2,7 @@
 
 import Badge from "@/app/components/ui/badge";
 import { useContext } from "react";
-import { CartContext } from "./cart-context";
+import { CartContext } from "./controllers/cart-context";
 
 export default function CartItemsQuantityBadge() {
   const { cart } = useContext(CartContext);
