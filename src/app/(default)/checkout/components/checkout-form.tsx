@@ -8,6 +8,7 @@ import CheckoutUserInfo from "./checkout-user-info";
 import { CartContext } from "./controllers/cart-context";
 import createOrder from "@/lib/cart/usecases/create-order";
 import ValidationError from "@/lib/exceptions/validation-error";
+import startPayment from "@/lib/order/usecases/start-payment";
 
 export default function CheckoutForm() {
 
@@ -23,7 +24,10 @@ export default function CheckoutForm() {
     setLoading(true);
     try {
       const order = await createOrder(cart);
-      console.log(order);
+      // TODO: clear cart
+      const paymentResult = await startPayment(order);
+
+      window.location.href=paymentResult.redirectUrl;
     } catch (e) {
       if (e instanceof ValidationError) {
         if (e?.errors.items) {
