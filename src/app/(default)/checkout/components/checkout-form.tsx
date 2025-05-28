@@ -9,8 +9,10 @@ import { CartContext } from "./controllers/cart-context";
 import createOrder from "@/lib/cart/usecases/create-order";
 import ValidationError from "@/lib/exceptions/validation-error";
 import startPayment from "@/lib/order/usecases/start-payment";
+import { useRouter } from "next/navigation";
 
 export default function CheckoutForm() {
+  const router = useRouter();
 
   const { cart, setError } = useContext(CartContext);
   const [isLoading, setLoading] = useState<boolean>(false);
@@ -24,10 +26,14 @@ export default function CheckoutForm() {
     setLoading(true);
     try {
       const order = await createOrder(cart);
-      // TODO: clear cart
-      const paymentResult = await startPayment(order);
+      if (order.canPay && !order.isCashPayment) {
+        // TODO: clear cart
+        await startPayment(order);
+      } else {
+        // TODO: show order created modal
+        // router.replace('/profile/orders');
+      }
 
-      window.location.href=paymentResult.redirectUrl;
     } catch (e) {
       if (e instanceof ValidationError) {
         if (e?.errors.items) {

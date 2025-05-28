@@ -2,14 +2,17 @@
 
 import Collapse from "@/app/components/ui/collapse";
 import ArrowDownBoldIcon from "@/app/components/ui/icons/arrow-down-bold-icon";
+import { OrderEntity } from "@/lib/order/types/order";
+import { OrderItemEntity } from "@/lib/order/types/order-item";
+import { formatNumber } from "@/lib/utils/helpers";
 import Image from "next/image";
 import { useState } from "react";
 
-export default function OrdersAccordion() {
+export default function OrdersAccordion({ orders }: {
+  orders: Array<OrderEntity>,
+}) {
   const [activeOrder, setActiveOrder] = useState<number | null>(null);
 
-  const orders = [...Array(10)];
-  const items = [...Array(2)];
 
   const isOrderOpen = (index: number): boolean => {
     return index === activeOrder;
@@ -24,22 +27,25 @@ export default function OrdersAccordion() {
         >
           <div className="grid grid-cols-3 font-medium text-sm">
             <div>
-              №9032
+              №{order.id}
             </div>
             <div>
-              11.04.2025
+              {order.createdAt}
             </div>
             <p className="text-right font-bold">
-              Отменен
+              {order.status || '?'}
             </p>
             <div className="col-span-3 pt-1 font-normal">
-              {items.map((item, index) => (
-                <OrderItem key={index} />
+              {order.items.map((item, index) => (
+                <OrderItem
+                  key={index}
+                  item={item}
+                />
               ))}
             </div>
           </div>
           <Collapse open={isOrderOpen(index)}>
-            <OrderInfoTable />
+            <OrderInfoTable order={order} />
           </Collapse>
           <div className="text-right">
             <button
@@ -58,31 +64,37 @@ export default function OrdersAccordion() {
   );
 }
 
-const OrderItem = () => {
+const OrderItem = ({ item }: {
+  item: OrderItemEntity,
+}) => {
   return (
     <div className="flex gap-2 my-2 p-2 rounded-xl bg-secondary-muted text-sm">
-      <Image
-        src="/images/tmp/product.png"
-        alt="Product"
-        width={100}
-        height={100}
-        className="object-contain w-15 h-15 aspect-square rounded-lg"
-      />
+      {item.product && (
+        <Image
+          src={item.product.image}
+          alt={item.description}
+          width={100}
+          height={100}
+          className="object-contain w-15 h-15 aspect-square rounded-lg"
+        />
+      )}
       <div className="flex max-sm:flex-col items-start sm:items-center gap-1 w-full">
         <div className="flex-grow">
-          <p className="text-secondary">
-            Kylie Cosmetics
-          </p>
+          {item.product && (
+            <p className="text-secondary">
+              {item.product.subcategory?.name}
+            </p>
+          )}
           <p className="font-medium">
-            KYLIE High Gloss 001 Crystal
+            {item.description}
           </p>
         </div>
         <div className="flex sm:flex-col sm:items-end justify-end max-sm:gap-3 font-semibold">
           <p className="whitespace-nowrap">
-            17 000 C
+            {formatNumber(item.price)} C
           </p>
           <p className="whitespace-nowrap">
-            2 шт.
+            {formatNumber(item.quantity)} шт.
           </p>
         </div>
       </div>
@@ -90,17 +102,19 @@ const OrderItem = () => {
   );
 }
 
-const OrderInfoTable = () => {
+const OrderInfoTable = ({ order }: {
+  order: OrderEntity
+}) => {
   return (
     <table className="my-2 w-full text-xs">
       <tbody>
-        <TableRow label="Доставка" value="Курьером" />
-        <TableRow label="Адрес доставки" value="г.Алматы, Абылай хана 98" />
-        <TableRow label="Способ оплаты" value="Онлайн" />
-        <TableRow label="Статус оплаты" value="Не оплачен" />
-        <TableRow label="Общая стоимость" value="23 000 C" />
-        <TableRow label="Стоимость доставки" value="800 C" />
-        <TableRow label="Итого" value="23 800 C" bold />
+        <TableRow label="Доставка" value={order.delivery.name} />
+        <TableRow label="Адрес доставки" value={order.delivery.address} />
+        <TableRow label="Способ оплаты" value={order.isCashPayment ? "Наличными" : "Онлайн"} />
+        <TableRow label="Статус оплаты" value={order.isPaid ? "Оплачен" : "Не оплачен"} />
+        <TableRow label="Общая стоимость" value={formatNumber(order.subtotal) + ' C'} />
+        <TableRow label="Стоимость доставки" value={formatNumber(order.deliveryCost) + ' C'} />
+        <TableRow label="Итого" value={formatNumber(order.total) + ' C'} bold />
       </tbody>
     </table>
   );

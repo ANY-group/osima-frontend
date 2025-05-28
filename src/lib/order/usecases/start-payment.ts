@@ -1,9 +1,10 @@
-import api from "@/lib/utils/api";
+'use client';
+
 import { OrderEntity } from "../types/order";
-import { PaymentResult } from "../types/payment-result";
+import fetchPaymentUrl from "./fetch-payment-url";
 
-export default async function startPayment(order: OrderEntity): Promise<PaymentResult> {
-  const res = await api.request(`orders/pay/${order.id}`, 'POST');
+export default async function startPayment(order: OrderEntity): Promise<void> {
+  const paymentResult = await fetchPaymentUrl(order);
 
-  return await res.json();
+  window.location.href = paymentResult.redirectUrl;
 }

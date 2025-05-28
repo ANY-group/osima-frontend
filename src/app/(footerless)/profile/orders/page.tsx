@@ -1,7 +1,10 @@
 import Subheader from "@/app/components/subheader";
 import OrdersAccordion from "./components/orders-accordion";
+import fetchOrders from "@/lib/order/usecases/fetch-orders";
 
-export default function OrdersPage() {
+export default async function OrdersPage() {
+  const orders = await fetchOrders();
+
   return (
     <main className="w-full">
       <section className="md:hidden py-3">
@@ -11,7 +14,7 @@ export default function OrdersPage() {
         <h2 className="text-xl font-bold">
           История заказов
         </h2>
-        <OrdersAccordion />
+        <OrdersAccordion orders={orders} />
       </section>
     </main>
   );
