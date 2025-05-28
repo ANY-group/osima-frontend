@@ -9,10 +9,8 @@ import { CartContext } from "./controllers/cart-context";
 import createOrder from "@/lib/cart/usecases/create-order";
 import ValidationError from "@/lib/exceptions/validation-error";
 import startPayment from "@/lib/order/usecases/start-payment";
-import { useRouter } from "next/navigation";
 
 export default function CheckoutForm() {
-  const router = useRouter();
 
   const { cart, setError } = useContext(CartContext);
   const [isLoading, setLoading] = useState<boolean>(false);
