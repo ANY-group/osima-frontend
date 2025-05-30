@@ -2,18 +2,33 @@
 
 import ArrowLeftAltIcon from "@/app/components/ui/icons/arrow-left-alt-icon";
 import RotateLeftIcon from "@/app/components/ui/icons/rotate-left-icon";
+import { FilterEntity } from "@/lib/catalog/types/filter";
+import { useState } from "react";
+import CatalogFilterValuesPopover from "./catalog-filter-values-popover";
 
-export default function CatalogFilters() {
+export default function CatalogFilters({ filters }: {
+  filters: Array<FilterEntity>,
+}) {
+  if (filters.length == 0) {
+    return;
+  }
+
   return (
     <>
-      <DesktopFilters />
-      <MobileFilters />
+      <DesktopFilters filters={filters} />
+      <MobileFilters filters={filters} />
     </>
   );
 }
 
-const DesktopFilters = () => {
-  const filters = [...Array(4)];
+const DesktopFilters = ({ filters }: {
+  filters: Array<FilterEntity>,
+}) => {
+  const [activeFilter, setActiveFilter] = useState<{ filter: FilterEntity, posX: number, posY: number } | null>(null);
+
+  const openFilter = (filter: FilterEntity, posX: number, posY: number) => {
+    setActiveFilter(activeFilter ? null : { filter, posX, posY });
+  };
 
   return (
     <>
@@ -26,10 +41,16 @@ const DesktopFilters = () => {
             {filters.map((filter, index) => (
               <button
                 key={index}
-                className="flex items-center gap-2.5 px-4 text-sm whitespace-nowrap"
+                className="flex items-center gap-2.5 px-4 py-2 text-sm whitespace-nowrap overflow-visible"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openFilter(filter, e.pageX, e.pageY);
+                }}
               >
-                Цена {index}
-                <div className="-rotate-90">
+                <span className="first-letter:capitalize">
+                  {filter.name}
+                </span>
+                <div className={`${activeFilter?.filter.id == filter.id ? 'rotate-90' : '-rotate-90'} transition-transform`}>
                   <ArrowLeftAltIcon />
                 </div>
               </button>
@@ -53,11 +74,21 @@ const DesktopFilters = () => {
         </p>
         <SortingButton />
       </div>
+      <CatalogFilterValuesPopover
+        filter={activeFilter?.filter}
+        posX={activeFilter?.posX}
+        posY={activeFilter?.posY}
+        close={() => setActiveFilter(null)}
+      />
     </>
   );
 }
 
-const MobileFilters = () => {
+const MobileFilters = ({ filters }: {
+  filters: Array<FilterEntity>,
+}) => {
+  console.log(filters);
+
   return (
     <div className="grid sm:hidden grid-cols-2 gap-2 pb-4">
       <button

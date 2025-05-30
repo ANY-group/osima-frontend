@@ -11,18 +11,21 @@ import fetchCategories from "@/lib/catalog/usecases/fetch-categories";
 import { BrandEntity } from "@/lib/catalog/types/brand";
 import { Collection } from "@/lib/types/collection";
 import { ProductEntity } from "@/lib/catalog/types/product";
+import { FilterEntity } from "@/lib/catalog/types/filter";
 
 export default async function Catalog({
   category,
   subcategory,
   brand,
   products,
+  filters,
   q,
 }: {
   category?: CategoryEntity,
   subcategory?: SubcategoryEntity,
   brand?: BrandEntity,
   products: Collection<ProductEntity>,
+  filters: Array<FilterEntity>,
   q?: string,
 }) {
 
@@ -47,7 +50,7 @@ export default async function Catalog({
         </section>
       )}
       <section className="layout-container">
-        <CatalogFilters />
+        <CatalogFilters filters={filters} />
       </section>
       {q && (
         <section className="layout-container">
