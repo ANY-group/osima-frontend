@@ -2,6 +2,7 @@
 
 import { useClickOutside } from '@/app/hooks/click_outside';
 import { FilterEntity } from '@/lib/catalog/types/filter';
+import { FilterValueEntity } from '@/lib/catalog/types/filter-value';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -17,10 +18,17 @@ export default function CatalogFilterValuesPopover({ filter, posX, posY, close }
     close();
   }, undefined, filter != null);
 
+  const isApplied = (value: FilterValueEntity) => false;
+
+  const onChange = (value: FilterValueEntity) => {
+    console.log((isApplied(value) ? 'uncheck' : 'check') + ' ' + value.slug);
+  };
+
   return (
     <AnimatePresence>
       {filter && posX && posY && (
         <div
+          ref={ref}
           className="absolute z-50"
           style={{
             top: `${posY + 10}px`,
@@ -28,7 +36,6 @@ export default function CatalogFilterValuesPopover({ filter, posX, posY, close }
           }}
         >
           <motion.div
-            ref={ref}
             className="flex flex-col gap-2 p-4 min-w-40 bg-background rounded-lg border border-divider shadow-2xl origin-top text-sm"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -40,7 +47,8 @@ export default function CatalogFilterValuesPopover({ filter, posX, posY, close }
                   type="checkbox"
                   name={filter.slug}
                   value={value.slug}
-                  onChange={(e) => console.log(e.target.value)}
+                  checked={isApplied(value)}
+                  onChange={(e) => onChange(value)}
                 />
                 <p className="whitespace-nowrap first-letter:capitalize">
                   {value.name}
