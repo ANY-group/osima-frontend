@@ -3,8 +3,9 @@
 import ArrowLeftAltIcon from "@/app/components/ui/icons/arrow-left-alt-icon";
 import RotateLeftIcon from "@/app/components/ui/icons/rotate-left-icon";
 import { FilterEntity } from "@/lib/catalog/types/filter";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import CatalogFilterValuesPopover from "./catalog-filter-values-popover";
+import { useClickOutside } from "@/app/hooks/click_outside";
 
 export default function CatalogFilters({ filters }: {
   filters: Array<FilterEntity>,
@@ -26,8 +27,21 @@ const DesktopFilters = ({ filters }: {
 }) => {
   const [activeFilter, setActiveFilter] = useState<{ filter: FilterEntity, posX: number, posY: number } | null>(null);
 
+  const ref = useRef(null);
+
+  useClickOutside(ref, () => {
+    setTimeout(() => {
+      setActiveFilter(null);
+    }, 10);
+  }, undefined);
+
   const openFilter = (filter: FilterEntity, posX: number, posY: number) => {
-    setActiveFilter(activeFilter ? null : { filter, posX, posY });
+    if (activeFilter?.filter.id != filter.id) {
+      setActiveFilter(null);
+      setTimeout(() => {
+        setActiveFilter({ filter, posX, posY });
+      }, 100);
+    }
   };
 
   return (
@@ -43,8 +57,9 @@ const DesktopFilters = ({ filters }: {
                 key={index}
                 className="flex items-center gap-2.5 px-4 py-2 text-sm whitespace-nowrap overflow-visible"
                 onClick={(e) => {
-                  e.preventDefault();
-                  openFilter(filter, e.pageX, e.pageY);
+                  const x = (e.target as HTMLElement).getBoundingClientRect().left;
+                  const y = (e.target as HTMLElement).offsetTop + 35;
+                  openFilter(filter, x, y);
                 }}
               >
                 <span className="first-letter:capitalize">
@@ -74,12 +89,13 @@ const DesktopFilters = ({ filters }: {
         </p>
         <SortingButton />
       </div>
-      <CatalogFilterValuesPopover
-        filter={activeFilter?.filter}
-        posX={activeFilter?.posX}
-        posY={activeFilter?.posY}
-        close={() => setActiveFilter(null)}
-      />
+      <div ref={ref}>
+        <CatalogFilterValuesPopover
+          filter={activeFilter?.filter}
+          posX={activeFilter?.posX}
+          posY={activeFilter?.posY}
+        />
+      </div>
     </>
   );
 }

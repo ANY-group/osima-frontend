@@ -1,22 +1,14 @@
 'use client';
 
-import { useClickOutside } from '@/app/hooks/click_outside';
 import { FilterEntity } from '@/lib/catalog/types/filter';
 import { FilterValueEntity } from '@/lib/catalog/types/filter-value';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useRef } from 'react';
 
-export default function CatalogFilterValuesPopover({ filter, posX, posY, close }: {
+export default function CatalogFilterValuesPopover({ filter, posX, posY }: {
   filter?: FilterEntity,
   posX?: number,
   posY?: number,
-  close: () => void,
 }) {
-  const ref = useRef(null);
-
-  useClickOutside(ref, () => {
-    close();
-  }, undefined, filter != null);
 
   const isApplied = (value: FilterValueEntity) => {
     return false && value.slug;
@@ -30,11 +22,10 @@ export default function CatalogFilterValuesPopover({ filter, posX, posY, close }
     <AnimatePresence>
       {filter && posX && posY && (
         <div
-          ref={ref}
           className="absolute z-50"
           style={{
-            top: `${posY + 10}px`,
-            left: `${posX - 40}px`,
+            top: `${posY}px`,
+            left: `${posX}px`,
           }}
         >
           <motion.div
