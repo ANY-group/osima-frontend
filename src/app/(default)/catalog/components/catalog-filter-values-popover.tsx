@@ -18,7 +18,9 @@ export default function CatalogFilterValuesPopover({ filter, posX, posY, close }
     close();
   }, undefined, filter != null);
 
-  const isApplied = (value: FilterValueEntity) => false;
+  const isApplied = (value: FilterValueEntity) => {
+    return false && value.slug;
+  };
 
   const onChange = (value: FilterValueEntity) => {
     console.log((isApplied(value) ? 'uncheck' : 'check') + ' ' + value.slug);
@@ -48,7 +50,7 @@ export default function CatalogFilterValuesPopover({ filter, posX, posY, close }
                   name={filter.slug}
                   value={value.slug}
                   checked={isApplied(value)}
-                  onChange={(e) => onChange(value)}
+                  onChange={() => onChange(value)}
                 />
                 <p className="whitespace-nowrap first-letter:capitalize">
                   {value.name}
