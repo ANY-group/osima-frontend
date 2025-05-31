@@ -30,9 +30,7 @@ const DesktopFilters = ({ filters }: {
   const ref = useRef(null);
 
   useClickOutside(ref, () => {
-    setTimeout(() => {
-      setActiveFilter(null);
-    }, 10);
+    setActiveFilter(null);
   }, undefined);
 
   const openFilter = (filter: FilterEntity, posX: number, posY: number) => {
@@ -57,8 +55,8 @@ const DesktopFilters = ({ filters }: {
                 key={index}
                 className="flex items-center gap-2.5 px-4 py-2 text-sm whitespace-nowrap overflow-visible"
                 onClick={(e) => {
-                  const x = (e.target as HTMLElement).getBoundingClientRect().left;
-                  const y = (e.target as HTMLElement).offsetTop + 35;
+                  const x = e.currentTarget.getBoundingClientRect().left;
+                  const y = e.currentTarget.offsetTop + 35;
                   openFilter(filter, x, y);
                 }}
               >

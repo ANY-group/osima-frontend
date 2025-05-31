@@ -19,10 +19,10 @@ export const useClickOutside = (
       }
     };
 
-    window.addEventListener("mousedown", handleOutSideClick);
+    window.addEventListener("click", handleOutSideClick);
 
     return () => {
-      window.removeEventListener("mousedown", handleOutSideClick);
+      window.removeEventListener("click", handleOutSideClick);
     };
   }, [ref, shouldRegister]);
 }
