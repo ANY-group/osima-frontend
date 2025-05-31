@@ -10,9 +10,9 @@ import fetchCatalog from "@/lib/catalog/usecases/fetch-catalog";
 export default async function HomePage() {
 
   const [saleCatalog, bestsellerCatalog, newCatalog] = await Promise.all([
-    fetchCatalog({ appliedFilters: { sale: 1 }, randomKey: Math.floor(Math.random() * 1000) }),
-    fetchCatalog({ appliedFilters: { new: 1 }, randomKey: Math.floor(Math.random() * 1000) }),
-    fetchCatalog({ appliedFilters: { bestseller: 1 }, randomKey: Math.floor(Math.random() * 1000) }),
+    fetchCatalog({ appliedFilters: { sale: '1' }, randomKey: Math.floor(Math.random() * 1000) }),
+    fetchCatalog({ appliedFilters: { new: '1' }, randomKey: Math.floor(Math.random() * 1000) }),
+    fetchCatalog({ appliedFilters: { bestseller: '1' }, randomKey: Math.floor(Math.random() * 1000) }),
   ]);
 
   return (
