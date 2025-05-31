@@ -7,16 +7,25 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
 import { Collection } from "@/lib/types/collection";
 import { ProductEntity } from "@/lib/catalog/types/product";
+import { CategoryEntity } from "@/lib/catalog/types/category";
+import { SubcategoryEntity } from "@/lib/catalog/types/subcategory";
+import { BrandEntity } from "@/lib/catalog/types/brand";
 
 export default function CatalogProvider({
   query,
-  filters,
+  category,
+  subcategory,
+  brand,
   products,
+  filters,
   children,
 }: {
   query: {
     [key: string]: string | undefined,
   },
+  category?: CategoryEntity,
+  subcategory?: SubcategoryEntity,
+  brand?: BrandEntity,
   products: Collection<ProductEntity>,
   filters: Array<FilterEntity>,
   children: React.ReactNode,
@@ -44,8 +53,8 @@ export default function CatalogProvider({
     replace(`${pathname}?${params.toString().replace(/%2C/g, ',')}`);
   }, [pathname, filtersMap]);
 
-  const isFilterApplied = (filter: FilterEntity, value: FilterValueEntity) => {
-    return (filtersMap[filter.slug] || []).includes(value.slug);
+  const isFilterApplied = (filter: FilterEntity, value?: FilterValueEntity) => {
+    return value ? (filtersMap[filter.slug] || []).includes(value.slug) : filtersMap[filter.slug]?.length > 0;
   };
 
   const toggleFilter = (filter: FilterEntity, value: FilterValueEntity) => {
@@ -78,6 +87,9 @@ export default function CatalogProvider({
 
   return (
     <CatalogContext.Provider value={{
+      category,
+      subcategory,
+      brand,
       products,
       filters,
       appliedFilters,

@@ -18,7 +18,7 @@ export default function CatalogFilters() {
 }
 
 const DesktopFilters = () => {
-  const { products, filters, appliedFilters, clearFilters } = useContext(CatalogContext);
+  const { products, filters, isFilterApplied, appliedFilters, clearFilters } = useContext(CatalogContext);
   const [activeFilter, setActiveFilter] = useState<{ filter: FilterEntity, posX: number, posY: number } | null>(null);
 
   const ref = useRef(null);
@@ -57,8 +57,13 @@ const DesktopFilters = () => {
                 <span className="first-letter:capitalize">
                   {filter.name}
                 </span>
-                <div className={`${activeFilter?.filter.id == filter.id ? 'rotate-90' : '-rotate-90'} transition-transform`}>
-                  <ArrowLeftAltIcon />
+                <div className="relative">
+                  <div className={`${activeFilter?.filter.id == filter.id ? 'rotate-90' : '-rotate-90'} transition-transform`}>
+                    <ArrowLeftAltIcon />
+                  </div>
+                  {isFilterApplied(filter) && (
+                    <div className="absolute -top-1.5 -right-1.5 w-2 h-2 rounded-full bg-success"></div>
+                  )}
                 </div>
               </button>
             ))}

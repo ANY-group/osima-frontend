@@ -23,7 +23,13 @@ export default async function CatalogPage({ params, searchParams }: {
   const appliedFilters = await searchParams;
   const q = appliedFilters.q;
 
-  const { category, subcategory, brand, products, filters } = await fetchCatalog({
+  const {
+    category,
+    subcategory,
+    brand,
+    products,
+    filters,
+  } = await fetchCatalog({
     categorySlug,
     subcategorySlug,
     brandSlug,
@@ -34,6 +40,9 @@ export default async function CatalogPage({ params, searchParams }: {
   return (
     <CatalogProvider
       query={appliedFilters}
+      category={category}
+      subcategory={subcategory}
+      brand={brand}
       products={products}
       filters={filters}
     >
