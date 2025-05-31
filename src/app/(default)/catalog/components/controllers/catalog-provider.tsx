@@ -79,11 +79,11 @@ export default function CatalogProvider({
   };
 
   const appliedFilters = filters
-    .filter((filter) => filtersMap[filter.slug])
     .map((filter) => ({
       ...filter,
-      values: filter.values.filter((value) => filtersMap[filter.slug].includes(value.slug)),
-    }));
+      values: filter.values.filter((value) => filtersMap[filter.slug]?.includes(value.slug)),
+    }))
+    .filter((filter) => filter.values?.length);
 
   return (
     <CatalogContext.Provider value={{
