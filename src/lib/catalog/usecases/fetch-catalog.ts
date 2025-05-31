@@ -30,14 +30,19 @@ export default async function fetchCatalog({
   filters: Array<FilterEntity>,
 }> {
 
-  const res = await api.request('catalog?' + new URLSearchParams({
+  const params = new URLSearchParams({
     category: categorySlug || '',
     subcategory: subcategorySlug || '',
     brand: brandSlug || '',
     randomKey: randomKey?.toString() || '',
     loadFilters: loadFilters ? '1' : '0',
-    ...appliedFilters,
-  }).toString());
+  });
+
+  for (const filterSlug in appliedFilters) {
+    params.append(`filters[${filterSlug}]`, appliedFilters[filterSlug]);
+  }
+
+  const res = await api.request('catalog?' + params.toString());
 
   if (!res.ok) {
     return notFound();
