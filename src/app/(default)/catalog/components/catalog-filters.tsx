@@ -3,28 +3,22 @@
 import ArrowLeftAltIcon from "@/app/components/ui/icons/arrow-left-alt-icon";
 import RotateLeftIcon from "@/app/components/ui/icons/rotate-left-icon";
 import { FilterEntity } from "@/lib/catalog/types/filter";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import CatalogFilterValuesPopover from "./catalog-filter-values-popover";
 import { useClickOutside } from "@/app/hooks/click_outside";
+import { CatalogContext } from "./controllers/catalog-context";
 
-export default function CatalogFilters({ filters }: {
-  filters: Array<FilterEntity>,
-}) {
-  if (filters.length == 0) {
-    return;
-  }
-
+export default function CatalogFilters() {
   return (
     <>
-      <DesktopFilters filters={filters} />
-      <MobileFilters filters={filters} />
+      <DesktopFilters />
+      <MobileFilters />
     </>
   );
 }
 
-const DesktopFilters = ({ filters }: {
-  filters: Array<FilterEntity>,
-}) => {
+const DesktopFilters = () => {
+  const { products, filters, appliedFilters, clearFilters } = useContext(CatalogContext);
   const [activeFilter, setActiveFilter] = useState<{ filter: FilterEntity, posX: number, posY: number } | null>(null);
 
   const ref = useRef(null);
@@ -71,7 +65,8 @@ const DesktopFilters = ({ filters }: {
           </div>
           <button
             className="flex items-center justify-center gap-2 w-50 p-4 bg-success disabled:bg-disabled rounded-lg text-xs text-white font-bold uppercase"
-          // disabled
+            disabled={appliedFilters.length == 0}
+            onClick={() => clearFilters()}
           >
             <RotateLeftIcon />
             Сбросить
@@ -80,7 +75,7 @@ const DesktopFilters = ({ filters }: {
       </div>
       <div className="hidden sm:flex items-center justify-between my-4 text-sm">
         <p className="flex-grow">
-          Показано <strong>12</strong> товара из 12
+          Показано <strong>{products.data.length}</strong> товара из {products.meta.total}
         </p>
         <p className="mr-4 font-bold">
           Сортировать:
@@ -98,10 +93,7 @@ const DesktopFilters = ({ filters }: {
   );
 }
 
-const MobileFilters = ({ filters }: {
-  filters: Array<FilterEntity>,
-}) => {
-  console.log(filters);
+const MobileFilters = () => {
 
   return (
     <div className="grid sm:hidden grid-cols-2 gap-2 pb-4">

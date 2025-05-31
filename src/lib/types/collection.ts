@@ -1,7 +1,7 @@
 export type Collection<T> = {
   links: {
-    next: string|null,
-    prev: string|null,
+    next?: string | null,
+    prev?: string | null,
   },
   meta: {
     path: string,
@@ -9,6 +9,20 @@ export type Collection<T> = {
     current_page: number,
     from: number,
     to: number,
+    total: number,
   },
   data: Array<T>,
+};
+
+export const emptyCollection = {
+  links: {},
+  meta: {
+    path: '',
+    per_page: 0,
+    current_page: 0,
+    from: 0,
+    to: 0,
+    total: 0,
+  },
+  data: [],
 };

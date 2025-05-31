@@ -1,22 +1,16 @@
 'use client';
 
 import { FilterEntity } from '@/lib/catalog/types/filter';
-import { FilterValueEntity } from '@/lib/catalog/types/filter-value';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useContext } from 'react';
+import { CatalogContext } from './controllers/catalog-context';
 
 export default function CatalogFilterValuesPopover({ filter, posX, posY }: {
   filter?: FilterEntity,
   posX?: number,
   posY?: number,
 }) {
-
-  const isApplied = (value: FilterValueEntity) => {
-    return false && value.slug;
-  };
-
-  const onChange = (value: FilterValueEntity) => {
-    console.log((isApplied(value) ? 'uncheck' : 'check') + ' ' + value.slug);
-  };
+  const { isFilterApplied, toggleFilter } = useContext(CatalogContext);
 
   return (
     <AnimatePresence>
@@ -40,8 +34,8 @@ export default function CatalogFilterValuesPopover({ filter, posX, posY }: {
                   type="checkbox"
                   name={filter.slug}
                   value={value.slug}
-                  checked={isApplied(value)}
-                  onChange={() => onChange(value)}
+                  checked={isFilterApplied(filter, value)}
+                  onChange={() => toggleFilter(filter, value)}
                 />
                 <p className="whitespace-nowrap first-letter:capitalize">
                   {value.name}

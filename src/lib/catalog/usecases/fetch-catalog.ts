@@ -18,7 +18,7 @@ export default async function fetchCatalog({
   categorySlug?: string,
   subcategorySlug?: string,
   brandSlug?: string,
-  appliedFilters?: { [key: string]: string | number | Array<string | number> },
+  appliedFilters?: { [key: string]: string },
   randomKey?: number,
   loadFilters?: boolean,
 }

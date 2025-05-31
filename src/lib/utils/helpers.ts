@@ -1,8 +1,8 @@
 const KG_PHONE_MASK = "+996 (###) ###-##-##";
 
 
-export const delay = (time: number) => {
-  return new Promise(resolve => setTimeout(resolve, time));
+export const delay = (milliseconds: number) => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
 
 export const chunk = <T>(items: Array<T>, chunkSize: number): Array<Array<T>> => {
