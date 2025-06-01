@@ -50,7 +50,7 @@ export default function CatalogProvider({
       }
     }
 
-    replace(`${pathname}?${params.toString().replace(/%2C/g, ',')}`);
+    replace(`${pathname}?${params.toString().replace(/%2C/g, ',')}`, { scroll: false });
   }, [pathname, filtersMap]);
 
   const isFilterApplied = (filter: FilterEntity, value?: FilterValueEntity) => {
