@@ -17,6 +17,7 @@ import SearchSidebar from "../(default)/catalog/components/search-sidebar";
 import { CategoryEntity } from "@/lib/catalog/types/category";
 import { AuthContext } from "../(footerless)/profile/components/auth-context";
 import CartItemsQuantityBadge from "../(default)/checkout/components/cart-items-quantity-badge";
+import FavoritesQuantityBadge from "../(default)/catalog/favorites/components/favorites-quantity-badge";
 
 export default function MidHeader({ categories }: {
   categories: Array<CategoryEntity>,
@@ -100,9 +101,10 @@ export default function MidHeader({ categories }: {
           <Link
             href="/catalog/favorites"
             aria-label="Избранные"
-            className="flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted"
+            className="relative flex items-center justify-center w-7.5 h-7.5 md:w-10 md:h-10  p-1.5 rounded-lg bg-primary-muted"
           >
             <HeartOutlinedIcon />
+            <FavoritesQuantityBadge />
           </Link>
           <DesktopCartPopover
             isOpen={isCartPopoverOpen && pathname != '/checkout'}

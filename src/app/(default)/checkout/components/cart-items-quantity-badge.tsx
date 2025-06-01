@@ -8,9 +8,5 @@ export default function CartItemsQuantityBadge() {
   const { cart } = useContext(CartContext);
   const quantity = cart.items.reduce((acc, item) => acc + item.quantity, 0);
 
-  return quantity > 0 ? (
-    <Badge>
-      {quantity}
-    </Badge>
-  ) : null;
+  return <Badge quantity={quantity} />;
 }
