@@ -1,4 +1,5 @@
 import { BrandEntity } from "./brand";
+import { CharacteristicEntity } from "./characteristic";
 import { SubcategoryEntity } from "./subcategory";
 
 export type ProductEntity = {
@@ -15,4 +16,5 @@ export type ProductEntity = {
   images: Array<string>,
   subcategory: SubcategoryEntity,
   brand: BrandEntity | null,
+  characteristics?: Array<CharacteristicEntity> | null,
 };
