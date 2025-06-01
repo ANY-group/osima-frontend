@@ -157,8 +157,8 @@ const MobileFilters = () => {
   const [isFiltersOpen, setFiltersOpen] = useState<boolean>(false);
 
   return (
-    <>
-      <div className="grid sm:hidden grid-cols-2 gap-2">
+    <div className="sm:hidden">
+      <div className="grid grid-cols-2 gap-2">
         <button
           className="bg-secondary-muted rounded-lg text-sm"
           onClick={() => setFiltersOpen(true)}
@@ -177,7 +177,7 @@ const MobileFilters = () => {
         close={() => setFiltersOpen(false)}
       />
       <AppliedFilters />
-    </>
+    </div>
   );
 }
 
