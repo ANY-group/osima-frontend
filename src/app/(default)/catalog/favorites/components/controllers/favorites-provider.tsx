@@ -4,6 +4,7 @@ import { ProductEntity } from "@/lib/catalog/types/product";
 import { FavoritesContext } from "./favorites-context";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/app/(footerless)/profile/components/auth-context";
+import toggleUserFavorite from "@/lib/auth/usecases/toggle-user-favorite";
 
 export default function FavoritesProvider({
   children,
@@ -11,7 +12,7 @@ export default function FavoritesProvider({
   children: React.ReactNode,
 }) {
   const { user } = useContext(AuthContext);
-  const [ids, setIds] = useState<Array<number>>([]);
+  const [ids, setIds] = useState<Array<number>>(user?.favorites || []);
 
   const initializeFavorites = () => {
     if (user) {
@@ -22,9 +23,9 @@ export default function FavoritesProvider({
     }
   };
 
-  const syncFavorites = async () => {
+  const syncFavorites = async (product: ProductEntity) => {
     if (user) {
-      // TODO: send  request
+      toggleUserFavorite(product.id);
     } else {
       localStorage.setItem('favorites', JSON.stringify(ids));
     }
@@ -33,12 +34,6 @@ export default function FavoritesProvider({
   useEffect(() => {
     initializeFavorites();
   }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-      syncFavorites();
-    }, 100);
-  }, [ids]);
 
   useEffect(() => {
     initializeFavorites();
@@ -58,6 +53,9 @@ export default function FavoritesProvider({
     }
 
     setIds(tmpIds);
+    setTimeout(() => {
+      syncFavorites(product);
+    }, 100);
   };
 
   return (
