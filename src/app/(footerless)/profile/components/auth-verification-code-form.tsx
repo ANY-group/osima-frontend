@@ -58,7 +58,7 @@ export default function AuthVerificationCodeForm({
           name="code"
           autoComplete="tel"
           placeholder="Введите код"
-          className="w-full p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
+          className="w-full p-1 pb-3 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
           onInput={onInput}
           autoFocus
           required

@@ -3,7 +3,7 @@
 import { ProductEntity } from "@/lib/catalog/types/product";
 import { FavoritesContext } from "./favorites-context";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "@/app/(footerless)/profile/components/auth-context";
+import { AuthContext } from "@/app/(footerless)/profile/components/controllers/auth-context";
 import toggleUserFavorite from "@/lib/auth/usecases/toggle-user-favorite";
 
 export default function FavoritesProvider({

@@ -1,6 +1,6 @@
 'use client';
 
-import { AuthContext } from "@/app/(footerless)/profile/components/auth-context";
+import { AuthContext } from "@/app/(footerless)/profile/components/controllers/auth-context";
 import { isValidMask, maskString } from "@/lib/utils/helpers";
 import { ChangeEventHandler, useContext, useEffect, useState } from "react";
 import { CartContext } from "./controllers/cart-context";
@@ -76,7 +76,7 @@ export default function CheckoutUserInfo() {
             type="tel"
             name="code"
             placeholder="Введите код *"
-            className="w-full p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
+            className="w-full p-1 pb-3 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
             required
             autoFocus
             onChange={(e) => authenticate(e.target.value)}
@@ -91,7 +91,7 @@ export default function CheckoutUserInfo() {
         name="name"
         autoComplete="given-name"
         placeholder="ФИО *"
-        className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success transition-colors outline-0"
+        className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
         onChange={(e) => setCartInfo('name', e.target.value)}
         value={cart.name || ''}
         maxLength={100}
@@ -104,7 +104,7 @@ export default function CheckoutUserInfo() {
         name="email"
         autoComplete="email"
         placeholder="E-mail *"
-        className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success transition-colors outline-0"
+        className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
         onChange={(e) => setCartInfo('email', e.target.value)}
         value={cart.email || ''}
         maxLength={100}
@@ -144,7 +144,7 @@ const PhoneInput = ({ phone, onChange, onSubmit }: {
       name="phone"
       autoComplete="tel"
       placeholder="Номер телефона *"
-      className="w-full p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
+      className="w-full p-1 pb-3 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
       value={value}
       onInput={onInput}
       maxLength={30}

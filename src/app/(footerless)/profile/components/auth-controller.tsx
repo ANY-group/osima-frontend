@@ -5,7 +5,7 @@ import AuthForm from "./auth-form";
 import AuthVerificationCodeForm from "./auth-verification-code-form";
 import authenticateByCode from "@/lib/auth/usecases/authenticate-by-code";
 import getVerificationCode from "@/lib/auth/usecases/get-verification-code";
-import { AuthContext } from "./auth-context";
+import { AuthContext } from "./controllers/auth-context";
 import ValidationError from "@/lib/exceptions/validation-error";
 
 enum AuthStep {

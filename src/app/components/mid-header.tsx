@@ -15,7 +15,7 @@ import AuthSidebar from "../(footerless)/profile/components/auth-sidebar";
 import SearchIcon from "./ui/icons/search-icon";
 import SearchSidebar from "../(default)/catalog/components/search-sidebar";
 import { CategoryEntity } from "@/lib/catalog/types/category";
-import { AuthContext } from "../(footerless)/profile/components/auth-context";
+import { AuthContext } from "../(footerless)/profile/components/controllers/auth-context";
 import CartItemsQuantityBadge from "../(default)/checkout/components/cart-items-quantity-badge";
 import FavoritesQuantityBadge from "../(default)/catalog/favorites/components/favorites-quantity-badge";
 

@@ -4,7 +4,7 @@ import Subheader from "@/app/components/subheader";
 import ShieldCheckIcon from "@/app/components/ui/icons/shield-check-icon";
 import UserCircleAltIcon from "@/app/components/ui/icons/user-circle-alt-icon";
 import { FormEventHandler, HTMLInputAutoCompleteAttribute, HTMLInputTypeAttribute, useContext, useEffect, useRef, useState } from "react";
-import { AuthContext } from "../components/auth-context";
+import { AuthContext } from "../components/controllers/auth-context";
 import { maskString } from "@/lib/utils/helpers";
 
 export default function ProfileInfoPage() {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Roboto_Flex } from 'next/font/google'
 import "./globals.css";
 import Loader from "./components/ui/loader";
-import AuthProvider from "./(footerless)/profile/components/auth-provider";
+import AuthProvider from "./(footerless)/profile/components/controllers/auth-provider";
 import fetchUser from "@/lib/auth/usecases/fetch-user";
 import CartProvider from "./(default)/checkout/components/controllers/cart-provider";
 import FavoritesProvider from "./(default)/catalog/favorites/components/controllers/favorites-provider";

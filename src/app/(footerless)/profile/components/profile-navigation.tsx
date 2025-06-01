@@ -8,7 +8,7 @@ import UserIcon from "@/app/components/ui/icons/user-icon";
 import Link from "@/app/components/ui/link";
 import { usePathname } from "next/navigation";
 import { MouseEventHandler, useContext } from "react";
-import { AuthContext } from "./auth-context";
+import { AuthContext } from "./controllers/auth-context";
 import { maskString } from "@/lib/utils/helpers";
 
 export default function ProfileNavigation() {

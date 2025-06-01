@@ -36,7 +36,7 @@ export default function AuthForm({ phone, error, getVerificationCode }: {
           name="phone"
           autoComplete="tel"
           placeholder="Телефон"
-          className="w-full p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
+          className="w-full p-1 pb-3 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
           onInput={onInput}
           value={value}
           autoFocus

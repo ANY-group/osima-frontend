@@ -99,7 +99,7 @@ const DeliveryAddress = () => {
         name="city"
         autoComplete="address-level2"
         placeholder="Город *"
-        className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success transition-colors outline-0"
+        className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
         value={cart.city || ''}
         onChange={(e) => setCartInfo('city', e.target.value)}
         maxLength={255}
@@ -112,7 +112,7 @@ const DeliveryAddress = () => {
         name="address"
         autoComplete="address-line1"
         placeholder="Адрес *"
-        className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success transition-colors outline-0"
+        className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
         value={cart.addressLine1 || ''}
         onChange={(e) => setCartInfo('addressLine1', e.target.value)}
         maxLength={255}
@@ -127,7 +127,7 @@ const DeliveryAddress = () => {
             name="address_line_2"
             autoComplete="address-line2"
             placeholder="Квартира / офис"
-            className="p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
+            className="p-1 pb-3 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
             value={cart.addressLine2 || ''}
             onChange={(e) => setCartInfo('addressLine2', e.target.value)}
             maxLength={255}
@@ -141,7 +141,7 @@ const DeliveryAddress = () => {
             name="postal_code"
             autoComplete="postal-code"
             placeholder="Индекс"
-            className="p-1 pb-3 border-b border-divider-alt focus:border-success transition-colors outline-0"
+            className="p-1 pb-3 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
             value={cart.postalCode || ''}
             onChange={(e) => setCartInfo('postalCode', e.target.value)}
             maxLength={255}

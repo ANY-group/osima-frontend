@@ -17,7 +17,7 @@ export default function SubscribeForm() {
             name="email"
             autoComplete="email"
             placeholder="e-mail"
-            className="max-w-63 w-full p-1 pb-4 my-4 border-b border-divider-alt focus:border-success transition-colors outline-0"
+            className="max-w-63 w-full p-1 pb-4 my-4 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
             required
           />
           <button
