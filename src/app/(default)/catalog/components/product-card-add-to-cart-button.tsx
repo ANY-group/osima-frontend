@@ -19,12 +19,14 @@ export default function ProductCardAddToCartButton({ product }: {
       <button
         className="flex items-center justify-center gap-1
         px-2 md:px-3 py-1 md:py-2 md:mx-auto md:w-full
-        rounded bg-accent hover:not-disabled:bg-success disabled:bg-disabled/40
+        rounded bg-accent hover:not-disabled:bg-success disabled:bg-transparent disabled:text-secondary
         text-sm font-semibold whitespace-nowrap transition-colors"
         onClick={() => setItemQuantity(product, 1)}
         disabled={!product.inStock}
       >
-        <ShoppingBagIcon />
+        {product.inStock && (
+          <ShoppingBagIcon />
+        )}
         {product.inStock ? 'Добавить' : 'Нет в наличии'}
       </button>
     );
