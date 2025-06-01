@@ -1,3 +1,5 @@
+'use client';
+
 import TimesAltIcon from "@/app/components/ui/icons/times-alt-icon";
 import Image from "next/image";
 import Link from "@/app/components/ui/link";
@@ -8,6 +10,7 @@ import { CartItemEntity } from "@/lib/cart/types/cart-item";
 import CartItemQuantityController from "./cart-item-quantity-controller";
 import { useContext } from "react";
 import { CartContext } from "./controllers/cart-context";
+import { FavoritesContext } from "../../catalog/favorites/components/controllers/favorites-context";
 
 export default function CartItem({
   item,
@@ -15,6 +18,7 @@ export default function CartItem({
   item: CartItemEntity,
 }) {
   const { setItemQuantity } = useContext(CartContext);
+  const { isFavorite, toggleFavorite } = useContext(FavoritesContext);
 
   return (
     <div className="group flex gap-3 my-6 md:m-6 md:ml-2">
@@ -27,7 +31,8 @@ export default function CartItem({
           className="object-contain h-full rounded-lg"
         />
         <button
-          className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center rounded-lg bg-foreground/40 transition-opacity opacity-0 group-hover:opacity-100 group-focus:opacity-100 text-danger"
+          className={`absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center rounded-lg bg-foreground/40 transition-opacity opacity-0 group-hover:opacity-100 group-focus:opacity-100 ${isFavorite(item.product) ? 'text-danger' : 'text-background'}`}
+          onClick={() => toggleFavorite(item.product)}
           aria-label="Добавить в избранные"
         >
           <HeartIcon />

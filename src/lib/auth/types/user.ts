@@ -3,4 +3,5 @@ export type UserEntity = {
   email: string | null,
   name: string | null,
   birthDate: string | null,
+  favorites?: Array<number> | null,
 }

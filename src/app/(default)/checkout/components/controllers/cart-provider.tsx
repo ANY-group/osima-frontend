@@ -93,7 +93,6 @@ export default function CartProvider({ children }: {
   };
 
   const setCartInfo = (key: string, value: string | boolean | number | null | undefined) => {
-    console.log(key, value);
     const newCart = { ...cart, [key]: value };
     setCart(newCart);
   };
