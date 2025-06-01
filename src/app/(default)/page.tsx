@@ -10,9 +10,9 @@ import fetchCatalog from "@/lib/catalog/usecases/fetch-catalog";
 export default async function HomePage() {
 
   const [saleCatalog, bestsellerCatalog, newCatalog] = await Promise.all([
-    fetchCatalog({ appliedFilters: { sale: '1' }, randomKey: Math.floor(Math.random() * 1000) }),
-    fetchCatalog({ appliedFilters: { new: '1' }, randomKey: Math.floor(Math.random() * 1000) }),
-    fetchCatalog({ appliedFilters: { bestseller: '1' }, randomKey: Math.floor(Math.random() * 1000) }),
+    fetchCatalog({ appliedFilters: { sale: '1' }, randomKey: 10 * (new Date()).getHours() }),
+    fetchCatalog({ appliedFilters: { new: '1' }, randomKey: 20 * (new Date()).getHours() }),
+    fetchCatalog({ appliedFilters: { bestseller: '1' }, randomKey: 30 * (new Date()).getHours() }),
   ]);
 
   return (
@@ -20,13 +20,13 @@ export default async function HomePage() {
       <section className="layout-container">
         <HomeBanners />
       </section>
-      <section>
+      <section className="my-5 md:my-10">
         <ProductsCarousel title="Акции" products={saleCatalog.products} link="/catalog?sale=1" />
       </section>
-      <section>
+      <section className="my-5 md:my-10">
         <ProductsCarousel title="Бестселлеры" products={bestsellerCatalog.products} link="/catalog?bestseller=1" />
       </section>
-      <section>
+      <section className="my-5 md:my-10">
         <ProductsCarousel title="Новинки" products={newCatalog.products} link="/catalog?new=1" />
       </section>
       <section className="bg-primary-muted">

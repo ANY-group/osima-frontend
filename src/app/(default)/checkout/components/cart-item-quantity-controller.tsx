@@ -43,7 +43,7 @@ const ControllerButton = ({ onClick, label, disabled = false, children }: {
 }) => {
   return (
     <button
-      className="flex items-center justify-center aspect-square h-full rounded-lg bg-secondary-muted hover:bg-success hover:text-background transition-colors disabled:bg-disabled/20"
+      className="flex items-center justify-center aspect-square h-full rounded-lg bg-secondary-muted hover:not-disabled:bg-success hover:not-disabled:text-background transition-colors disabled:bg-disabled/20"
       aria-label={label}
       onClick={onClick}
       disabled={disabled}

@@ -11,8 +11,8 @@ export default function ProductsCarousel({ title, products, link }: {
 }) {
 
   return (
-    <div className="py-5 md:py-10">
-      <div className="layout-container flex items-center justify-between mb-3 md:mb-6">
+    <>
+      <div className="layout-container flex items-center justify-between">
         <h3 className="text-xl md:text-3xl font-semibold">
           {title}
         </h3>
@@ -28,12 +28,12 @@ export default function ProductsCarousel({ title, products, link }: {
           </div>
         </div>
       </div>
-      <div className="flex gap-2 md:gap-5 px-4 md:px-5 scrollable-layout-container no-scrollbar">
+      <div className="flex gap-2 md:gap-4 px-4 md:px-5 scrollable-layout-container no-scrollbar py-3 md:py-6">
         {products.data.map((product, index) => (
           <ProductCard key={index} product={product} />
         ))}
       </div>
-    </div>
+    </>
   );
 }
 

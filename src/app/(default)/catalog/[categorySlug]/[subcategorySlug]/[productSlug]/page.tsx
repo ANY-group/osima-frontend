@@ -47,7 +47,7 @@ export default async function ProductPage({ params }: {
       <section>
         {/* TODO: Reviews */}
       </section>
-      <section>
+      <section className="my-5 md:my-10">
         <ProductsCarousel title="Рекомендуем также" products={recommendations} />
       </section>
       <section>

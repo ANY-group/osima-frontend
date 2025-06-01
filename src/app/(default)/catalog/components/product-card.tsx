@@ -4,13 +4,13 @@ import ProductPrice from "./product-price";
 import StarRating from "./star-rating";
 import ProductCashback from "./product-cashback";
 import { ProductEntity } from "@/lib/catalog/types/product";
-import ShoppingBagIcon from "@/app/components/ui/icons/shopping-bag-icon";
+import ProductCardAddToCartButton from "./product-card-add-to-cart-button";
 
 export default function ProductCard({ product }: {
   product: ProductEntity,
 }) {
   return (
-    <div className="flex flex-col min-w-40 lg:w-58 w-full lg:shrink-0">
+    <div className="group flex flex-col md:p-2 min-w-40 lg:w-58 w-full lg:shrink-0 rounded-sm md:hover:ring md:hover:shadow-md ring-divider">
       <Link
         href={`/catalog/${product.subcategory.category?.slug || ''}/${product.subcategory.slug}/${product.slug}`}
         className="flex-grow flex flex-col w-full"
@@ -43,11 +43,8 @@ export default function ProductCard({ product }: {
           </div>
         </div>
       </Link>
-      <div className="hidden">
-        <button className="flex items-center justify-center gap-1 px-2 py-1 rounded bg-accent text-sm font-semibold whitespace-nowrap mx-auto">
-          <ShoppingBagIcon />
-          Добавить
-        </button>
+      <div className="md:opacity-0 group-hover:opacity-100 transition-opacity">
+        <ProductCardAddToCartButton product={product} />
       </div>
     </div>
   );
