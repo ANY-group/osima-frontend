@@ -10,6 +10,14 @@ export default function ProductsCarousel({ title, products, link }: {
   link?: string,
 }) {
 
+  const screenRight = () => {
+
+  };
+
+  const scrollLeft = () => {
+
+  };
+
   return (
     <>
       <div className="layout-container flex items-center justify-between">
@@ -18,13 +26,13 @@ export default function ProductsCarousel({ title, products, link }: {
         </h3>
         <div className="flex items-center gap-6">
           {link && (
-            <Link href={link} className="text-sm">
+            <Link href={link} className="text-sm hover:underline">
               Смотреть все
             </Link>
           )}
           <div className="hidden md:flex items-center gap-4">
-            <ScrollController />
-            <ScrollController rotate={true} />
+            <ScrollController onClick={() => scrollLeft()} />
+            <ScrollController onClick={() => screenRight()} rotate={true} />
           </div>
         </div>
       </div>
@@ -37,12 +45,22 @@ export default function ProductsCarousel({ title, products, link }: {
   );
 }
 
-const ScrollController = ({ rotate = false }: {
+const ScrollController = ({ onClick, disabled = false, rotate = false }: {
+  onClick: () => void,
+  disabled?: boolean,
   rotate?: boolean,
 }) => {
   return (
-    <div className={`flex items-center justify-center w-8 h-8 border rounded-full ${rotate && 'rotate-180'}`}>
+    <button
+      className={`flex items-center justify-center w-8 h-8
+        border rounded-full ${rotate && 'rotate-180'}
+        disabled:text-disabled
+        `}
+      aria-label={`пролистать ${rotate ? 'направо' : 'налево'}`}
+      onClick={onClick}
+      disabled={disabled}
+    >
       <ArrowLeftIcon />
-    </div>
+    </button>
   );
 }
