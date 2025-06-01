@@ -10,14 +10,6 @@ export default function ProductsCarousel({ title, products, link }: {
   link?: string,
 }) {
 
-  const screenRight = () => {
-
-  };
-
-  const scrollLeft = () => {
-
-  };
-
   return (
     <>
       <div className="layout-container flex items-center justify-between">
@@ -31,8 +23,8 @@ export default function ProductsCarousel({ title, products, link }: {
             </Link>
           )}
           <div className="hidden md:flex items-center gap-4">
-            <ScrollController onClick={() => scrollLeft()} />
-            <ScrollController onClick={() => screenRight()} rotate={true} />
+            <ScrollController />
+            <ScrollController rotate={true} />
           </div>
         </div>
       </div>
@@ -45,8 +37,7 @@ export default function ProductsCarousel({ title, products, link }: {
   );
 }
 
-const ScrollController = ({ onClick, disabled = false, rotate = false }: {
-  onClick: () => void,
+const ScrollController = ({ disabled = false, rotate = false }: {
   disabled?: boolean,
   rotate?: boolean,
 }) => {
@@ -57,7 +48,6 @@ const ScrollController = ({ onClick, disabled = false, rotate = false }: {
         disabled:text-disabled
         `}
       aria-label={`пролистать ${rotate ? 'направо' : 'налево'}`}
-      onClick={onClick}
       disabled={disabled}
     >
       <ArrowLeftIcon />
