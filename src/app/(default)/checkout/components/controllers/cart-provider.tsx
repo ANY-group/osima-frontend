@@ -25,7 +25,7 @@ export default function CartProvider({ children }: {
   // Read cart from localStorage
   useEffect(() => {
     const rawCart = JSON.parse(localStorage.getItem('cart') || '{}');
-    const localCartItems: Array<LocalCartItemEntity> = rawCart.items;
+    const localCartItems: Array<LocalCartItemEntity> = rawCart.items || [];
 
     fetchCart(localCartItems).then((items) => {
       setCart({
@@ -50,6 +50,18 @@ export default function CartProvider({ children }: {
 
     // updateDeliveryMethods();
   }, [cart]);
+
+  useEffect(() => {
+    if (!cart.deliveryMethod && deliveryMethods.length > 0) {
+      setCartInfo('deliveryMethod', deliveryMethods[0].slug);
+    }
+  }, [deliveryMethods]);
+
+  useEffect(() => {
+    if (!cart.paymentMethod && paymentMethods.length > 0) {
+      setCartInfo('paymentMethod', paymentMethods[0].slug);
+    }
+  }, [paymentMethods]);
 
   const updateDeliveryMethods = () => {
     fetchDeliveryMethods().then((deliveryMethods) => {
