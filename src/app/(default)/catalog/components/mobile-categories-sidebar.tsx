@@ -46,7 +46,7 @@ export default function MobileCategoriesSidebar({ categories, isOpen, close }: {
                     </div>
                   </button>
                 </div>
-                <Collapse open={isCategoryOpen(category)}>
+                <Collapse isOpen={isCategoryOpen(category)}>
                   <div className="pb-2">
                     <div className="px-6 py-8 border-b border-divider">
                       <h4 className="mb-5 font-bold uppercase">

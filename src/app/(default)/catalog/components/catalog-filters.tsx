@@ -8,6 +8,8 @@ import CatalogFilterValuesPopover from "./catalog-filter-values-popover";
 import { useClickOutside } from "@/app/hooks/click_outside";
 import { CatalogContext } from "./controllers/catalog-context";
 import TimesIcon from "@/app/components/ui/icons/times-icon";
+import MobileFiltersSidebar from "./mobile-filters-sidebar";
+import HighlightDot from "@/app/components/ui/highlight-dot";
 
 export default function CatalogFilters() {
   return (
@@ -22,8 +24,8 @@ const DesktopFilters = () => {
   const { products } = useContext(CatalogContext);
 
   return (
-    <>
-      <div className="hidden sm:flex items-center overflow-x-hidden gap-10">
+    <div className="max-sm:hidden">
+      <div className="flex items-center overflow-x-hidden gap-10">
         <p className="text-sm">
           Фильтр
         </p>
@@ -42,7 +44,7 @@ const DesktopFilters = () => {
         </p>
         <SortingButton />
       </div>
-    </>
+    </div>
   );
 }
 
@@ -106,7 +108,7 @@ const DesktopFiltersBar = () => {
                 <ArrowLeftAltIcon />
               </div>
               {isFilterApplied(filter) && (
-                <div className="absolute -top-1.5 -right-1.5 w-2 h-2 rounded-full bg-success"></div>
+                <HighlightDot className="-top-1.5 -right-1.5" />
               )}
             </div>
           </button>
@@ -131,7 +133,7 @@ const AppliedFilters = () => {
   }
 
   return (
-    <div className="flex flex-wrap items-center gap-2 mt-3 text-sm">
+    <div className="flex flex-wrap items-center gap-2 my-3 text-sm">
       {appliedFilters.map((filter) => filter.values.map((value) => (
         <button
           key={`${filter.id}-${value.id}`}
@@ -151,17 +153,31 @@ const AppliedFilters = () => {
 };
 
 const MobileFilters = () => {
+  const { appliedFilters } = useContext(CatalogContext);
+  const [isFiltersOpen, setFiltersOpen] = useState<boolean>(false);
 
   return (
-    <div className="grid sm:hidden grid-cols-2 gap-2 pb-4">
-      <button
-        className="bg-secondary-muted rounded-lg text-sm"
-        onClick={() => { }}
-      >
-        Фильтры
-      </button>
-      <SortingButton />
-    </div>
+    <>
+      <div className="grid sm:hidden grid-cols-2 gap-2">
+        <button
+          className="bg-secondary-muted rounded-lg text-sm"
+          onClick={() => setFiltersOpen(true)}
+        >
+          <div className="relative inline-block">
+            Фильтры
+            {appliedFilters.length > 0 && (
+              <HighlightDot />
+            )}
+          </div>
+        </button>
+        <SortingButton />
+      </div>
+      <MobileFiltersSidebar
+        isOpen={isFiltersOpen}
+        close={() => setFiltersOpen(false)}
+      />
+      <AppliedFilters />
+    </>
   );
 }
 

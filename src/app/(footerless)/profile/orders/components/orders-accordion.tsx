@@ -44,7 +44,7 @@ export default function OrdersAccordion({ orders }: {
               ))}
             </div>
           </div>
-          <Collapse open={isOrderOpen(index)}>
+          <Collapse isOpen={isOrderOpen(index)}>
             <OrderInfoTable order={order} />
           </Collapse>
           <div className="text-right">

@@ -76,7 +76,7 @@ export default async function CatalogPage({ params, searchParams }: {
             </p>
           </section>
         )}
-        <section className="layout-container">
+        <section className="layout-container mt-6">
           <CatalogProductsGrid products={products.data} />
         </section>
         <section className="bg-primary-muted">
