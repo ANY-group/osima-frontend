@@ -183,7 +183,7 @@ const MobileFilters = () => {
 
 const SortingButton = () => {
   return (
-    <button className="flex items-center justify-center gap-3 px-4 py-3.5 border border-divider-alt rounded-lg text-sm">
+    <button className="flex items-center justify-center gap-3 px-4 py-3.5 border border-divider-alt rounded-lg text-sm whitespace-nowrap">
       по умолчанию
       <div className="-rotate-90">
         <ArrowLeftAltIcon />

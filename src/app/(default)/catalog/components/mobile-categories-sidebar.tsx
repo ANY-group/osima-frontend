@@ -53,6 +53,13 @@ export default function MobileCategoriesSidebar({ categories, isOpen, close }: {
                         Категории
                       </h4>
                       <div className="grid grid-cols-2 gap-5 text-sm">
+                        <Link
+                          key={index}
+                          href={`/catalog/${openCategory?.slug}`}
+                          onClick={close}
+                        >
+                          Все товары
+                        </Link>
                         {(category?.subcategories ?? []).map((subcategory, index) => (
                           <Link
                             key={index}

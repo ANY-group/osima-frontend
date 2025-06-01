@@ -21,13 +21,13 @@ export default async function HomePage() {
         <HomeBanners />
       </section>
       <section>
-        <ProductsCarousel title="Акции" products={saleCatalog.products} link="/catalog?filters[sale]=1" />
+        <ProductsCarousel title="Акции" products={saleCatalog.products} link="/catalog?sale=1" />
       </section>
       <section>
-        <ProductsCarousel title="Бестселлеры" products={bestsellerCatalog.products} link="/catalog?filters[bestseller]=1" />
+        <ProductsCarousel title="Бестселлеры" products={bestsellerCatalog.products} link="/catalog?bestseller=1" />
       </section>
       <section>
-        <ProductsCarousel title="Новинки" products={newCatalog.products} link="/catalog?filters[new]=1" />
+        <ProductsCarousel title="Новинки" products={newCatalog.products} link="/catalog?new=1" />
       </section>
       <section className="bg-primary-muted">
         <div className="layout-container">
