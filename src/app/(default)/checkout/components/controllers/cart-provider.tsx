@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { CartContext } from "./cart-context";
 import { CartEntity } from "@/lib/cart/types/cart";
 import { ProductEntity } from "@/lib/catalog/types/product";
-import fetchCart from "@/lib/cart/usecases/fetchCart";
+import fetchCart from "@/lib/cart/usecases/fetch-cart";
 import { LocalCartItemEntity } from "@/lib/cart/types/local-cart-item";
 import { DeliveryMethodEntity } from "@/lib/cart/types/delivery-method";
 import fetchDeliveryMethods from "@/lib/cart/usecases/fetch-delivery-methods";

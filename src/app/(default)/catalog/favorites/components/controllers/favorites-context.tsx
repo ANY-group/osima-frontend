@@ -6,7 +6,9 @@ import { createContext } from "react";
 export const FavoritesContext = createContext<{
   isFavorite: (product: ProductEntity) => boolean,
   toggleFavorite: (product: ProductEntity) => void,
+  favoriteIds: Array<number>,
 }>({
   isFavorite: () => false,
   toggleFavorite: (product: ProductEntity) => { },
+  favoriteIds: [],
 });

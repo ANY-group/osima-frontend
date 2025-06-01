@@ -59,7 +59,11 @@ export default function FavoritesProvider({
   };
 
   return (
-    <FavoritesContext.Provider value={{ isFavorite, toggleFavorite }}>
+    <FavoritesContext.Provider value={{
+      isFavorite,
+      toggleFavorite,
+      favoriteIds: ids,
+    }}>
       {children}
     </FavoritesContext.Provider>
   );
