@@ -9,6 +9,6 @@ export const FavoritesContext = createContext<{
   favoriteIds: Array<number>,
 }>({
   isFavorite: () => false,
-  toggleFavorite: (product: ProductEntity) => { },
+  toggleFavorite: () => { },
   favoriteIds: [],
 });
