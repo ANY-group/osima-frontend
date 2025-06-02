@@ -28,9 +28,11 @@ export default function ProductsCarousel({ title, products, link }: {
           </div>
         </div>
       </div>
-      <div className="flex gap-2 md:gap-4 px-4 md:px-5 scrollable-layout-container no-scrollbar py-3 md:py-6">
+      <div className="flex gap-1 px-4 md:px-5 scrollable-layout-container no-scrollbar py-3 md:py-6">
         {products.data.map((product, index) => (
-          <ProductCard key={index} product={product} />
+          <div key={index} className="min-w-40 lg:w-58 w-full lg:shrink-0">
+            <ProductCard product={product} />
+          </div>
         ))}
       </div>
     </>
