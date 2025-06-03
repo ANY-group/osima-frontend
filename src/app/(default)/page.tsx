@@ -4,7 +4,7 @@ import HomeAddresses from "./home/components/home-addresses";
 import HomeBanners from "./home/components/home-banners";
 import HomePartners from "./home/components/home-partners";
 import HomeSocials from "./home/components/home-socials";
-import HomePosts from "./home/components/home-posts";
+import FeaturedPosts from "./blog/components/featured-posts";
 import fetchCatalog from "@/lib/catalog/usecases/fetch-catalog";
 
 export default async function HomePage() {
@@ -31,7 +31,7 @@ export default async function HomePage() {
       </section>
       <section className="bg-primary-muted">
         <div className="layout-container">
-          <HomePosts />
+          <FeaturedPosts />
         </div>
       </section>
       <section>

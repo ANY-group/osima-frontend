@@ -1,30 +1,35 @@
 import Image from "next/image";
 import PostTag from "./post-tag";
 import Link from "@/app/components/ui/link";
+import { PostEntity } from "@/lib/blog/types/post";
 
-export default function PostCard({ title }: {
-  title?: string,
+export default function PostCard({ post }: {
+  post: PostEntity,
 }) {
   return (
-    <div className="flex flex-col items-center gap-3 h-full p-3 bg-white">
+    <Link
+      href={`/blog/${post.slug}`}
+      className="flex flex-col items-center gap-3 h-full p-3 bg-white"
+    >
       <div className="relative w-full aspect-[372/250]">
         <Image
-          src="/images/tmp/post.png"
-          alt="Post"
+          src={post.image}
+          alt={post.title}
           fill
           className="object-cover"
         />
       </div>
       <div className="flex items-center justify-center flex-wrap gap-2">
-        <PostTag />
-        <PostTag />
+        {post.tags.map((tag, index) => (
+          <PostTag key={index} tag={tag} />
+        ))}
       </div>
       <div className="flex-grow text-xl text-center">
-        {title || 'Уход за кожей после 20 лет'}
+        {post.title}
       </div>
-      <Link href="/blog/post" className="underline">
+      <p className="underline">
         Читать далее
-      </Link>
-    </div>
+      </p>
+    </Link>
   );
 }

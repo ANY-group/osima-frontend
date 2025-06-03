@@ -6,7 +6,7 @@ import CatalogSubcategories from "./catalog-subcategories";
 import fetchCategories from "@/lib/catalog/usecases/fetch-categories";
 import CatalogFilters from "./catalog-filters";
 import CatalogProductsGrid from "./catalog-products-grid";
-import HomePosts from "../../home/components/home-posts";
+import FeaturedPosts from "../../blog/components/featured-posts";
 import SubscribeForm from "@/app/components/subscribe-form";
 
 export default async function CatalogPage({ params, searchParams }: {
@@ -81,7 +81,7 @@ export default async function CatalogPage({ params, searchParams }: {
         </section>
         <section className="bg-primary-muted">
           <div className="layout-container">
-            <HomePosts />
+            <FeaturedPosts />
           </div>
         </section>
         <section>
