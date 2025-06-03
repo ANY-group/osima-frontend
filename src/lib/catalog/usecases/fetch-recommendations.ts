@@ -1,6 +1,5 @@
 import api from "@/lib/utils/api";
 import { ProductEntity } from "../types/product";
-import { notFound } from "next/navigation";
 import { Collection } from "@/lib/types/collection";
 
 export default async function fetchRecommendations(

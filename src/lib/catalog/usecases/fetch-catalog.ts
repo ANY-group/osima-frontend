@@ -1,6 +1,5 @@
 import api from "@/lib/utils/api";
 import { CategoryEntity } from "../types/category";
-import { notFound } from "next/navigation";
 import { SubcategoryEntity } from "../types/subcategory";
 import { BrandEntity } from "../types/brand";
 import { Collection } from "@/lib/types/collection";

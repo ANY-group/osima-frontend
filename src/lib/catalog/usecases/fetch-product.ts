@@ -1,6 +1,5 @@
 import api from "@/lib/utils/api";
 import { ProductEntity } from "../types/product";
-import { notFound } from "next/navigation";
 
 export default async function fetchProduct(
   productSlug: string,
