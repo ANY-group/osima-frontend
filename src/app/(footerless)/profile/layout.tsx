@@ -15,7 +15,7 @@ export default async function DefaultLayout({
   }
 
   return (
-    <div className="min-h-svh flex flex-col">
+    <div className="min-h-lvh flex flex-col">
       <Header />
       <div className="flex-grow bg-secondary-muted">
         <div className="layout-container flex gap-6 md:py-4">

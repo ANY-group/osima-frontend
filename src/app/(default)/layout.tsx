@@ -7,7 +7,7 @@ export default function DefaultLayout({
   children: React.ReactNode,
 }) {
   return (
-    <div className="min-h-svh">
+    <div className="min-h-lvh">
       <Header />
       {children}
       <Footer />
