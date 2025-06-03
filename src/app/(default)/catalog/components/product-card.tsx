@@ -47,7 +47,7 @@ export default function ProductCard({ product }: {
       <div className="md:opacity-0 group-hover:opacity-100 transition-opacity">
         <ProductCardAddToCartButton product={product} />
       </div>
-      <div className="absolute top-3.5 right-3.5 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+      <div className="absolute top-0 right-0 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
         <ProductCardAddToFavoriteButton product={product} />
       </div>
     </div>

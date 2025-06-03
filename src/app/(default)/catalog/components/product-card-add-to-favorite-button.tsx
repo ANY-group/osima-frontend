@@ -12,7 +12,7 @@ export default function ProductCardAddToFavoriteButton({ product }: {
   const { toggleFavorite, isFavorite } = useContext(FavoritesContext);
   return (
     <button
-      className={`${isFavorite(product) ? 'text-danger' : 'text-secondary'} transition-colors`}
+      className={`${isFavorite(product) ? 'text-danger' : 'text-secondary'} transition-colors p-0.5 md:p-3.5`}
       onClick={() => toggleFavorite(product)}
     >
       {isFavorite(product) ? <HeartIcon /> : <HeartOutlinedIcon />}
