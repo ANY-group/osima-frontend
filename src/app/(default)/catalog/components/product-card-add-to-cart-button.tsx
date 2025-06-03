@@ -33,7 +33,7 @@ export default function ProductCardAddToCartButton({ product }: {
   }
 
   return (
-    <div className="flex items-center justify-center h-9">
+    <div className="flex items-center justify-center h-7 md:h-9">
       <CartItemQuantityController product={product} />
     </div>
   );
