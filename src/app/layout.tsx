@@ -23,9 +23,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const user = await fetchUser()
-    .catch(() => {
-      return null;
-    });
+    .catch(() => null);
 
   return (
     <html lang="ru" className="md:bg-foreground scroll-smooth">

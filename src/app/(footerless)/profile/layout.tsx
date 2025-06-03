@@ -8,7 +8,8 @@ export default async function DefaultLayout({
 }: {
   children: React.ReactNode,
 }) {
-  const user = await fetchUser();
+  const user = await fetchUser()
+    .catch(() => null);
 
   if (!user) {
     redirect('/');

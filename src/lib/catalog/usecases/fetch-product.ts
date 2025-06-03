@@ -14,10 +14,6 @@ export default async function fetchProduct(
     product: productSlug || '',
   }).toString());
 
-  if (!res.ok) {
-    return notFound();
-  }
-
   const { product } = await res.json();
 
   return product;

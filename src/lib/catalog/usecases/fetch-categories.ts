@@ -5,10 +5,7 @@ export default async function fetchCategories(): Promise<Array<CategoryEntity>> 
 
   const res = await api.request('catalog/groups');
 
-  if (!res.ok) {
-    return [];
-  }
-
   const { groups } = await res.json();
+
   return groups;
 }

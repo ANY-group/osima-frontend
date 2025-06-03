@@ -44,10 +44,6 @@ export default async function fetchCatalog({
 
   const res = await api.request('catalog?' + params.toString());
 
-  if (!res.ok) {
-    return notFound();
-  }
-
   const { category, subcategory, brand, products, filters } = await res.json();
 
   return { category, subcategory, brand, products, filters };

@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import ValidationError from "../exceptions/validation-error";
 import { getClientAccessToken } from "./get-client-access-token";
 import { getServerAccessToken } from "./get-server-access-token";
@@ -64,6 +65,10 @@ const api: Api = {
     });
 
     if (res.status >= 400 && res.status < 500) {
+      if (res.status == 404) {
+        notFound();
+      }
+
       const { message, errors } = await res.json();
       throw new ValidationError(message, errors);
     }

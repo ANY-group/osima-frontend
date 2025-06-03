@@ -1,5 +1,6 @@
 import api from "@/lib/utils/api";
 import { PostEntity } from "../types/post";
+import { notFound } from "next/navigation";
 
 export default async function fetchPost(slug: string): Promise<PostEntity> {
   const res = await api.request(`blog/posts/${slug}`);

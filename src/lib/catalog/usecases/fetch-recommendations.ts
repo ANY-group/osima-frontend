@@ -18,10 +18,6 @@ export default async function fetchRecommendations(
     randomKey: Math.floor(Math.random()*1000).toString(),
   }).toString());
 
-  if (!res.ok) {
-    return notFound();
-  }
-
   const { products } = await res.json();
 
   return products;

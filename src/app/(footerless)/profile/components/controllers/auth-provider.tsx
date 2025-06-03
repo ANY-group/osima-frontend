@@ -20,7 +20,7 @@ export default function AuthProvider({ children, initialUser }: {
 
   const login = async (token: string) => {
     Cookies.set('access_token', token, { expires: 365 });
-    const user = await fetchUser();
+    const user = await fetchUser().catch(() => null);
     setUser(user);
   };
 
