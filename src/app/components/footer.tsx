@@ -4,7 +4,6 @@ import InstagramRoundedIcon from "./ui/icons/instagram-rounded-icon";
 import PaymentMethodsIcon from "./ui/icons/payment-methods-icon";
 import fetchCategories from "@/lib/catalog/usecases/fetch-categories";
 import { chunk } from "@/lib/utils/helpers";
-import Image from "next/image";
 
 export default function Footer() {
   return (
