@@ -44,12 +44,16 @@ const ContactsColumn = () => {
         <p>
           Подписывайтесь на нас:
         </p>
-        <div className="flex items-center gap-2 mt-1">
+        <Link
+          href="https://www.instagram.com/vegas_beautybar/"
+          className="flex items-center gap-2 mt-1"
+          target="_blank"
+        >
           <InstagramRoundedIcon />
           <span className="text-text-accent">
-            @vegas
+            @vegas_beautybar
           </span>
-        </div>
+        </Link>
       </div>
       <div>
         <p>
@@ -61,9 +65,9 @@ const ContactsColumn = () => {
         <p>
           Служба поддержки:
         </p>
-        <p className="text-text-accent">
-          info@vegas.uz
-        </p>
+        <Link href="mailto:info@vegas.kg" className="text-text-accent">
+          info@vegas.kg
+        </Link>
       </div>
     </div>
   );
@@ -139,7 +143,7 @@ const BottomFooter = () => {
 
   return (
     <p className="py-5 text-xs text-text-accent">
-      {year} © vegas.uz интернет-магазин
+      {year} © vegas.kg интернет-магазин
     </p>
   );
 }
