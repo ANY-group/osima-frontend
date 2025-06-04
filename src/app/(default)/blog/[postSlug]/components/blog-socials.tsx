@@ -1,5 +1,5 @@
 import InstagramIcon from "@/app/components/ui/icons/instagram-icon";
-import Link from "next/link";
+import Link from "@/app/components/ui/link";
 
 export default function BlogSocials() {
   return (

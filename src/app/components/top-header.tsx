@@ -8,7 +8,7 @@ export default function TopHeader() {
           <Link href="#">
             Магазины
           </Link>
-          <Link href="#">
+          <Link href="/contacts">
             Контакты
           </Link>
         </div>
