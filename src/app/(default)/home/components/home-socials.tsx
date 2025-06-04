@@ -9,10 +9,18 @@ export default function HomeSocials() {
           Мы в соц. сетях
         </h3>
         <div className="flex items-center gap-2">
-          <Link href="#" className="px-6 py-2 bg-accent rounded-full font-semibold">
+          <Link
+            href="https://www.tiktok.com/@vegasbeautybar"
+            className="px-6 py-2 bg-accent rounded-full font-semibold"
+            target="_blank"
+          >
             TikTok
           </Link>
-          <Link href="#" className="px-6 py-2 bg-accent rounded-full font-semibold">
+          <Link
+            href="https://www.instagram.com/vegas_beautybar/"
+            className="px-6 py-2 bg-accent rounded-full font-semibold"
+            target="_blank"
+          >
             Instagram
           </Link>
         </div>
