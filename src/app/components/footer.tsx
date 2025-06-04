@@ -4,6 +4,7 @@ import InstagramRoundedIcon from "./ui/icons/instagram-rounded-icon";
 import PaymentMethodsIcon from "./ui/icons/payment-methods-icon";
 import fetchCategories from "@/lib/catalog/usecases/fetch-categories";
 import { chunk } from "@/lib/utils/helpers";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -59,7 +60,15 @@ const ContactsColumn = () => {
         <p>
           Способы оплаты:
         </p>
-        <PaymentMethodsIcon />
+        <div className="flex items-center gap-3">
+          <PaymentMethodsIcon />
+          <div
+            className="bg-[#C3CAD9] mask-no-repeat mask-contain mask-center h-8 w-8 mt-1"
+            style={{
+              maskImage: "url(/images/elcard-logo.png)",
+            }}>
+          </div>
+        </div>
       </div>
       <div>
         <p>
