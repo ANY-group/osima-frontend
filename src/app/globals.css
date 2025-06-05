@@ -121,15 +121,23 @@ button {
   }
 
   .raw-content a {
-    @apply text-success;
+    @apply text-success font-semibold underline;
   }
 
   .raw-content strong {
     @apply font-bold;
   }
 
-  .raw-content figcaption {
-    @apply hidden;
+  .raw-content figure {
+    @apply my-4;
+  }
+
+  .raw-content figure a {
+    @apply text-center text-sm text-secondary font-normal italic no-underline;
+  }
+
+  .raw-content img {
+    @apply mb-1 max-h-150 object-contain;
   }
 
   .raw-content blockquote {
