@@ -120,8 +120,20 @@ button {
     @apply my-1;
   }
 
+  .raw-content a {
+    @apply text-success;
+  }
+
+  .raw-content strong {
+    @apply font-bold;
+  }
+
   .raw-content figcaption {
     @apply hidden;
+  }
+
+  .raw-content blockquote {
+    @apply px-2.5 my-2 border-s-4 border-accent italic leading-relaxed;
   }
 
 }
