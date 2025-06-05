@@ -47,7 +47,7 @@ export default function InfoNavigation() {
       <Breadcrumbs items={[
         {
           label: 'Помощь',
-          href: '/',
+          href: null,
         },
         ...(activeItem ? [
           {

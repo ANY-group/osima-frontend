@@ -138,7 +138,7 @@ const InfoNavigationColumn = () => {
           url: '/contacts',
         },
         {
-          name: 'Как оформить заказ',
+          name: 'Как сделать заказ',
           url: '/how-to-order',
         },
         {

@@ -22,6 +22,8 @@ export default function Breadcrumbs({ items }: { items: Array<LinkEntity> }) {
 }
 
 export function BreadcrumbLinks({ items }: { items: Array<LinkEntity> }) {
+  const len = items.length;
+
   return (
     <div className="flex items-center">
       {items.map((item, index) => (
@@ -29,7 +31,8 @@ export function BreadcrumbLinks({ items }: { items: Array<LinkEntity> }) {
           <div className={`${!index && 'hidden'} w-4 h-px mx-2 bg-[#EBEDF0]`}></div>
           <Link
             href={item.href || '#'}
-            className={`whitespace-nowrap ${item.href == null && 'text-text-accent'}`}
+            className={`whitespace-nowrap ${index == len - 1 && 'text-text-accent'}`}
+            transition={item.href != null}
           >
             {item.label}
           </Link>
