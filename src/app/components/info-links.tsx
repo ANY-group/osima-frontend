@@ -7,23 +7,23 @@ import UserLikeIcon from "./ui/icons/user-like-icon";
 export default function InfoLinks() {
   const items = [
     {
-      title: "Доставка и оплата",
-      href: "#",
+      title: "Покупателям",
+      href: "/payment",
       icon: <ChatIcon />,
     },
     {
-      title: "Доставка и оплата",
-      href: "#",
+      title: "Доставка",
+      href: "/delivery",
       icon: <DeliveryCarIcon />,
     },
     {
-      title: "Покупателям",
-      href: "#",
+      title: "Как сделать заказ",
+      href: "/how-to-order",
       icon: <CircleQuestionIcon />,
     },
     {
-      title: "Покупателям",
-      href: "#",
+      title: "Бонусы",
+      href: "/bonuses",
       icon: <UserLikeIcon />,
     },
   ];

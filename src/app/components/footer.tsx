@@ -141,6 +141,26 @@ const InfoNavigationColumn = () => {
           name: 'Как оформить заказ',
           url: '/how-to-order',
         },
+        {
+          name: 'Оплата и возврат',
+          url: '/payment',
+        },
+        {
+          name: 'Реквизиты',
+          url: '/requisites',
+        },
+        {
+          name: 'Доставка',
+          url: '/delivery',
+        },
+        {
+          name: 'Публичная оферта',
+          url: '/public-offer',
+        },
+        {
+          name: 'Политика конфиденциальности',
+          url: '/privacy-policy',
+        },
       ]} />
     </NavigationColumnWrapper>
   );

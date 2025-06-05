@@ -13,10 +13,10 @@ export default function TopHeader() {
           </Link>
         </div>
         <div className="flex gap-6">
-          <Link href="#">
+          <Link href="/payment">
             Доставка и оплата
           </Link>
-          <Link href="#">
+          <Link href="/how-to-order">
             Покупателям
           </Link>
         </div>
