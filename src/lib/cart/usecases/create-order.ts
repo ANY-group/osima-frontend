@@ -23,6 +23,7 @@ export default async function createOrder(cart: CartEntity): Promise<OrderEntity
       },
       address: {
         city: cart.city,
+        warehouseId: cart.warehouseId,
         addressLine1: cart.addressLine1,
         addressLine2: cart.addressLine2,
         postalCode: cart.postalCode,

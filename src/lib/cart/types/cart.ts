@@ -8,9 +8,13 @@ export default interface CartEntity {
   deliveryMethod?: string,
   paymentMethod?: string,
   city?: string,
+  // Pickup
+  warehouseId?: number | string,
+  // Delivery
   addressLine1?: string,
   addressLine2?: string,
   postalCode?: string,
+
   useCertificate?: boolean,
   comment?: string,
 };

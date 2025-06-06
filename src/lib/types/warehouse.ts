@@ -4,7 +4,7 @@ export default interface WarehouseEntity {
   id: number,
   address: string,
   image?: string | null,
-  city: CityEntity,
+  city?: CityEntity | null,
   contacts?: string | null,
   openingHours?: string | null,
   mapLink?: string | null,

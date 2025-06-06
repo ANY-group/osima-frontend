@@ -35,7 +35,6 @@ export default function CartProvider({ children }: {
     });
 
     updateDeliveryMethods();
-    updatePaymentMethods();
   }, []);
 
   // Store cart in localStorage
@@ -47,21 +46,31 @@ export default function CartProvider({ children }: {
         quantity: item.quantity,
       })),
     }));
-
-    // updateDeliveryMethods();
   }, [cart]);
 
   useEffect(() => {
-    if (!cart.deliveryMethod && deliveryMethods.length > 0) {
+    if (getCurrentDeliveryMethod()) {
+      updatePaymentMethods();
+    }
+  }, [cart.deliveryMethod, deliveryMethods]);
+
+  useEffect(() => {
+    if (!getCurrentDeliveryMethod() && deliveryMethods.length > 0) {
       setCartInfo('deliveryMethod', deliveryMethods[0].slug);
     }
   }, [deliveryMethods]);
 
   useEffect(() => {
-    if (!cart.paymentMethod && paymentMethods.length > 0) {
+    if (!getCurrentPaymentMethod() && paymentMethods.length > 0) {
       setCartInfo('paymentMethod', paymentMethods[0].slug);
     }
   }, [paymentMethods]);
+
+  const getCurrentDeliveryMethod = () => deliveryMethods
+    .find((deliveryMethod) => deliveryMethod.slug == cart.deliveryMethod);
+
+  const getCurrentPaymentMethod = () => paymentMethods
+    .find((paymentMethod) => paymentMethod.slug == cart.paymentMethod);
 
   const updateDeliveryMethods = () => {
     fetchDeliveryMethods().then((deliveryMethods) => {
@@ -70,7 +79,7 @@ export default function CartProvider({ children }: {
   };
 
   const updatePaymentMethods = () => {
-    fetchPaymentMethods().then((paymentMethods) => {
+    fetchPaymentMethods(getCurrentDeliveryMethod()?.type).then((paymentMethods) => {
       setPaymentMethods(paymentMethods);
     });
   };
@@ -116,7 +125,9 @@ export default function CartProvider({ children }: {
   const value = {
     cart,
     deliveryMethods,
+    getCurrentDeliveryMethod,
     paymentMethods,
+    getCurrentPaymentMethod,
     // Error
     error,
     setError,

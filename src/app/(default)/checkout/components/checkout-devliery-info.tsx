@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CartContext } from "./controllers/cart-context";
 import ErrorText from "@/app/components/ui/error-text";
 import DeliveryMethodEntity from "@/lib/cart/types/delivery-method";
@@ -71,84 +71,109 @@ const DeliveryMethod = ({
 }
 
 const DeliveryAddress = () => {
-  const { cart, setCartInfo, error } = useContext(CartContext);
+  const { cart, deliveryMethods, getCurrentDeliveryMethod, setCartInfo, error } = useContext(CartContext);
+
+  const getCurrentCity = () => getCurrentDeliveryMethod()
+    ?.cities
+    .find((city) => city.name == cart.city);
+
+  useEffect(() => {
+    const deliveryMethod = getCurrentDeliveryMethod();
+    if (deliveryMethod && !deliveryMethod?.cities.find((city) => city.name == getCurrentCity()?.name)) {
+      setCartInfo('city', deliveryMethod?.cities.at(0)?.name);
+    }
+  }, [cart.deliveryMethod, deliveryMethods]);
+
+  useEffect(() => {
+    const deliveryMethod = getCurrentDeliveryMethod();
+    if (deliveryMethod && deliveryMethod?.type == 'pickup' && !cart.warehouseId) {
+      setCartInfo('warehouseId', getCurrentCity()?.warehouses?.at(0)?.id);
+    }
+  }, [cart.deliveryMethod, cart.city]);
 
   return (
     <>
       <h5 className="my-4 text-lg font-bold">
-        Адрес доставки
+        Адрес {getCurrentDeliveryMethod()?.type == 'pickup' ? 'самовывоза' : 'доставки'}
       </h5>
-      {/* <select
+      <select
         name="city"
-        className="w-full p-3 rounded-lg border border-divider-alt"
-        value={cart.cityId || ''}
-        onChange={(e) => setCartInfo('cityId', e.target.value)}
-        required
-      >
-        <option value="almaty">
-          Алматы
-        </option>
-        <option value="astana">
-          Астана
-        </option>
-      </select>
-      <ErrorText error={error?.errors['address.cityId']} /> */}
-
-      <input
-        type="text"
-        name="city"
-        autoComplete="address-level2"
-        placeholder="Город *"
-        className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
+        className="w-full p-3 rounded-lg border border-divider-alt outline-success"
         value={cart.city || ''}
         onChange={(e) => setCartInfo('city', e.target.value)}
-        maxLength={255}
         required
-      />
+      >
+        {getCurrentDeliveryMethod()?.cities.map((city, index) => (
+          <option key={index} value={city.name}>
+            {city.name}
+          </option>
+        ))}
+      </select>
       <ErrorText error={error?.errors['address.city']} />
 
-      <input
-        type="text"
-        name="address"
-        autoComplete="address-line1"
-        placeholder="Адрес *"
-        className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
-        value={cart.addressLine1 || ''}
-        onChange={(e) => setCartInfo('addressLine1', e.target.value)}
-        maxLength={255}
-        required
-      />
-      <ErrorText error={error?.errors['address.addressLine1']} />
-
-      <div className="flex flex-wrap gap-x-5">
-        <div className="mt-4">
+      {getCurrentDeliveryMethod()?.type == 'pickup' ? (
+        <>
+          <select
+            name="warehouseId"
+            className="w-full p-3 mt-4 rounded-lg border border-divider-alt outline-success"
+            value={cart.warehouseId || ''}
+            onChange={(e) => setCartInfo('warehouseId', e.target.value)}
+            required
+          >
+            {getCurrentCity()?.warehouses?.map((warehouse, index) => (
+              <option key={index} value={warehouse.id}>
+                {warehouse.address}
+              </option>
+            ))}
+          </select>
+          <ErrorText error={error?.errors['address.warehouseId']} />
+        </>
+      ) : (
+        <>
           <input
             type="text"
-            name="address_line_2"
-            autoComplete="address-line2"
-            placeholder="Квартира / офис"
-            className="p-1 pb-3 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
-            value={cart.addressLine2 || ''}
-            onChange={(e) => setCartInfo('addressLine2', e.target.value)}
+            name="address"
+            autoComplete="address-line1"
+            placeholder="Адрес *"
+            className="w-full p-1 pb-3 mt-4 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
+            value={cart.addressLine1 || ''}
+            onChange={(e) => setCartInfo('addressLine1', e.target.value)}
             maxLength={255}
+            required
           />
-          <ErrorText error={error?.errors['address.addressLine2']} />
-        </div>
+          <ErrorText error={error?.errors['address.addressLine1']} />
 
-        <div className="mt-4">
-          <input
-            type="text"
-            name="postal_code"
-            autoComplete="postal-code"
-            placeholder="Индекс"
-            className="p-1 pb-3 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
-            value={cart.postalCode || ''}
-            onChange={(e) => setCartInfo('postalCode', e.target.value)}
-            maxLength={255}
-          />
-          <ErrorText error={error?.errors['address.postalCode']} />
-        </div>
-      </div>
+          <div className="flex flex-wrap gap-x-5">
+            <div className="mt-4">
+              <input
+                type="text"
+                name="address_line_2"
+                autoComplete="address-line2"
+                placeholder="Квартира / офис"
+                className="p-1 pb-3 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
+                value={cart.addressLine2 || ''}
+                onChange={(e) => setCartInfo('addressLine2', e.target.value)}
+                maxLength={255}
+              />
+              <ErrorText error={error?.errors['address.addressLine2']} />
+            </div>
+
+            <div className="mt-4">
+              <input
+                type="text"
+                name="postal_code"
+                autoComplete="postal-code"
+                placeholder="Индекс"
+                className="p-1 pb-3 border-b border-divider-alt focus:border-success user-invalid:border-danger transition-colors outline-0"
+                value={cart.postalCode || ''}
+                onChange={(e) => setCartInfo('postalCode', e.target.value)}
+                maxLength={255}
+              />
+              <ErrorText error={error?.errors['address.postalCode']} />
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 }
