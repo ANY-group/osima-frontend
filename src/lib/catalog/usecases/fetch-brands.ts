@@ -1,5 +1,5 @@
 import api from "@/lib/utils/api";
-import { BrandEntity } from "../types/brand";
+import BrandEntity from "../types/brand";
 
 export default async function fetchBrands(): Promise<Array<BrandEntity>> {
 

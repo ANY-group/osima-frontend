@@ -1,4 +1,4 @@
-export type FilterValueEntity = {
+export default interface FilterValueEntity {
   id: number,
   slug: string,
   name: string,

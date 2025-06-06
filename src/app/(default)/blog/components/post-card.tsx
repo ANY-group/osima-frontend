@@ -1,7 +1,7 @@
 import Image from "next/image";
 import PostTag from "./post-tag";
 import Link from "@/app/components/ui/link";
-import { PostEntity } from "@/lib/blog/types/post";
+import PostEntity from "@/lib/blog/types/post";
 
 export default function PostCard({ post }: {
   post: PostEntity,

@@ -1,4 +1,4 @@
-export type OrderDeliveryEntity = {
+export default interface OrderDeliveryEntity {
   name: string,
   address: string,
   status: string | null,

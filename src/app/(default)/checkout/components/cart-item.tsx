@@ -6,11 +6,11 @@ import Link from "@/app/components/ui/link";
 import ProductCashback from "../../catalog/components/product-cashback";
 import ProductPrice from "../../catalog/components/product-price";
 import HeartIcon from "@/app/components/ui/icons/heart-icon";
-import { CartItemEntity } from "@/lib/cart/types/cart-item";
 import CartItemQuantityController from "./cart-item-quantity-controller";
 import { useContext } from "react";
 import { CartContext } from "./controllers/cart-context";
 import { FavoritesContext } from "../../catalog/favorites/components/controllers/favorites-context";
+import CartItemEntity from "@/lib/cart/types/cart-item";
 
 export default function CartItem({
   item,

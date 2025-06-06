@@ -1,6 +1,6 @@
 'use client';
 
-import { UserEntity } from "@/lib/auth/types/user";
+import UserEntity from "@/lib/auth/types/user";
 import { createContext } from "react";
 
 type AuthState = {

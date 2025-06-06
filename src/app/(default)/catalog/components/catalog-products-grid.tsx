@@ -1,5 +1,5 @@
+import ProductEntity from "@/lib/catalog/types/product";
 import ProductCard from "./product-card";
-import { ProductEntity } from "@/lib/catalog/types/product";
 
 export default function CatalogProductsGrid({
   products,

@@ -4,7 +4,7 @@ import { useState } from "react";
 import DesktopCategoriesDropdown from "../(default)/catalog/components/desktop-categories-dropdown";
 import Link from "./ui/link";
 import { AnimatePresence, motion } from "motion/react";
-import { CategoryEntity } from "@/lib/catalog/types/category";
+import CategoryEntity from "@/lib/catalog/types/category";
 
 export default function BotHeader({ categories }: { categories: Array<CategoryEntity> }) {
 

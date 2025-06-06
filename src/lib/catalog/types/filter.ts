@@ -1,6 +1,6 @@
-import { FilterValueEntity } from "./filter-value";
+import FilterValueEntity from "./filter-value";
 
-export type FilterEntity = {
+export default interface FilterEntity {
   id: number,
   slug: string,
   name: string,

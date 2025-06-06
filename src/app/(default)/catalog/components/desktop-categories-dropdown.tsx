@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion"
 import Link from "@/app/components/ui/link";
-import { CategoryEntity } from "@/lib/catalog/types/category";
 import { chunk } from "@/lib/utils/helpers";
+import CategoryEntity from "@/lib/catalog/types/category";
 
 export default function DesktopCategoriesDropdown({ openCategory, close }: {
   openCategory: CategoryEntity | null,

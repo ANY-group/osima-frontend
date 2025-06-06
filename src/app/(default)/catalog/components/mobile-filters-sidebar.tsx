@@ -5,10 +5,10 @@ import Swipeable from "@/app/components/ui/swipeable";
 import { AnimatePresence, motion } from "motion/react";
 import { useContext, useState } from "react";
 import { CatalogContext } from "./controllers/catalog-context";
-import { FilterEntity } from "@/lib/catalog/types/filter";
 import ArrowLeftAltIcon from "@/app/components/ui/icons/arrow-left-alt-icon";
 import Collapse from "@/app/components/ui/collapse";
 import HighlightDot from "@/app/components/ui/highlight-dot";
+import FilterEntity from "@/lib/catalog/types/filter";
 
 export default function MobileFiltersSidebar({
   isOpen,

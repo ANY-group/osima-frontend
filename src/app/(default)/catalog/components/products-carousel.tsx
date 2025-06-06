@@ -1,8 +1,8 @@
 import Link from "@/app/components/ui/link";
 import ArrowLeftIcon from "../../../components/ui/icons/arrow-left-icon";
 import ProductCard from "./product-card";
-import { Collection } from "@/lib/types/collection";
-import { ProductEntity } from "@/lib/catalog/types/product";
+import Collection from "@/lib/types/collection";
+import ProductEntity from "@/lib/catalog/types/product";
 
 export default function ProductsCarousel({ title, products, link }: {
   title: string,

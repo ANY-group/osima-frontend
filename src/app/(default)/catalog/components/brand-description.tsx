@@ -1,4 +1,4 @@
-import { BrandEntity } from "@/lib/catalog/types/brand";
+import BrandEntity from "@/lib/catalog/types/brand";
 import Image from "next/image";
 
 export default function BrandDescription({ brand }: {

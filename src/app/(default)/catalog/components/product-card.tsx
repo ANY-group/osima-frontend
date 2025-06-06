@@ -3,9 +3,9 @@ import Link from "@/app/components/ui/link";
 import ProductPrice from "./product-price";
 import StarRating from "./star-rating";
 import ProductCashback from "./product-cashback";
-import { ProductEntity } from "@/lib/catalog/types/product";
 import ProductCardAddToCartButton from "./product-card-add-to-cart-button";
 import ProductCardAddToFavoriteButton from "./product-card-add-to-favorite-button";
+import ProductEntity from "@/lib/catalog/types/product";
 
 export default function ProductCard({ product }: {
   product: ProductEntity,

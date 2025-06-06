@@ -2,8 +2,8 @@
 
 import ArrowDownBoldIcon from "@/app/components/ui/icons/arrow-down-bold-icon";
 import Link from "@/app/components/ui/link";
-import { CategoryEntity } from "@/lib/catalog/types/category";
-import { SubcategoryEntity } from "@/lib/catalog/types/subcategory";
+import CategoryEntity from "@/lib/catalog/types/category";
+import SubcategoryEntity from "@/lib/catalog/types/subcategory";
 import { usePathname } from "next/navigation";
 
 export default function CatalogSubcategories({ categories, slugPrefix }: {

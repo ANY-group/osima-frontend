@@ -2,8 +2,8 @@
 
 import Collapse from "@/app/components/ui/collapse";
 import ArrowDownBoldIcon from "@/app/components/ui/icons/arrow-down-bold-icon";
-import { OrderEntity } from "@/lib/order/types/order";
-import { OrderItemEntity } from "@/lib/order/types/order-item";
+import OrderEntity from "@/lib/order/types/order";
+import OrderItemEntity from "@/lib/order/types/order-item";
 import { formatNumber } from "@/lib/utils/helpers";
 import Image from "next/image";
 import { useState } from "react";

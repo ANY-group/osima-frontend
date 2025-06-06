@@ -1,12 +1,12 @@
 'use client';
 
-import { BrandEntity } from "@/lib/catalog/types/brand";
-import { CategoryEntity } from "@/lib/catalog/types/category";
-import { FilterEntity } from "@/lib/catalog/types/filter";
-import { FilterValueEntity } from "@/lib/catalog/types/filter-value";
-import { ProductEntity } from "@/lib/catalog/types/product";
-import { SubcategoryEntity } from "@/lib/catalog/types/subcategory";
-import { Collection, emptyCollection } from "@/lib/types/collection";
+import BrandEntity from "@/lib/catalog/types/brand";
+import CategoryEntity from "@/lib/catalog/types/category";
+import FilterEntity from "@/lib/catalog/types/filter";
+import FilterValueEntity from "@/lib/catalog/types/filter-value";
+import ProductEntity from "@/lib/catalog/types/product";
+import SubcategoryEntity from "@/lib/catalog/types/subcategory";
+import Collection, { emptyCollection } from "@/lib/types/collection";
 import { createContext } from "react";
 
 export const CatalogContext = createContext<{

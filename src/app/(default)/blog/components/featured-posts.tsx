@@ -1,9 +1,9 @@
 import Link from "@/app/components/ui/link";
 import PostCard from "./post-card";
-import { PostEntity } from "@/lib/blog/types/post";
 import LargePost from "./large-post";
 import fetchPosts from "@/lib/blog/usecases/fetch-posts";
-import { Collection } from "@/lib/types/collection";
+import Collection from "@/lib/types/collection";
+import PostEntity from "@/lib/blog/types/post";
 
 export default async function FeaturedPosts({ loadedPosts }: {
   loadedPosts?: Collection<PostEntity>,

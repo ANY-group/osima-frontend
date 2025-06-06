@@ -1,6 +1,6 @@
-import { TagEntity } from "./tag";
+import TagEntity from "./tag";
 
-export type PostEntity = {
+export default interface PostEntity {
   slug: string,
   title: string,
   content?: string|null,

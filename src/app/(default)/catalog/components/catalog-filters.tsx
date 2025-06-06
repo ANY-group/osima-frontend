@@ -2,7 +2,6 @@
 
 import ArrowLeftAltIcon from "@/app/components/ui/icons/arrow-left-alt-icon";
 import RotateLeftIcon from "@/app/components/ui/icons/rotate-left-icon";
-import { FilterEntity } from "@/lib/catalog/types/filter";
 import { useContext, useRef, useState } from "react";
 import CatalogFilterValuesPopover from "./catalog-filter-values-popover";
 import { useClickOutside } from "@/app/hooks/click_outside";
@@ -10,6 +9,7 @@ import { CatalogContext } from "./controllers/catalog-context";
 import TimesIcon from "@/app/components/ui/icons/times-icon";
 import MobileFiltersSidebar from "./mobile-filters-sidebar";
 import HighlightDot from "@/app/components/ui/highlight-dot";
+import FilterEntity from "@/lib/catalog/types/filter";
 
 export default function CatalogFilters() {
   return (

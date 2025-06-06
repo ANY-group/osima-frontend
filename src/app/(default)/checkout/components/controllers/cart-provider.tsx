@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { CartContext } from "./cart-context";
-import { CartEntity } from "@/lib/cart/types/cart";
-import { ProductEntity } from "@/lib/catalog/types/product";
 import fetchCart from "@/lib/cart/usecases/fetch-cart";
-import { LocalCartItemEntity } from "@/lib/cart/types/local-cart-item";
-import { DeliveryMethodEntity } from "@/lib/cart/types/delivery-method";
 import fetchDeliveryMethods from "@/lib/cart/usecases/fetch-delivery-methods";
 import fetchPaymentMethods from "@/lib/cart/usecases/fetch-payment-methods";
-import { PaymentMethodEntity } from "@/lib/cart/types/payment-method";
 import ValidationError from "@/lib/exceptions/validation-error";
+import DeliveryMethodEntity from "@/lib/cart/types/delivery-method";
+import PaymentMethodEntity from "@/lib/cart/types/payment-method";
+import CartEntity from "@/lib/cart/types/cart";
+import LocalCartItemEntity from "@/lib/cart/types/local-cart-item";
+import ProductEntity from "@/lib/catalog/types/product";
 
 export default function CartProvider({ children }: {
   children: React.ReactNode,

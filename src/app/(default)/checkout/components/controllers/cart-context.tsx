@@ -1,9 +1,9 @@
 'use client';
 
-import { CartEntity } from "@/lib/cart/types/cart";
-import { DeliveryMethodEntity } from "@/lib/cart/types/delivery-method";
-import { PaymentMethodEntity } from "@/lib/cart/types/payment-method";
-import { ProductEntity } from "@/lib/catalog/types/product";
+import CartEntity from "@/lib/cart/types/cart";
+import DeliveryMethodEntity from "@/lib/cart/types/delivery-method";
+import PaymentMethodEntity from "@/lib/cart/types/payment-method";
+import ProductEntity from "@/lib/catalog/types/product";
 import ValidationError from "@/lib/exceptions/validation-error";
 import { createContext } from "react";
 

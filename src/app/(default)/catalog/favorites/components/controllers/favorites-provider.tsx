@@ -1,10 +1,10 @@
 'use client';
 
-import { ProductEntity } from "@/lib/catalog/types/product";
 import { FavoritesContext } from "./favorites-context";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/app/(footerless)/profile/components/controllers/auth-context";
 import toggleUserFavorite from "@/lib/auth/usecases/toggle-user-favorite";
+import ProductEntity from "@/lib/catalog/types/product";
 
 export default function FavoritesProvider({
   children,

@@ -1,4 +1,4 @@
-export type UserEntity = {
+export default interface UserEntity {
   phone: string,
   email: string | null,
   name: string | null,

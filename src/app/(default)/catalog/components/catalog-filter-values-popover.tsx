@@ -1,9 +1,9 @@
 'use client';
 
-import { FilterEntity } from '@/lib/catalog/types/filter';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useContext } from 'react';
 import { CatalogContext } from './controllers/catalog-context';
+import FilterEntity from '@/lib/catalog/types/filter';
 
 export default function CatalogFilterValuesPopover({ filter, posX, posY }: {
   filter?: FilterEntity,

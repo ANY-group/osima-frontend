@@ -1,4 +1,4 @@
-export type DeliveryMethodEntity = {
+export default interface DeliveryMethodEntity {
   type: string,
   slug: string,
   name: string,

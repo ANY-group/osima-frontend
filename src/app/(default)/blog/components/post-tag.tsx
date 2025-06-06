@@ -1,4 +1,4 @@
-import { TagEntity } from "@/lib/blog/types/tag";
+import TagEntity from "@/lib/blog/types/tag";
 
 export default function PostTag({ tag }: {
   tag: TagEntity,

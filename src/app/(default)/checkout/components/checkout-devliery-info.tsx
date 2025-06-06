@@ -2,8 +2,8 @@
 
 import { useContext } from "react";
 import { CartContext } from "./controllers/cart-context";
-import { DeliveryMethodEntity } from "@/lib/cart/types/delivery-method";
 import ErrorText from "@/app/components/ui/error-text";
+import DeliveryMethodEntity from "@/lib/cart/types/delivery-method";
 
 export default function CheckoutDeliveryInfo() {
   return (

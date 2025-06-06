@@ -2,9 +2,9 @@
 
 import MinusIcon from "@/app/components/ui/icons/minus-icon";
 import PlusIcon from "@/app/components/ui/icons/plus-icon";
-import { ProductEntity } from "@/lib/catalog/types/product";
 import { useContext } from "react";
 import { CartContext } from "./controllers/cart-context";
+import ProductEntity from "@/lib/catalog/types/product";
 
 export default function CartItemQuantityController({ product }: {
   product: ProductEntity,

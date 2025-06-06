@@ -6,9 +6,9 @@ import SubscribeForm from "@/app/components/subscribe-form";
 import { useContext, useEffect, useState } from "react";
 import { FavoritesContext } from "./components/controllers/favorites-context";
 import fetchProductsById from "@/lib/catalog/usecases/fetch-products-by-id";
-import { ProductEntity } from "@/lib/catalog/types/product";
-import { Collection, emptyCollection } from "@/lib/types/collection";
 import HeartIcon from "@/app/components/ui/icons/heart-icon";
+import Collection, { emptyCollection } from "@/lib/types/collection";
+import ProductEntity from "@/lib/catalog/types/product";
 
 export default function FavoritePage() {
   const { favoriteIds } = useContext(FavoritesContext);

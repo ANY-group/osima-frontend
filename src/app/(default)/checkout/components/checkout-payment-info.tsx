@@ -4,8 +4,8 @@ import CardIcon from "@/app/components/ui/icons/card-icon";
 import CashIcon from "@/app/components/ui/icons/cash-icon";
 import { useContext } from "react";
 import { CartContext } from "./controllers/cart-context";
-import { PaymentMethodEntity } from "@/lib/cart/types/payment-method";
 import ErrorText from "@/app/components/ui/error-text";
+import PaymentMethodEntity from "@/lib/cart/types/payment-method";
 
 export default function CheckoutPaymentInfo() {
   const { paymentMethods, error } = useContext(CartContext);

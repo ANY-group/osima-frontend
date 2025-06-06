@@ -1,5 +1,5 @@
 import api from "@/lib/utils/api";
-import { UserEntity } from "../types/user";
+import UserEntity from "../types/user";
 
 export default async function fetchUser(): Promise<UserEntity | null> {
   const res = await api.request('profile', {

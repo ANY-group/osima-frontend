@@ -1,15 +1,15 @@
 'use client';
 
-import { FilterEntity } from "@/lib/catalog/types/filter";
+import CategoryEntity from "@/lib/catalog/types/category";
 import { CatalogContext } from "./catalog-context";
-import { FilterValueEntity } from "@/lib/catalog/types/filter-value";
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
-import { Collection } from "@/lib/types/collection";
-import { ProductEntity } from "@/lib/catalog/types/product";
-import { CategoryEntity } from "@/lib/catalog/types/category";
-import { SubcategoryEntity } from "@/lib/catalog/types/subcategory";
-import { BrandEntity } from "@/lib/catalog/types/brand";
+import SubcategoryEntity from "@/lib/catalog/types/subcategory";
+import BrandEntity from "@/lib/catalog/types/brand";
+import Collection from "@/lib/types/collection";
+import ProductEntity from "@/lib/catalog/types/product";
+import FilterEntity from "@/lib/catalog/types/filter";
+import FilterValueEntity from "@/lib/catalog/types/filter-value";
 
 export default function CatalogProvider({
   query,

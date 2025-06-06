@@ -1,3 +1,3 @@
-export type PaymentResult = {
+export default interface PaymentResult {
   redirectUrl: string,
 };

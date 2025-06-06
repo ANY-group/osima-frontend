@@ -3,12 +3,12 @@ import StarRating from "@/app/(default)/catalog/components/star-rating";
 import CheckIcon from "@/app/components/ui/icons/check-icon";
 import Image from "next/image";
 import Link from "@/app/components/ui/link";
-import { ProductEntity } from "@/lib/catalog/types/product";
-import { BrandEntity } from "@/lib/catalog/types/brand";
 import ProductAddToCartButton from "./product-add-to-cart-button";
 import ProductAddToFavoritesButton from "./product-add-to-favorites-button";
 import TimesIcon from "@/app/components/ui/icons/times-icon";
 import ProductDescription from "./product-description";
+import ProductEntity from "@/lib/catalog/types/product";
+import BrandEntity from "@/lib/catalog/types/brand";
 
 export default function ProductInfo({ product }: {
   product: ProductEntity,

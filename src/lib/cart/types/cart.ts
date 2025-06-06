@@ -1,6 +1,6 @@
-import { CartItemEntity } from "./cart-item";
+import CartItemEntity from "./cart-item";
 
-export type CartEntity = {
+export default interface CartEntity {
   items: Array<CartItemEntity>,
   phone?: string,
   name?: string,

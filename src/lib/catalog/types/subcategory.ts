@@ -1,6 +1,6 @@
-import { CategoryEntity } from "./category";
+import CategoryEntity from "./category";
 
-export type SubcategoryEntity = {
+export default interface SubcategoryEntity {
   name: string,
   slug: string,
   category?: CategoryEntity,

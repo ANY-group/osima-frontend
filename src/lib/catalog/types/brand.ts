@@ -1,4 +1,4 @@
-export type BrandEntity = {
+export default interface BrandEntity {
   name: string,
   slug: string,
   description: string | null,

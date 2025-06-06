@@ -1,10 +1,10 @@
 'use client';
 
 import ShoppingBagIcon from "@/app/components/ui/icons/shopping-bag-icon";
-import { ProductEntity } from "@/lib/catalog/types/product";
 import { useContext } from "react";
 import { CartContext } from "../../checkout/components/controllers/cart-context";
 import CartItemQuantityController from "../../checkout/components/cart-item-quantity-controller";
+import ProductEntity from "@/lib/catalog/types/product";
 
 export default function ProductCardAddToCartButton({ product }: {
   product: ProductEntity,

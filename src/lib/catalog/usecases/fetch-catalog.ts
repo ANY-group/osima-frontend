@@ -1,10 +1,10 @@
 import api from "@/lib/utils/api";
-import { CategoryEntity } from "../types/category";
-import { SubcategoryEntity } from "../types/subcategory";
-import { BrandEntity } from "../types/brand";
-import { Collection } from "@/lib/types/collection";
-import { ProductEntity } from "../types/product";
-import { FilterEntity } from "../types/filter";
+import CategoryEntity from "../types/category";
+import SubcategoryEntity from "../types/subcategory";
+import BrandEntity from "../types/brand";
+import ProductEntity from "../types/product";
+import Collection from "@/lib/types/collection";
+import FilterEntity from "../types/filter";
 
 export default async function fetchCatalog({
   categorySlug,

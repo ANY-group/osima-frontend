@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "@/app/components/ui/link";
 import fetchBrands from "@/lib/catalog/usecases/fetch-brands";
-import { BrandEntity } from "@/lib/catalog/types/brand";
+import BrandEntity from "@/lib/catalog/types/brand";
 
 export default async function Brands() {
   const brands = await fetchBrands();

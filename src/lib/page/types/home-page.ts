@@ -1,4 +1,4 @@
-import WarehouseEntity from "@/lib/warehouse/types/warehouse";
+import WarehouseEntity from "@/lib/types/warehouse";
 import BasePage from "./base-page";
 
 export default interface HomePageEntity extends BasePage {

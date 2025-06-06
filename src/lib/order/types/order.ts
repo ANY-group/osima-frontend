@@ -1,7 +1,7 @@
-import { OrderDeliveryEntity } from "./order-delivery"
-import { OrderItemEntity } from "./order-item"
+import OrderDeliveryEntity from "./order-delivery";
+import OrderItemEntity from "./order-item";
 
-export type OrderEntity = {
+export default interface OrderEntity {
   id: number,
   status: string|null,
   deliveryCost: number,

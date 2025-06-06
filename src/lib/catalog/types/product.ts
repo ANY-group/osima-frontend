@@ -1,8 +1,8 @@
-import { BrandEntity } from "./brand";
-import { CharacteristicEntity } from "./characteristic";
-import { SubcategoryEntity } from "./subcategory";
+import BrandEntity from "./brand";
+import CharacteristicEntity from "./characteristic";
+import SubcategoryEntity from "./subcategory";
 
-export type ProductEntity = {
+export default interface ProductEntity {
   id: number,
   sku: string,
   slug: string,

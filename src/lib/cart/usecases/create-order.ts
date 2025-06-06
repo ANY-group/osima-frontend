@@ -1,6 +1,6 @@
-import { OrderEntity } from "@/lib/order/types/order";
-import { CartEntity } from "../types/cart";
 import api, { RequestMethod } from "@/lib/utils/api";
+import CartEntity from "../types/cart";
+import OrderEntity from "@/lib/order/types/order";
 
 export default async function createOrder(cart: CartEntity): Promise<OrderEntity> {
   console.log(cart);

@@ -3,8 +3,8 @@
 import HeartIcon from "@/app/components/ui/icons/heart-icon";
 import { useContext } from "react";
 import { FavoritesContext } from "../favorites/components/controllers/favorites-context";
-import { ProductEntity } from "@/lib/catalog/types/product";
 import HeartOutlinedIcon from "@/app/components/ui/icons/heart-outlined-icon";
+import ProductEntity from "@/lib/catalog/types/product";
 
 export default function ProductCardAddToFavoriteButton({ product }: {
   product: ProductEntity,

@@ -1,5 +1,5 @@
+import PostEntity from "@/lib/blog/types/post";
 import PostCard from "./post-card";
-import { PostEntity } from "@/lib/blog/types/post";
 
 export default function PostsGrid({ posts }: {
   posts: Array<PostEntity>,

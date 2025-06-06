@@ -1,6 +1,6 @@
+import Collection from "@/lib/types/collection";
 import api from "@/lib/utils/api";
-import { ProductEntity } from "../types/product";
-import { Collection } from "@/lib/types/collection";
+import ProductEntity from "../types/product";
 
 export default async function fetchRecommendations(
   productSlug: string,
@@ -14,7 +14,7 @@ export default async function fetchRecommendations(
     subcategory: subcategorySlug || '',
     product: productSlug || '',
     brand: brandSlug || '',
-    randomKey: Math.floor(Math.random()*1000).toString(),
+    randomKey: Math.floor(Math.random() * 1000).toString(),
   }).toString());
 
   const { products } = await res.json();

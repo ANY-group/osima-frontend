@@ -1,4 +1,4 @@
-export type TagEntity = {
+export default interface TagEntity {
   slug: string,
   name: string,
 }

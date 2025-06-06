@@ -5,7 +5,7 @@ import Collapse from "../../../components/ui/collapse";
 import Link from "@/app/components/ui/link";
 import ArrowDownBoldIcon from "../../../components/ui/icons/arrow-down-bold-icon";
 import InfoLinks from "../../../components/info-links";
-import { CategoryEntity } from "@/lib/catalog/types/category";
+import CategoryEntity from "@/lib/catalog/types/category";
 
 export default function MobileCategoriesSidebar({ categories, isOpen, close }: {
   categories: Array<CategoryEntity>,

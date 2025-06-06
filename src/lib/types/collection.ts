@@ -1,4 +1,4 @@
-export type Collection<T> = {
+export default interface Collection<T> {
   links: {
     next?: string | null,
     prev?: string | null,

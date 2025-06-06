@@ -1,5 +1,5 @@
 import api from "@/lib/utils/api";
-import { ProductEntity } from "../types/product";
+import ProductEntity from "../types/product";
 
 export default async function fetchProduct(
   productSlug: string,

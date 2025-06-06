@@ -1,7 +1,7 @@
 'use client';
 
+import UserEntity from "@/lib/auth/types/user";
 import { AuthContext } from "./auth-context";
-import { UserEntity } from "@/lib/auth/types/user";
 import fetchUser from "@/lib/auth/usecases/fetch-user";
 import Cookies from 'js-cookie';
 import { useState } from "react";

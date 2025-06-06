@@ -1,4 +1,4 @@
-export type PaymentMethodEntity = {
+export default interface PaymentMethodEntity {
   type: string,
   slug: string,
   name: string,

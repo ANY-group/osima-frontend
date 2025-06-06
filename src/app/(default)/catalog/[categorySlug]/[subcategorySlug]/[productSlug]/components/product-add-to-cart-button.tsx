@@ -3,8 +3,8 @@
 import { CartContext } from "@/app/(default)/checkout/components/controllers/cart-context";
 import CartItemQuantityController from "@/app/(default)/checkout/components/cart-item-quantity-controller";
 import ShoppingBagIcon from "@/app/components/ui/icons/shopping-bag-icon";
-import { ProductEntity } from "@/lib/catalog/types/product";
 import { useContext } from "react";
+import ProductEntity from "@/lib/catalog/types/product";
 
 export default function ProductAddToCartButton({ product }: {
   product: ProductEntity,

@@ -1,9 +1,9 @@
 'use client';
 
-import { ProductEntity } from "@/lib/catalog/types/product";
 import { useState } from "react";
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import 'swiper/css';
+import ProductEntity from "@/lib/catalog/types/product";
 
 export default function ProductDescription({ product }: {
   product: ProductEntity,

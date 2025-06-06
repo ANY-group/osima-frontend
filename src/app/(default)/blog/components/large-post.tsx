@@ -1,5 +1,5 @@
+import PostEntity from "@/lib/blog/types/post";
 import PostTag from "./post-tag";
-import { PostEntity } from "@/lib/blog/types/post";
 import Link from "@/app/components/ui/link";
 
 export default function LargePost({ post }: {

@@ -1,6 +1,6 @@
+import Collection, { emptyCollection } from "@/lib/types/collection";
 import api from "@/lib/utils/api";
-import { ProductEntity } from "../types/product";
-import { Collection, emptyCollection } from "@/lib/types/collection";
+import ProductEntity from "../types/product";
 
 export default async function fetchProductsById(ids: Array<number>): Promise<Collection<ProductEntity>> {
 

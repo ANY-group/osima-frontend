@@ -1,6 +1,6 @@
-import { CartItemEntity } from "../types/cart-item";
-import { LocalCartItemEntity } from "../types/local-cart-item";
 import fetchProductsById from "@/lib/catalog/usecases/fetch-products-by-id";
+import LocalCartItemEntity from "../types/local-cart-item";
+import CartItemEntity from "../types/cart-item";
 
 export default async function fetchCart(items: Array<LocalCartItemEntity>): Promise<Array<CartItemEntity>> {
 

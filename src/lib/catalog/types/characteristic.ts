@@ -1,7 +1,7 @@
-import { FilterEntity } from "./filter";
-import { FilterValueEntity } from "./filter-value";
+import FilterEntity from "./filter";
+import FilterValueEntity from "./filter-value";
 
-export type CharacteristicEntity = {
+export default interface CharacteristicEntity {
   filter: FilterEntity,
   value: FilterValueEntity,
 };

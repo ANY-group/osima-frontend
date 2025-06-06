@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "@/app/components/ui/link";
-import WarehouseEntity from "@/lib/warehouse/types/warehouse";
+import WarehouseEntity from "@/lib/types/warehouse";
 
 export default function HomeAddresses({
   warehouses,
