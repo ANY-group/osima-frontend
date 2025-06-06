@@ -6,10 +6,13 @@ import HomePartners from "./home/components/home-partners";
 import HomeSocials from "./home/components/home-socials";
 import FeaturedPosts from "./blog/components/featured-posts";
 import fetchCatalog from "@/lib/catalog/usecases/fetch-catalog";
+import fetchPage from "@/lib/page/usecases/fetch-page";
+import HomePageEntity from "@/lib/page/types/home-page";
 
 export default async function HomePage() {
 
-  const [saleCatalog, bestsellerCatalog, newCatalog] = await Promise.all([
+  const [page, saleCatalog, bestsellerCatalog, newCatalog] = await Promise.all([
+    fetchPage<HomePageEntity>('home'),
     fetchCatalog({ appliedFilters: { sale: '1' }, randomKey: 10 * (new Date()).getHours() }),
     fetchCatalog({ appliedFilters: { new: '1' }, randomKey: 20 * (new Date()).getHours() }),
     fetchCatalog({ appliedFilters: { bestseller: '1' }, randomKey: 30 * (new Date()).getHours() }),
@@ -41,7 +44,7 @@ export default async function HomePage() {
         <HomePartners />
       </section>
       <section>
-        <HomeAddresses />
+        <HomeAddresses warehouses={page.warehouses} />
       </section>
       <section className="layout-container py-8">
         <InfoLinks />
