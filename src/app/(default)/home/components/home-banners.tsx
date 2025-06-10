@@ -11,12 +11,17 @@ import { Autoplay } from "swiper/modules";
 export default function HomeBanners({ banners }: {
   banners: Array<BannerEntity>,
 }) {
+  if (!banners.length) {
+    return;
+  }
+
   return (
     <Swiper
       modules={[Autoplay]}
       spaceBetween={20}
       slidesPerView={1}
       autoplay={{ delay: 5000 }}
+      className="my-3 md:my-6"
       loop
     >
       {banners.map((banner, index) => (
@@ -24,7 +29,7 @@ export default function HomeBanners({ banners }: {
           <Link
             href={banner.linkUrl?.replace('https://vegas.kg/', '') || '#'}
             transition={Boolean(banner.linkUrl)}
-            className="block relative w-full aspect-[123/56] my-3 md:my-6"
+            className="block relative w-full aspect-[123/56]"
           >
             <Image
               src={banner.image}
