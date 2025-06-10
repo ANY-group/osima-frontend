@@ -21,7 +21,7 @@ export default async function HomePage() {
   return (
     <main>
       <section className="layout-container">
-        <HomeBanners />
+        <HomeBanners banners={page.banners} />
       </section>
       <section className="my-5 md:my-10">
         <ProductsCarousel title="Акции" products={saleCatalog.products} link="/catalog?sale=1" />

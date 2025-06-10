@@ -1,14 +1,42 @@
-import Image from "next/image";
+'use client';
 
-export default function HomeBanners() {
+import Link from "@/app/components/ui/link";
+import BannerEntity from "@/lib/types/banner";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import { Autoplay } from "swiper/modules";
+
+export default function HomeBanners({ banners }: {
+  banners: Array<BannerEntity>,
+}) {
   return (
-    <div className="relative w-full aspect-[123/56] my-3 md:my-6">
-      <Image
-        src={'/images/tmp/banner.png'}
-        alt="Banner"
-        fill
-        className="object-cover rounded-xl"
-      />
-    </div>
+    <Swiper
+      modules={[Autoplay]}
+      spaceBetween={20}
+      slidesPerView={1}
+      autoplay={{ delay: 5000 }}
+      loop
+    >
+      {banners.map((banner, index) => (
+        <SwiperSlide key={index}>
+          <Link
+            href={banner.linkUrl?.replace('https://vegas.kg/', '') || '#'}
+            transition={Boolean(banner.linkUrl)}
+            className="block relative w-full aspect-[123/56] my-3 md:my-6"
+          >
+            <Image
+              src={banner.image}
+              alt={banner.name}
+              fill
+              className="object-cover rounded-xl"
+              priority
+            />
+          </Link>
+        </SwiperSlide>
+      ))}
+
+    </Swiper>
   );
 }
