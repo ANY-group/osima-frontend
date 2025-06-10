@@ -1,7 +1,14 @@
 import Image from "next/image";
 import Link from "@/app/components/ui/link";
+import SocialEntity from "@/lib/types/social";
 
-export default function HomeSocials() {
+export default function HomeSocials({ socials }: {
+  socials: Array<SocialEntity>,
+}) {
+  if (!socials.length) {
+    return;
+  }
+
   return (
     <>
       <div className="layout-container flex flex-col sm:flex-row gap-5 items-center justify-between py-5 md:py-10">
@@ -26,15 +33,20 @@ export default function HomeSocials() {
         </div>
       </div>
       <div className="flex gap-4 px-4 overflow-x-auto no-scrollbar">
-        {[...Array(10)].map((e, i) => (
-          <div key={i} className="relative h-31 sm:h-40 lg:h-60 xl:h-85 aspect-square">
+        {socials.map((social, index) => (
+          <Link
+            key={index}
+            href={social.linkUrl?.replace('https://vegas.kg', '') || '#'}
+            className="relative block h-31 sm:h-40 lg:h-60 xl:h-85 aspect-square"
+            transition={Boolean(social.linkUrl)}
+          >
             <Image
-              src="/images/tmp/social.jpeg"
-              alt="Social"
+              src={social.image}
+              alt={social.name}
               fill
               className="object-cover rounded-xl"
             />
-          </div>
+          </Link>
         ))}
       </div>
     </>

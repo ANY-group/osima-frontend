@@ -38,7 +38,7 @@ export default async function HomePage() {
         </div>
       </section>
       <section>
-        <HomeSocials />
+        <HomeSocials socials={page.socials} />
       </section>
       <section className="layout-container">
         <HomePartners />

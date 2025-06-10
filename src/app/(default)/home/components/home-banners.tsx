@@ -27,7 +27,7 @@ export default function HomeBanners({ banners }: {
       {banners.map((banner, index) => (
         <SwiperSlide key={index}>
           <Link
-            href={banner.linkUrl?.replace('https://vegas.kg/', '') || '#'}
+            href={banner.linkUrl?.replace('https://vegas.kg', '') || '#'}
             transition={Boolean(banner.linkUrl)}
             className="block relative w-full aspect-[123/56]"
           >
