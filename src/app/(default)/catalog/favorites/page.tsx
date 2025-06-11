@@ -44,7 +44,7 @@ export default function FavoritePage() {
       </section>
       <section className="layout-container md:mt-8">
         {products.data.length > 0 ? (
-          <CatalogProductsGrid products={products.data} />
+          <CatalogProductsGrid products={products} />
         ) : (
           <FavoritesEmpty />
         )}

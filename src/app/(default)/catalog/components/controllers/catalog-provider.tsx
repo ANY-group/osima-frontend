@@ -10,24 +10,23 @@ import Collection from "@/lib/types/collection";
 import ProductEntity from "@/lib/catalog/types/product";
 import FilterEntity from "@/lib/catalog/types/filter";
 import FilterValueEntity from "@/lib/catalog/types/filter-value";
+import { loadMore, mergeCollections } from "@/lib/utils/helpers";
 
 export default function CatalogProvider({
   query,
-  category,
-  subcategory,
-  brand,
-  products,
-  filters,
+  initialData,
   children,
 }: {
   query: {
     [key: string]: string | undefined,
   },
-  category?: CategoryEntity,
-  subcategory?: SubcategoryEntity,
-  brand?: BrandEntity,
-  products: Collection<ProductEntity>,
-  filters: Array<FilterEntity>,
+  initialData: {
+    category?: CategoryEntity,
+    subcategory?: SubcategoryEntity,
+    brand?: BrandEntity,
+    products: Collection<ProductEntity>,
+    filters: Array<FilterEntity>,
+  },
   children: React.ReactNode,
 }) {
   const { replace } = useRouter();
@@ -41,6 +40,20 @@ export default function CatalogProvider({
   }
 
   const [filtersMap, setFiltersMap] = useState<{ [key: string]: Array<string> }>(tmpFiltersMap);
+
+  const [category, setCategory] = useState<CategoryEntity | undefined>(initialData.category);
+  const [subcategory, setSubcategory] = useState<SubcategoryEntity | undefined>(initialData.subcategory);
+  const [brand, setBrand] = useState<BrandEntity | undefined>(initialData.brand);
+  const [products, setProducts] = useState<Collection<ProductEntity>>(initialData.products);
+  const [filters, setFilters] = useState<Array<FilterEntity>>(initialData.filters);
+
+  useEffect(() => {
+    setCategory(initialData.category);
+    setSubcategory(initialData.subcategory);
+    setBrand(initialData.brand);
+    setProducts(initialData.products);
+    setFilters(initialData.filters);
+  }, [initialData]);
 
   useEffect(() => {
     const params = new URLSearchParams();
@@ -85,6 +98,11 @@ export default function CatalogProvider({
     }))
     .filter((filter) => filter.values?.length);
 
+  const loadMoreProducts = async () => {
+    const loadedData = await loadMore(products);
+    setProducts(mergeCollections(products, loadedData.products));
+  };
+
   return (
     <CatalogContext.Provider value={{
       category,
@@ -96,6 +114,7 @@ export default function CatalogProvider({
       isFilterApplied,
       toggleFilter,
       clearFilters,
+      loadMoreProducts,
     }}>
       {children}
     </CatalogContext.Provider>

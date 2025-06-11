@@ -1,16 +1,22 @@
+import fetchCategories from "@/lib/catalog/usecases/fetch-categories";
 import Footer from "../components/footer";
 import Header from "../components/header";
+import CategoriesProvider from "./catalog/components/controllers/categories-provider";
 
-export default function DefaultLayout({
+export default async function DefaultLayout({
   children,
 }: {
   children: React.ReactNode,
 }) {
+  const categories = await fetchCategories();
+
   return (
     <div className="min-h-lvh">
-      <Header />
-      {children}
-      <Footer />
+      <CategoriesProvider categories={categories}>
+        <Header />
+        {children}
+        <Footer />
+      </CategoriesProvider>
     </div>
   );
 }

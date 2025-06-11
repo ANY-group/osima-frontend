@@ -17,14 +17,14 @@ import SearchSidebar from "../(default)/catalog/components/search-sidebar";
 import { AuthContext } from "../(footerless)/profile/components/controllers/auth-context";
 import CartItemsQuantityBadge from "../(default)/checkout/components/cart-items-quantity-badge";
 import FavoritesQuantityBadge from "../(default)/catalog/favorites/components/favorites-quantity-badge";
-import CategoryEntity from "@/lib/catalog/types/category";
+import { CategoriesContext } from "../(default)/catalog/components/controllers/categories-context";
 
-export default function MidHeader({ categories }: {
-  categories: Array<CategoryEntity>,
-}) {
+export default function MidHeader() {
+
   const pathname = usePathname();
   const { user } = useContext(AuthContext);
 
+  const categories = useContext(CategoriesContext);
   const [isCategoriesSidebarOpen, setCategoriesSidebarOpen] = useState<boolean>(false);
   const [isCartPopoverOpen, setCartPopoverOpen] = useState<boolean>(false);
   const [isAuthSidebarOpen, setAuthSidebarOpen] = useState<boolean>(false);

@@ -1,3 +1,6 @@
+import Collection, { emptyCollection } from "../types/collection";
+import api from "./api";
+
 const KG_PHONE_MASK = "+996 (###) ###-##-##";
 
 
@@ -51,4 +54,30 @@ export const unmaskString = (str: string, mask: string = KG_PHONE_MASK) => {
   }
 
   return res;
+}
+
+export const mergeCollections = <T>(collection1: Collection<T>, collection2?: Collection<T>): Collection<T> => {
+  if (!collection2) {
+    return collection1;
+  }
+
+  return {
+    data: [...collection1.data, ...collection2.data],
+    meta: { ...collection1.meta, ...collection2.meta },
+    links: { ...collection1.links, ...collection2.links },
+  }
+}
+
+export const loadMore = async <T>(collection: Collection<T>) => {
+  if (!collection.links.next) {
+    return {};
+  }
+
+  const res = await api.request(collection.links.next);
+
+  if (!res.ok) {
+    return {};
+  }
+
+  return await res.json()
 }

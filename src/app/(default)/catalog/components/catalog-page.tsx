@@ -1,13 +1,11 @@
 import fetchCatalog from "@/lib/catalog/usecases/fetch-catalog";
 import CatalogProvider from "./controllers/catalog-provider";
-import Subheader from "@/app/components/subheader";
-import BrandDescription from "./brand-description";
-import CatalogSubcategories from "./catalog-subcategories";
-import fetchCategories from "@/lib/catalog/usecases/fetch-categories";
 import CatalogFilters from "./catalog-filters";
-import CatalogProductsGrid from "./catalog-products-grid";
 import FeaturedPosts from "../../blog/components/featured-posts";
 import SubscribeForm from "@/app/components/subscribe-form";
+import CatalogSubheader from "./catalog-subheader";
+import CatalogBrandInfo from "./catalog-brand-info";
+import CatalogProducts from "./catalog-products";
 
 export default async function CatalogPage({ params, searchParams }: {
   params: Promise<{
@@ -40,32 +38,21 @@ export default async function CatalogPage({ params, searchParams }: {
   return (
     <CatalogProvider
       query={appliedFilters}
-      category={category}
-      subcategory={subcategory}
-      brand={brand}
-      products={products}
-      filters={filters}
+      initialData={{
+        category,
+        subcategory,
+        brand,
+        products,
+        filters,
+      }}
     >
       <main>
         <section className="sticky md:static top-18 bg-background border-b border-divider z-10">
-          <div className="layout-container">
-            <Subheader title={subcategory?.name || category?.name || 'Каталог'}>
-              <span className="hidden md:inline">товаров {products.meta.total}</span>
-            </Subheader>
-          </div>
+          <CatalogSubheader />
         </section>
-        {brand ? (
-          <section className="layout-container">
-            <BrandDescription brand={brand} />
-          </section>
-        ) : (
-          <section className="layout-container max-md:px-0!">
-            <CatalogSubcategories
-              categories={category ? category.subcategories : await fetchCategories()}
-              slugPrefix={category?.slug}
-            />
-          </section>
-        )}
+        <section>
+          <CatalogBrandInfo />
+        </section>
         <section className="layout-container">
           <CatalogFilters />
         </section>
@@ -77,7 +64,7 @@ export default async function CatalogPage({ params, searchParams }: {
           </section>
         )}
         <section className="layout-container mt-6">
-          <CatalogProductsGrid products={products.data} />
+          <CatalogProducts />
         </section>
         <section className="bg-primary-muted">
           <div className="layout-container">

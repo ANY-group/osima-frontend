@@ -1,9 +1,12 @@
+'use client';
+
 import Link from "@/app/components/ui/link";
 import LogoIcon from "./ui/icons/logo-icon";
 import InstagramRoundedIcon from "./ui/icons/instagram-rounded-icon";
 import PaymentMethodsIcon from "./ui/icons/payment-methods-icon";
-import fetchCategories from "@/lib/catalog/usecases/fetch-categories";
 import { chunk } from "@/lib/utils/helpers";
+import { useContext } from "react";
+import { CategoriesContext } from "../(default)/catalog/components/controllers/categories-context";
 
 export default function Footer() {
   return (
@@ -95,8 +98,8 @@ const NavigationColumnWrapper = ({ title, children }: {
   );
 }
 
-const CatalogNavigationColumn = async () => {
-  const categories = await fetchCategories();
+const CatalogNavigationColumn = () => {
+  const categories = useContext(CategoriesContext);
   const chunks = chunk(categories, 5);
 
   return (

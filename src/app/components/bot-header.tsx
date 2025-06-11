@@ -1,13 +1,15 @@
 'use client';
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import DesktopCategoriesDropdown from "../(default)/catalog/components/desktop-categories-dropdown";
 import Link from "./ui/link";
 import { AnimatePresence, motion } from "motion/react";
 import CategoryEntity from "@/lib/catalog/types/category";
+import { CategoriesContext } from "../(default)/catalog/components/controllers/categories-context";
 
-export default function BotHeader({ categories }: { categories: Array<CategoryEntity> }) {
+export default function BotHeader() {
 
+  const categories = useContext(CategoriesContext);
   const [openCategory, setOpenCategory] = useState<CategoryEntity | null>(null);
   const close = () => setOpenCategory(null);
 

@@ -19,6 +19,7 @@ export const CatalogContext = createContext<{
   isFilterApplied: (filter: FilterEntity, value?: FilterValueEntity) => boolean,
   toggleFilter: (filter: FilterEntity, value: FilterValueEntity) => void,
   clearFilters: () => void,
+  loadMoreProducts: () => void,
 }>({
   products: emptyCollection,
   filters: [],
@@ -26,4 +27,5 @@ export const CatalogContext = createContext<{
   toggleFilter: () => { },
   isFilterApplied: () => false,
   clearFilters: () => { },
+  loadMoreProducts: () => { },
 });

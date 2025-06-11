@@ -9,7 +9,7 @@ export default async function fetchProductsById(ids: Array<number>): Promise<Col
   }
 
   const res = await api.request('catalog/products?' + new URLSearchParams(
-    ids.map((id) => ['ids', id.toString()]),
+    ids.map((id) => ['ids[]', id.toString()]),
   ).toString());
 
   const { products } = await res.json();
