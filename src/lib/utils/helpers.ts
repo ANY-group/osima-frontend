@@ -1,4 +1,4 @@
-import Collection, { emptyCollection } from "../types/collection";
+import Collection from "../types/collection";
 import api from "./api";
 
 const KG_PHONE_MASK = "+996 (###) ###-##-##";
