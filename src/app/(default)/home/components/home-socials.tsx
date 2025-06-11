@@ -17,14 +17,14 @@ export default function HomeSocials({ socials }: {
         </h3>
         <div className="flex items-center gap-2">
           <Link
-            href="https://www.tiktok.com/@vegasbeautybar"
+            href="https://www.tiktok.com/@osima_cosmetics"
             className="px-6 py-2 bg-accent rounded-full font-semibold"
             target="_blank"
           >
             TikTok
           </Link>
           <Link
-            href="https://www.instagram.com/vegas_beautybar/"
+            href="https://www.instagram.com/osima_cosmetics/"
             className="px-6 py-2 bg-accent rounded-full font-semibold"
             target="_blank"
           >
@@ -36,7 +36,7 @@ export default function HomeSocials({ socials }: {
         {socials.map((social, index) => (
           <Link
             key={index}
-            href={social.linkUrl?.replace('https://vegas.kg', '') || '#'}
+            href={social.linkUrl?.replace('https://osimacosmetics.kz', '') || '#'}
             className="relative block h-31 sm:h-40 lg:h-60 xl:h-85 aspect-square"
             transition={Boolean(social.linkUrl)}
           >

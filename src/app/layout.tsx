@@ -13,8 +13,8 @@ const roboto = Roboto_Flex({
 });
 
 export const metadata: Metadata = {
-  title: "Vegas",
-  description: "Beauty bar",
+  title: "Osima",
+  description: "КОРЕЙСКАЯ КОСМЕТИКА",
 };
 
 export default async function RootLayout({

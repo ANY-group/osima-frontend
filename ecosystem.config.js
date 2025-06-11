@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'vegas.kz : 3000',
+      name: 'osimacosmetics.kz : 3000',
       script: 'npm',
       args: 'start',
       exec_mode: 'cluster',

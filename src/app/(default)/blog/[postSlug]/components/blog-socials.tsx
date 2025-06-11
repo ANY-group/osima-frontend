@@ -6,11 +6,11 @@ export default function BlogSocials() {
     <div className="py-5">
       <p className="text-sm">Подписывайтесь на нас:</p>
       <Link
-        href="https://www.instagram.com/vegas_beautybar/"
+        href="https://www.instagram.com/osima_cosmetics/"
         className="flex items-center font-bold"
         target="_blank"
       >
-        <InstagramIcon />@vegas_beautybar
+        <InstagramIcon />@osima_cosmetics
       </Link>
     </div>
   );

@@ -8,7 +8,7 @@ export enum RequestMethod {
   POST = 'post',
 };
 
-const baseUrl: string = process.env.NEXT_PUBLIC_BACKEND_HOST ?? 'https://admin.vegas.anygroup.kz/api';
+const baseUrl: string = process.env.NEXT_PUBLIC_BACKEND_HOST ?? 'https://admin.osima.anygroup.kz/api';
 
 type Api = {
   request: (

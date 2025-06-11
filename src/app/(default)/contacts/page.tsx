@@ -23,7 +23,7 @@ const Contacts = () => {
     <div className="flex flex-col gap-10">
       <Block title="Если у Вас возникнут вопросы, Вы можете задать по телефону:" icon={<PhoneIcon />}>
         <a href="tel:+77756742244">+ 7 775 674 22 44</a><br />
-        <a href="mailto:vegasbeauty@gmail.com">vegasbeauty@gmail.com</a>
+        <a href="mailto:osima_cosmetics@gmail.com">osima_cosmetics@gmail.com</a>
       </Block>
       <Block title="Ареса наших магазинов:" icon={<PinIcon />}>
         Алматы, пр. Абылай хана 127<br />

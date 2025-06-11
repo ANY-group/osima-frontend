@@ -6,24 +6,24 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'admin.vegas.anygroup.kz',
+        hostname: 'admin.osima.anygroup.kz',
         pathname: '/**',
       },
       {
         protocol: 'https',
-        hostname: 'admin.vegas.kg',
+        hostname: 'admin.osimacosmetics.kz',
         pathname: '/**',
       },
       {
         protocol: 'http',
         hostname: 'localhost',
-        port: '3802',
+        port: '3803',
         pathname: '/storage/**',
       },
       {
         protocol: 'http',
         hostname: '127.0.0.1',
-        port: '3802',
+        port: '3803',
         pathname: '/**',
       },
     ],

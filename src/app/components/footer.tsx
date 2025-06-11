@@ -48,13 +48,13 @@ const ContactsColumn = () => {
           Подписывайтесь на нас:
         </p>
         <Link
-          href="https://www.instagram.com/vegas_beautybar/"
+          href="https://www.instagram.com/osima_cosmetics/"
           className="flex items-center gap-2 mt-1"
           target="_blank"
         >
           <InstagramRoundedIcon />
           <span className="text-text-accent">
-            @vegas_beautybar
+            @osima_cosmetics
           </span>
         </Link>
       </div>
@@ -76,8 +76,8 @@ const ContactsColumn = () => {
         <p>
           Служба поддержки:
         </p>
-        <Link href="mailto:info@vegas.kg" className="text-text-accent">
-          info@vegas.kg
+        <Link href="mailto:info@osimacosmetics.kz" className="text-text-accent">
+          info@osimacosmetics.kz
         </Link>
       </div>
     </div>
@@ -174,7 +174,7 @@ const BottomFooter = () => {
 
   return (
     <p className="py-5 text-xs text-text-accent">
-      {year} © vegas.kg интернет-магазин
+      {year} © osimacosmetics.kz интернет-магазин
     </p>
   );
 }
