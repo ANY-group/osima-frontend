@@ -38,7 +38,11 @@ export default async function fetchCatalog({
   });
 
   for (const filterSlug in appliedFilters) {
-    params.append(`filters[${filterSlug}]`, appliedFilters[filterSlug]);
+    if (['page', 'sort'].includes(filterSlug)) {
+      params.append(filterSlug, appliedFilters[filterSlug]);
+    } else {
+      params.append(`filters[${filterSlug}]`, appliedFilters[filterSlug]);
+    }
   }
 
   const res = await api.request('catalog?' + params.toString());
