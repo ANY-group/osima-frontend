@@ -1,6 +1,5 @@
 import Link from "@/app/components/ui/link";
 import PostCard from "./post-card";
-import LargePost from "./large-post";
 import fetchPosts from "@/lib/blog/usecases/fetch-posts";
 import Collection from "@/lib/types/collection";
 import PostEntity from "@/lib/blog/types/post";
