@@ -10,6 +10,10 @@ export default function ProductsCarousel({ title, products, link }: {
   link?: string,
 }) {
 
+  if (!products.data.length) {
+    return;
+  }
+
   return (
     <>
       <div className="layout-container flex items-center justify-between">
