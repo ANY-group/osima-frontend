@@ -11,18 +11,18 @@ export default function CartInfoTable() {
     <div className={`${cart.items.length == 0 && 'text-secondary'}`}>
       <CartInfoTableRow>
         <span>Всего товаров на сумму:</span>
-        <span>{formatNumber(getItemsTotal())} C</span>
+        <span>{formatNumber(getItemsTotal())} ₸</span>
       </CartInfoTableRow>
       <CartInfoTableRow>
         <span>Доставка:</span>
-        <span>{formatNumber(getDeliveryCost())} C</span>
+        <span>{formatNumber(getDeliveryCost())} ₸</span>
       </CartInfoTableRow>
       <CartInfoTableRow>
         <span className="text-xl font-bold">
           Итого:
         </span>
         <span className="text-xl font-bold">
-          {formatNumber(getTotal())} C
+          {formatNumber(getTotal())} ₸
         </span>
       </CartInfoTableRow>
     </div>

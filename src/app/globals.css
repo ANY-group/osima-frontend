@@ -17,20 +17,21 @@ button {
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary-muted: #F0F5F4;
+  --color-primary-muted: #fff9fb;
   --color-on-primary-muted: #497C77;
   --color-text-accent: #0D1F42;
   --color-text-secondary: #767676;
   --color-text-secondary-alt: #C3C3C3;
-  --color-accent: #C2E5E1;
-  --color-accent-light: #CCFFF3;
+  --color-accent: #ee4683;
+  --color-on-accent: #ffffff;
+  --color-accent-light: #eeb4c9;
   --color-accent-green: #34C759;
   --color-secondary: #8A8F99;
   --color-secondary-muted: #F7F9FA;
   --color-disabled: #B3B3B3;
   --color-divider: #F0F0F0;
   --color-divider-alt: #EBEDF0;
-  --color-success: #55D5B6;
+  --color-success: #f17ca3;
   --color-success-foreground: #FFFFFF;
   --color-danger: #f56a5b;
   --color-placeholder: #757575;

@@ -1,4 +1,4 @@
-import LogoIcon from "./icons/logo-icon";
+import Image from "next/image";
 
 export default function Loader() {
   return (
@@ -7,7 +7,16 @@ export default function Loader() {
       className="loader hidden"
     >
       <div className="logo-animation">
-        <LogoIcon />
+        <Image
+          src="/images/osima-logo.png"
+          alt="Osima"
+          fill
+          className="object-contain p-1 max-w-40 mx-auto"
+          style={{
+            filter: 'brightness(0) saturate(100%)',
+          }}
+          priority
+        />
       </div>
     </div>
   );

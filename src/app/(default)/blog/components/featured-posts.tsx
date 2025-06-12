@@ -10,9 +10,7 @@ export default async function FeaturedPosts({ loadedPosts }: {
 }) {
   const posts = loadedPosts || await fetchPosts(4);
 
-  const firstPost = posts.data.length ? posts.data[0] : null;
-
-  if (!firstPost) {
+  if (!posts.data.length) {
     return;
   }
 
@@ -24,17 +22,9 @@ export default async function FeaturedPosts({ loadedPosts }: {
           Смотреть все
         </Link>
       </div>
-      <div className="max-md:hidden">
-        <LargePost post={firstPost} />
-      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
         {posts.data.map((post, index) => (
-          <div
-            key={index}
-            className={`contents ${index == 0 && 'md:hidden'}`}
-          >
-            <PostCard post={post} />
-          </div>
+          <PostCard key={index} post={post} />
         ))}
       </div>
     </div>

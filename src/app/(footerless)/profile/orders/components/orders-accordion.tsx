@@ -91,7 +91,7 @@ const OrderItem = ({ item }: {
         </div>
         <div className="flex sm:flex-col sm:items-end justify-end max-sm:gap-3 font-semibold">
           <p className="whitespace-nowrap">
-            {formatNumber(item.price)} C
+            {formatNumber(item.price)} ₸
           </p>
           <p className="whitespace-nowrap">
             {formatNumber(item.quantity)} шт.
@@ -112,9 +112,9 @@ const OrderInfoTable = ({ order }: {
         <TableRow label="Адрес доставки" value={order.delivery.address} />
         <TableRow label="Способ оплаты" value={order.isCashPayment ? "Наличными" : "Онлайн"} />
         <TableRow label="Статус оплаты" value={order.isPaid ? "Оплачен" : "Не оплачен"} />
-        <TableRow label="Общая стоимость" value={formatNumber(order.subtotal) + ' C'} />
-        <TableRow label="Стоимость доставки" value={formatNumber(order.deliveryCost) + ' C'} />
-        <TableRow label="Итого" value={formatNumber(order.total) + ' C'} bold />
+        <TableRow label="Общая стоимость" value={formatNumber(order.subtotal) + ' ₸'} />
+        <TableRow label="Стоимость доставки" value={formatNumber(order.deliveryCost) + ' ₸'} />
+        <TableRow label="Итого" value={formatNumber(order.total) + ' ₸'} bold />
       </tbody>
     </table>
   );

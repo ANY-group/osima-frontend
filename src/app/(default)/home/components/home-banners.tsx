@@ -29,7 +29,7 @@ export default function HomeBanners({ banners }: {
           <Link
             href={banner.linkUrl?.replace('https://osimacosmetics.kz', '') || '#'}
             transition={Boolean(banner.linkUrl)}
-            className="block relative w-full aspect-[123/56]"
+            className="block relative w-full aspect-[120/40]"
           >
             <Image
               src={banner.image}

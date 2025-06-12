@@ -18,7 +18,7 @@ export default function ProductsCarousel({ title, products, link }: {
         </h3>
         <div className="flex items-center gap-6">
           {link && (
-            <Link href={link} className="text-sm hover:underline">
+            <Link href={link} className="text-sm hover:underline uppercase">
               Смотреть все
             </Link>
           )}
@@ -28,7 +28,7 @@ export default function ProductsCarousel({ title, products, link }: {
           </div>
         </div>
       </div>
-      <div className="flex gap-1 px-4 md:px-5 scrollable-layout-container no-scrollbar py-3 md:py-6">
+      <div className="flex gap-1 px-4 md:px-5 layout-container no-scrollbar py-3 md:py-6">
         {products.data.map((product, index) => (
           <div key={index} className="min-w-40 lg:w-58 w-full lg:shrink-0">
             <ProductCard product={product} />
@@ -46,7 +46,7 @@ const ScrollController = ({ disabled = false, rotate = false }: {
   return (
     <button
       className={`flex items-center justify-center w-8 h-8
-        border rounded-full ${rotate && 'rotate-180'}
+        bg-primary-muted rounded-lg ${rotate && 'rotate-180'}
         disabled:text-disabled
         `}
       aria-label={`пролистать ${rotate ? 'направо' : 'налево'}`}

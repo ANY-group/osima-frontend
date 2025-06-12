@@ -1,8 +1,6 @@
-import InfoLinks from "../components/info-links";
 import ProductsCarousel from "./catalog/components/products-carousel";
 import HomeAddresses from "./home/components/home-addresses";
 import HomeBanners from "./home/components/home-banners";
-import HomePartners from "./home/components/home-partners";
 import HomeSocials from "./home/components/home-socials";
 import FeaturedPosts from "./blog/components/featured-posts";
 import fetchCatalog from "@/lib/catalog/usecases/fetch-catalog";
@@ -37,17 +35,11 @@ export default async function HomePage() {
           <FeaturedPosts />
         </div>
       </section>
-      <section>
-        <HomeSocials socials={page.socials} />
-      </section>
       <section className="layout-container">
-        <HomePartners />
+        <HomeSocials socials={page.socials} />
       </section>
       <section>
         <HomeAddresses warehouses={page.warehouses} />
-      </section>
-      <section className="layout-container py-8">
-        <InfoLinks />
       </section>
     </main>
   );

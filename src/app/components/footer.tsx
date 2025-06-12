@@ -1,12 +1,12 @@
 'use client';
 
 import Link from "@/app/components/ui/link";
-import LogoIcon from "./ui/icons/logo-icon";
 import InstagramRoundedIcon from "./ui/icons/instagram-rounded-icon";
 import PaymentMethodsIcon from "./ui/icons/payment-methods-icon";
 import { chunk } from "@/lib/utils/helpers";
 import { useContext } from "react";
 import { CategoriesContext } from "../(default)/catalog/components/controllers/categories-context";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -27,10 +27,19 @@ export default function Footer() {
 const LogoColumn = () => {
   return (
     <div className="flex flex-col gap-10">
-      <LogoIcon />
+      <Image
+        src="/images/osima-logo.png"
+        alt="Osima"
+        width={300}
+        height={150}
+        className="object-contain max-w-50"
+        style={{
+          filter: 'brightness(0) saturate(100%)',
+        }}
+      />
       <div className="flex flex-col gap-0.5">
-        <a href="tel:8 (777) 262-30-60" className="text-lg">
-          8 (777) 262-30-60
+        <a href="tel:8 (775) 302-80-45" className="text-lg">
+          8 (775) 302-80-45
         </a>
         <p className="text-sm text-secondary">
           Ежедневно с 9:00 до 21:00
@@ -64,12 +73,6 @@ const ContactsColumn = () => {
         </p>
         <div className="flex items-center gap-3">
           <PaymentMethodsIcon />
-          <div
-            className="bg-[#C3CAD9] mask-no-repeat mask-contain mask-center h-8 w-8 mt-1"
-            style={{
-              maskImage: "url(/images/elcard-logo.png)",
-            }}>
-          </div>
         </div>
       </div>
       <div>

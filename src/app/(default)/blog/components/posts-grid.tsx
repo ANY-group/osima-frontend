@@ -8,12 +8,7 @@ export default function PostsGrid({ posts }: {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
       {posts.map((post, index) => (
-        <div
-          key={index}
-          className={`contents ${index == 0 && 'md:hidden'}`}
-        >
-          <PostCard post={post} />
-        </div>
+        <PostCard key={index} post={post} />
       ))}
     </div>
   );

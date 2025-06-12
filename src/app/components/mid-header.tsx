@@ -5,7 +5,6 @@ import { useContext, useState } from "react";
 import { useOnRouteChange } from "../hooks/route_change";
 import BurgerIcon from "./ui/icons/burger-icon";
 import Link from "./ui/link";
-import LogoIcon from "./ui/icons/logo-icon";
 import ShoppingCartIcon from "./ui/icons/shopping-cart-icon";
 import UserCircleIcon from "./ui/icons/user-circle-icon";
 import HeartOutlinedIcon from "./ui/icons/heart-outlined-icon";
@@ -18,6 +17,7 @@ import { AuthContext } from "../(footerless)/profile/components/controllers/auth
 import CartItemsQuantityBadge from "../(default)/checkout/components/cart-items-quantity-badge";
 import FavoritesQuantityBadge from "../(default)/catalog/favorites/components/favorites-quantity-badge";
 import { CategoriesContext } from "../(default)/catalog/components/controllers/categories-context";
+import Image from "next/image";
 
 export default function MidHeader() {
 
@@ -54,7 +54,7 @@ export default function MidHeader() {
 
   return (
     <>
-      <div className="relative flex items-center px-4 md:px-8 py-1 md:py-5 bg-background md:rounded-t-2xl z-20">
+      <div className="relative flex items-center px-4 md:px-8 py-1 md:py-5 bg-background z-20">
         <div className="flex items-center gap-3 w-full">
           <button
             onClick={() => setCategoriesSidebarOpen(!isCategoriesSidebarOpen)}
@@ -71,11 +71,20 @@ export default function MidHeader() {
         </div>
         <Link
           href="/"
-          className="inline-flex w-20 md:w-28"
+          className="relative inline-flex h-15 md:h-20 w-full"
           onClick={closeSidebar}
           aria-label="Главная страница"
         >
-          <LogoIcon />
+          <Image
+            src="/images/osima-logo.png"
+            alt="Osima"
+            fill
+            className="object-contain p-1"
+            style={{
+              filter: 'brightness(0) saturate(100%)',
+            }}
+            priority
+          />
         </Link>
         <div
           className="flex items-center justify-end gap-2 w-full"
