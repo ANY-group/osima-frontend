@@ -12,7 +12,7 @@ export default async function BlogPage() {
         <Subheader title="Новости" />
       </section>
       {posts.data.length > 0 && (
-        <section className="bg-primary-muted md:mt-12">
+        <section className="bg-primary-muted">
           <div className="layout-container pt-8 md:pt-12 pb-16 md:pb-24">
             <PostsGrid posts={posts.data} />
           </div>
