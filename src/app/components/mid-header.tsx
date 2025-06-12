@@ -54,7 +54,24 @@ export default function MidHeader() {
 
   return (
     <>
-      <div className="relative flex items-center px-4 md:px-8 py-1 md:py-5 bg-background z-20">
+      <div className="layout-container relative flex items-center gap-4 py-1 md:pt-5 bg-background z-20">
+        <Link
+          href="/"
+          className="relative hidden md:inline-flex h-15 md:h-20 max-w-40 w-full"
+          onClick={closeSidebar}
+          aria-label="Главная страница"
+        >
+          <Image
+            src="/images/osima-logo.png"
+            alt="Osima"
+            fill
+            className="object-contain p-1"
+            style={{
+              filter: 'brightness(0) saturate(100%)',
+            }}
+            priority
+          />
+        </Link>
         <div className="flex items-center gap-3 w-full">
           <button
             onClick={() => setCategoriesSidebarOpen(!isCategoriesSidebarOpen)}
@@ -63,15 +80,15 @@ export default function MidHeader() {
           >
             <BurgerIcon />
           </button>
-          <Link href="/catalog" className="hidden md:flex items-center gap-2">
+          {/* <Link href="/catalog" className="hidden md:flex items-center gap-2">
             <BurgerIcon />
             Каталог
-          </Link>
+          </Link> */}
           <SearchInput />
         </div>
         <Link
           href="/"
-          className="relative inline-flex h-15 md:h-20 w-full"
+          className="relative inline-flex md:hidden h-15 md:h-20 w-full"
           onClick={closeSidebar}
           aria-label="Главная страница"
         >
@@ -87,7 +104,7 @@ export default function MidHeader() {
           />
         </Link>
         <div
-          className="flex items-center justify-end gap-2 w-full"
+          className="flex items-center justify-end gap-2 max-md:w-full"
           onMouseLeave={closeCart}
         >
           <Link
@@ -146,19 +163,19 @@ const SearchInput = () => {
     <>
       <form
         action="/catalog/search"
-        className="flex items-center rounded-full bg-primary-muted"
+        className="flex items-center rounded-full bg-primary-muted md:w-full"
         onClick={() => setSearchOpen(true)}
       >
+        <div className="flex items-center justify-center w-10 h-10 z-1 cursor-pointer">
+          <SearchIcon />
+        </div>
         <input
           type="text"
           name="q"
           placeholder="Хочу купить"
-          className="max-lg:hidden px-5 py-2 outline-0 placeholder-placeholder placeholder:font-normal"
+          className="max-lg:hidden px-5 py-2 outline-0 placeholder-placeholder placeholder:font-normal w-full"
           required
         />
-        <div className="flex items-center justify-center w-10 h-10 z-1 cursor-pointer">
-          <SearchIcon />
-        </div>
       </form>
       <SearchSidebar
         isOpen={isSearchOpen}

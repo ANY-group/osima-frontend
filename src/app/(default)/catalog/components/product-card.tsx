@@ -11,7 +11,7 @@ export default function ProductCard({ product }: {
   product: ProductEntity,
 }) {
   return (
-    <div className="relative group flex flex-col md:p-2 w-full h-full rounded-sm md:hover:ring md:hover:shadow-md ring-divider">
+    <div className="relative group flex flex-col items-center md:p-2 w-full h-full rounded-sm md:hover:ring md:hover:shadow-md ring-divider">
       <Link
         href={`/catalog/${product.subcategory.category?.slug || ''}/${product.subcategory.slug}/${product.slug}`}
         className="flex-grow flex flex-col w-full"

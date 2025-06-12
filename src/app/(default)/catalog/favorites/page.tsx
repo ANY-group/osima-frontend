@@ -31,7 +31,7 @@ export default function FavoritePage() {
 
   return (
     <main>
-      <section className="sticky md:static top-18 bg-background border-divider z-10">
+      <section className="sticky md:static top-17 bg-background border-divider z-10">
         <div className="layout-container">
           <Subheader title="Избранное">
             {products.data.length > 0 && (

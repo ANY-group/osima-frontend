@@ -47,7 +47,7 @@ export default async function CatalogPage({ params, searchParams }: {
       }}
     >
       <main>
-        <section className="sticky md:static top-18 bg-background border-b border-divider z-10">
+        <section className="sticky md:static top-17 bg-background border-b border-divider z-10">
           <CatalogSubheader />
         </section>
         <section>
