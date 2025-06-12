@@ -34,7 +34,7 @@ export default function ProductsCarousel({ title, products, link }: {
       </div>
       <div className="flex gap-1 px-4 md:px-5 layout-container no-scrollbar py-3 md:py-6">
         {products.data.map((product, index) => (
-          <div key={index} className="min-w-40 lg:w-58 w-full lg:shrink-0">
+          <div key={index} className="max-sm:max-w-40 max-md:max-w-45 max-lg:max-w-58 min-w-40 lg:w-58 w-full lg:shrink-0">
             <ProductCard product={product} />
           </div>
         ))}

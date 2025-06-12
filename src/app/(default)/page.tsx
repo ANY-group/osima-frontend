@@ -18,7 +18,7 @@ export default async function HomePage() {
 
   return (
     <main>
-      <section className="layout-container">
+      <section className="md:layout-container">
         <HomeBanners banners={page.banners} />
       </section>
       <section className="my-5 md:my-10">
