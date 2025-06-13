@@ -18,7 +18,7 @@ export default async function HomePage() {
 
   return (
     <main>
-      <section className="layout-container max-md:px-0!">
+      <section className="layout-container">
         <HomeBanners banners={page.banners} />
       </section>
       <section className="my-5 md:my-10">

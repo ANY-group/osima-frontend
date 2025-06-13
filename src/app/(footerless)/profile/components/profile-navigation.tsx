@@ -23,7 +23,7 @@ export default function ProfileNavigation() {
     <nav className="max-md:py-4 min-w-2xs max-md:w-full max-md:h-full">
       <NavList>
         <NavListItem href="#">
-          <div className="flex items-center justify-center w-14 h-14 rounded-full bg-accent">
+          <div className="flex items-center justify-center w-14 h-14 rounded-full bg-accent text-on-accent">
             <CameraIcon />
           </div>
           <p>

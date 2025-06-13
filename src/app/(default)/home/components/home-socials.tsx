@@ -5,9 +5,9 @@ import SocialEntity from "@/lib/types/social";
 export default function HomeSocials({ socials }: {
   socials: Array<SocialEntity>,
 }) {
-  if (!socials.length) {
-    return;
-  }
+  // if (!socials.length) {
+  //   return;
+  // }
 
   return (
     <>
@@ -18,14 +18,14 @@ export default function HomeSocials({ socials }: {
         <div className="flex items-center gap-2">
           <Link
             href="https://www.tiktok.com/@osima_cosmetics"
-            className="px-6 py-2 bg-accent rounded-full font-semibold"
+            className="px-6 py-2 bg-accent text-on-accent rounded-full font-semibold"
             target="_blank"
           >
             TikTok
           </Link>
           <Link
             href="https://www.instagram.com/osima_cosmetics/"
-            className="px-6 py-2 bg-accent rounded-full font-semibold"
+            className="px-6 py-2 bg-accent text-on-accent rounded-full font-semibold"
             target="_blank"
           >
             Instagram

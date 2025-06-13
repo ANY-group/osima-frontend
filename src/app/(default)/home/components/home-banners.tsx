@@ -21,7 +21,7 @@ export default function HomeBanners({ banners }: {
       spaceBetween={20}
       slidesPerView={1}
       autoplay={{ delay: 5000 }}
-      className="md:my-6"
+      className="my-2 md:my-6"
       loop
     >
       {banners.map((banner, index) => (
@@ -29,13 +29,13 @@ export default function HomeBanners({ banners }: {
           <Link
             href={banner.linkUrl?.replace('https://osimacosmetics.kz', '') || '#'}
             transition={Boolean(banner.linkUrl)}
-            className="block relative w-full aspect-[160/56]"
+            className="block relative w-full aspect-[160/65] md:aspect-[160/56]"
           >
             <Image
               src={banner.image}
               alt={banner.name}
               fill
-              className="object-cover md:rounded-xl"
+              className="object-cover object-center rounded-xl"
               priority
             />
           </Link>
