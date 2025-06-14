@@ -22,7 +22,7 @@ export default function ProductsCarousel({ title, products, link }: {
         </h3>
         <div className="flex items-center gap-6">
           {link && (
-            <Link href={link} className="text-sm hover:underline uppercase">
+            <Link href={link} className="text-sm hover:underline">
               Смотреть все
             </Link>
           )}
@@ -32,7 +32,7 @@ export default function ProductsCarousel({ title, products, link }: {
           </div>
         </div>
       </div>
-      <div className="flex gap-1 px-4 md:px-5 layout-container no-scrollbar py-3 md:py-6">
+      <div className="layout-container flex gap-2 no-scrollbar py-3 md:py-6 overflow-x-auto">
         {products.data.map((product, index) => (
           <div key={index} className="max-sm:max-w-40 max-md:max-w-45 max-lg:max-w-58 min-w-40 lg:w-58 w-full lg:shrink-0">
             <ProductCard product={product} />
