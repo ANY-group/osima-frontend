@@ -1,7 +1,7 @@
 import Collection from "../types/collection";
 import api from "./api";
 
-const KG_PHONE_MASK = "+996 (###) ###-##-##";
+const KZ_PHONE_MASK = "+7 (###) ###-##-##";
 
 
 export const delay = (milliseconds: number) => {
@@ -22,7 +22,7 @@ export const formatNumber = (num: number) => {
   return num.toLocaleString().replace(',', ' ');
 }
 
-export const maskString = (str: string, mask: string = KG_PHONE_MASK) => {
+export const maskString = (str: string, mask: string = KZ_PHONE_MASK) => {
   let res = "";
   const digits = str.replace(/\D/g, "");
 
@@ -40,11 +40,11 @@ export const maskString = (str: string, mask: string = KG_PHONE_MASK) => {
   return res;
 }
 
-export const isValidMask = (str: string, mask: string = KG_PHONE_MASK) => {
+export const isValidMask = (str: string, mask: string = KZ_PHONE_MASK) => {
   return str === maskString(str, mask) && mask.length == str.length;
 }
 
-export const unmaskString = (str: string, mask: string = KG_PHONE_MASK) => {
+export const unmaskString = (str: string, mask: string = KZ_PHONE_MASK) => {
   let res = "";
 
   for (let i = 0; i < mask.length; i++) {
