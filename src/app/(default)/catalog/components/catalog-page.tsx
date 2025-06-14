@@ -6,6 +6,7 @@ import SubscribeForm from "@/app/components/subscribe-form";
 import CatalogSubheader from "./catalog-subheader";
 import CatalogBrandInfo from "./catalog-brand-info";
 import CatalogProducts from "./catalog-products";
+import CatalogSearchTitle from "./catalog-search-title";
 
 export default async function CatalogPage({ params, searchParams }: {
   params: Promise<{
@@ -56,13 +57,9 @@ export default async function CatalogPage({ params, searchParams }: {
         <section className="layout-container">
           <CatalogFilters />
         </section>
-        {q && (
-          <section className="layout-container">
-            <p className="text-center text-2xl font-bold my-8">
-              По запросу «{q}» найдено 27 товаров
-            </p>
-          </section>
-        )}
+        <section className="layout-container">
+          <CatalogSearchTitle q={q} />
+        </section>
         <section className="layout-container mt-6">
           <CatalogProducts />
         </section>
