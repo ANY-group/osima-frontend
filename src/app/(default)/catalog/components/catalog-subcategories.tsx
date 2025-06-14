@@ -4,13 +4,15 @@ import ArrowDownBoldIcon from "@/app/components/ui/icons/arrow-down-bold-icon";
 import Link from "@/app/components/ui/link";
 import CategoryEntity from "@/lib/catalog/types/category";
 import SubcategoryEntity from "@/lib/catalog/types/subcategory";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 export default function CatalogSubcategories({ categories, slugPrefix }: {
   categories: Array<CategoryEntity | SubcategoryEntity>,
   slugPrefix?: string,
 }) {
   const pathname = usePathname();
+  const query = useSearchParams();
+
   const isActive = (slug: string) => pathname.split('/').at(-1) == slug;
 
   return (
@@ -30,7 +32,10 @@ export default function CatalogSubcategories({ categories, slugPrefix }: {
         {categories.map((category, index) => (
           <Link
             key={index}
-            href={`/catalog/${slugPrefix ? `${slugPrefix}/` : ''}${category.slug}`}
+            href={{
+              pathname: `/catalog/${slugPrefix ? `${slugPrefix}/` : ''}${category.slug}`,
+              query: query.toString(),
+            }}
             className={`px-6 py-3 ${isActive(category.slug) ? 'bg-accent-light' : 'bg-secondary-muted hover:bg-accent-light transition-colors'} rounded-lg whitespace-nowrap text-xs`}
           >
             {category.name}

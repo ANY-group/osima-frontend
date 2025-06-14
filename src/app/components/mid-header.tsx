@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useContext, useState } from "react";
 import { useOnRouteChange } from "../hooks/route_change";
 import BurgerIcon from "./ui/icons/burger-icon";
@@ -154,6 +154,7 @@ export default function MidHeader() {
 
 const SearchInput = () => {
   const [isSearchOpen, setSearchOpen] = useState<boolean>(false);
+  const query = useSearchParams();
 
   const closeSearch = () => {
     setSearchOpen(false);
@@ -174,6 +175,7 @@ const SearchInput = () => {
           name="q"
           placeholder="Хочу купить"
           className="max-lg:hidden px-5 py-2 outline-0 placeholder-placeholder placeholder:font-normal w-full"
+          defaultValue={query.get('q') || ''}
           required
         />
       </form>
