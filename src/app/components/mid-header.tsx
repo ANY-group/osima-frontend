@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useContext, useState } from "react";
 import { useOnRouteChange } from "../hooks/route_change";
 import BurgerIcon from "./ui/icons/burger-icon";
@@ -18,6 +18,7 @@ import CartItemsQuantityBadge from "../(default)/checkout/components/cart-items-
 import FavoritesQuantityBadge from "../(default)/catalog/favorites/components/favorites-quantity-badge";
 import { CategoriesContext } from "../(default)/catalog/components/controllers/categories-context";
 import Image from "next/image";
+import TimesIcon from "./ui/icons/times-icon";
 
 export default function MidHeader() {
 
@@ -153,6 +154,9 @@ export default function MidHeader() {
 }
 
 const SearchInput = () => {
+  const { push } = useRouter();
+  const pathname = usePathname();
+
   const [isSearchOpen, setSearchOpen] = useState<boolean>(false);
   const query = useSearchParams();
 
@@ -160,14 +164,29 @@ const SearchInput = () => {
     setSearchOpen(false);
   };
 
+  const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target as HTMLFormElement);
+    const q = formData.get('q')?.toString() || '';
+
+    const newParams = new URLSearchParams(query.toString());
+    newParams.set('q', q);
+
+    const url = `${(pathname.startsWith('/catalog') ? pathname : '/catalog')}?${newParams}`;
+
+    push(url);
+  };
+
   return (
     <>
       <form
-        action="/catalog/search"
+        action="/catalog"
         className="flex items-center rounded-full bg-primary-muted md:w-full"
+        onSubmit={onSubmit}
         onClick={() => setSearchOpen(true)}
       >
-        <div className="flex items-center justify-center w-10 h-10 z-1 cursor-pointer">
+        <div className="flex items-center justify-center w-10 h-10 cursor-pointer">
           <SearchIcon />
         </div>
         <input
@@ -178,6 +197,14 @@ const SearchInput = () => {
           defaultValue={query.get('q') || ''}
           required
         />
+        <button
+          type="button"
+          className="hidden lg:flex items-center justify-center w-10 h-10 z-1"
+          aria-label="Очистить"
+        >
+          <TimesIcon />
+        </button>
+
       </form>
       <SearchSidebar
         isOpen={isSearchOpen}
