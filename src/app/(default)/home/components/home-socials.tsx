@@ -5,9 +5,9 @@ import SocialEntity from "@/lib/types/social";
 export default function HomeSocials({ socials }: {
   socials: Array<SocialEntity>,
 }) {
-  // if (!socials.length) {
-  //   return;
-  // }
+  if (!socials.length) {
+    return;
+  }
 
   return (
     <>
