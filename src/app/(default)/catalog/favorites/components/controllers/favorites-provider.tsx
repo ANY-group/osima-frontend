@@ -23,7 +23,7 @@ export default function FavoritesProvider({
     }
   };
 
-  const syncFavorites = async (product: ProductEntity) => {
+  const syncFavorites = async (product: ProductEntity, ids: Array<number>) => {
     if (user) {
       toggleUserFavorite(product.id);
     } else {
@@ -53,9 +53,7 @@ export default function FavoritesProvider({
     }
 
     setIds(tmpIds);
-    setTimeout(() => {
-      syncFavorites(product);
-    }, 100);
+    syncFavorites(product, tmpIds);
   };
 
   return (

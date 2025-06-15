@@ -4,7 +4,7 @@ import BotHeader from "./bot-header";
 
 export default function Header() {
   return (
-    <div className="relative h-18 md:h-auto">
+    <div className="relative h-18 md:h-auto print:hidden">
       <header className="fixed md:relative top-0 left-0 right-0 w-full z-20">
         <TopHeader />
         <MidHeader />

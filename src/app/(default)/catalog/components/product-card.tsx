@@ -11,7 +11,7 @@ export default function ProductCard({ product }: {
   product: ProductEntity,
 }) {
   return (
-    <div className="relative group flex flex-col items-center md:p-2 w-full h-full rounded-sm md:hover:ring md:hover:shadow-md ring-divider">
+    <div className="relative group flex flex-col items-center md:p-2 w-full h-full rounded-sm md:hover:ring md:hover:shadow-md ring-divider print:break-inside-avoid-page">
       <Link
         href={`/catalog/${product.subcategory.category?.slug || ''}/${product.subcategory.slug}/${product.slug}`}
         className="flex-grow flex flex-col w-full"
@@ -44,10 +44,10 @@ export default function ProductCard({ product }: {
           </div>
         </div>
       </Link>
-      <div className="md:opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="md:opacity-0 group-hover:opacity-100 transition-opacity print:hidden">
         <ProductCardAddToCartButton product={product} />
       </div>
-      <div className="absolute top-0 right-0 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+      <div className="absolute top-0 right-0 md:opacity-0 md:group-hover:opacity-100 transition-opacity print:hidden">
         <ProductCardAddToFavoriteButton product={product} />
       </div>
     </div>
