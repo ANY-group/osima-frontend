@@ -5,7 +5,7 @@ import DesktopCategoriesDropdown from "../(default)/catalog/components/desktop-c
 import Link from "./ui/link";
 import { AnimatePresence, motion } from "motion/react";
 import CategoryEntity from "@/lib/catalog/types/category";
-import { CategoriesContext } from "../(default)/catalog/components/controllers/categories-context";
+import { CategoriesContext } from "../(default)/catalog/(catalog)/components/controllers/categories-context";
 
 export default function BotHeader() {
 

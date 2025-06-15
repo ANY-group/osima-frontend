@@ -1,5 +1,6 @@
 'use client';
 
+import AppliedFilterEntity from "@/lib/catalog/types/applied-filter";
 import BrandEntity from "@/lib/catalog/types/brand";
 import CategoryEntity from "@/lib/catalog/types/category";
 import FilterEntity from "@/lib/catalog/types/filter";
@@ -15,9 +16,9 @@ export const CatalogContext = createContext<{
   brand?: BrandEntity,
   products: Collection<ProductEntity>,
   filters: Array<FilterEntity>,
-  appliedFilters: Array<FilterEntity>,
+  appliedFilters: Array<AppliedFilterEntity>,
   isFilterApplied: (filter: FilterEntity, value?: FilterValueEntity) => boolean,
-  toggleFilter: (filter: FilterEntity, value: FilterValueEntity) => void,
+  toggleFilter: (filter: FilterEntity, value: FilterValueEntity, set?: boolean) => void,
   clearFilters: () => void,
   loadMoreProducts: () => void,
 }>({

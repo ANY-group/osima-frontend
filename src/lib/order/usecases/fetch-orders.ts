@@ -6,7 +6,5 @@ export default async function fetchOrders(): Promise<Array<OrderEntity>> {
 
   const {orders} = await res.json();
 
-  console.log(orders);
-
   return orders;
 }

@@ -16,7 +16,7 @@ import SearchSidebar from "../(default)/catalog/components/search-sidebar";
 import { AuthContext } from "../(footerless)/profile/components/controllers/auth-context";
 import CartItemsQuantityBadge from "../(default)/checkout/components/cart-items-quantity-badge";
 import FavoritesQuantityBadge from "../(default)/catalog/favorites/components/favorites-quantity-badge";
-import { CategoriesContext } from "../(default)/catalog/components/controllers/categories-context";
+import { CategoriesContext } from "../(default)/catalog/(catalog)/components/controllers/categories-context";
 import Image from "next/image";
 import TimesIcon from "./ui/icons/times-icon";
 

@@ -5,7 +5,7 @@ import InstagramRoundedIcon from "./ui/icons/instagram-rounded-icon";
 import PaymentMethodsIcon from "./ui/icons/payment-methods-icon";
 import { chunk } from "@/lib/utils/helpers";
 import { useContext } from "react";
-import { CategoriesContext } from "../(default)/catalog/components/controllers/categories-context";
+import { CategoriesContext } from "../(default)/catalog/(catalog)/components/controllers/categories-context";
 import Image from "next/image";
 
 export default function Footer() {

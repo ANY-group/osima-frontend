@@ -2,7 +2,7 @@
 
 import CategoryEntity from "@/lib/catalog/types/category";
 import { CatalogContext } from "./catalog-context";
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from "react";
 import SubcategoryEntity from "@/lib/catalog/types/subcategory";
 import BrandEntity from "@/lib/catalog/types/brand";
@@ -31,6 +31,8 @@ export default function CatalogProvider({
 }) {
   const { replace } = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const currentFullPath = pathname + '?' + searchParams.toString().replace(/%2C/g, ',');
 
   const tmpFiltersMap: { [key: string]: Array<string> } = {};
   for (const propName in query) {
@@ -63,25 +65,32 @@ export default function CatalogProvider({
       }
     }
 
-    replace(`${pathname}?${params.toString().replace(/%2C/g, ',')}`, { scroll: false });
+    const url = `${pathname}?${params.toString().replace(/%2C/g, ',')}`;
+    if (url != currentFullPath) {
+      replace(url, { scroll: false });
+    }
   }, [filtersMap]);
 
   const isFilterApplied = (filter: FilterEntity, value?: FilterValueEntity) => {
     return value ? (filtersMap[filter.slug] || []).includes(value.slug) : filtersMap[filter.slug]?.length > 0;
   };
 
-  const toggleFilter = (filter: FilterEntity, value: FilterValueEntity) => {
+  const toggleFilter = (filter: FilterEntity, value: FilterValueEntity, set: boolean = false) => {
     const valueIndex = (filtersMap[filter.slug] || []).indexOf(value.slug);
 
     const tmpFiltersMap = { ...filtersMap };
 
-    if (valueIndex != -1) {
-      tmpFiltersMap[filter.slug].splice(valueIndex, 1);
+    if (set) {
+      tmpFiltersMap[filter.slug] = value.slug.split(',');
     } else {
-      if (!tmpFiltersMap[filter.slug]) {
-        tmpFiltersMap[filter.slug] = [];
+      if (valueIndex != -1) {
+        tmpFiltersMap[filter.slug].splice(valueIndex, 1);
+      } else {
+        if (!tmpFiltersMap[filter.slug]) {
+          tmpFiltersMap[filter.slug] = [];
+        }
+        tmpFiltersMap[filter.slug].push(value.slug);
       }
-      tmpFiltersMap[filter.slug].push(value.slug);
     }
 
     setFiltersMap(tmpFiltersMap);
@@ -94,9 +103,10 @@ export default function CatalogProvider({
   const appliedFilters = filters
     .map((filter) => ({
       ...filter,
-      values: filter.values.filter((value) => filtersMap[filter.slug]?.includes(value.slug)),
+      values: filter.values?.filter((value) => filtersMap[filter.slug]?.includes(value.slug)),
+      rawValue: filtersMap[filter.slug],
     }))
-    .filter((filter) => filter.values?.length);
+    .filter((filter) => filter.rawValue?.length);
 
   const loadMoreProducts = async () => {
     const loadedData = await loadMore(products);

@@ -3,8 +3,6 @@ import CartEntity from "../types/cart";
 import OrderEntity from "@/lib/order/types/order";
 
 export default async function createOrder(cart: CartEntity): Promise<OrderEntity> {
-  console.log(cart);
-
   const res = await api.request('orders', {
     method: RequestMethod.POST,
     data: {

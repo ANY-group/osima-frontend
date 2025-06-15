@@ -69,7 +69,7 @@ export default function MobileFiltersSidebar({
                       </button>
                       <Collapse isOpen={activeFilter?.id == filter.id}>
                         <div className="flex flex-col gap-2 px-3 pb-2 text-sm">
-                          {filter.values.map((value, index) => (
+                          {filter.values?.map((value, index) => (
                             <label
                               key={index}
                               className="flex items-center gap-3 cursor-pointer"

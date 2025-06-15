@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import { CatalogContext } from "./controllers/catalog-context";
 import BrandDescription from "./brand-description";
-import CatalogSubcategories from "./catalog-subcategories";
+import CatalogSubcategories from "../../components/catalog-subcategories";
 import { CategoriesContext } from "./controllers/categories-context";
 
 export default function CatalogBrandInfo() {

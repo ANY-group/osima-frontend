@@ -134,7 +134,7 @@ const AppliedFilters = () => {
 
   return (
     <div className="flex flex-wrap items-center gap-2 my-3 text-sm">
-      {appliedFilters.map((filter) => filter.values.map((value) => (
+      {appliedFilters.map((filter) => filter.values?.map((value) => (
         <button
           key={`${filter.id}-${value.id}`}
           className="flex items-center gap-2 pl-3 pr-2 py-1 rounded-full border border-divider"

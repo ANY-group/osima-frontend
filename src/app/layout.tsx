@@ -6,7 +6,7 @@ import AuthProvider from "./(footerless)/profile/components/controllers/auth-pro
 import fetchUser from "@/lib/auth/usecases/fetch-user";
 import CartProvider from "./(default)/checkout/components/controllers/cart-provider";
 import FavoritesProvider from "./(default)/catalog/favorites/components/controllers/favorites-provider";
-import CategoriesProvider from "./(default)/catalog/components/controllers/categories-provider";
+import CategoriesProvider from "./(default)/catalog/(catalog)/components/controllers/categories-provider";
 import fetchCategories from "@/lib/catalog/usecases/fetch-categories";
 
 const roboto = Roboto_Flex({

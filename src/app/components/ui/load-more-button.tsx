@@ -12,7 +12,6 @@ export default function LoadMoreButton({
   const isInView = useInView(ref, { once: false });
 
   useEffect(() => {
-    console.log(isInView);
     if (isInView) {
       onClick?.call([]);
     }

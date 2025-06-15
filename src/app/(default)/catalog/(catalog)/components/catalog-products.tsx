@@ -1,7 +1,7 @@
 'use client';
 
 import { useContext } from "react";
-import CatalogProductsGrid from "./catalog-products-grid";
+import CatalogProductsGrid from "../../components/catalog-products-grid";
 import { CatalogContext } from "./controllers/catalog-context";
 
 export default function CatalogProducts() {
