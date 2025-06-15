@@ -2,13 +2,15 @@
 import TimesIcon from "@/app/components/ui/icons/times-icon";
 import OverlayWrapper from "@/app/components/ui/overlay-wrapper";
 import Swipeable from "@/app/components/ui/swipeable";
-import { AnimatePresence, motion } from "motion/react";
-import { useContext, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useContext, useEffect, useState } from "react";
 import { CatalogContext } from "./controllers/catalog-context";
 import ArrowLeftAltIcon from "@/app/components/ui/icons/arrow-left-alt-icon";
 import Collapse from "@/app/components/ui/collapse";
 import HighlightDot from "@/app/components/ui/highlight-dot";
-import FilterEntity from "@/lib/catalog/types/filter";
+import FilterEntity, { FilterType } from "@/lib/catalog/types/filter";
+import SimpleFilter from "./simple-filter";
+import PriceFilter from "./price-filter";
 
 export default function MobileFiltersSidebar({
   isOpen,
@@ -17,8 +19,12 @@ export default function MobileFiltersSidebar({
   isOpen: boolean,
   close: () => void,
 }) {
-  const { filters, isFilterApplied, toggleFilter, clearFilters } = useContext(CatalogContext);
+  const { filters, isFilterApplied, clearFilters } = useContext(CatalogContext);
   const [activeFilter, setActiveFilter] = useState<FilterEntity | null>(null);
+
+  useEffect(() => {
+    setActiveFilter(null);
+  }, [isOpen]);
 
   return (
     <div className="sm:hidden">
@@ -69,26 +75,11 @@ export default function MobileFiltersSidebar({
                       </button>
                       <Collapse isOpen={activeFilter?.id == filter.id}>
                         <div className="flex flex-col gap-2 px-3 pb-2 text-sm">
-                          {filter.values?.map((value, index) => (
-                            <label
-                              key={index}
-                              className="flex items-center gap-3 cursor-pointer"
-                            >
-                              <input
-                                type="checkbox"
-                                name={filter.slug}
-                                value={value.slug}
-                                checked={isFilterApplied(filter, value)}
-                                onChange={() => toggleFilter(filter, value)}
-                              />
-                              <p className="whitespace-nowrap first-letter:capitalize">
-                                {value.name}
-                                {value.productsCount && (
-                                  <span className="ml-1 text-secondary">({value.productsCount})</span>
-                                )}
-                              </p>
-                            </label>
-                          ))}
+                          {filter.type == FilterType.PRICE ? (
+                            <PriceFilter filter={filter} />
+                          ) : (
+                            <SimpleFilter filter={filter} />
+                          )}
                         </div>
                       </Collapse>
                     </div>

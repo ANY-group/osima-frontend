@@ -8,9 +8,9 @@ import SubcategoryEntity from "@/lib/catalog/types/subcategory";
 import BrandEntity from "@/lib/catalog/types/brand";
 import Collection from "@/lib/types/collection";
 import ProductEntity from "@/lib/catalog/types/product";
-import FilterEntity from "@/lib/catalog/types/filter";
+import FilterEntity, { FilterType } from "@/lib/catalog/types/filter";
 import FilterValueEntity from "@/lib/catalog/types/filter-value";
-import { loadMore, mergeCollections } from "@/lib/utils/helpers";
+import { formatNumber, loadMore, mergeCollections } from "@/lib/utils/helpers";
 
 export default function CatalogProvider({
   query,
@@ -75,13 +75,17 @@ export default function CatalogProvider({
     return value ? (filtersMap[filter.slug] || []).includes(value.slug) : filtersMap[filter.slug]?.length > 0;
   };
 
-  const toggleFilter = (filter: FilterEntity, value: FilterValueEntity, set: boolean = false) => {
+  const toggleFilter = (filter: FilterEntity, value: FilterValueEntity) => {
     const valueIndex = (filtersMap[filter.slug] || []).indexOf(value.slug);
 
     const tmpFiltersMap = { ...filtersMap };
 
-    if (set) {
-      tmpFiltersMap[filter.slug] = value.slug.split(',');
+    if (filter.type == FilterType.PRICE) {
+      if (tmpFiltersMap[filter.slug]?.join(',') == value.slug) {
+        tmpFiltersMap[filter.slug] = [];
+      } else {
+        tmpFiltersMap[filter.slug] = value.slug.split(',');
+      }
     } else {
       if (valueIndex != -1) {
         tmpFiltersMap[filter.slug].splice(valueIndex, 1);
@@ -100,13 +104,36 @@ export default function CatalogProvider({
     setFiltersMap({});
   };
 
+  const getPriceFilterValues = (filter: FilterEntity) => {
+    if (!filtersMap[filter.slug]?.length) {
+      return [];
+    }
+
+    const val = filtersMap[filter.slug]
+      .map((str) => formatNumber(parseInt(str)))
+      .join(' до ');
+
+    return [{
+      id: 0,
+      name: `Цена: от ${val}`,
+      slug: filtersMap[filter.slug].join(','),
+    }];
+  };
+
+  const getSimpleFilterValues = (filter: FilterEntity) => {
+    return filter
+      .values
+      ?.filter((value) => filtersMap[filter.slug]?.includes(value.slug));
+  };
+
   const appliedFilters = filters
     .map((filter) => ({
       ...filter,
-      values: filter.values?.filter((value) => filtersMap[filter.slug]?.includes(value.slug)),
-      rawValue: filtersMap[filter.slug],
+      values: filter.type == FilterType.PRICE
+        ? getPriceFilterValues(filter)
+        : getSimpleFilterValues(filter),
     }))
-    .filter((filter) => filter.rawValue?.length);
+    .filter((filter) => filter.values?.length);
 
   const loadMoreProducts = async () => {
     const loadedData = await loadMore(products);
